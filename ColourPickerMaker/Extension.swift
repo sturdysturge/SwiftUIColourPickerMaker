@@ -43,3 +43,40 @@ extension View {
     return modifier(BidirectionalSlider(xValue: xValue, yValue: yValue, size: size))
   }
 }
+
+extension LinearGradient {
+  
+  static func brightnessOverlay(axis: Axis) -> LinearGradient {
+    let startPoint = axis == .horizontal ? UnitPoint.leading : UnitPoint.top
+    let endPoint = axis == .horizontal ? UnitPoint.trailing : UnitPoint.bottom
+    return LinearGradient(gradient: Gradient(colors: [.black, .clear]), startPoint: startPoint, endPoint: endPoint)
+  }
+  static func saturationOverlay(axis: Axis) -> LinearGradient {
+    let startPoint = axis == .horizontal ? UnitPoint.leading : UnitPoint.top
+    let endPoint = axis == .horizontal ? UnitPoint.trailing : UnitPoint.bottom
+    return LinearGradient(gradient: Gradient(colors: [.white, Color(.sRGBLinear, white: 1, opacity: 0.6), Color(.sRGBLinear, white: 1, opacity: 0.3), .clear]), startPoint: startPoint, endPoint: endPoint)
+  }
+  static func hue(axis: Axis) -> LinearGradient {
+    let startPoint = axis == .horizontal ? UnitPoint.leading : UnitPoint.top
+    let endPoint = axis == .horizontal ? UnitPoint.trailing : UnitPoint.bottom
+    return LinearGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .indigo, .violet, .red]), startPoint: startPoint, endPoint: endPoint)
+  }
+  
+  static func alpha(axis: Axis) -> LinearGradient {
+    let startPoint = axis == .horizontal ? UnitPoint.trailing : UnitPoint.bottom
+    let endPoint = axis == .horizontal ? UnitPoint.leading : UnitPoint.top
+    return LinearGradient(gradient: Gradient(colors: [.white, Color(.sRGBLinear, white: 1, opacity: 0.9), Color(.sRGBLinear, white: 1, opacity: 0.5)]), startPoint: startPoint, endPoint: endPoint)
+  }
+  
+  static func brightness(hue: Double, axis: Axis) -> LinearGradient {
+    let startPoint = axis == .horizontal ? UnitPoint.leading : UnitPoint.top
+    let endPoint = axis == .horizontal ? UnitPoint.trailing : UnitPoint.bottom
+    return LinearGradient(gradient: Gradient(colors: [Color(hue: hue, saturation: 1, brightness: 0), Color(hue: hue, saturation: 1, brightness: 1)]), startPoint: startPoint, endPoint: endPoint)
+  }
+  
+  static func saturation(hue: Double, axis: Axis) -> LinearGradient {
+    let startPoint = axis == .horizontal ? UnitPoint.leading : UnitPoint.top
+    let endPoint = axis == .horizontal ? UnitPoint.trailing : UnitPoint.bottom
+    return LinearGradient(gradient: Gradient(colors: [.white, Color(hue: hue, saturation: 1, brightness: 1)]), startPoint: startPoint, endPoint: endPoint)
+  }
+}

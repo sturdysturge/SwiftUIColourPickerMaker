@@ -8,20 +8,20 @@
 
 import SwiftUI
 
-enum HSBCanvasType {
+enum HSBCanvasType: String, CaseIterable {
   case
-  saturationBrightness,
-  saturationHue,
-  saturationAlpha,
-  brightnessSaturation,
-  brightnessHue,
-  brightnessAlpha,
-  hueSaturation,
-  hueBrightness,
-  hueAlpha,
-  alphaHue,
-  alphaSaturation,
-  alphaBrightness
+  saturationBrightness = "saturation brightness",
+  saturationHue = "saturation hue",
+  saturationAlpha = "saturation alpha",
+  brightnessSaturation = "brightness saturation",
+  brightnessHue = "brightness hue",
+  brightnessAlpha = "brightness alpha",
+  hueSaturation = "hue saturation",
+  hueBrightness = "hue brightness",
+  hueAlpha = "hue alpha",
+  alphaHue = "alpha hue",
+  alphaSaturation = "alpha saturation",
+  alphaBrightness = "alpha brightness"
   
   
   func gradients(hue: Double, saturation: Double, brightness: Double, alpha: Double = 1) -> some View {
@@ -31,93 +31,38 @@ enum HSBCanvasType {
 
 struct HSBGradientsGridView: View {
   @EnvironmentObject var colourModel: ColourModel
+  let rowSize = 4
+  
+  func getRow<T>(number: Int, fromArray array: [T]) -> [T] {
+    var returnArray = [T]()
+    let startOfRow = ((number - 1) * rowSize)
+    let endOfRow = startOfRow + (rowSize - 1)
+    for index in startOfRow...endOfRow {
+      if array.indices.contains(index) {
+        returnArray.append(array[index])
+      }
+      else { break }
+    }
+    return returnArray
+  }
+  
+  func numberOfRows(for arraySize: Int) -> Int {
+    return Int((Double(arraySize) / Double(rowSize)) + 0.5)
+  }
   var body: some View {
     VStack {
-      Group {
-        //Saturation
-        HStack {
-          ZStack {
-            HSBCanvasType.hueSaturation.gradients(hue: self.colourModel.hue, saturation: self.colourModel.saturation, brightness: self.colourModel.brightness)
-            Text("hue saturation")
-              .background(Color.background)
-          }
-          .aspectRatio(1, contentMode: .fit)
-          ZStack {
-            HSBCanvasType.hueBrightness.gradients(hue: self.colourModel.hue, saturation: self.colourModel.saturation, brightness: self.colourModel.brightness)
-            Text("hue brightness")
-              .background(Color.background)
-          }
-          .aspectRatio(1, contentMode: .fit)
-          ZStack {
-            HSBCanvasType.hueAlpha.gradients(hue: self.colourModel.hue, saturation: self.colourModel.saturation, brightness: self.colourModel.brightness)
-            Text("hue alpha")
-              .background(Color.background)
-          }
-          .aspectRatio(1, contentMode: .fit)
+      ForEach(1...numberOfRows(for: HSBCanvasType.allCases.count), id: \.self) { row in
+          HStack {
+            ForEach(self.getRow(number: row, fromArray: HSBCanvasType.allCases), id: \.self) {
+              canvasType in
+              ZStack {
+              canvasType.gradients(hue: self.colourModel.hue, saturation: self.colourModel.saturation, brightness: self.colourModel.brightness, alpha: self.colourModel.alpha)
+                Text(canvasType.rawValue)
+                  .background(Color(UIColor.systemBackground))
+              }
+              .aspectRatio(1, contentMode: .fit)
+            }
         }
-        HStack {
-          ZStack {
-            HSBCanvasType.saturationHue.gradients(hue: self.colourModel.hue, saturation: self.colourModel.saturation, brightness: self.colourModel.brightness)
-            Text("saturation hue")
-              .background(Color.background)
-          }
-          .aspectRatio(1, contentMode: .fit)
-          ZStack {
-            HSBCanvasType.saturationBrightness.gradients(hue: self.colourModel.hue, saturation: self.colourModel.saturation, brightness: self.colourModel.brightness)
-            Text("saturation brightness")
-              .background(Color.background)
-          }
-          .aspectRatio(1, contentMode: .fit)
-          
-          ZStack {
-            HSBCanvasType.saturationAlpha.gradients(hue: self.colourModel.hue, saturation: self.colourModel.saturation, brightness: self.colourModel.brightness)
-            Text("saturation alpha")
-              .background(Color.background)
-          }
-          .aspectRatio(1, contentMode: .fit)
-        }
-        HStack {
-          ZStack {
-            HSBCanvasType.brightnessHue.gradients(hue: self.colourModel.hue, saturation: self.colourModel.saturation, brightness: self.colourModel.brightness)
-            Text("brightness hue")
-              .background(Color.background)
-          }
-          .aspectRatio(1, contentMode: .fit)
-          ZStack {
-            HSBCanvasType.brightnessSaturation.gradients(hue: self.colourModel.hue, saturation: self.colourModel.saturation, brightness: self.colourModel.brightness)
-            Text("brightness saturation")
-              .background(Color.background)
-          }
-          .aspectRatio(1, contentMode: .fit)
-          
-          ZStack {
-            HSBCanvasType.brightnessAlpha.gradients(hue: self.colourModel.hue, saturation: self.colourModel.saturation, brightness: self.colourModel.brightness)
-            Text("brightness alpha")
-              .background(Color.background)
-          }
-          .aspectRatio(1, contentMode: .fit)
-        }
-      }
-      HStack {
-        ZStack {
-          HSBCanvasType.alphaHue.gradients(hue: self.colourModel.hue, saturation: self.colourModel.saturation, brightness: self.colourModel.brightness)
-          Text("alpha hue")
-            .background(Color.background)
-        }
-        .aspectRatio(1, contentMode: .fit)
-        ZStack {
-          HSBCanvasType.alphaSaturation.gradients(hue: self.colourModel.hue, saturation: self.colourModel.saturation, brightness: self.colourModel.brightness)
-          Text("alpha saturation")
-            .background(Color.background)
-        }
-        .aspectRatio(1, contentMode: .fit)
-        
-        ZStack {
-          HSBCanvasType.alphaBrightness.gradients(hue: self.colourModel.hue, saturation: self.colourModel.saturation, brightness: self.colourModel.brightness)
-          Text("alpha brightness")
-            .background(Color.background)
-        }
-        .aspectRatio(1, contentMode: .fit)
       }
     }
   }
@@ -225,5 +170,11 @@ enum HSBSliderType {
     case .alpha:
       return GradientType.alpha.horizontal
     }
+  }
+}
+
+struct HSB_Previews: PreviewProvider {
+  static var previews: some View {
+    /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
   }
 }

@@ -20,7 +20,7 @@ struct ContentView: View {
   @ObservedObject var colourModel = ColourModel.shared
   var body: some View {
     ZStack {
-      RGBGradientsGridView()
+      HSBGradientsGridView()
         .environmentObject(colourModel)
       
     }
