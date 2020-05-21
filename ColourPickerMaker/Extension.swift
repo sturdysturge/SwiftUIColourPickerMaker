@@ -46,6 +46,11 @@ extension View {
 
 extension LinearGradient {
   
+  static func fromColours(_ colours: [Color], axis: Axis) -> LinearGradient {
+    return LinearGradient(gradient: Gradient(colors: colours), startPoint: axis.start, endPoint: axis.end)
+  }
+  
+  
   static func brightnessOverlay(axis: Axis) -> LinearGradient {
     let startPoint = axis == .horizontal ? UnitPoint.leading : UnitPoint.top
     let endPoint = axis == .horizontal ? UnitPoint.trailing : UnitPoint.bottom
