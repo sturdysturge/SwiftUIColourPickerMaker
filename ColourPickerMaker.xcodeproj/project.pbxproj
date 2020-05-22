@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4190FB4124785D070035896C /* GradientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190FB4024785D070035896C /* GradientType.swift */; };
 		41BC57CC247722D800A25134 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC57CB247722D800A25134 /* AppDelegate.swift */; };
 		41BC57CE247722D800A25134 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC57CD247722D800A25134 /* SceneDelegate.swift */; };
 		41BC57D0247722D800A25134 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC57CF247722D800A25134 /* ContentView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4190FB4024785D070035896C /* GradientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientType.swift; sourceTree = "<group>"; };
 		41BC57C8247722D800A25134 /* ColourPickerMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColourPickerMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41BC57CB247722D800A25134 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41BC57CD247722D800A25134 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				41BC57DF247723AE00A25134 /* RGB.swift */,
 				41BC57E12477246100A25134 /* HSB.swift */,
 				41BC57E32477256300A25134 /* Extension.swift */,
+				4190FB4024785D070035896C /* GradientType.swift */,
 			);
 			path = ColourPickerMaker;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			files = (
 				41BC57CC247722D800A25134 /* AppDelegate.swift in Sources */,
 				41BC57E22477246100A25134 /* HSB.swift in Sources */,
+				4190FB4124785D070035896C /* GradientType.swift in Sources */,
 				41BC57CE247722D800A25134 /* SceneDelegate.swift in Sources */,
 				41BC57E42477256300A25134 /* Extension.swift in Sources */,
 				41BC57D0247722D800A25134 /* ContentView.swift in Sources */,

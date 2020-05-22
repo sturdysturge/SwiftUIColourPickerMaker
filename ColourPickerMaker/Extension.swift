@@ -11,7 +11,6 @@ import SwiftUI
 extension Color {
   static let indigo = Color(red: 0.29, green: 0, blue: 0.5)
   static let violet = Color(red: 0.93, green: 0.5, blue: 0.93)
-  static let background = Color(UIColor.systemBackground)
 }
 
 extension UnitPoint {
@@ -47,28 +46,6 @@ extension LinearGradient {
     return LinearGradient(gradient: Gradient(colors: colours), startPoint: startPoint, endPoint: startPoint.opposite)
   }
   
-  static func brightnessOverlay(startPoint: UnitPoint) -> LinearGradient {
-    
-    return LinearGradient(gradient: Gradient(colors: [.black, .clear]), startPoint: startPoint, endPoint: startPoint.opposite)
-  }
-  static func saturationOverlay(startPoint: UnitPoint) -> LinearGradient {
-    return LinearGradient(gradient: Gradient(colors: [.white, Color(.sRGBLinear, white: 1, opacity: 0.6), Color(.sRGBLinear, white: 1, opacity: 0.3), .clear]), startPoint: startPoint, endPoint: startPoint.opposite)
-  }
-  static func hue(startPoint: UnitPoint) -> LinearGradient {
-    return LinearGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .indigo, .violet, .red]), startPoint: startPoint, endPoint: startPoint.opposite)
-  }
-  
-  static func alpha(startPoint: UnitPoint) -> LinearGradient {
-    return LinearGradient(gradient: Gradient(colors: [.white, Color(.sRGBLinear, white: 1, opacity: 0.9), Color(.sRGBLinear, white: 1, opacity: 0.5)]), startPoint: startPoint, endPoint: startPoint.opposite)
-  }
-  
-  static func brightness(hue: Double, startPoint: UnitPoint) -> LinearGradient {
-    return LinearGradient(gradient: Gradient(colors: [Color(hue: hue, saturation: 1, brightness: 0), Color(hue: hue, saturation: 1, brightness: 1)]), startPoint: startPoint, endPoint: startPoint.opposite)
-  }
-  
-  static func saturation(hue: Double, startPoint: UnitPoint) -> LinearGradient {
-    return LinearGradient(gradient: Gradient(colors: [.white, Color(hue: hue, saturation: 1, brightness: 1)]), startPoint: startPoint, endPoint: startPoint.opposite)
-  }
 }
 
 struct Extension_Previews: PreviewProvider {
