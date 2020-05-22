@@ -16,7 +16,7 @@ class ColourModel: ObservableObject {
   }
 }
 
-struct HSBColourCanvasPreviews: View {
+struct EveryHSBColourCanvasView: View {
   @EnvironmentObject var colourModel: ColourModel
   var body: some View {
     VStack {
@@ -25,12 +25,10 @@ struct HSBColourCanvasPreviews: View {
     ScrollView {
       VStack {
       ForEach(HSBCanvasType.allCases, id: \.self) {
-        
-        
         type in
         Group {
         Text(type.rawValue)
-        ColourCanvas(hue: self.$colourModel.hue, saturation: self.$colourModel.saturation, brightness: self.$colourModel.brightness, alpha: self.$colourModel.alpha, canvasType: type)
+        ColourCanvasView(hue: self.$colourModel.hue, saturation: self.$colourModel.saturation, brightness: self.$colourModel.brightness, alpha: self.$colourModel.alpha, canvasType: type)
           .environmentObject(self.colourModel)
         }
         }
@@ -44,9 +42,30 @@ struct HSBColourCanvasPreviews: View {
 struct ContentView: View {
   @ObservedObject var colourModel = ColourModel.shared
   var body: some View {
-    GridBackgroundView(squareSize: 20)
+    ColourWheelView()
+      .aspectRatio(1, contentMode: .fit)
 //    HSBColourCanvasPreviews()
 //    .environmentObject(colourModel)
+  }
+}
+
+struct ColourWheelView: View {
+  @State var xValue = Double()
+  @State var yValue = Double()
+  var body: some View {
+    GeometryReader { geometry in
+    ZStack {
+    AngularGradient(gradient: Gradient(colors: GradientType.hue.colours), center: .center)
+      RadialGradient(gradient: Gradient(colors: [Color(white: 1, opacity: 1), Color(white: 1, opacity: 0.9),  Color(white: 1, opacity: 0.8), Color(white: 1, opacity: 0.7),  Color(white: 1, opacity: 0.6), Color(white: 1, opacity: 0.5),  Color(white: 1, opacity: 0.4), Color(white: 1, opacity: 0.3),  Color(white: 1, opacity: 0.2), Color(white: 1, opacity: 0.1),  Color(white: 1, opacity: 0)]), center: .center, startRadius: 0, endRadius: geometry.size.width / 2)
+      Group {
+      Circle()
+      .stroke(lineWidth: 5)
+      .frame(width: 25, height: 25)
+        .radialDrag(xValue: self.$xValue, yValue: self.$yValue, size: geometry.size)
+      }
+      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+      }
+    }
   }
 }
 
@@ -140,7 +159,7 @@ struct ColourSlider: View {
   }
 }
 
-struct ColourCanvas: View {
+struct ColourCanvasView: View {
   @Binding var hue: Double
   @Binding var saturation: Double
   @Binding var brightness: Double
@@ -217,6 +236,57 @@ struct HorizontalSlider: ViewModifier {
           else {
             self.value = Double(self.offset.x / (self.width - 10))
           }
+      })
+      .offset(x: offset.x, y: offset.y)
+  }
+}
+
+struct RadialSlider: ViewModifier {
+  @State var offset = CGPoint(x: 0, y: 0)
+  @Binding var xValue: Double
+  @Binding var yValue: Double
+  let size: CGSize
+  
+  func   angleBetweenLines(line1Start: CGPoint, line1End: CGPoint, line2Start: CGPoint, line2End: CGPoint) -> CGFloat {
+  let angle1 = atan2(line1Start.y-line1End.y, line1Start.x-line1End.x);
+    let angle2 = atan2(line2Start.y-line2End.y, line2Start.x-line2End.x);
+  var result = (angle2-angle1) * 180 / 3.14
+  if (result<0) {
+      result += 360
+  }
+  return result
+  }
+  
+  func body(content: Content) -> some View {
+    content
+      .gesture(DragGesture(minimumDistance: 0)
+        .onChanged { value in
+          self.offset.x += value.location.x - value.startLocation.x
+          self.offset.y += value.location.y - value.startLocation.y
+          
+          if self.offset.x < 0 {
+            self.offset.x = 0
+            self.xValue = 0
+          }
+          else if self.offset.x > self.size.width - 25 {
+            self.offset.x = self.size.width - 25
+            self.xValue = 1
+          }
+          else {
+            self.xValue = Double(self.offset.x / (self.size.width - 25))
+          }
+          if self.offset.y < 0 {
+            self.offset.y = 0
+            self.yValue = 0
+          }
+          else if self.offset.y > self.size.height - 25 {
+            self.offset.y = self.size.height - 25
+            self.yValue = 1
+          }
+          else {
+            self.yValue =  Double(self.offset.y / (self.size.height - 25))
+          }
+          print( self.angleBetweenLines(line1Start: CGPoint(x: self.size.width / 2, y: 0), line1End: CGPoint(x: self.offset.x, y: self.offset.y), line2Start: CGPoint(x: self.size.width / 2, y: 0), line2End: CGPoint(x: self.size.width / 2, y: 10)) - 90)
       })
       .offset(x: offset.x, y: offset.y)
   }

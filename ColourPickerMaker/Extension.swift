@@ -38,6 +38,10 @@ extension View {
   func bidirectionalDrag(xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) -> some View {
     return modifier(BidirectionalSlider(xValue: xValue, yValue: yValue, size: size))
   }
+  
+  func radialDrag(xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) -> some View {
+    return modifier(RadialSlider(xValue: xValue, yValue: yValue, size: size))
+  }
 }
 
 extension LinearGradient {
@@ -48,7 +52,7 @@ extension LinearGradient {
   
 }
 
-struct Extension_Previews: PreviewProvider {
+struct  Extension_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
   }
