@@ -8,19 +8,19 @@
 
 import SwiftUI
 
-enum RGBCanvasType {
-  case redGreen,
-  redBlue,
-  redAlpha,
-  greenRed,
-  greenBlue,
-  greenAlpha,
-  blueRed,
-  blueGreen,
-  blueAlpha,
-  alphaRed,
-  alphaGreen,
-  alphaBlue
+enum RGBCanvasType: String, CaseIterable {
+  case redGreen = "red green",
+  redBlue = "red blue",
+  redAlpha = "red alpha",
+  greenRed = "green red",
+  greenBlue = "green blue",
+  greenAlpha = "green alpha",
+  blueRed = "blue red",
+  blueGreen = "blue green",
+  blueAlpha = "blue alpha",
+  alphaRed = "alpha red",
+  alphaGreen = "alpha green",
+  alphaBlue = "alpha blue"
   
   var gradients: some View {
     return RGBDoubleGradientView(type: self)
@@ -32,7 +32,7 @@ struct RGBDoubleGradientView: View {
   let type: RGBCanvasType
   var body: some View {
     ZStack {
-      GridBackgroundView()
+      GridBackgroundView(squareSize: 20)
       if type == .redGreen {
         GradientType.red.vertical
         GradientType.green.horizontal
@@ -100,82 +100,24 @@ struct RGBDoubleGradientView: View {
 }
 
 
-struct RGBGradientsGridView : View {
+struct RGBGradientsGridView : View, GridPreviewable {
+  @EnvironmentObject var colourModel: ColourModel
+  let rowSize = 4
+  
   var body: some View {
     VStack {
-      Group {
-        //Saturation
-        HStack {
-          ZStack {
-            RGBCanvasType.redGreen.gradients
-            Text("red green")
-          }
-          .aspectRatio(1, contentMode: .fit)
-          ZStack {
-            RGBCanvasType.redBlue.gradients
-            Text("red blue")
-          }
-          .aspectRatio(1, contentMode: .fit)
-          ZStack {
-            RGBCanvasType.redAlpha.gradients
-            Text("red alpha")
-          }
-          .aspectRatio(1, contentMode: .fit)
+      ForEach(1...numberOfRows(for: RGBCanvasType.allCases.count), id: \.self) { row in
+          HStack {
+            ForEach(self.getRow(number: row, fromArray: RGBCanvasType.allCases), id: \.self) {
+              canvasType in
+              ZStack {
+              canvasType.gradients
+                Text(canvasType.rawValue)
+                  .background(Color(UIColor.systemBackground))
+              }
+              .aspectRatio(1, contentMode: .fit)
+            }
         }
-        HStack {
-          ZStack {
-            RGBCanvasType.greenRed.gradients
-            Text("green red")
-          }
-          .aspectRatio(1, contentMode: .fit)
-          ZStack {
-            RGBCanvasType.greenBlue.gradients
-            Text("green blue")
-          }
-          .aspectRatio(1, contentMode: .fit)
-          
-          ZStack {
-            RGBCanvasType.greenAlpha.gradients
-            Text("green alpha")
-          }
-          .aspectRatio(1, contentMode: .fit)
-        }
-        HStack {
-          ZStack {
-            RGBCanvasType.blueRed.gradients
-            Text("blue red")
-          }
-          .aspectRatio(1, contentMode: .fit)
-          ZStack {
-            RGBCanvasType.blueGreen.gradients
-            Text("blue green")
-          }
-          .aspectRatio(1, contentMode: .fit)
-          
-          ZStack {
-            RGBCanvasType.blueAlpha.gradients
-            Text("blue alpha")
-          }
-          .aspectRatio(1, contentMode: .fit)
-        }
-      }
-      HStack {
-        ZStack {
-          RGBCanvasType.alphaRed.gradients
-          Text("alpha red")
-        }
-        .aspectRatio(1, contentMode: .fit)
-        ZStack {
-          RGBCanvasType.alphaGreen.gradients
-          Text("alpha green")
-        }
-        .aspectRatio(1, contentMode: .fit)
-        
-        ZStack {
-          RGBCanvasType.alphaBlue.gradients
-          Text("alpha blue")
-        }
-        .aspectRatio(1, contentMode: .fit)
       }
     }
   }

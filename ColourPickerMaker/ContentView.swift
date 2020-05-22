@@ -44,12 +44,15 @@ struct HSBColourCanvasPreviews: View {
 struct ContentView: View {
   @ObservedObject var colourModel = ColourModel.shared
   var body: some View {
-    HSBColourCanvasPreviews()
-    .environmentObject(colourModel)
+    GridBackgroundView(squareSize: 20)
+//    HSBColourCanvasPreviews()
+//    .environmentObject(colourModel)
   }
 }
 
 struct GridBackgroundView: View {
+  let squareSize: CGFloat
+  
   func squareColour(horizontalIndex: Int, verticalIndex: Int) -> Color {
     if verticalIndex % 2 == 0 {
       return horizontalIndex % 2 == 0 ? .gray : .white
@@ -61,13 +64,15 @@ struct GridBackgroundView: View {
   }
   
   var body: some View {
+    GeometryReader { geometry in
     VStack(spacing: 0) {
-      ForEach(0...10, id: \.self) { verticalIndex in
+      ForEach(0...Int(geometry.size.height / self.squareSize), id: \.self) { verticalIndex in
         HStack(spacing: 0) {
-          ForEach(0...10, id: \.self) { horizontalIndex in
+          ForEach(0...Int(geometry.size.width / self.squareSize), id: \.self) { horizontalIndex in
             Rectangle()
               .aspectRatio(1, contentMode: .fit)
               .foregroundColor(self.squareColour(horizontalIndex: horizontalIndex, verticalIndex: verticalIndex))
+          }
           }
         }
       }
@@ -81,7 +86,7 @@ struct PreviewColorView: View {
   let square: Bool
   var body: some View {
     ZStack {
-      GridBackgroundView()
+      GridBackgroundView(squareSize: 20)
       if square {
       Rectangle()
         .foregroundColor(colour)
@@ -117,7 +122,7 @@ struct ColourSlider: View {
   var body: some View {
     GeometryReader { geometry in
       ZStack {
-        GridBackgroundView()
+        GridBackgroundView(squareSize: 20)
         self.sliderType.gradient(hue: self.hue, saturation: self.saturation, brightness: self.brightness)
           .frame(height: 50, alignment: .center)
           .cornerRadius(geometry.size.height / 4)
@@ -185,7 +190,7 @@ struct ColourCanvas: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
       }
     }
-    .background(GridBackgroundView())
+    .background(GridBackgroundView(squareSize: 20))
     .aspectRatio(1, contentMode: .fit)
   }
 }

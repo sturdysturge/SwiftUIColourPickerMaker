@@ -29,10 +29,14 @@ enum HSBCanvasType: String, CaseIterable {
   }
 }
 
-struct HSBGradientsGridView: View {
-  @EnvironmentObject var colourModel: ColourModel
-  let rowSize = 4
+protocol GridPreviewable {
+  var rowSize: Int { get }
+  func getRow<T>(number: Int, fromArray array: [T]) -> [T]
+  func numberOfRows(for arraySize: Int) -> Int
   
+}
+
+extension GridPreviewable {
   func getRow<T>(number: Int, fromArray array: [T]) -> [T] {
     var returnArray = [T]()
     let startOfRow = ((number - 1) * rowSize)
@@ -49,6 +53,12 @@ struct HSBGradientsGridView: View {
   func numberOfRows(for arraySize: Int) -> Int {
     return Int((Double(arraySize) / Double(rowSize)) + 0.5)
   }
+}
+
+struct HSBGradientsGridView: View, GridPreviewable {
+  @EnvironmentObject var colourModel: ColourModel
+  let rowSize = 4
+  
   var body: some View {
     VStack {
       ForEach(1...numberOfRows(for: HSBCanvasType.allCases.count), id: \.self) { row in
@@ -76,7 +86,7 @@ struct HSBDoubleGradientView: View {
   let alpha: Double
   var body: some View {
     ZStack {
-      GridBackgroundView()
+      GridBackgroundView(squareSize: 20)
       if type == .saturationBrightness {
         GradientType.saturation(hue: hue, brightness: brightness, startPoint: .leading)
         GradientType.brightnessOverlay.vertical
