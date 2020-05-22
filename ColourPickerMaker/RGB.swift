@@ -180,3 +180,9 @@ struct RGBGradientsGridView : View {
     }
   }
 }
+
+struct RGB_Previews: PreviewProvider {
+  static var previews: some View {
+    ContentView()
+  }
+}

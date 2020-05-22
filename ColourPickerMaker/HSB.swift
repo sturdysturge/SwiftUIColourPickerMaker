@@ -78,7 +78,7 @@ struct HSBDoubleGradientView: View {
     ZStack {
       GridBackgroundView()
       if type == .saturationBrightness {
-        GradientType.saturation(hue: hue, axis: .horizontal)
+        GradientType.saturation(hue: hue, brightness: brightness, startPoint: .leading)
         GradientType.brightnessOverlay.vertical
       }
       else if type == .saturationHue {
@@ -86,13 +86,13 @@ struct HSBDoubleGradientView: View {
         GradientType.saturationOverlay.horizontal
       }
       else if type == .saturationAlpha {
-        GradientType.saturation(hue: hue, axis: .horizontal)
+        GradientType.saturation(hue: hue, brightness: brightness, startPoint: .leading)
           .mask (
           GradientType.alpha.vertical
         )
       }
       else if type == .brightnessSaturation {
-        GradientType.brightness(hue: hue, axis: .horizontal)
+        GradientType.brightness(hue: hue, saturation: saturation, startPoint: .leading)
         GradientType.saturationOverlay.vertical
       }
         
@@ -101,7 +101,7 @@ struct HSBDoubleGradientView: View {
         GradientType.brightnessOverlay.horizontal
       }
       else if type == .brightnessAlpha {
-        GradientType.brightness(hue: hue, axis: .horizontal).mask (
+        GradientType.brightness(hue: hue, saturation: saturation, startPoint: .leading).mask (
           GradientType.alpha.vertical
         )
       }
@@ -115,7 +115,7 @@ struct HSBDoubleGradientView: View {
         
       }
       else if type == .hueAlpha {
-        GradientType.hue.vertical
+        GradientType.hue.horizontal
           .mask (
             GradientType.alpha.vertical
         )
@@ -128,12 +128,12 @@ struct HSBDoubleGradientView: View {
         )
       }
       else if type == .alphaSaturation {
-        GradientType.saturation(hue: hue, axis: .vertical).mask (
+        GradientType.saturation(hue: hue, brightness: brightness, startPoint: .top).mask (
           GradientType.alpha.horizontal
         )
       }
       else if type == .alphaBrightness {
-        GradientType.brightness(hue: hue, axis: .vertical)
+        GradientType.brightness(hue: hue, saturation: saturation, startPoint: .top)
           .mask (
           GradientType.alpha.horizontal
         )
@@ -148,7 +148,6 @@ struct HSBPickerView: View {
     VStack(spacing: 5) {
       ColourCanvas(hue: $colourModel.hue, saturation: $colourModel.saturation, brightness: $colourModel.brightness, alpha: $colourModel.alpha, canvasType: .saturationBrightness)
       ColourSlider(hue: $colourModel.hue, saturation: $colourModel.saturation, brightness: $colourModel.brightness, alpha: $colourModel.alpha, sliderType: .saturation)
-      PreviewColorView(colour: colourModel.colour)
     }
   }
 }
@@ -158,15 +157,15 @@ struct HSBPickerView: View {
 enum HSBSliderType {
   case hue, saturation, brightness, alpha
   
-  func gradient(hue: Double) -> LinearGradient {
+  func gradient(hue: Double, saturation: Double, brightness: Double) -> LinearGradient {
     switch self {
       
     case .hue:
       return GradientType.hue.horizontal
     case .saturation:
-      return GradientType.saturation(hue: hue, axis: .horizontal)
+      return GradientType.saturation(hue: hue, brightness: brightness, startPoint: .leading)
     case .brightness:
-      return GradientType.brightness(hue: hue, axis: .horizontal)
+      return GradientType.brightness(hue: hue, saturation: saturation, startPoint: .leading)
     case .alpha:
       return GradientType.alpha.horizontal
     }
@@ -175,6 +174,6 @@ enum HSBSliderType {
 
 struct HSB_Previews: PreviewProvider {
   static var previews: some View {
-    /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    ContentView()
   }
 }

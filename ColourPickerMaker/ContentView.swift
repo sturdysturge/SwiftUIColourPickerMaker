@@ -4,7 +4,7 @@ import SwiftUI
 
 class ColourModel: ObservableObject {
   @Published var colour = Color.white
-  @Published var hue = Double() { didSet { setColour() } }
+  @Published var hue = Double(0.5) { didSet { setColour() } }
   @Published var saturation = Double(0) { didSet { setColour() } }
   @Published var brightness = Double(0) { didSet { setColour() } }
   @Published var alpha = Double(1) { didSet {
@@ -16,14 +16,36 @@ class ColourModel: ObservableObject {
   }
 }
 
+struct HSBColourCanvasPreviews: View {
+  @EnvironmentObject var colourModel: ColourModel
+  var body: some View {
+    VStack {
+      PreviewColorView(colour: colourModel.colour, square: false)
+        .frame(maxWidth: .infinity, maxHeight: 100)
+    ScrollView {
+      VStack {
+      ForEach(HSBCanvasType.allCases, id: \.self) {
+        
+        
+        type in
+        Group {
+        Text(type.rawValue)
+        ColourCanvas(hue: self.$colourModel.hue, saturation: self.$colourModel.saturation, brightness: self.$colourModel.brightness, alpha: self.$colourModel.alpha, canvasType: type)
+          .environmentObject(self.colourModel)
+        }
+        }
+      }
+      }
+      
+    }
+  }
+}
+
 struct ContentView: View {
   @ObservedObject var colourModel = ColourModel.shared
   var body: some View {
-    ZStack {
-      HSBGradientsGridView()
-        .environmentObject(colourModel)
-      
-    }
+    HSBColourCanvasPreviews()
+    .environmentObject(colourModel)
   }
 }
 
@@ -71,22 +93,22 @@ enum GradientType {
     case .purple:
       return [.clear, Color(red: 1, green: 0, blue: 1, opacity: 0.5)]
     case .brightnessOverlay:
-        return [.clear, .red]
+      return [.black, Color(.sRGBLinear, white: 0, opacity: 0.7), Color(.sRGBLinear, white: 0, opacity: 0.5), Color(.sRGBLinear, white: 0, opacity: 0.3)]
     case .saturationOverlay:
-        return [.black, .clear]
+      return [.white, Color(.sRGBLinear, white: 1, opacity: 0.9), Color(.sRGBLinear, white: 1, opacity: 0.5), Color(.sRGBLinear, white: 1, opacity: 0.3)]
     case .hue:
         return [.red, .yellow, .green, .blue, .indigo, .violet, .red]
     case .alpha:
-        return [.white, Color(.sRGBLinear, white: 1, opacity: 0.9), Color(.sRGBLinear, white: 1, opacity: 0.5)]
+        return [Color(.sRGBLinear, white: 1, opacity: 0.5), Color(.sRGBLinear, white: 1, opacity: 0.9), .white]
     }
   }
   
-  static func brightness(hue: Double, axis: Axis) -> LinearGradient {
-    return LinearGradient(gradient: Gradient(colors: [Color(hue: hue, saturation: 1, brightness: 0), Color(hue: hue, saturation: 1, brightness: 1)]), startPoint: axis.start, endPoint: axis.end)
+  static func brightness(hue: Double, saturation: Double, startPoint: UnitPoint) -> LinearGradient {
+    return LinearGradient(gradient: Gradient(colors: [Color(hue: hue, saturation: 1, brightness: 0), Color(hue: hue, saturation: 1, brightness: 1)]), startPoint: startPoint, endPoint: startPoint.opposite)
   }
   
-  static func saturation(hue: Double, axis: Axis) -> LinearGradient {
-    return LinearGradient(gradient: Gradient(colors: [.white, Color(hue: hue, saturation: 1, brightness: 1)]), startPoint: axis.start, endPoint: axis.end)
+  static func saturation(hue: Double, brightness: Double, startPoint: UnitPoint) -> LinearGradient {
+    return LinearGradient(gradient: Gradient(colors: [.white, Color(hue: hue, saturation: 1, brightness: 1)]), startPoint: startPoint, endPoint: startPoint.opposite)
   }
   var gradient: Gradient { Gradient(colors: colours) }
     
@@ -99,12 +121,19 @@ enum GradientType {
 
 struct PreviewColorView: View {
   let colour: Color
+  let square: Bool
   var body: some View {
     ZStack {
       GridBackgroundView()
+      if square {
       Rectangle()
         .foregroundColor(colour)
         .aspectRatio(1, contentMode: .fit)
+      }
+      else {
+        Rectangle()
+        .foregroundColor(colour)
+      }
     }
   }
 }
@@ -132,7 +161,7 @@ struct ColourSlider: View {
     GeometryReader { geometry in
       ZStack {
         GridBackgroundView()
-        self.sliderType.gradient(hue: self.hue)
+        self.sliderType.gradient(hue: self.hue, saturation: self.saturation, brightness: self.brightness)
           .frame(height: 50, alignment: .center)
           .cornerRadius(geometry.size.height / 4)
         Group {
@@ -272,6 +301,6 @@ struct BidirectionalSlider: ViewModifier {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    HSBGradientsGridView()
   }
 }
