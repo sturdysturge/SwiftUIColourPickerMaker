@@ -11,10 +11,10 @@ import SwiftUI
 public extension Color {
   static let indigo = Color(red: 0.29, green: 0, blue: 0.5)
   static let violet = Color(red: 0.93, green: 0.5, blue: 0.93)
-  #if os(macOS)
-  static let background = Color(NSColor.windowBackgroundColor)
-  #else
+  #if canImport(UIKit)
   static let background = Color(UIColor.systemBackground)
+  #else
+  static let background = Color(NSColor.windowBackgroundColor)
   #endif
 }
 
@@ -68,7 +68,7 @@ extension CGPoint {
         
         let xDistance = point.x - self.x
         let yDistance = point.y - self.y
-      var radians = atan2(xDistance, yDistance)
+      var radians = CGFloat.halfPi - atan2(xDistance, yDistance)
         
         while radians < 0 {
           radians += CGFloat.doublePi

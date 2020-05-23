@@ -8,17 +8,21 @@
 import SwiftUI
 
 public struct ColourWheelView: View {
-  public init(rotation: Binding<Double>, distanceFromCentre: Binding<Double>) {
+  public init(rotation: Binding<Double>, distanceFromCentre: Binding<Double>, angularGradient: Gradient = Gradient(colors: []), radialGradient: Gradient = Gradient(colors: [])) {
     self._rotation = rotation
     self._distanceFromCentre = distanceFromCentre
+    self.angularGradient = angularGradient
+    self.radialGradient = radialGradient
   }
+  let angularGradient: Gradient
+  let radialGradient: Gradient
   @Binding var rotation: Double
   @Binding var distanceFromCentre: Double
   public var body: some View {
     GeometryReader { geometry in
     ZStack {
-      AngularGradient(gradient: Gradient(colors: GradientType.hue.colours), center: .center)
-      RadialGradient(gradient: Gradient(colors: [Color(white: 1, opacity: 1), Color(white: 1, opacity: 0.9),  Color(white: 1, opacity: 0.8), Color(white: 1, opacity: 0.7),  Color(white: 1, opacity: 0.6), Color(white: 1, opacity: 0.5),  Color(white: 1, opacity: 0.4), Color(white: 1, opacity: 0.3),  Color(white: 1, opacity: 0.2), Color(white: 1, opacity: 0.1),  Color(white: 1, opacity: 0)]), center: .center, startRadius: 0, endRadius: geometry.size.width / 2)
+      AngularGradient(gradient: self.angularGradient, center: .center)
+      RadialGradient(gradient: self.radialGradient, center: .center, startRadius: 0, endRadius: geometry.size.width / 2)
       Group {
       Circle()
       .stroke(lineWidth: 5)

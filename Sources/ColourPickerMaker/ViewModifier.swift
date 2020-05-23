@@ -84,9 +84,9 @@ public struct RadialSlider: ViewModifier {
           let centre = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
           
           print(self.offset)
-          print(centre.angleToPoint(_ point: self.offset))
-          let angleOfPoint = centre.angleToPoint(_ point: self.offset)
-          self.xValue = Double(angleOfPoint / CGFloat(Float.doublePi))
+          print(centre.angleToPoint(self.offset))
+          let angleOfPoint = centre.angleToPoint(self.offset)
+          self.xValue = Double(angleOfPoint / CGFloat.doublePi)
           self.yValue = Double(centre.distanceToPoint(otherPoint: self.offset) / (self.size.width / 2))
           
       })
