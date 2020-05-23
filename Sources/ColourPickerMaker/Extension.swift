@@ -14,7 +14,7 @@ public extension Color {
   #if os(macOS)
   static let background = Color(NSColor.windowBackgroundColor)
   #else
-  static let background = Color(UIColor.systemBackgroundColor)
+  static let background = Color(UIColor.systemBackground)
   #endif
 }
 
