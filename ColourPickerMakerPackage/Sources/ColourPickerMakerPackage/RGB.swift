@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
+
 public enum RGBCanvasType: String, CaseIterable {
   case redGreen = "red green",
   redBlue = "red blue",
@@ -29,7 +29,7 @@ public enum RGBCanvasType: String, CaseIterable {
   
 }
 
-@available(iOS 13.0, *)
+
 public struct RGBDoubleGradientView: View {
   public init(type: RGBCanvasType) {
     self.type = type
@@ -105,7 +105,7 @@ public struct RGBDoubleGradientView: View {
   }
 }
 
-@available(iOS 13.0, *)
+
 public struct RGBGradientsGridView : View, GridPreviewable {
   public init() {}
   @EnvironmentObject var colourModel: ColourModel
@@ -120,7 +120,7 @@ public struct RGBGradientsGridView : View, GridPreviewable {
               ZStack {
               canvasType.gradients
                 Text(canvasType.rawValue)
-                  .background(Color(UIColor.systemBackground))
+                  .background(Color.background)
               }
               .aspectRatio(1, contentMode: .fit)
             }
@@ -130,7 +130,7 @@ public struct RGBGradientsGridView : View, GridPreviewable {
   }
 }
 
-@available(iOS 13.0, *)
+
 struct RGB_Previews: PreviewProvider {
   public static var previews: some View {
     PreviewView()

@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-@available(iOS 13.0, *)
+
 public struct HorizontalSlider: ViewModifier {
   public init(value: Binding<Double>, width: CGFloat) {
     self.width = width
@@ -39,7 +39,7 @@ public struct HorizontalSlider: ViewModifier {
       .offset(x: offset.x, y: offset.y)
   }
 }
-@available(iOS 13.0, *)
+
 public struct RadialSlider: ViewModifier {
   public init(xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) {
     self.size = size
@@ -96,7 +96,7 @@ public struct RadialSlider: ViewModifier {
       .offset(x: offset.x, y: offset.y)
   }
 }
-@available(iOS 13.0, *)
+
 public struct BidirectionalSlider: ViewModifier {
   public init(xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) {
     self.size = size

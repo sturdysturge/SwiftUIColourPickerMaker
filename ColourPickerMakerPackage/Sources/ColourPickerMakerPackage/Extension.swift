@@ -7,12 +7,17 @@
 //
 
 import SwiftUI
-@available(iOS 13.0, *)
+
 public extension Color {
   static let indigo = Color(red: 0.29, green: 0, blue: 0.5)
   static let violet = Color(red: 0.93, green: 0.5, blue: 0.93)
+  #if os(macOS)
+  static let background = Color(NSColor.windowBackgroundColor)
+  #else
+  static let background = Color(UIColor.systemBackgroundColor)
+  #endif
 }
-@available(iOS 13.0, *)
+
 public extension UnitPoint {
   var opposite: UnitPoint {
     switch self {
@@ -29,7 +34,7 @@ public extension UnitPoint {
     }
   }
 }
-@available(iOS 13.0, *)
+
 public extension View {
   func horizontalDrag(value: Binding<Double>, width: CGFloat) -> some View {
     return modifier(HorizontalSlider(value: value, width: width))
@@ -43,7 +48,7 @@ public extension View {
     return modifier(RadialSlider(xValue: xValue, yValue: yValue, size: size))
   }
 }
-@available(iOS 13.0, *)
+
 public extension LinearGradient {
   
   static func fromColours(_ colours: [Color], startPoint: UnitPoint) -> LinearGradient {
@@ -51,7 +56,7 @@ public extension LinearGradient {
   }
   
 }
-@available(iOS 13.0, *)
+
 struct  Extension_Previews: PreviewProvider {
   
   public static var previews: some View {
