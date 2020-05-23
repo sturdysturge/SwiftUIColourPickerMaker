@@ -42,10 +42,12 @@ struct EveryHSBColourCanvasView: View {
 struct ContentView: View {
   @ObservedObject var colourModel = ColourModel.shared
   var body: some View {
-    ColourWheelView()
+    VStack {
+      PreviewColorView(colour: colourModel.colour, square: true)
+    GridPaletteView(canvasType: .hueAlpha, verticalSwatches: 10, horizontalSwatches: 10, hue: $colourModel.hue, saturation: $colourModel.saturation, brightness: $colourModel.brightness, alpha: $colourModel.alpha)
       .aspectRatio(1, contentMode: .fit)
-//    HSBColourCanvasPreviews()
-//    .environmentObject(colourModel)
+    
+    }
   }
 }
 
@@ -99,21 +101,112 @@ struct GridBackgroundView: View {
   }
 }
 
+struct GridPaletteView: View {
+  let canvasType: HSBCanvasType
+  let verticalSwatches: Int
+  let horizontalSwatches: Int
+  @Binding var hue: Double
+  @Binding var saturation: Double
+  @Binding var brightness: Double
+  @Binding var alpha: Double
+  
+  func getColourParameters(yIndex: Int, xIndex: Int) -> (Double, Double, Double, Double) {
+    let horizontalParameter = canvasType.firstSliderType
+    let verticalParameter = canvasType.secondSliderType
+    
+    var hue = Double(1)
+    var saturation = Double(1)
+    var brightness = Double(1)
+    var opacity = Double(1)
+    
+    let xDecimal = Double(xIndex) / Double(horizontalSwatches - 1)
+    let yDecimal = Double(yIndex) / Double(verticalSwatches - 1)
+    
+    switch horizontalParameter {
+      
+    case .hue:
+      hue = xDecimal
+    case .saturation:
+      saturation = xDecimal
+    case .brightness:
+      brightness = xDecimal
+    case .alpha:
+      opacity = xDecimal
+    }
+    
+    switch verticalParameter {
+      
+    case .hue:
+      hue = yDecimal
+    case .saturation:
+      saturation = yDecimal
+    case .brightness:
+      brightness = yDecimal
+    case .alpha:
+      opacity = yDecimal
+    }
+    
+    return (hue, saturation, brightness, opacity)
+  }
+  
+  func getColourFromIndices(yIndex: Int, xIndex: Int) -> Color {
+    let colourParameters = self.getColourParameters(yIndex: yIndex, xIndex: xIndex)
+    let hue = colourParameters.0
+    let saturation = colourParameters.1
+    let brightness = colourParameters.2
+    let alpha = colourParameters.3
+    
+    return Color(hue: hue, saturation: saturation, brightness: brightness, opacity: alpha)
+  }
+  
+  var body: some View {
+    VStack {
+      ForEach(0..<verticalSwatches, id: \.self) {
+        yIndex in
+        HStack {
+          ForEach(0..<self.horizontalSwatches, id: \.self) {
+            xIndex in
+            Button(action: {
+              let colourParameters = self.getColourParameters(yIndex: yIndex, xIndex: xIndex)
+              
+              self.hue = colourParameters.0
+              self.saturation = colourParameters.1
+              self.brightness = colourParameters.2
+              self.alpha = colourParameters.3
+            }) {
+              ZStack {
+                GridBackgroundView(squareSize: 5)
+              self.getColourFromIndices(yIndex: yIndex, xIndex: xIndex)
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 
 struct PreviewColorView: View {
   let colour: Color
   let square: Bool
   var body: some View {
     ZStack {
-      GridBackgroundView(squareSize: 20)
+      
       if square {
+        Group {
+        GridBackgroundView(squareSize: 20)
       Rectangle()
         .foregroundColor(colour)
+        }
         .aspectRatio(1, contentMode: .fit)
       }
       else {
+        Group {
+          GridBackgroundView(squareSize: 20)
         Rectangle()
-        .foregroundColor(colour)
+          .foregroundColor(colour)
+          }
       }
     }
   }
@@ -214,125 +307,10 @@ struct ColourCanvasView: View {
   }
 }
 
-struct HorizontalSlider: ViewModifier {
-  @State var offset = CGPoint(x: 0, y: 0)
-  @Binding var value: Double
-  let width: CGFloat
-  
-  func body(content: Content) -> some View {
-    content
-      .gesture(DragGesture(minimumDistance: 0)
-        .onChanged { value in
-          self.offset.x += value.location.x - value.startLocation.x
-          
-          if self.offset.x < 0 {
-            self.offset.x = 0
-            self.value = 0
-          }
-          else if self.offset.x > self.width - 10 {
-            self.offset.x = self.width - 10
-            self.value = 1
-          }
-          else {
-            self.value = Double(self.offset.x / (self.width - 10))
-          }
-      })
-      .offset(x: offset.x, y: offset.y)
-  }
-}
 
-struct RadialSlider: ViewModifier {
-  @State var offset = CGPoint(x: 0, y: 0)
-  @Binding var xValue: Double
-  @Binding var yValue: Double
-  let size: CGSize
-  
-  func   angleBetweenLines(line1Start: CGPoint, line1End: CGPoint, line2Start: CGPoint, line2End: CGPoint) -> CGFloat {
-  let angle1 = atan2(line1Start.y-line1End.y, line1Start.x-line1End.x);
-    let angle2 = atan2(line2Start.y-line2End.y, line2Start.x-line2End.x);
-  var result = (angle2-angle1) * 180 / 3.14
-  if (result<0) {
-      result += 360
-  }
-  return result
-  }
-  
-  func body(content: Content) -> some View {
-    content
-      .gesture(DragGesture(minimumDistance: 0)
-        .onChanged { value in
-          self.offset.x += value.location.x - value.startLocation.x
-          self.offset.y += value.location.y - value.startLocation.y
-          
-          if self.offset.x < 0 {
-            self.offset.x = 0
-            self.xValue = 0
-          }
-          else if self.offset.x > self.size.width - 25 {
-            self.offset.x = self.size.width - 25
-            self.xValue = 1
-          }
-          else {
-            self.xValue = Double(self.offset.x / (self.size.width - 25))
-          }
-          if self.offset.y < 0 {
-            self.offset.y = 0
-            self.yValue = 0
-          }
-          else if self.offset.y > self.size.height - 25 {
-            self.offset.y = self.size.height - 25
-            self.yValue = 1
-          }
-          else {
-            self.yValue =  Double(self.offset.y / (self.size.height - 25))
-          }
-          print( self.angleBetweenLines(line1Start: CGPoint(x: self.size.width / 2, y: 0), line1End: CGPoint(x: self.offset.x, y: self.offset.y), line2Start: CGPoint(x: self.size.width / 2, y: 0), line2End: CGPoint(x: self.size.width / 2, y: 10)) - 90)
-      })
-      .offset(x: offset.x, y: offset.y)
-  }
-}
-
-struct BidirectionalSlider: ViewModifier {
-  @State var offset = CGPoint(x: 0, y: 0)
-  @Binding var xValue: Double
-  @Binding var yValue: Double
-  let size: CGSize
-  func body(content: Content) -> some View {
-    content
-      .gesture(DragGesture(minimumDistance: 0)
-        .onChanged { value in
-          self.offset.x += value.location.x - value.startLocation.x
-          self.offset.y += value.location.y - value.startLocation.y
-          
-          if self.offset.x < 0 {
-            self.offset.x = 0
-            self.xValue = 0
-          }
-          else if self.offset.x > self.size.width - 25 {
-            self.offset.x = self.size.width - 25
-            self.xValue = 1
-          }
-          else {
-            self.xValue = Double(self.offset.x / (self.size.width - 25))
-          }
-          if self.offset.y < 0 {
-            self.offset.y = 0
-            self.yValue = 0
-          }
-          else if self.offset.y > self.size.height - 25 {
-            self.offset.y = self.size.height - 25
-            self.yValue = 1
-          }
-          else {
-            self.yValue =  Double(self.offset.y / (self.size.height - 25))
-          }
-      })
-      .offset(x: offset.x, y: offset.y)
-  }
-}
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    HSBGradientsGridView()
+    ContentView()
   }
 }

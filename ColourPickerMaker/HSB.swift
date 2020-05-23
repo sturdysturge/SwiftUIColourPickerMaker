@@ -23,6 +23,66 @@ enum HSBCanvasType: String, CaseIterable {
   alphaSaturation = "alpha saturation",
   alphaBrightness = "alpha brightness"
   
+  var firstSliderType: HSBSliderType {
+    switch self {
+      
+    case .saturationBrightness:
+      return .saturation
+    case .saturationHue:
+      return .saturation
+    case .saturationAlpha:
+      return .saturation
+    case .brightnessSaturation:
+      return .brightness
+    case .brightnessHue:
+      return .brightness
+    case .brightnessAlpha:
+      return .brightness
+    case .hueSaturation:
+      return .hue
+    case .hueBrightness:
+      return .hue
+    case .hueAlpha:
+      return .hue
+    case .alphaHue:
+      return .alpha
+    case .alphaSaturation:
+      return .alpha
+    case .alphaBrightness:
+      return .alpha
+    }
+  }
+  
+  var secondSliderType: HSBSliderType {
+    switch self {
+      
+    case .saturationBrightness:
+      return .brightness
+    case .saturationHue:
+      return .hue
+    case .saturationAlpha:
+      return .alpha
+    case .brightnessSaturation:
+      return .saturation
+    case .brightnessHue:
+      return .hue
+    case .brightnessAlpha:
+      return .alpha
+    case .hueSaturation:
+      return .saturation
+    case .hueBrightness:
+      return .brightness
+    case .hueAlpha:
+      return .alpha
+    case .alphaHue:
+      return .hue
+    case .alphaSaturation:
+      return .saturation
+    case .alphaBrightness:
+      return .brightness
+    }
+  }
+  
   
   func gradients(hue: Double, saturation: Double, brightness: Double, alpha: Double = 1) -> some View {
     return HSBDoubleGradientView(type: self, hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)

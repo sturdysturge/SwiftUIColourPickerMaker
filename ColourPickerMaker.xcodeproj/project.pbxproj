@@ -17,6 +17,7 @@
 		41BC57E0247723AE00A25134 /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC57DF247723AE00A25134 /* RGB.swift */; };
 		41BC57E22477246100A25134 /* HSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC57E12477246100A25134 /* HSB.swift */; };
 		41BC57E42477256300A25134 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC57E32477256300A25134 /* Extension.swift */; };
+		41D0AAF324793815007EEB41 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0AAF224793815007EEB41 /* ViewModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		41BC57DF247723AE00A25134 /* RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB.swift; sourceTree = "<group>"; };
 		41BC57E12477246100A25134 /* HSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSB.swift; sourceTree = "<group>"; };
 		41BC57E32477256300A25134 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		41D0AAF224793815007EEB41 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				41BC57E12477246100A25134 /* HSB.swift */,
 				41BC57E32477256300A25134 /* Extension.swift */,
 				4190FB4024785D070035896C /* GradientType.swift */,
+				41D0AAF224793815007EEB41 /* ViewModifier.swift */,
 			);
 			path = ColourPickerMaker;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				41BC57E42477256300A25134 /* Extension.swift in Sources */,
 				41BC57D0247722D800A25134 /* ContentView.swift in Sources */,
 				41BC57E0247723AE00A25134 /* RGB.swift in Sources */,
+				41D0AAF324793815007EEB41 /* ViewModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
