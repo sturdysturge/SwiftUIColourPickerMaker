@@ -7,8 +7,8 @@
 //
 
 import SwiftUI
-
-enum HSBCanvasType: String, CaseIterable {
+@available(iOS 13.0, *)
+public enum HSBCanvasType: String, CaseIterable {
   case
   saturationBrightness = "saturation brightness",
   saturationHue = "saturation hue",
@@ -115,11 +115,13 @@ extension GridPreviewable {
   }
 }
 
-struct HSBGradientsGridView: View, GridPreviewable {
+@available(iOS 13.0, *)
+public struct HSBGradientsGridView: View, GridPreviewable {
+  public init() {}
   @EnvironmentObject var colourModel: ColourModel
   let rowSize = 4
   
-  var body: some View {
+  public var body: some View {
     VStack {
       ForEach(1...numberOfRows(for: HSBCanvasType.allCases.count), id: \.self) { row in
           HStack {
@@ -138,13 +140,23 @@ struct HSBGradientsGridView: View, GridPreviewable {
   }
 }
 
-struct HSBDoubleGradientView: View {
+@available(iOS 13.0, *)
+public struct HSBDoubleGradientView: View {
+  public init(type: HSBCanvasType, hue: Double, saturation: Double, brightness: Double, alpha: Double) {
+    self.type = type
+    self.hue = hue
+    self.saturation = saturation
+    self.brightness = brightness
+    self.alpha = alpha
+  }
+  
+  
   let type: HSBCanvasType
   let hue: Double
   let saturation: Double
   let brightness: Double
   let alpha: Double
-  var body: some View {
+  public var body: some View {
     ZStack {
       GridBackgroundView(squareSize: 20)
       if type == .saturationBrightness {
@@ -212,19 +224,21 @@ struct HSBDoubleGradientView: View {
   }
 }
 
-struct HSBPickerView: View {
+@available(iOS 13.0, *)
+public struct HSBPickerView: View {
+  public init() {}
   @EnvironmentObject var colourModel: ColourModel
-  var body: some View {
+  public var body: some View {
     VStack(spacing: 5) {
       ColourCanvasView(hue: $colourModel.hue, saturation: $colourModel.saturation, brightness: $colourModel.brightness, alpha: $colourModel.alpha, canvasType: .saturationBrightness)
-      ColourSlider(hue: $colourModel.hue, saturation: $colourModel.saturation, brightness: $colourModel.brightness, alpha: $colourModel.alpha, sliderType: .saturation)
+      ColourSlider(sliderType: .saturation, hue: $colourModel.hue, saturation: $colourModel.saturation, brightness: $colourModel.brightness, alpha: $colourModel.alpha)
     }
   }
 }
 
 
-
-enum HSBSliderType {
+@available(iOS 13.0, *)
+public enum HSBSliderType {
   case hue, saturation, brightness, alpha
   
   func gradient(hue: Double, saturation: Double, brightness: Double) -> LinearGradient {
@@ -241,9 +255,9 @@ enum HSBSliderType {
     }
   }
 }
-
+@available(iOS 13.0, *)
 struct HSB_Previews: PreviewProvider {
-  static var previews: some View {
-    ContentView()
+  public static var previews: some View {
+    PreviewView()
   }
 }

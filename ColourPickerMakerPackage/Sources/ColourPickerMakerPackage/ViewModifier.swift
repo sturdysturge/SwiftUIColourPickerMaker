@@ -7,13 +7,18 @@
 //
 
 import SwiftUI
-
-struct HorizontalSlider: ViewModifier {
+@available(iOS 13.0, *)
+public struct HorizontalSlider: ViewModifier {
+  public init(value: Binding<Double>, width: CGFloat) {
+    self.width = width
+    self._value = value
+  }
+  
   @State var offset = CGPoint(x: 0, y: 0)
   @Binding var value: Double
   let width: CGFloat
   
-  func body(content: Content) -> some View {
+  public func body(content: Content) -> some View {
     content
       .gesture(DragGesture(minimumDistance: 0)
         .onChanged { value in
@@ -34,8 +39,14 @@ struct HorizontalSlider: ViewModifier {
       .offset(x: offset.x, y: offset.y)
   }
 }
-
-struct RadialSlider: ViewModifier {
+@available(iOS 13.0, *)
+public struct RadialSlider: ViewModifier {
+  public init(xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) {
+    self.size = size
+    self._xValue = xValue
+    self._yValue = yValue
+  }
+  
   @State var offset = CGPoint(x: 0, y: 0)
   @Binding var xValue: Double
   @Binding var yValue: Double
@@ -51,7 +62,7 @@ struct RadialSlider: ViewModifier {
   return result
   }
   
-  func body(content: Content) -> some View {
+  public func body(content: Content) -> some View {
     content
       .gesture(DragGesture(minimumDistance: 0)
         .onChanged { value in
@@ -85,13 +96,19 @@ struct RadialSlider: ViewModifier {
       .offset(x: offset.x, y: offset.y)
   }
 }
-
-struct BidirectionalSlider: ViewModifier {
+@available(iOS 13.0, *)
+public struct BidirectionalSlider: ViewModifier {
+  public init(xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) {
+    self.size = size
+    self._xValue = xValue
+    self._yValue = yValue
+  }
+  
   @State var offset = CGPoint(x: 0, y: 0)
   @Binding var xValue: Double
   @Binding var yValue: Double
   let size: CGSize
-  func body(content: Content) -> some View {
+  public func body(content: Content) -> some View {
     content
       .gesture(DragGesture(minimumDistance: 0)
         .onChanged { value in

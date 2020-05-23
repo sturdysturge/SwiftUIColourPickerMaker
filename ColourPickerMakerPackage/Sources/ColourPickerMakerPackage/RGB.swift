@@ -8,7 +8,8 @@
 
 import SwiftUI
 
-enum RGBCanvasType: String, CaseIterable {
+@available(iOS 13.0, *)
+public enum RGBCanvasType: String, CaseIterable {
   case redGreen = "red green",
   redBlue = "red blue",
   redAlpha = "red alpha",
@@ -28,9 +29,14 @@ enum RGBCanvasType: String, CaseIterable {
   
 }
 
-struct RGBDoubleGradientView: View {
+@available(iOS 13.0, *)
+public struct RGBDoubleGradientView: View {
+  public init(type: RGBCanvasType) {
+    self.type = type
+  }
+  
   let type: RGBCanvasType
-  var body: some View {
+  public var body: some View {
     ZStack {
       GridBackgroundView(squareSize: 20)
       if type == .redGreen {
@@ -99,12 +105,13 @@ struct RGBDoubleGradientView: View {
   }
 }
 
-
-struct RGBGradientsGridView : View, GridPreviewable {
+@available(iOS 13.0, *)
+public struct RGBGradientsGridView : View, GridPreviewable {
+  public init() {}
   @EnvironmentObject var colourModel: ColourModel
   let rowSize = 4
   
-  var body: some View {
+  public var body: some View {
     VStack {
       ForEach(1...numberOfRows(for: RGBCanvasType.allCases.count), id: \.self) { row in
           HStack {
@@ -123,8 +130,9 @@ struct RGBGradientsGridView : View, GridPreviewable {
   }
 }
 
+@available(iOS 13.0, *)
 struct RGB_Previews: PreviewProvider {
-  static var previews: some View {
-    ContentView()
+  public static var previews: some View {
+    PreviewView()
   }
 }

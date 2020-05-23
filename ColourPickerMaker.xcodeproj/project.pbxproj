@@ -3,37 +3,29 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4190FB4124785D070035896C /* GradientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190FB4024785D070035896C /* GradientType.swift */; };
 		41BC57CC247722D800A25134 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC57CB247722D800A25134 /* AppDelegate.swift */; };
 		41BC57CE247722D800A25134 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC57CD247722D800A25134 /* SceneDelegate.swift */; };
-		41BC57D0247722D800A25134 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC57CF247722D800A25134 /* ContentView.swift */; };
 		41BC57D2247722DA00A25134 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41BC57D1247722DA00A25134 /* Assets.xcassets */; };
 		41BC57D5247722DA00A25134 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41BC57D4247722DA00A25134 /* Preview Assets.xcassets */; };
 		41BC57D8247722DA00A25134 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41BC57D6247722DA00A25134 /* LaunchScreen.storyboard */; };
-		41BC57E0247723AE00A25134 /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC57DF247723AE00A25134 /* RGB.swift */; };
-		41BC57E22477246100A25134 /* HSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC57E12477246100A25134 /* HSB.swift */; };
-		41BC57E42477256300A25134 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC57E32477256300A25134 /* Extension.swift */; };
-		41D0AAF324793815007EEB41 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0AAF224793815007EEB41 /* ViewModifier.swift */; };
+		41CB0FE7247962D5008EB99D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CB0FE6247962D5008EB99D /* ContentView.swift */; };
+		41CB0FEA24796305008EB99D /* ColourPickerMakerPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 41CB0FE924796305008EB99D /* ColourPickerMakerPackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4190FB4024785D070035896C /* GradientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientType.swift; sourceTree = "<group>"; };
 		41BC57C8247722D800A25134 /* ColourPickerMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColourPickerMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41BC57CB247722D800A25134 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41BC57CD247722D800A25134 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		41BC57CF247722D800A25134 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		41BC57D1247722DA00A25134 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41BC57D4247722DA00A25134 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		41BC57D7247722DA00A25134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41BC57D9247722DA00A25134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		41BC57DF247723AE00A25134 /* RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB.swift; sourceTree = "<group>"; };
-		41BC57E12477246100A25134 /* HSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSB.swift; sourceTree = "<group>"; };
-		41BC57E32477256300A25134 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		41D0AAF224793815007EEB41 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
+		41CB0FE524796240008EB99D /* ColourPickerMakerPackage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ColourPickerMakerPackage; sourceTree = "<group>"; };
+		41CB0FE6247962D5008EB99D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41CB0FEA24796305008EB99D /* ColourPickerMakerPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,8 +43,10 @@
 		41BC57BF247722D800A25134 = {
 			isa = PBXGroup;
 			children = (
+				41CB0FE524796240008EB99D /* ColourPickerMakerPackage */,
 				41BC57CA247722D800A25134 /* ColourPickerMaker */,
 				41BC57C9247722D800A25134 /* Products */,
+				41CB0FE824796305008EB99D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,18 +61,13 @@
 		41BC57CA247722D800A25134 /* ColourPickerMaker */ = {
 			isa = PBXGroup;
 			children = (
+				41CB0FE6247962D5008EB99D /* ContentView.swift */,
 				41BC57CB247722D800A25134 /* AppDelegate.swift */,
 				41BC57CD247722D800A25134 /* SceneDelegate.swift */,
-				41BC57CF247722D800A25134 /* ContentView.swift */,
 				41BC57D1247722DA00A25134 /* Assets.xcassets */,
 				41BC57D6247722DA00A25134 /* LaunchScreen.storyboard */,
 				41BC57D9247722DA00A25134 /* Info.plist */,
 				41BC57D3247722DA00A25134 /* Preview Content */,
-				41BC57DF247723AE00A25134 /* RGB.swift */,
-				41BC57E12477246100A25134 /* HSB.swift */,
-				41BC57E32477256300A25134 /* Extension.swift */,
-				4190FB4024785D070035896C /* GradientType.swift */,
-				41D0AAF224793815007EEB41 /* ViewModifier.swift */,
 			);
 			path = ColourPickerMaker;
 			sourceTree = "<group>";
@@ -88,6 +78,13 @@
 				41BC57D4247722DA00A25134 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		41CB0FE824796305008EB99D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,6 +103,9 @@
 			dependencies = (
 			);
 			name = ColourPickerMaker;
+			packageProductDependencies = (
+				41CB0FE924796305008EB99D /* ColourPickerMakerPackage */,
+			);
 			productName = ColourPickerMaker;
 			productReference = 41BC57C8247722D800A25134 /* ColourPickerMaker.app */;
 			productType = "com.apple.product-type.application";
@@ -162,13 +162,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				41BC57CC247722D800A25134 /* AppDelegate.swift in Sources */,
-				41BC57E22477246100A25134 /* HSB.swift in Sources */,
-				4190FB4124785D070035896C /* GradientType.swift in Sources */,
 				41BC57CE247722D800A25134 /* SceneDelegate.swift in Sources */,
-				41BC57E42477256300A25134 /* Extension.swift in Sources */,
-				41BC57D0247722D800A25134 /* ContentView.swift in Sources */,
-				41BC57E0247723AE00A25134 /* RGB.swift in Sources */,
-				41D0AAF324793815007EEB41 /* ViewModifier.swift in Sources */,
+				41CB0FE7247962D5008EB99D /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +357,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		41CB0FE924796305008EB99D /* ColourPickerMakerPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ColourPickerMakerPackage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 41BC57C0247722D800A25134 /* Project object */;
 }

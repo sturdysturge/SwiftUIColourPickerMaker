@@ -8,7 +8,8 @@
 
 import SwiftUI
 
-enum GradientType {
+@available(iOS 13.0, *)
+public enum GradientType {
   case red, green, blue, brightnessOverlay, saturationOverlay, hue, alpha, cyan, yellow, purple
   
   var colours: [Color] {
