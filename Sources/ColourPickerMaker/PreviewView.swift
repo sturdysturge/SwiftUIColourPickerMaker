@@ -7,9 +7,7 @@ public struct PreviewView: View {
   public var body: some View {
     VStack {
       PreviewColorView(colour: colourModel.colour, square: true)
-    GridPaletteView(canvasType: .hueAlpha, verticalSwatches: 10, horizontalSwatches: 10, hue: $colourModel.hue, saturation: $colourModel.saturation, brightness: $colourModel.brightness, alpha: $colourModel.alpha)
-      .aspectRatio(1, contentMode: .fit)
-    
+    ColourWheelView(rotation: $colourModel.hue, distanceFromCentre: $colourModel.saturation)
     }
   }
 }

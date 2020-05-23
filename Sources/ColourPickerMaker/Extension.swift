@@ -57,6 +57,31 @@ public extension LinearGradient {
   
 }
 
+extension CGFloat {
+  static let halfPi = CGFloat.pi / 2
+  static let doublePi = CGFloat.pi * 2
+}
+
+extension CGPoint {
+    
+    func angleToPoint(_ point: CGPoint) -> CGFloat {
+        
+        let xDistance = point.x - self.x
+        let yDistance = point.y - self.y
+      var radians = atan2(xDistance, yDistance)
+        
+        while radians < 0 {
+          radians += CGFloat.doublePi
+        }
+        
+        return radians
+    }
+    
+    func distanceToPoint(otherPoint: CGPoint) -> CGFloat {
+        return sqrt(pow((otherPoint.x - x), 2) + pow((otherPoint.y - y), 2))
+    }
+}
+
 struct  Extension_Previews: PreviewProvider {
   
   public static var previews: some View {

@@ -52,16 +52,6 @@ public struct RadialSlider: ViewModifier {
   @Binding var yValue: Double
   let size: CGSize
   
-  func   angleBetweenLines(line1Start: CGPoint, line1End: CGPoint, line2Start: CGPoint, line2End: CGPoint) -> CGFloat {
-  let angle1 = atan2(line1Start.y-line1End.y, line1Start.x-line1End.x);
-    let angle2 = atan2(line2Start.y-line2End.y, line2Start.x-line2End.x);
-  var result = (angle2-angle1) * 180 / 3.14
-  if (result<0) {
-      result += 360
-  }
-  return result
-  }
-  
   public func body(content: Content) -> some View {
     content
       .gesture(DragGesture(minimumDistance: 0)
@@ -91,7 +81,14 @@ public struct RadialSlider: ViewModifier {
           else {
             self.yValue =  Double(self.offset.y / (self.size.height - 25))
           }
-          print( self.angleBetweenLines(line1Start: CGPoint(x: self.size.width / 2, y: 0), line1End: CGPoint(x: self.offset.x, y: self.offset.y), line2Start: CGPoint(x: self.size.width / 2, y: 0), line2End: CGPoint(x: self.size.width / 2, y: 10)) - 90)
+          let centre = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+          
+          print(self.offset)
+          print(centre.angleToPoint(_ point: self.offset))
+          let angleOfPoint = centre.angleToPoint(_ point: self.offset)
+          self.xValue = Double(angleOfPoint / CGFloat(Float.doublePi))
+          self.yValue = Double(centre.distanceToPoint(otherPoint: self.offset) / (self.size.width / 2))
+          
       })
       .offset(x: offset.x, y: offset.y)
   }
@@ -139,5 +136,11 @@ public struct BidirectionalSlider: ViewModifier {
           }
       })
       .offset(x: offset.x, y: offset.y)
+  }
+}
+
+struct ViewModifier_Previews: PreviewProvider {
+  static var previews: some View {
+    ContentView()
   }
 }

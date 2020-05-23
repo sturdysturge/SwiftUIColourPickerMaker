@@ -10,8 +10,8 @@ import SwiftUI
 class ColourModel: ObservableObject {
   @Published var colour = Color.white
   @Published var hue = Double(0.5) { didSet { setColour() } }
-  @Published var saturation = Double(0) { didSet { setColour() } }
-  @Published var brightness = Double(0) { didSet { setColour() } }
+  @Published var saturation = Double(1) { didSet { setColour() } }
+  @Published var brightness = Double(1) { didSet { setColour() } }
   @Published var alpha = Double(1) { didSet {
     setColour() } }
   static let shared = ColourModel()

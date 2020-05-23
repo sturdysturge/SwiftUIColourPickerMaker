@@ -8,19 +8,22 @@
 import SwiftUI
 
 public struct ColourWheelView: View {
-  public init() {}
-  @State var xValue = Double()
-  @State var yValue = Double()
+  public init(rotation: Binding<Double>, distanceFromCentre: Binding<Double>) {
+    self._rotation = rotation
+    self._distanceFromCentre = distanceFromCentre
+  }
+  @Binding var rotation: Double
+  @Binding var distanceFromCentre: Double
   public var body: some View {
     GeometryReader { geometry in
     ZStack {
-    AngularGradient(gradient: Gradient(colors: GradientType.hue.colours), center: .center)
+      AngularGradient(gradient: Gradient(colors: GradientType.hue.colours), center: .center)
       RadialGradient(gradient: Gradient(colors: [Color(white: 1, opacity: 1), Color(white: 1, opacity: 0.9),  Color(white: 1, opacity: 0.8), Color(white: 1, opacity: 0.7),  Color(white: 1, opacity: 0.6), Color(white: 1, opacity: 0.5),  Color(white: 1, opacity: 0.4), Color(white: 1, opacity: 0.3),  Color(white: 1, opacity: 0.2), Color(white: 1, opacity: 0.1),  Color(white: 1, opacity: 0)]), center: .center, startRadius: 0, endRadius: geometry.size.width / 2)
       Group {
       Circle()
       .stroke(lineWidth: 5)
       .frame(width: 25, height: 25)
-        .radialDrag(xValue: self.$xValue, yValue: self.$yValue, size: geometry.size)
+        .radialDrag(xValue: self.$rotation, yValue: self.$distanceFromCentre, size: geometry.size)
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
       }
