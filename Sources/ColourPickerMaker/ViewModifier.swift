@@ -41,15 +41,15 @@ public struct HorizontalSlider: ViewModifier {
 }
 
 public struct RadialSlider: ViewModifier {
-  public init(xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) {
+  public init(rotation: Binding<Double>, distanceFromCentre: Binding<Double>, size: CGSize) {
     self.size = size
-    self._xValue = xValue
-    self._yValue = yValue
+    self._rotation = rotation
+    self._distanceFromCentre = distanceFromCentre
   }
   
   @State var offset = CGPoint(x: 0, y: 0)
-  @Binding var xValue: Double
-  @Binding var yValue: Double
+  @Binding var rotation: Double
+  @Binding var distanceFromCentre: Double
   let size: CGSize
   
   public func body(content: Content) -> some View {
@@ -61,33 +61,33 @@ public struct RadialSlider: ViewModifier {
           
           if self.offset.x < 0 {
             self.offset.x = 0
-            self.xValue = 0
+            self.rotation = 0
           }
           else if self.offset.x > self.size.width - 25 {
             self.offset.x = self.size.width - 25
-            self.xValue = 1
+            self.rotation = 1
           }
           else {
-            self.xValue = Double(self.offset.x / (self.size.width - 25))
+            self.rotation = Double(self.offset.x / (self.size.width - 25))
           }
           if self.offset.y < 0 {
             self.offset.y = 0
-            self.yValue = 0
+            self.distanceFromCentre = 0
           }
           else if self.offset.y > self.size.height - 25 {
             self.offset.y = self.size.height - 25
-            self.yValue = 1
+            self.distanceFromCentre = 1
           }
           else {
-            self.yValue =  Double(self.offset.y / (self.size.height - 25))
+            self.distanceFromCentre =  Double(self.offset.y / (self.size.height - 25))
           }
           let centre = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
           
           print(self.offset)
           print(centre.angleToPoint(self.offset))
           let angleOfPoint = centre.angleToPoint(self.offset)
-          self.xValue = Double(angleOfPoint / CGFloat.doublePi)
-          self.yValue = Double(centre.distanceToPoint(otherPoint: self.offset) / (self.size.width / 2))
+          self.rotation = Double(angleOfPoint / CGFloat.doublePi)
+          self.distanceFromCentre = Double(centre.distanceToPoint(otherPoint: self.offset) / (self.size.width / 2))
           
       })
       .offset(x: offset.x, y: offset.y)

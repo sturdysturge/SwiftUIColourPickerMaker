@@ -27,7 +27,7 @@ public struct ColourWheelView: View {
       Circle()
       .stroke(lineWidth: 5)
       .frame(width: 25, height: 25)
-        .radialDrag(xValue: self.$rotation, yValue: self.$distanceFromCentre, size: geometry.size)
+        .radialDrag(rotation: self.$rotation, distanceFromCentre: self.$distanceFromCentre, size: geometry.size)
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
       }

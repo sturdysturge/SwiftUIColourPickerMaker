@@ -44,8 +44,8 @@ public extension View {
     return modifier(BidirectionalSlider(xValue: xValue, yValue: yValue, size: size))
   }
   
-  func radialDrag(xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) -> some View {
-    return modifier(RadialSlider(xValue: xValue, yValue: yValue, size: size))
+  func radialDrag(rotation: Binding<Double>, distanceFromCentre: Binding<Double>, size: CGSize) -> some View {
+    return modifier(RadialSlider(rotation: rotation, distanceFromCentre: distanceFromCentre, size: size))
   }
 }
 
