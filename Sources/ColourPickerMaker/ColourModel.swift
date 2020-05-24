@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ColourModel.swift
 //
 //
 //  Created by Rob Sturgeon on 23/05/2020.
@@ -7,35 +7,76 @@
 
 import SwiftUI
 
+/// Stores one colour and its accompanying parameters
 class ColourModel: ObservableObject {
-    @Published var colour = Color.white
-    @Published var hue = Double(0.5) {
-        didSet {
-            setColour()
-        }
-    }
-
-    @Published var saturation = Double(1) {
-        didSet {
-            setColour()
-        }
-    }
-
-    @Published var brightness = Double(1) {
-        didSet {
-            setColour()
-        }
-    }
-
-    @Published var alpha = Double(1) {
-        didSet {
-            setColour()
-        }
-    }
-
+    /// A singleton to ensure more than one instance is not created
     static let shared = ColourModel()
 
-    func setColour() {
-        colour = Color(hue: hue, saturation: saturation, brightness: brightness, opacity: alpha)
+    /// Which colour space is being adjusted
+    enum ColourSpace {
+        case HSB, RGB
+    }
+
+    /// The colour being picked
+    @Published var colour = Color.white
+
+    /// The value of hue between 0 and 1
+    @Published var hue = Double(0.5) {
+        didSet {
+            setColour(colourSpace: .HSB)
+        }
+    }
+
+    /// The value of saturation between 0 and 1
+    @Published var saturation = Double(1) {
+        didSet {
+            setColour(colourSpace: .HSB)
+        }
+    }
+
+    /// The value of brightness between 0 and 1
+    @Published var brightness = Double(1) {
+        didSet {
+            setColour(colourSpace: .HSB)
+        }
+    }
+
+    /// The value of alpha between 0 and 1
+    @Published var alpha = Double(1) {
+        didSet {
+            setColour(colourSpace: .HSB)
+        }
+    }
+
+    /// The value of red between 0 and 1
+    @Published var red = Double(1) {
+        didSet {
+            setColour(colourSpace: .RGB)
+        }
+    }
+
+    /// The value of green between 0 and 1
+    @Published var green = Double(1) {
+        didSet {
+            setColour(colourSpace: .RGB)
+        }
+    }
+
+    /// The value of blue between 0 and 1
+    @Published var blue = Double(1) {
+        didSet {
+            setColour(colourSpace: .RGB)
+        }
+    }
+
+    /// Sets the colour according to which colour space is adjusted
+    /// - Parameter colourSpace: Whether to use HSB or RGB to update the colour
+    func setColour(colourSpace: ColourSpace) {
+        switch colourSpace {
+        case .HSB:
+            colour = Color(hue: hue, saturation: saturation, brightness: brightness, opacity: alpha)
+        case .RGB:
+            colour = Color(red: red, green: green, blue: blue, opacity: alpha)
+        }
     }
 }

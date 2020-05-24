@@ -35,7 +35,7 @@ public struct RGBDoubleGradientView: View {
     let type: RGBCanvasType
     public var body: some View {
         ZStack {
-            TransparencyCheckerboardView(squareSize: 20)
+            TransparencyCheckerboardView(tileSize: 20)
             if type == .redGreen {
                 GradientType.red.vertical
                 GradientType.green.horizontal

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SharedComponents.swift
 //
 //
 //  Created by Rob Sturgeon on 23/05/2020.
@@ -36,13 +36,31 @@ public struct ColourWheelView: View {
     }
 }
 
+/// A background that can only be seen when Color opacity is less than 1.0
 public struct TransparencyCheckerboardView: View {
-    let squareSize: CGFloat
+    /// The size for each white or grey tile
+    let tileSize: CGFloat
+    /// The first colour to alternate between
+    let colour1: Color
+    /// The second colour to alternate between
+    let colour2: Color
 
-    public init(squareSize: CGFloat) {
-        self.squareSize = squareSize
+    /// A constructor that allows custom checkerboards
+    /// - Parameters:
+    ///   - tileSize: A width/height for each tile
+    ///   - colour1: The first colour to alternate between
+    ///   - colour2: The second colour to alternate between
+    public init(tileSize: CGFloat = 20, colour1: Color = .white, colour2: Color = .gray) {
+        self.tileSize = tileSize
+        self.colour1 = colour1
+        self.colour2 = colour2
     }
 
+    /// Calculates what colour each tile should be based on its position
+    /// - Parameters:
+    ///   - horizontalIndex: How far along the tile is horizontally
+    ///   - verticalIndex: How far along the tile is vertically
+    /// - Returns: The colour the tile should be
     func squareColour(horizontalIndex: Int, verticalIndex: Int) -> Color {
         if verticalIndex % 2 == 0 {
             return horizontalIndex % 2 == 0 ? .gray : .white
@@ -54,9 +72,9 @@ public struct TransparencyCheckerboardView: View {
     public var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
-                ForEach(0 ... Int(geometry.size.height / self.squareSize), id: \.self) { verticalIndex in
+                ForEach(0 ... Int(geometry.size.height / self.tileSize), id: \.self) { verticalIndex in
                     HStack(spacing: 0) {
-                        ForEach(0 ... Int(geometry.size.width / self.squareSize), id: \.self) { horizontalIndex in
+                        ForEach(0 ... Int(geometry.size.width / self.tileSize), id: \.self) { horizontalIndex in
                             Rectangle()
                                 .aspectRatio(1, contentMode: .fit)
                                 .foregroundColor(self.squareColour(horizontalIndex: horizontalIndex, verticalIndex: verticalIndex))
@@ -150,7 +168,7 @@ public struct GridPaletteView: View {
                             self.alpha = colourParameters.3
             }) {
                             ZStack {
-                                TransparencyCheckerboardView(squareSize: 5)
+                                TransparencyCheckerboardView(tileSize: 5)
                                 self.getColourFromIndices(yIndex: yIndex, xIndex: xIndex)
                             }
                         }
@@ -173,14 +191,14 @@ public struct PreviewColorView: View {
         ZStack {
             if square {
                 Group {
-                    TransparencyCheckerboardView(squareSize: 20)
+                    TransparencyCheckerboardView()
                     Rectangle()
                         .foregroundColor(colour)
                 }
                 .aspectRatio(1, contentMode: .fit)
             } else {
                 Group {
-                    TransparencyCheckerboardView(squareSize: 20)
+                    TransparencyCheckerboardView()
                     Rectangle()
                         .foregroundColor(colour)
                 }
@@ -219,7 +237,7 @@ public struct ColourSlider: View {
     public var body: some View {
         GeometryReader { geometry in
             ZStack {
-                TransparencyCheckerboardView(squareSize: 20)
+                TransparencyCheckerboardView()
                     .frame(height: 50, alignment: .center)
                     .cornerRadius(geometry.size.height / 4)
                 self.sliderType.gradient(hue: self.hue, saturation: self.saturation, brightness: self.brightness)
