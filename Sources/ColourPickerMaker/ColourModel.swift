@@ -102,8 +102,16 @@ class ColourModel: ObservableObject {
     func setColour(colourSpace: ColourSpace) {
         switch colourSpace {
         case .HSB:
+          let convertedValues = Color.convertHSBToRGBValues(hue: hue, saturation: saturation, brightness: brightness)
+          red = convertedValues.red
+          green = convertedValues.green
+          blue = convertedValues.blue
             colour = Color(hue: hue, saturation: saturation, brightness: brightness, opacity: alpha)
         case .RGB:
+          let convertedValues = Color.convertRGBToHSBValues(red: red, green: green, blue: blue)
+          hue = convertedValues.hue
+          saturation = convertedValues.saturation
+          brightness = convertedValues.brightness
             colour = Color(red: red, green: green, blue: blue, opacity: alpha)
         case .CMYK:
           colour = Color.fromCMYK(cyan: cyan, magenta: magenta, yellow: yellow, black: black, alpha: alpha)
