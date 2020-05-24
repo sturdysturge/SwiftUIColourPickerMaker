@@ -20,28 +20,28 @@ public struct ColourWheelView: View {
   @Binding var distanceFromCentre: Double
   public var body: some View {
     GeometryReader { geometry in
-    ZStack {
-      AngularGradient(gradient: self.angularGradient, center: .center)
-      RadialGradient(gradient: self.radialGradient, center: .center, startRadius: 0, endRadius: geometry.size.width / 2)
-      Group {
-      Circle()
-      .stroke(lineWidth: 5)
-      .frame(width: 25, height: 25)
-        .radialDrag(rotation: self.$rotation, distanceFromCentre: self.$distanceFromCentre, size: geometry.size)
-      }
-      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+      ZStack {
+        AngularGradient(gradient: self.angularGradient, center: .center)
+        RadialGradient(gradient: self.radialGradient, center: .center, startRadius: 0, endRadius: geometry.size.width / 2)
+        Group {
+          Circle()
+            .stroke(lineWidth: 5)
+            .frame(width: 25, height: 25)
+            .radialDrag(rotation: self.$rotation, distanceFromCentre: self.$distanceFromCentre, size: geometry.size)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
       }
     }
   }
 }
 
 public struct TransparencyCheckerboardView: View {
+  
+  let squareSize: CGFloat
+  
   public init(squareSize: CGFloat) {
     self.squareSize = squareSize
   }
-  
-  
-  let squareSize: CGFloat
   
   func squareColour(horizontalIndex: Int, verticalIndex: Int) -> Color {
     if verticalIndex % 2 == 0 {
@@ -50,19 +50,18 @@ public struct TransparencyCheckerboardView: View {
     else {
       return horizontalIndex % 2 != 0 ? .gray : .white
     }
-    
   }
   
   public var body: some View {
     GeometryReader { geometry in
-    VStack(spacing: 0) {
-      ForEach(0...Int(geometry.size.height / self.squareSize), id: \.self) { verticalIndex in
-        HStack(spacing: 0) {
-          ForEach(0...Int(geometry.size.width / self.squareSize), id: \.self) { horizontalIndex in
-            Rectangle()
-              .aspectRatio(1, contentMode: .fit)
-              .foregroundColor(self.squareColour(horizontalIndex: horizontalIndex, verticalIndex: verticalIndex))
-          }
+      VStack(spacing: 0) {
+        ForEach(0...Int(geometry.size.height / self.squareSize), id: \.self) { verticalIndex in
+          HStack(spacing: 0) {
+            ForEach(0...Int(geometry.size.width / self.squareSize), id: \.self) { horizontalIndex in
+              Rectangle()
+                .aspectRatio(1, contentMode: .fit)
+                .foregroundColor(self.squareColour(horizontalIndex: horizontalIndex, verticalIndex: verticalIndex))
+            }
           }
         }
       }
@@ -156,7 +155,7 @@ public struct GridPaletteView: View {
             }) {
               ZStack {
                 TransparencyCheckerboardView(squareSize: 5)
-              self.getColourFromIndices(yIndex: yIndex, xIndex: xIndex)
+                self.getColourFromIndices(yIndex: yIndex, xIndex: xIndex)
               }
             }
           }
@@ -180,18 +179,18 @@ public struct PreviewColorView: View {
       
       if square {
         Group {
-        TransparencyCheckerboardView(squareSize: 20)
-      Rectangle()
-        .foregroundColor(colour)
+          TransparencyCheckerboardView(squareSize: 20)
+          Rectangle()
+            .foregroundColor(colour)
         }
         .aspectRatio(1, contentMode: .fit)
       }
       else {
         Group {
           TransparencyCheckerboardView(squareSize: 20)
-        Rectangle()
-          .foregroundColor(colour)
-          }
+          Rectangle()
+            .foregroundColor(colour)
+        }
       }
     }
   }
@@ -228,8 +227,8 @@ public struct ColourSlider: View {
     GeometryReader { geometry in
       ZStack {
         TransparencyCheckerboardView(squareSize: 20)
-        .frame(height: 50, alignment: .center)
-        .cornerRadius(geometry.size.height / 4)
+          .frame(height: 50, alignment: .center)
+          .cornerRadius(geometry.size.height / 4)
         self.sliderType.gradient(hue: self.hue, saturation: self.saturation, brightness: self.brightness)
           .frame(height: 50, alignment: .center)
           .cornerRadius(geometry.size.height / 4)
