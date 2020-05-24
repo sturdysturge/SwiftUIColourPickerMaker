@@ -7,7 +7,7 @@ public struct PreviewView: View {
     public var body: some View {
         VStack {
             PreviewColorView(colour: colourModel.colour, square: true)
-          ColourWheelView(rotation: $colourModel.hue, distanceFromCentre: $colourModel.saturation, angularGradient: GradientType.hue.gradient, radialGradient: GradientType.saturationOverlay.gradient)
+          HSBColourCanvasView(hue: $colourModel.hue, saturation: $colourModel.saturation, brightness: $colourModel.brightness, alpha: $colourModel.alpha, canvasType: .saturationBrightness)
         }
     }
 }
