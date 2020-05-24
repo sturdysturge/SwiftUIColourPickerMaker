@@ -23,6 +23,7 @@ public extension Color {
   #endif
   
   
+  
   /// Calculate the hue based on RGB values
   /// - Parameters:
   ///   - max: The highest value of R, G or B
@@ -36,26 +37,11 @@ public extension Color {
     else if green == max { return 2 + (blue - red) / delta }
     else { return 4 + (red - green) / delta }
   }
-  /// Convert RGB values to an HSB Color
-  /// - Parameters:
-  ///   - red: The amount of red between 0 and 1
-  ///   - green: The amount of green between 0 and 1
-  ///   - blue: The amount of blue between 0 and 1
-  /// - Returns: A Color using the converted values
-  static func convertRGBToHSB(red: Double, green: Double, blue: Double) -> Color {
-    let values = convertRGBToHSBValues(red: red, green: green, blue: blue)
-    return Color(hue: values.hue, saturation: values.saturation, brightness: values.brightness)
-  }
-  /// Convert RGB values to HSB values
-  /// - Parameters:
-  ///   - hue: The amount of hue between 0 and 1
-  ///   - saturation: The amount of saturation between 0 and 1
-  ///   - brightness: The amount of brightness between 0 and 1
-  /// - Returns: A Color using the converted values
-  static func convertHSBToRGB(hue: Double, saturation: Double, brightness: Double) -> Color {
-    let values = convertHSBToRGBValues(hue: hue, saturation: saturation, brightness: brightness)
-    return Color(red: values.red, green: values.green, blue: values.blue)
-  }
+  
+  //=================
+  //MARK:- RGB to HSB
+  //=================
+  
   /// Convert RGB values to HSB values
   /// - Parameters:
   ///   - red: The amount of red between 0 and 1
@@ -88,6 +74,21 @@ public extension Color {
     
     return (hue: hue < 0 ? hue + 360 : hue, saturation: saturation, brightness: brightness)
   }
+  /// Convert RGB values to an HSB Color
+  /// - Parameters:
+  ///   - red: The amount of red between 0 and 1
+  ///   - green: The amount of green between 0 and 1
+  ///   - blue: The amount of blue between 0 and 1
+  /// - Returns: A Color using the converted values
+  static func convertRGBToHSB(red: Double, green: Double, blue: Double) -> Color {
+    let values = convertRGBToHSBValues(red: red, green: green, blue: blue)
+    return Color(hue: values.hue, saturation: values.saturation, brightness: values.brightness)
+  }
+  
+  //=================
+  //MARK:- HSB to RGB
+  //=================
+  
   /// Convert HSB values to RGB values
   /// - Parameters:
   ///   - hue: The amount of hue between 0 and 1
@@ -126,6 +127,21 @@ public extension Color {
       return (red: brightness, green: p, blue: q)
     }
   }
+  /// Convert HSB values to RGB Color
+  /// - Parameters:
+  ///   - hue: The amount of hue between 0 and 1
+  ///   - saturation: The amount of saturation between 0 and 1
+  ///   - brightness: The amount of brightness between 0 and 1
+  /// - Returns: A Color using the converted values
+  static func convertHSBToRGB(hue: Double, saturation: Double, brightness: Double) -> Color {
+    let values = convertHSBToRGBValues(hue: hue, saturation: saturation, brightness: brightness)
+    return Color(red: values.red, green: values.green, blue: values.blue)
+  }
+  
+  //==================
+  //MARK:- CMYK to RGB
+  //==================
+  
   /// Convert CMYK values to RGB values
   /// - Parameters:
   ///   - cyan: The cyan amount between 0 and 1
@@ -151,6 +167,29 @@ public extension Color {
   static func convertCMYKToRGB(cyan: Double, magenta: Double, yellow: Double, black: Double, alpha: Double = 1) -> Color {
     let values = convertCMYKToRGBValues(cyan: cyan, magenta: magenta, yellow: yellow, black: black, alpha: alpha)
     return Color(red: values.red, green: values.green, blue: values.blue, opacity: alpha)
+  }
+  
+  //==================
+  //MARK:- RGB to CMYK
+  //==================
+  
+  /// Convert RGB values to CMYK values
+  /// - Parameters:
+  ///   - red: The amount of red between 0 and 1
+  ///   - green: The amount of green between 0 and 1
+  ///   - blue: The amount of blue between 0 and 1
+  /// - Returns: A tuple containing red, green and blue as Doubles
+  
+  static func convertRGBToCMYKValues(red: Double, green: Double, blue: Double) -> (cyan: Double, magenta: Double, yellow: Double, black: Double) {
+    guard let max = [red, green, blue].max() else {
+      fatalError("Could not find maximum value")
+    }
+    let black = 1 - max
+    let cyan = (1 - red - black) / (1 - black)
+    let magenta = (1 - green - black) / (1 - black)
+    let yellow = (1 - blue - black) / ( 1 - black)
+    
+    return (cyan: cyan, magenta: magenta, yellow: yellow, black: black)
   }
 }
 

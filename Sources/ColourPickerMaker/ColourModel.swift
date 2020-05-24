@@ -96,6 +96,7 @@ class ColourModel: ObservableObject {
       setColour(colourSpace: .CMYK)
     }
   }
+  
 
     /// Sets the colour according to which colour space is adjusted
     /// - Parameter colourSpace: Whether to use HSB or RGB to update the colour
@@ -108,13 +109,21 @@ class ColourModel: ObservableObject {
           blue = convertedValues.blue
             colour = Color(hue: hue, saturation: saturation, brightness: brightness, opacity: alpha)
         case .RGB:
-          let convertedValues = Color.convertRGBToHSBValues(red: red, green: green, blue: blue)
-          hue = convertedValues.hue
-          saturation = convertedValues.saturation
-          brightness = convertedValues.brightness
+          let convertedToHSB = Color.convertRGBToHSBValues(red: red, green: green, blue: blue)
+          hue = convertedToHSB.hue
+          saturation = convertedToHSB.saturation
+          brightness = convertedToHSB.brightness
             colour = Color(red: red, green: green, blue: blue, opacity: alpha)
         case .CMYK:
-          colour = Color.fromCMYK(cyan: cyan, magenta: magenta, yellow: yellow, black: black, alpha: alpha)
+          let convertedToRGB = Color.convertCMYKToRGBValues(cyan: cyan, magenta: magenta, yellow: yellow, black: black)
+          red = convertedToRGB.red
+          green = convertedToRGB.green
+          blue = convertedToRGB.blue
+          let convertedToHSB = Color.convertRGBToHSBValues(red: red, green: green, blue: blue)
+          hue = convertedToHSB.hue
+          saturation = convertedToHSB.saturation
+          brightness = convertedToHSB.brightness
+          colour = Color.convertCMYKToRGB(cyan: cyan, magenta: magenta, yellow: yellow, black: black, alpha: alpha)
         }
     }
 }
