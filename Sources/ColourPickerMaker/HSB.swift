@@ -197,7 +197,7 @@ public struct HSBColourCanvasView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
       }
     }
-    .background(GridBackgroundView(squareSize: 20))
+    .background(TransparencyCheckerboardView(squareSize: 20))
     .aspectRatio(1, contentMode: .fit)
   }
 }
@@ -244,7 +244,7 @@ public struct HSBDoubleGradientView: View {
   let alpha: Double
   public var body: some View {
     ZStack {
-      GridBackgroundView(squareSize: 20)
+      TransparencyCheckerboardView(squareSize: 20)
       if type == .saturationBrightness {
         GradientType.saturation(hue: hue, brightness: brightness, startPoint: .leading)
         GradientType.brightnessOverlay.vertical

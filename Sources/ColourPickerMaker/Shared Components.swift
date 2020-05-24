@@ -35,7 +35,7 @@ public struct ColourWheelView: View {
   }
 }
 
-public struct GridBackgroundView: View {
+public struct TransparencyCheckerboardView: View {
   public init(squareSize: CGFloat) {
     self.squareSize = squareSize
   }
@@ -155,7 +155,7 @@ public struct GridPaletteView: View {
               self.alpha = colourParameters.3
             }) {
               ZStack {
-                GridBackgroundView(squareSize: 5)
+                TransparencyCheckerboardView(squareSize: 5)
               self.getColourFromIndices(yIndex: yIndex, xIndex: xIndex)
               }
             }
@@ -180,7 +180,7 @@ public struct PreviewColorView: View {
       
       if square {
         Group {
-        GridBackgroundView(squareSize: 20)
+        TransparencyCheckerboardView(squareSize: 20)
       Rectangle()
         .foregroundColor(colour)
         }
@@ -188,7 +188,7 @@ public struct PreviewColorView: View {
       }
       else {
         Group {
-          GridBackgroundView(squareSize: 20)
+          TransparencyCheckerboardView(squareSize: 20)
         Rectangle()
           .foregroundColor(colour)
           }
@@ -227,7 +227,7 @@ public struct ColourSlider: View {
   public var body: some View {
     GeometryReader { geometry in
       ZStack {
-        GridBackgroundView(squareSize: 20)
+        TransparencyCheckerboardView(squareSize: 20)
         .frame(height: 50, alignment: .center)
         .cornerRadius(geometry.size.height / 4)
         self.sliderType.gradient(hue: self.hue, saturation: self.saturation, brightness: self.brightness)
