@@ -13,3 +13,7 @@ Increasing the number of swatches decreases the difference between each swatch, 
 # Colour canvases
 
 ![Canvases](/Images/canvas.png)
+
+# Colour sliders
+
+![Canvases](/Images/sliders.png)
