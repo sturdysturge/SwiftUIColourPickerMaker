@@ -228,6 +228,8 @@ public struct ColourSlider: View {
     GeometryReader { geometry in
       ZStack {
         GridBackgroundView(squareSize: 20)
+        .frame(height: 50, alignment: .center)
+        .cornerRadius(geometry.size.height / 4)
         self.sliderType.gradient(hue: self.hue, saturation: self.saturation, brightness: self.brightness)
           .frame(height: 50, alignment: .center)
           .cornerRadius(geometry.size.height / 4)
@@ -242,5 +244,11 @@ public struct ColourSlider: View {
     }
     .frame(height: 70)
     .padding()
+  }
+}
+
+struct SharedComponents_Previews: PreviewProvider {
+  static var previews: some View {
+    PreviewView()
   }
 }

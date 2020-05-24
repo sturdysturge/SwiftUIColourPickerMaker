@@ -7,7 +7,10 @@ public struct PreviewView: View {
   public var body: some View {
     VStack {
       PreviewColorView(colour: colourModel.colour, square: true)
-      HSBColourCanvasView(hue: $colourModel.hue, saturation: $colourModel.saturation, brightness: $colourModel.brightness, alpha: $colourModel.alpha, canvasType: .hueSaturation)
+      ColourSlider(sliderType: .hue, hue: $colourModel.hue, saturation: $colourModel.saturation, brightness: $colourModel.brightness, alpha: $colourModel.alpha)
+      ColourSlider(sliderType: .saturation, hue: $colourModel.hue, saturation: $colourModel.saturation, brightness: $colourModel.brightness, alpha: $colourModel.alpha)
+      ColourSlider(sliderType: .brightness, hue: $colourModel.hue, saturation: $colourModel.saturation, brightness: $colourModel.brightness, alpha: $colourModel.alpha)
+      ColourSlider(sliderType: .alpha, hue: $colourModel.hue, saturation: $colourModel.saturation, brightness: $colourModel.brightness, alpha: $colourModel.alpha)
     }
   }
 }
