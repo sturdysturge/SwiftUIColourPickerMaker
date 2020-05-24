@@ -16,6 +16,13 @@ public extension Color {
     #else
         static let background = Color(NSColor.windowBackgroundColor)
     #endif
+  
+  static func fromCMYK(cyan: Double, magenta: Double, yellow: Double, black: Double, alpha: Double = 1) -> Color {
+    let red = (1 - cyan) * (1 - black)
+    let green = (1 - magenta) * (1 - black)
+    let blue =  (1 - yellow) * (1 - black)
+    return Color(red: red, green: green, blue: blue, opacity: alpha)
+  }
 }
 
 public extension UnitPoint {
