@@ -8,8 +8,32 @@
 
 import SwiftUI
 
+protocol PalettePickable {
+  var horizontal: Parameter { get }
+  var vertical: Parameter { get }
+  var horizontalSwatches: Int { get }
+  var verticalSwatches: Int { get }
+  func getValueFor(_ parameter: Parameter, xIndex: Int, yIndex: Int) -> Double
+  func getColourFromIndices(xIndex: Int, yIndex: Int) -> Color
+  func getConstantForParameter(_ parameter: Parameter) -> Double
+}
 
-struct RGBAPaletteView: View {
+extension PalettePickable where Self: View {
+  func getValueFor(_ parameter: Parameter, xIndex: Int, yIndex: Int) -> Double {
+    if horizontal == parameter {
+      return Double(xIndex) / Double(horizontalSwatches - 1)
+    }
+    else if vertical == parameter {
+      return Double(yIndex) / Double(horizontalSwatches - 1)
+    }
+    else {
+      return getConstantForParameter(parameter)
+    }
+  }
+}
+ 
+
+struct RGBAPaletteView: View, PalettePickable {
   @Binding var xValue: Double
   @Binding var yValue: Double
   let horizontal: Parameter
@@ -21,21 +45,13 @@ struct RGBAPaletteView: View {
   let horizontalSwatches: Int
   let verticalSwatches: Int
   
-  func getValueFor(_ parameter: Parameter, xIndex: Int, yIndex: Int) -> Double {
-    if horizontal == parameter {
-      return Double(xIndex) / Double(horizontalSwatches - 1)
-    }
-    else if vertical == parameter {
-      return Double(yIndex) / Double(horizontalSwatches - 1)
-    }
-    else {
-      switch parameter {
-      case .red: return constantRed
-      case .green: return constantGreen
-      case .blue: return constantBlue
-      case .alpha: return constantAlpha
-      default: fatalError("Parameter \(parameter) not in colour space")
-      }
+  func getConstantForParameter(_ parameter: Parameter) -> Double {
+    switch parameter {
+    case .red: return constantRed
+    case .green: return constantGreen
+    case .blue: return constantBlue
+    case .alpha: return constantAlpha
+    default: fatalError("Parameter \(parameter) not in colour space")
     }
   }
   
@@ -66,7 +82,7 @@ struct RGBAPaletteView: View {
   }
 }
 
-struct HSBAPaletteView: View {
+struct HSBAPaletteView: View, PalettePickable {
   @Binding var xValue: Double
   @Binding var yValue: Double
   let horizontal: Parameter
@@ -78,21 +94,13 @@ struct HSBAPaletteView: View {
   let horizontalSwatches: Int
   let verticalSwatches: Int
   
-  func getValueFor(_ parameter: Parameter, xIndex: Int, yIndex: Int) -> Double {
-    if horizontal == parameter {
-      return Double(xIndex) / Double(horizontalSwatches - 1)
-    }
-    else if vertical == parameter {
-      return Double(yIndex) / Double(horizontalSwatches - 1)
-    }
-    else {
+  func getConstantForParameter(_ parameter: Parameter) -> Double {
       switch parameter {
       case .hue: return constantHue
       case .saturation: return constantSaturation
       case .brightness: return constantBrightness
       case .alpha: return constantAlpha
       default: fatalError("Parameter \(parameter) not in colour space")
-      }
     }
   }
   
@@ -123,7 +131,7 @@ struct HSBAPaletteView: View {
   }
 }
 
-struct CMYKAPaletteView: View {
+struct CMYKAPaletteView: View, PalettePickable {
   @Binding var xValue: Double
   @Binding var yValue: Double
   let horizontal: Parameter
@@ -132,14 +140,7 @@ struct CMYKAPaletteView: View {
   let horizontalSwatches: Int
   let verticalSwatches: Int
   
-  func getValueFor(_ parameter: Parameter, xIndex: Int, yIndex: Int) -> Double {
-    if horizontal == parameter {
-      return Double(xIndex) / Double(horizontalSwatches - 1)
-    }
-    else if vertical == parameter {
-      return Double(yIndex) / Double(horizontalSwatches - 1)
-    }
-    else {
+  func getConstantForParameter(_ parameter: Parameter) -> Double {
       switch parameter {
       case .cyan: return constants.cyan
       case .magenta: return constants.magenta
@@ -148,7 +149,6 @@ struct CMYKAPaletteView: View {
       case .alpha: return constants.alpha
       default: fatalError("Parameter \(parameter) not in colour space")
       }
-    }
   }
   
   func getColourFromIndices(xIndex: Int, yIndex: Int) -> Color {
