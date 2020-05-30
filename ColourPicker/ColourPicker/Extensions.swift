@@ -95,7 +95,7 @@ extension Color {
   //MARK:- CMYK to HSB
   //=================
   
-  /// Convert RGB values to HSB values
+  /// Convert CMYK values to HSB values
   /// - Parameters:
   ///   - valuesInCMYK: A tuple containing cyan, magenta, yellow and black as Doubles
   /// - Returns: A tuple containing hue, saturation and brightness as Doubles
