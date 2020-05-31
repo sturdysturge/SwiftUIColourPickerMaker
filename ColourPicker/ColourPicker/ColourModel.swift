@@ -22,10 +22,10 @@ class ColourModel: ObservableObject {
   typealias CMYKAValues = (cyan: Double, magenta: Double, yellow: Double, black: Double, alpha: Double)
   
   /// A singleton to ensure more than one instance is not created
-  static let shared = ColourModel()
+  static let shared = ColourModel(colourSpace: .HSBA)
   
   /// Which colour space is being adjusted
-  var colourSpace = ColourSpace.HSBA
+  var colourSpace: ColourSpace
   
   /// The colour being picked
   @Published var colour = Color.white
@@ -36,34 +36,39 @@ class ColourModel: ObservableObject {
       setColour()
     }
   }
-  @Published var whiteness = Double(1) {
+  @Published var white = Double(1) {
     didSet {
       colourSpace = .greyscale
-      setColour()
+      //setColour()
     }
   }
   @Published var valuesInRGBA = (red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0) {
     didSet {
       colourSpace = .RGBA
-      setColour()
+      //setColour()
     }
   }
   @Published var valuesInHSBA = (hue: 1.0, saturation: 0.5, brightness: 1.0, alpha: 1.0) {
     didSet {
       colourSpace = .HSBA
-      setColour()
+      //setColour()
     }
   }
-  @Published var valuesInCMYKA = (cyan: Double(), magenta: Double(), yellow: Double(), black: Double(), alpha: Double(1)) {
+  @Published var valuesInCMYKA = (cyan: Double(0.5), magenta: Double(0.5), yellow: Double(0.5), black: Double(0.5), alpha: Double(1)) {
     didSet {
       colourSpace = .CMYKA
-      setColour()
+      //setColour()
     }
+  }
+  
+  init(colourSpace: ColourSpace) {
+    self.colourSpace = colourSpace
+    //self.setColour()
   }
   
   /// Sets the colour according to which colour space is adjusted
   func setColour() {
-    convertFromCurrentColourSpace()
+    convertAllFromCurrentColourSpace()
     switch colourSpace {
     case .HSBA:
       colour = Color.fromValues(valuesInHSBA, alpha: alpha)
@@ -72,12 +77,12 @@ class ColourModel: ObservableObject {
     case .CMYKA:
       colour = Color.fromValues(valuesInRGBA, alpha: alpha)
     case .greyscale:
-      colour = Color(white: whiteness, opacity: alpha)
+      colour = Color(white: white, opacity: alpha)
     }
   }
   
   /// Converts the colour for all colour spaces
-  func convertFromCurrentColourSpace() {
+  func convertAllFromCurrentColourSpace() {
     switch colourSpace {
     case .CMYKA:
       valuesInRGBA = Color.convertToRGBA(valuesInCMYKA)
@@ -89,7 +94,9 @@ class ColourModel: ObservableObject {
       valuesInRGBA = Color.convertToRGBA(valuesInHSBA)
       valuesInCMYKA = Color.convertToCMYKA(valuesInHSBA)
     case .greyscale:
-      break
+      valuesInRGBA = (red: white, green: white, blue: white, alpha: alpha)
+      valuesInHSBA = (hue: valuesInHSBA.hue, saturation: 0.0, brightness: white, alpha: alpha)
+      valuesInCMYKA = (cyan: 0.0, magenta: 0.0, yellow: 0.0, black: 1.0 - white, alpha: alpha)
     }
   }
 }

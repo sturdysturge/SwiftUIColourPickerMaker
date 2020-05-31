@@ -22,12 +22,12 @@ enum ColourSpace: CaseIterable {
     case .CMYKA:
       return [.cyan, .magenta, .yellow, .black, .alpha]
     case .greyscale:
-      return [.whiteness, .alpha]
+      return [.white, .alpha]
     }
   }
 }
 enum Parameter: String, CaseIterable {
-  case hue, saturation, brightness, red, green, blue, alpha, whiteness, cyan, magenta, yellow, black
+  case hue, saturation, brightness, red, green, blue, alpha, white, cyan, magenta, yellow, black
   
   init(colourSpace: ColourSpace, character: String) {
     switch character {
@@ -36,7 +36,7 @@ enum Parameter: String, CaseIterable {
     case "R": self = .red
     case "G": self = .green
     case "A": self = .alpha
-    case "W": self = .whiteness
+    case "W": self = .white
     case "C": self = .cyan
     case "M": self = .magenta
     case "Y": self = .yellow
@@ -56,7 +56,7 @@ enum Parameter: String, CaseIterable {
       return .HSBA
     case .red, .green, .blue:
       return .RGBA
-    case .alpha, .whiteness:
+    case .alpha, .white:
       return .greyscale
     case .cyan, .magenta, .yellow, .black:
       return .CMYKA
