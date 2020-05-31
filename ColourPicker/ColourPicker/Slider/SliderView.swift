@@ -19,20 +19,13 @@ struct SliderView: View {
         TransparencyCheckerboardView()
           .frame(height: 50, alignment: .center)
           .cornerRadius(geometry.size.height / 4)
-        }
-        else {
+        } else {
           Color.white
         }
         self.gradient
           .frame(height: 50, alignment: .center)
           .cornerRadius(geometry.size.height / 4)
-        Group {
-          Capsule()
-            .stroke(lineWidth: 5)
-            .frame(width: 10, height: 70)
-            .horizontalDrag(value: self.$value, width: geometry.size.width)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        SliderThumbView(width: geometry.size.width, value: self.$value)
       }
     }
     .frame(height: 70)
@@ -40,8 +33,16 @@ struct SliderView: View {
   }
 }
 
-//struct SliderView_Previews: PreviewProvider {
-//  static var previews: some View {
-//    SliderView()
-//  }
-//}
+struct SliderThumbView: View {
+  let width: CGFloat
+  @Binding var value: Double
+  var body: some View {
+    Group {
+      Capsule()
+        .stroke(lineWidth: 5)
+        .frame(width: 10, height: 70)
+        .horizontalDrag(value: self.$value, width: width)
+    }
+    .frame(maxWidth: .infinity, alignment: .leading)
+  }
+}
