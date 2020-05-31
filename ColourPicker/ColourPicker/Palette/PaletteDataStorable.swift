@@ -8,6 +8,33 @@
 
 import SwiftUI
 
+struct CMYKAPaletteData: PaletteDataStorable {
+  typealias ValueType = ColourModel.CMYKAValues
+  @Binding var constants: ValueType
+  let horizontal: Parameter
+  let vertical: Parameter
+  let horizontalSwatches: Int
+  let verticalSwatches: Int
+}
+
+struct RGBAPaletteData: PaletteDataStorable {
+  typealias ValueType = ColourModel.RGBAValues
+  @Binding var constants: ValueType
+  let horizontal: Parameter
+  let vertical: Parameter
+  let horizontalSwatches: Int
+  let verticalSwatches: Int
+}
+
+struct HSBPaletteData: PaletteDataStorable {
+  typealias ValueType = ColourModel.HSBAValues
+  @Binding var constants: ValueType
+  let horizontal: Parameter
+  let vertical: Parameter
+  let horizontalSwatches: Int
+  let verticalSwatches: Int
+}
+
 protocol PaletteDataStorable {
   associatedtype ValueType
   func getSwatchColour(values: ValueType) -> Color

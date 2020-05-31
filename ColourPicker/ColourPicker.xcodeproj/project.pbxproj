@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4139115E24844E2C00F2E0D5 /* PalettePickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4139115D24844E2C00F2E0D5 /* PalettePickable.swift */; };
 		413C695F2482750B00F4A5A0 /* ColourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413C695E2482750B00F4A5A0 /* ColourModel.swift */; };
 		413C69612482752B00F4A5A0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413C69602482752B00F4A5A0 /* Extensions.swift */; };
 		414087232482B0E90039F027 /* TransparencyCheckerboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414087222482B0E90039F027 /* TransparencyCheckerboardView.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4139115D24844E2C00F2E0D5 /* PalettePickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettePickable.swift; sourceTree = "<group>"; };
 		413C695E2482750B00F4A5A0 /* ColourModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourModel.swift; sourceTree = "<group>"; };
 		413C69602482752B00F4A5A0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		414087222482B0E90039F027 /* TransparencyCheckerboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparencyCheckerboardView.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				4164CE8A2484185C009DA810 /* PaletteView.swift */,
 				4164CE8E248429FD009DA810 /* PaletteDataStorable.swift */,
+				4139115D24844E2C00F2E0D5 /* PalettePickable.swift */,
 			);
 			path = Palette;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				4164CE8F248429FD009DA810 /* PaletteDataStorable.swift in Sources */,
 				413C695F2482750B00F4A5A0 /* ColourModel.swift in Sources */,
 				4171325224804E4300F59D4E /* ColourPicker.swift in Sources */,
+				4139115E24844E2C00F2E0D5 /* PalettePickable.swift in Sources */,
 				4171323E24804E1800F59D4E /* SceneDelegate.swift in Sources */,
 				4171325024804E2600F59D4E /* Enums.swift in Sources */,
 				4171324024804E1800F59D4E /* ContentView.swift in Sources */,
