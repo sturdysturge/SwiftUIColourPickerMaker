@@ -17,6 +17,8 @@ protocol PalettePickable {
   var constants: values { get }
   var swatches: [[values]] { get }
   func getSwatchParameter(_ axis: Axis, swatch: values) -> Double
+  static func getValueFor(_ parameter: Parameter, data: (xIndex: Int, yIndex: Int, horizontal: Parameter, vertical: Parameter, constants: values, horizontalSwatches: Int, verticalSwatches: Int)) -> Double
+  static func getParameterFromConstants(_ parameter: Parameter, constants: values) -> Double
   func getSwatchColour(values: values) -> Color
   func setValues(xValue: Double, yValue: Double)
   var xValue: Double { get set }
@@ -46,6 +48,18 @@ extension PalettePickable where Self: View {
       }
     }
   }
+  
+  static func getValueFor(_ parameter: Parameter, data: (xIndex: Int, yIndex: Int, horizontal: Parameter, vertical: Parameter, constants: values, horizontalSwatches: Int, verticalSwatches: Int)) -> Double {
+    if data.horizontal == parameter {
+      return Double(data.xIndex) / Double(data.horizontalSwatches - 1)
+    }
+    else if data.vertical == parameter {
+      return Double(data.yIndex) / Double(data.verticalSwatches - 1)
+    }
+    else {
+      return getParameterFromConstants(parameter, constants: data.constants)
+    }
+  }
 }
 
 extension PalettePickable where values == ColourModel.RGBAValues {
@@ -64,14 +78,14 @@ extension PalettePickable where values == ColourModel.RGBAValues {
     }
   }
   
-  func getConstantForParameter(_ parameter: Parameter) -> Double {
+  static func getParameterFromConstants(_ parameter: Parameter, constants: ColourModel.RGBAValues) -> Double {
     switch parameter {
     case .red: return constants.red
     case .green: return constants.green
     case .blue: return constants.blue
     case .alpha: return constants.alpha
     default: fatalError("Parameter \(parameter) not in colour space")
-    }
+  }
   }
 }
 
@@ -91,30 +105,20 @@ extension PalettePickable where values == ColourModel.HSBAValues {
     }
   }
   
-  func getConstantForParameter(_ parameter: Parameter) -> Double {
+  static func getParameterFromConstants(_ parameter: Parameter, constants: ColourModel.HSBAValues) -> Double {
     switch parameter {
-      case .hue: return constants.hue
-      case .saturation: return constants.saturation
-      case .brightness: return constants.brightness
-      case .alpha: return constants.alpha
-      default: fatalError("Parameter \(parameter) not in colour space")
-    }
+    case .hue: return constants.hue
+    case .green: return constants.saturation
+    case .brightness: return constants.brightness
+    case .alpha: return constants.alpha
+    default: fatalError("Parameter \(parameter) not in colour space")
+  }
   }
 }
 
 extension PalettePickable where values == ColourModel.CMYKAValues {
   func getSwatchColour(values: ColourModel.CMYKAValues) -> Color {
     return Color.fromValues(values)
-  }
-  func getConstantForParameter(_ parameter: Parameter) -> Double {
-      switch parameter {
-      case .cyan: return constants.cyan
-      case .magenta: return constants.magenta
-      case .yellow: return constants.yellow
-      case .black: return constants.black
-      case .alpha: return constants.alpha
-      default: fatalError("Parameter \(parameter) not in colour space")
-      }
   }
   
   func getSwatchParameter(_ axis: Axis, swatch: values) -> Double {
@@ -129,6 +133,17 @@ extension PalettePickable where values == ColourModel.CMYKAValues {
     }
   }
   
+  static func getParameterFromConstants(_ parameter: Parameter, constants: ColourModel.CMYKAValues) -> Double {
+    switch parameter {
+    case .cyan: return constants.cyan
+      case .magenta: return constants.magenta
+      case .yellow: return constants.yellow
+    case .black: return constants.black
+      case .alpha: return constants.alpha
+    default: fatalError("Parameter \(parameter) not in colour space")
+  }
+  }
+  
 }
 
 struct RGBAPaletteView: View, PalettePickable {
@@ -136,6 +151,7 @@ struct RGBAPaletteView: View, PalettePickable {
     self.xValue = xValue
     self.yValue = yValue
   }
+  
   
   
   typealias values = ColourModel.RGBAValues
@@ -157,28 +173,12 @@ struct RGBAPaletteView: View, PalettePickable {
     self.horizontalSwatches = horizontalSwatches
     self.verticalSwatches = verticalSwatches
     var colours = [[values]]()
-    let getValueFor: (Parameter, Int, Int) -> Double = {
-      parameter,xIndex,yIndex in
-      if horizontal == parameter {
-        return Double(xIndex) / Double(horizontalSwatches - 1)
-      }
-      else if vertical == parameter {
-        return Double(yIndex) / Double(verticalSwatches - 1)
-      }
-      else {
-        switch parameter {
-        case .red: return constants.red
-        case .green: return constants.green
-        case .blue: return constants.blue
-        case .alpha: return constants.alpha
-        default: fatalError("Parameter \(parameter) not in colour space")
-        }
-      }
-    }
+    
     for yIndex in 0..<verticalSwatches {
       var row = [values]()
       for xIndex in 0..<horizontalSwatches {
-        row.append((red: getValueFor(.red, xIndex, yIndex), green: getValueFor(.green, xIndex, yIndex), blue: getValueFor(.blue, xIndex, yIndex), alpha: getValueFor(.alpha, xIndex, yIndex)))
+        let data = (xIndex: xIndex, yIndex: yIndex, horizontal: horizontal, vertical: vertical, constants: constants, horizontalSwatches: horizontalSwatches, verticalSwatches: verticalSwatches)
+        row.append((red: Self.getValueFor(.red, data: data), green: Self.getValueFor(.green, data: data), blue: Self.getValueFor(.blue, data: data), alpha: Self.getValueFor(.alpha, data: data)))
       }
       colours.append(row)
     }
@@ -213,28 +213,12 @@ struct HSBAPaletteView: View, PalettePickable {
     self.horizontalSwatches = horizontalSwatches
     self.verticalSwatches = verticalSwatches
     var swatches = [[values]]()
-    let getValueFor: ((Parameter, Int,  Int) -> Double) = {
-      parameter, xIndex, yIndex in
-      if horizontal == parameter {
-        return Double(xIndex) / Double(horizontalSwatches - 1)
-      }
-      else if vertical == parameter {
-        return Double(yIndex) / Double(verticalSwatches - 1)
-      }
-      else {
-        switch parameter {
-          case .hue: return constants.hue
-          case .saturation: return constants.saturation
-          case .brightness: return constants.brightness
-          case .alpha: return constants.alpha
-          default: fatalError("Parameter \(parameter) not in colour space")
-        }
-      }
-    }
+    
     for yIndex in 0..<verticalSwatches {
       var row = [values]()
       for xIndex in 0..<horizontalSwatches {
-        row.append((hue: getValueFor(.hue, xIndex, yIndex), saturation: getValueFor(.saturation, xIndex, yIndex), brightness: getValueFor(.brightness, xIndex, yIndex), alpha: getValueFor(.alpha, xIndex, yIndex)))
+        let data = (xIndex: xIndex, yIndex: yIndex, horizontal: horizontal, vertical: vertical, constants: constants, horizontalSwatches: horizontalSwatches, verticalSwatches: verticalSwatches)
+        row.append((hue: Self.getValueFor(.hue, data: data), saturation: Self.getValueFor(.saturation, data: data), brightness: Self.getValueFor(.brightness, data: data), alpha: Self.getValueFor(.alpha, data: data)))
       }
       swatches.append(row)
     }
@@ -268,30 +252,11 @@ struct CMYKAPaletteView: View, PalettePickable {
     self.horizontalSwatches = horizontalSwatches
     self.verticalSwatches = verticalSwatches
     var swatches = [[values]]()
-    let getValueFor: ((Parameter, Int,  Int) -> Double) = {
-      parameter, xIndex, yIndex in
-      if horizontal == parameter {
-        return Double(xIndex) / Double(horizontalSwatches - 1)
-      }
-      else if vertical == parameter {
-        return Double(yIndex) / Double(verticalSwatches - 1)
-      }
-      else {
-        switch parameter {
-          case .cyan: return constants.cyan
-          case .magenta: return constants.magenta
-        case .yellow: return constants.yellow
-          case .black: return constants.black
-          case .alpha: return constants.alpha
-          default: fatalError("Parameter \(parameter) not in colour space")
-        }
-      }
-    }
     for yIndex in 0..<verticalSwatches {
       var row = [values]()
       for xIndex in 0..<horizontalSwatches {
-        let swatch = (cyan: getValueFor(.cyan, xIndex, yIndex), magenta: getValueFor(.magenta, xIndex, yIndex), yellow: getValueFor(.yellow, xIndex, yIndex), black: getValueFor(.black, xIndex, yIndex), alpha: getValueFor(.alpha, xIndex, yIndex))
-        row.append(swatch)
+        let data = (xIndex: xIndex, yIndex: yIndex, horizontal: horizontal, vertical: vertical, constants: constants, horizontalSwatches: horizontalSwatches, verticalSwatches: verticalSwatches)
+        row.append((cyan: Self.getValueFor(.cyan, data: data), magenta: Self.getValueFor(.magenta, data: data), yellow: Self.getValueFor(.yellow, data: data), black: Self.getValueFor(.black, data: data), alpha: Self.getValueFor(.alpha, data: data)))
       }
       swatches.append(row)
     }
@@ -299,15 +264,8 @@ struct CMYKAPaletteView: View, PalettePickable {
   }
   
   }
-struct PreviewThis: View {
-  @ObservedObject var data = ColourModel(colourSpace: .CMYKA)
-  var body: some View {
-    VStack {
-      PreviewColourView(colour: data.colour, square: true)
-    CMYKAPaletteView(xValue: $data.valuesInCMYKA.cyan, yValue: $data.valuesInCMYKA.magenta, horizontal: .cyan, vertical: .magenta, constants: data.valuesInCMYKA, horizontalSwatches: 10, verticalSwatches: 10)
-    }
-  }
-}
+
+
 struct CMYKAPaletteView_Previews: PreviewProvider {
   
   static var previews: some View {

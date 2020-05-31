@@ -9,8 +9,12 @@
 import SwiftUI
 
 struct ContentView: View {
+   @ObservedObject var data = ColourModel(colourSpace: .CMYKA)
     var body: some View {
-        PreviewThis()
+        VStack {
+          PreviewColourView(colour: data.colour, square: true)
+        CMYKAPaletteView(xValue: $data.valuesInCMYKA.cyan, yValue: $data.valuesInCMYKA.magenta, horizontal: .cyan, vertical: .magenta, constants: data.valuesInCMYKA, horizontalSwatches: 10, verticalSwatches: 10)
+        }
     }
 }
 

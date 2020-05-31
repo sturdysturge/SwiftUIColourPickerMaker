@@ -126,39 +126,3 @@ class ColourModel: ObservableObject {
     colourCanBeSet = true
   }
 }
-
-//extension Color {
-//  static func fromValues(_ valuesInHSBA: ColourModel.HSBAValues, alpha: Double = 1) -> Color {
-//    return Color(hue: valuesInHSBA.hue, saturation: valuesInHSBA.saturation, brightness: valuesInHSBA.brightness, opacity: valuesInHSBA.alpha)
-//  }
-//  static func fromValues(_ valuesInRGBA: ColourModel.RGBAValues, alpha: Double = 1) -> Color {
-//    return Color(red: valuesInRGBA.red, green: valuesInRGBA.green, blue: valuesInRGBA.blue, opacity: valuesInRGBA.alpha)
-//  }
-//  static func fromValues(_ valuesInCMYKA: ColourModel.CMYKAValues, alpha: Double = 1) -> Color {
-//    return fromValues(convertToRGBA(valuesInCMYKA))
-//  }
-//  static func convertToRGBA(_ valuesInCMYKA: ColourModel.CMYKAValues) -> ColourModel.RGBAValues {
-//    //TODO: Implement conversion function
-//    return (red: 0, green: 0, blue: 0, alpha: 0)
-//  }
-//  static func convertToRGBA(_ valuesInHSBA: ColourModel.HSBAValues) -> ColourModel.RGBAValues {
-//    //TODO: Implement conversion function
-//    return (red: 0, green: 0, blue: 0, alpha: 0)
-//  }
-//  static func convertToHSBA(_ valuesInHSBA: ColourModel.RGBAValues) -> ColourModel.HSBAValues {
-//    //TODO: Implement conversion function
-//    return (hue: 0, saturation: 0, brightness: 0, alpha: 0)
-//  }
-//  static func convertToHSBA(_ valuesInCMYKA: ColourModel.CMYKAValues) -> ColourModel.HSBAValues {
-//    //TODO: Implement conversion function
-//    return (hue: 0, saturation: 0, brightness: 0, alpha: 0)
-//  }
-//  static func convertToCMYKA(_ valuesInHSBA: ColourModel.HSBAValues) -> ColourModel.CMYKAValues {
-//    //TODO: Implement conversion function
-//    return (cyan: 0, magenta: 0, yellow: 0, black: 0, alpha: 0)
-//  }
-//  static func convertToCMYKA(_ valuesInRGBA: ColourModel.RGBAValues) -> ColourModel.CMYKAValues {
-//    //TODO: Implement conversion function
-//    return (cyan: 0, magenta: 0, yellow: 0, black: 0, alpha: 0)
-//  }
-//}
