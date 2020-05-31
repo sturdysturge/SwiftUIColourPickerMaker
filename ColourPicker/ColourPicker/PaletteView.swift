@@ -37,7 +37,7 @@ extension PalettePickable where Self: View {
               self.setValues(xValue: self.getSwatchParameter(.horizontal, swatch: swatch), yValue:  self.getSwatchParameter(.vertical, swatch: swatch))
             }) {
               ZStack {
-                TransparencyCheckerboardView(tileSize: 5)
+                TransparencyCheckerboardView()
                 self.getSwatchColour(values: self.swatches[yIndex][xIndex])
               }
             }
@@ -280,7 +280,9 @@ struct CMYKAPaletteView: View, PalettePickable {
     for yIndex in 0..<verticalSwatches {
       var row = [values]()
       for xIndex in 0..<horizontalSwatches {
-        row.append((cyan: getValueFor(.cyan, xIndex, yIndex), magenta: getValueFor(.magenta, xIndex, yIndex), yellow: getValueFor(.yellow, xIndex, yIndex), black: getValueFor(.black, xIndex, yIndex), alpha: getValueFor(.alpha, xIndex, yIndex)))
+        let swatch = (cyan: getValueFor(.cyan, xIndex, yIndex), magenta: getValueFor(.magenta, xIndex, yIndex), yellow: getValueFor(.yellow, xIndex, yIndex), black: getValueFor(.black, xIndex, yIndex), alpha: getValueFor(.alpha, xIndex, yIndex))
+        print(swatch)
+        row.append(swatch)
       }
       swatches.append(row)
     }
@@ -289,14 +291,14 @@ struct CMYKAPaletteView: View, PalettePickable {
   
   }
 struct PreviewThis: View {
-  @ObservedObject var data = ColourModel(colourSpace: .HSBA)
+  @ObservedObject var data = ColourModel(colourSpace: .CMYKA)
   var body: some View {
-    HSBAPaletteView(xValue: $data.valuesInHSBA.saturation, yValue: $data.valuesInHSBA.hue, horizontal: .hue, vertical: .saturation, constants: data.valuesInHSBA, horizontalSwatches: 10, verticalSwatches: 10)
+    CMYKAPaletteView(xValue: $data.valuesInCMYKA.cyan, yValue: $data.valuesInCMYKA.magenta, horizontal: .cyan, vertical: .magenta, constants: data.valuesInCMYKA, horizontalSwatches: 10, verticalSwatches: 10)
   }
 }
 struct CMYKAPaletteView_Previews: PreviewProvider {
   
   static var previews: some View {
-    PreviewThis()
+    TransparencyCheckerboardView()
   }
 }
