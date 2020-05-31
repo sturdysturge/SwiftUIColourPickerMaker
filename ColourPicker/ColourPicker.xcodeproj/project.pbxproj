@@ -19,6 +19,7 @@
 		4171324824804E1900F59D4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4171324624804E1900F59D4E /* LaunchScreen.storyboard */; };
 		4171325024804E2600F59D4E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4171324F24804E2600F59D4E /* Enums.swift */; };
 		4171325224804E4300F59D4E /* ColourPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4171325124804E4300F59D4E /* ColourPicker.swift */; };
+		41A5BB472483D3910073B4C6 /* PreviewColourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5BB462483D3910073B4C6 /* PreviewColourView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		4171324924804E1900F59D4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4171324F24804E2600F59D4E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		4171325124804E4300F59D4E /* ColourPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourPicker.swift; sourceTree = "<group>"; };
+		41A5BB462483D3910073B4C6 /* PreviewColourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewColourView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				413C69602482752B00F4A5A0 /* Extensions.swift */,
 				414087202482A7CA0039F027 /* PaletteView.swift */,
 				414087222482B0E90039F027 /* TransparencyCheckerboardView.swift */,
+				41A5BB462483D3910073B4C6 /* PreviewColourView.swift */,
 			);
 			path = ColourPicker;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				4171324024804E1800F59D4E /* ContentView.swift in Sources */,
 				414087212482A7CA0039F027 /* PaletteView.swift in Sources */,
 				413C69612482752B00F4A5A0 /* Extensions.swift in Sources */,
+				41A5BB472483D3910073B4C6 /* PreviewColourView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

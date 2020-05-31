@@ -98,7 +98,7 @@ class ColourModel: ObservableObject {
     case .RGBA:
       colour = Color.fromValues(valuesInRGBA)
     case .CMYKA:
-      colour = Color.fromValues(valuesInRGBA)
+      colour = Color.fromValues(valuesInCMYKA)
     case .greyscale:
       colour = Color(white: white, opacity: alpha)
       }

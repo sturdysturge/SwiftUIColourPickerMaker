@@ -90,6 +90,16 @@ extension PalettePickable where values == ColourModel.HSBAValues {
       default: fatalError("Parameter \(parameter) not in colour space")
     }
   }
+  
+  func getConstantForParameter(_ parameter: Parameter) -> Double {
+    switch parameter {
+      case .hue: return constants.hue
+      case .saturation: return constants.saturation
+      case .brightness: return constants.brightness
+      case .alpha: return constants.alpha
+      default: fatalError("Parameter \(parameter) not in colour space")
+    }
+  }
 }
 
 extension PalettePickable where values == ColourModel.CMYKAValues {
@@ -281,7 +291,6 @@ struct CMYKAPaletteView: View, PalettePickable {
       var row = [values]()
       for xIndex in 0..<horizontalSwatches {
         let swatch = (cyan: getValueFor(.cyan, xIndex, yIndex), magenta: getValueFor(.magenta, xIndex, yIndex), yellow: getValueFor(.yellow, xIndex, yIndex), black: getValueFor(.black, xIndex, yIndex), alpha: getValueFor(.alpha, xIndex, yIndex))
-        print(swatch)
         row.append(swatch)
       }
       swatches.append(row)
@@ -293,7 +302,10 @@ struct CMYKAPaletteView: View, PalettePickable {
 struct PreviewThis: View {
   @ObservedObject var data = ColourModel(colourSpace: .CMYKA)
   var body: some View {
+    VStack {
+      PreviewColourView(colour: data.colour, square: true)
     CMYKAPaletteView(xValue: $data.valuesInCMYKA.cyan, yValue: $data.valuesInCMYKA.magenta, horizontal: .cyan, vertical: .magenta, constants: data.valuesInCMYKA, horizontalSwatches: 10, verticalSwatches: 10)
+    }
   }
 }
 struct CMYKAPaletteView_Previews: PreviewProvider {
