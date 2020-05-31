@@ -7,13 +7,20 @@
 //
 
 import SwiftUI
-
+struct ColourData<T>: ColourDataStorable {
+  typealias ValueType = T
+  let constants: T
+  let horizontal: Parameter
+  let vertical: Parameter
+  let horizontalSwatches: Int
+  let verticalSwatches: Int
+}
 struct ContentView: View {
    @ObservedObject var data = ColourModel(colourSpace: .CMYKA)
     var body: some View {
         VStack {
           PreviewColourView(colour: data.colour, square: true)
-          CMYKAPaletteView(xValue: $data.valuesInCMYKA.cyan, yValue: $data.valuesInCMYKA.magenta, horizontal: .cyan, vertical: .magenta, horizontalSwatches: 10, verticalSwatches: 10, constants: data.valuesInCMYKA)
+          NewPalette(data: ColourData(constants: data.valuesInCMYKA, horizontal: .cyan, vertical: .magenta, horizontalSwatches: 10, verticalSwatches: 10), xValue: $data.valuesInCMYKA.cyan, yValue: $data.valuesInCMYKA.magenta)
         }
     }
 }

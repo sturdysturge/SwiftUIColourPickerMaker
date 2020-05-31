@@ -1,55 +1,15 @@
 //
-//  PaletteView.swift
+//  PaletteView2.swift
 //  ColourPicker
 //
-//  Created by Rob Sturgeon on 30/05/2020.
+//  Created by Rob Sturgeon on 31/05/2020.
 //  Copyright © 2020 Rob Sturgeon. All rights reserved.
 //
 
 import SwiftUI
 
-protocol PalettePickable {
-  associatedtype values
-  var horizontal: Parameter { get }
-  var vertical: Parameter { get }
-  var horizontalSwatches: Int { get }
-  var verticalSwatches: Int { get }
-  var constants: values { get }
-  func getSwatchParameter(_ axis: Axis, swatch: values) -> Double
-  func getValueFor(_ parameter: Parameter, xIndex: Int, yIndex: Int) -> Double
-  func getParameterFromConstants(_ parameter: Parameter) -> Double
-  func getSwatchColour(values: values) -> Color
-  func setValues(xValue: Double, yValue: Double)
-  func getSwatch(xIndex: Int, yIndex: Int) -> values
-  var xValue: Double { get set }
-  var yValue: Double { get set }
-}
 
-
- 
-extension PalettePickable where Self: View {
-  
-  var body: some View {
-    VStack {
-      ForEach(0 ..< verticalSwatches, id: \.self) {
-        yIndex in
-        HStack {
-          ForEach(0 ..< self.horizontalSwatches, id: \.self) {
-            xIndex in
-            Button(action: {
-              let swatch = self.getSwatch(xIndex: xIndex, yIndex: yIndex)
-              self.setValues(xValue: self.getSwatchParameter(.horizontal, swatch: swatch), yValue:  self.getSwatchParameter(.vertical, swatch: swatch))
-            }) {
-              ZStack {
-                TransparencyCheckerboardView()
-                self.getSwatchColour(values: self.getSwatch(xIndex: xIndex, yIndex: yIndex))
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+extension ColourDataStorable {
   
   func getValueFor(_ parameter: Parameter, xIndex: Int, yIndex: Int) -> Double {
     if horizontal == parameter {
@@ -65,16 +25,34 @@ extension PalettePickable where Self: View {
   
 }
 
-extension PalettePickable where values == ColourModel.RGBAValues {
+extension ColourDataStorable {
+  func getSwatchColour(values: ValueType) -> Color {
+    return Color.clear
+  }
+  
+  func getSwatch(xIndex: Int, yIndex: Int) -> ValueType {
+    return constants
+  }
+  
+  func getSwatchParameter(_ axis: Axis, swatch: ValueType) -> Double {
+    return 0
+  }
+  
+  func getParameterFromConstants(_ parameter: Parameter) -> Double {
+    return 0
+  }
+}
+
+extension ColourDataStorable where ValueType == ColourModel.RGBAValues {
   func getSwatchColour(values: ColourModel.RGBAValues) -> Color {
     return Color.fromValues(values)
   }
   
-  func getSwatch(xIndex: Int, yIndex: Int) -> values {
+  func getSwatch(xIndex: Int, yIndex: Int) -> ValueType {
     return (red: getValueFor(.red, xIndex: xIndex, yIndex: yIndex), green: getValueFor(.green, xIndex: xIndex, yIndex: yIndex), blue: getValueFor(.blue, xIndex: xIndex, yIndex: yIndex), alpha: getValueFor(.alpha, xIndex: xIndex, yIndex: yIndex))
   }
   
-  func getSwatchParameter(_ axis: Axis, swatch: values) -> Double {
+  func getSwatchParameter(_ axis: Axis, swatch: ValueType) -> Double {
     let parameter = axis == .horizontal ? horizontal : vertical
     switch parameter {
       case .red: return swatch.red
@@ -96,16 +74,16 @@ extension PalettePickable where values == ColourModel.RGBAValues {
   }
 }
 
-extension PalettePickable where values == ColourModel.HSBAValues {
+extension ColourDataStorable where ValueType == ColourModel.HSBAValues {
   func getSwatchColour(values: ColourModel.HSBAValues) -> Color {
     return Color.fromValues(values)
   }
   
-  func getSwatch(xIndex: Int, yIndex: Int) -> values {
+  func getSwatch(xIndex: Int, yIndex: Int) -> ValueType {
     return (hue: getValueFor(.hue, xIndex: xIndex, yIndex: yIndex), saturation: getValueFor(.saturation, xIndex: xIndex, yIndex: yIndex), brightness: getValueFor(.brightness, xIndex: xIndex, yIndex: yIndex), alpha: getValueFor(.alpha, xIndex: xIndex, yIndex: yIndex))
   }
   
-  func getSwatchParameter(_ axis: Axis, swatch: values) -> Double {
+  func getSwatchParameter(_ axis: Axis, swatch: ValueType) -> Double {
     let parameter = axis == .horizontal ? horizontal : vertical
     switch parameter {
       case .hue: return swatch.hue
@@ -127,16 +105,16 @@ extension PalettePickable where values == ColourModel.HSBAValues {
   }
 }
 
-extension PalettePickable where values == ColourModel.CMYKAValues {
+extension ColourDataStorable where ValueType == ColourModel.CMYKAValues {
   func getSwatchColour(values: ColourModel.CMYKAValues) -> Color {
     return Color.fromValues(values)
   }
   
-  func getSwatch(xIndex: Int, yIndex: Int) -> values {
+  func getSwatch(xIndex: Int, yIndex: Int) -> ValueType {
     return (cyan: getValueFor(.cyan, xIndex: xIndex, yIndex: yIndex), magenta: getValueFor(.magenta, xIndex: xIndex, yIndex: yIndex), yellow: getValueFor(.yellow, xIndex: xIndex, yIndex: yIndex), black: getValueFor(.black, xIndex: xIndex, yIndex: yIndex), alpha: getValueFor(.alpha, xIndex: xIndex, yIndex: yIndex))
   }
   
-  func getSwatchParameter(_ axis: Axis, swatch: values) -> Double {
+  func getSwatchParameter(_ axis: Axis, swatch: ValueType) -> Double {
     let parameter = axis == .horizontal ? horizontal : vertical
     switch parameter {
       case .cyan: return swatch.cyan
@@ -161,60 +139,54 @@ extension PalettePickable where values == ColourModel.CMYKAValues {
   
 }
 
-struct RGBAPalette: View, PalettePickable {
-  typealias values = ColourModel.RGBAValues
+struct NewPalette<T>: View where T: ColourDataStorable {
+  let data: T
   @Binding var xValue: Double
   @Binding var yValue: Double
-  let horizontal: Parameter
-  let vertical: Parameter
-  let horizontalSwatches: Int
-  let verticalSwatches: Int
-  let constants: values
-  
   func setValues(xValue: Double, yValue: Double) {
     self.xValue = xValue
     self.yValue = yValue
   }
-}
-
-struct CMYKAPaletteView: View, PalettePickable {
-  typealias values = ColourModel.CMYKAValues
-  @Binding var xValue: Double
-  @Binding var yValue: Double
-  let horizontal: Parameter
-  let vertical: Parameter
-  let horizontalSwatches: Int
-  let verticalSwatches: Int
-  let constants: values
-  
-  func setValues(xValue: Double, yValue: Double) {
-    self.xValue = xValue
-    self.yValue = yValue
+  var body: some View {
+    VStack {
+      ForEach(0 ..< data.verticalSwatches, id: \.self) {
+        yIndex in
+        HStack {
+          ForEach(0 ..< self.data.horizontalSwatches, id: \.self) {
+            xIndex in
+            Button(action: {
+              let swatch = self.data.getSwatch(xIndex: xIndex, yIndex: yIndex)
+              self.setValues(xValue: self.data.getSwatchParameter(.horizontal, swatch: swatch), yValue:  self.data.getSwatchParameter(.vertical, swatch: swatch))
+            }) {
+              ZStack {
+                TransparencyCheckerboardView()
+                self.data.getSwatchColour(values: self.data.getSwatch(xIndex: xIndex, yIndex: yIndex))
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
-struct HSBAPaletteView: View, PalettePickable {
-  typealias values = ColourModel.HSBAValues
-  @Binding var xValue: Double
-  @Binding var yValue: Double
-  let horizontal: Parameter
-  let vertical: Parameter
-  let horizontalSwatches: Int
-  let verticalSwatches: Int
-  let constants: values
-  
-  func setValues(xValue: Double, yValue: Double) {
-    self.xValue = xValue
-    self.yValue = yValue
-  }
+protocol ColourDataStorable {
+  associatedtype ValueType
+  func getSwatchColour(values: ValueType) -> Color
+  func getSwatch(xIndex: Int, yIndex: Int) -> ValueType
+  func getParameterFromConstants(_ parameter: Parameter) -> Double
+  var constants: ValueType { get }
+  var horizontal: Parameter { get }
+  var vertical: Parameter { get }
+  var horizontalSwatches: Int { get }
+  var verticalSwatches: Int { get }
+  func getSwatchParameter(_ axis: Axis, swatch: ValueType) -> Double
 }
 
 
 
-struct CMYKAPaletteView_Previews: PreviewProvider {
-  
+struct PaletteView2_Previews: PreviewProvider {
   static var previews: some View {
-    TransparencyCheckerboardView()
-    
+    ContentView()
   }
 }
