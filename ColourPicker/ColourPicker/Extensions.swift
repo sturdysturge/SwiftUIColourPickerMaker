@@ -14,6 +14,10 @@ extension Color {
   static let indigo = Color(red: 0.29, green: 0, blue: 0.5)
   /// The colour violet is needed for the hue gradient
   static let violet = Color(red: 0.93, green: 0.5, blue: 0.93)
+  /// The colour cyan needed for the CMYKA colour space
+  static let cyan = Color(UIColor.cyan)
+  /// The colour magenta needed for the CMYKA colour space
+  static let magenta = Color(UIColor.magenta)
   #if canImport(UIKit)
   /// A colour scheme independent background colour (Light or Dark mode)
   static let background = Color(UIColor.systemBackground)
@@ -21,6 +25,7 @@ extension Color {
   /// A colour scheme independent background colour (Light or Dark mode)
   static let background = Color(NSColor.windowBackgroundColor)
   #endif
+  
   
   
   /// A way to create Color instances from HSBA tuples

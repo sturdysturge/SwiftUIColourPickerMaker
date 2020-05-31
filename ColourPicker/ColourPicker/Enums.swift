@@ -7,7 +7,46 @@
 //
 
 import SwiftUI
-
+public enum GradientType {
+  case red, green, blue, brightnessOverlay, saturationOverlay, hue, alpha, cyan, yellow, purple, magenta, black
+  
+  var colours: [Color] {
+    switch self {
+    case .red:
+      return [.clear, .red]
+    case .green:
+      return [.clear, .green]
+    case .blue:
+      return [.clear, .blue]
+    case .cyan:
+      return [.clear, .cyan]
+    case .magenta:
+      return [.clear, .magenta]
+    case .yellow:
+      return [.clear, Color(red: 1, green: 1, blue: 0, opacity: 0.7)]
+    case .purple:
+      return [.clear, Color(red: 1, green: 0, blue: 1, opacity: 0.5)]
+    case .brightnessOverlay:
+      return [.black, Color(.sRGBLinear, white: 0, opacity: 0.7), Color(.sRGBLinear, white: 0, opacity: 0.5), Color(.sRGBLinear, white: 0, opacity: 0.3)]
+    case .saturationOverlay:
+      return [.white, Color(.sRGBLinear, white: 1, opacity: 0.9), Color(.sRGBLinear, white: 1, opacity: 0.5), Color(.sRGBLinear, white: 1, opacity: 0.3)]
+    case .hue:
+      return [.red, .yellow, .green, .blue, .indigo, .violet, .red]
+    case .alpha:
+      return [Color(.sRGBLinear, white: 1, opacity: 0.5), Color(.sRGBLinear, white: 1, opacity: 0.9), .white]
+    case .black:
+      return [.clear, .black]
+    }
+  }
+  
+  var horizontal: LinearGradient {
+    return LinearGradient(gradient: Gradient(colors: colours), startPoint: .leading, endPoint: .trailing)
+  }
+  
+  var vertical: LinearGradient {
+    return LinearGradient(gradient: Gradient(colors: colours), startPoint: .top, endPoint: .bottom)
+  }
+}
 
 enum ColourSpace: CaseIterable {
   case HSBA, RGBA, CMYKA, greyscale

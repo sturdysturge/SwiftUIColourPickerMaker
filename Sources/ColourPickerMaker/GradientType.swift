@@ -20,7 +20,9 @@ public enum GradientType {
         case .blue:
             return [.clear, .blue]
         case .cyan:
-            return [.clear, Color(red: 0, green: 1, blue: 1, opacity: 0.7)]
+          return [.clear, .cyan]
+        case .magenta:
+          return [.clear, .magenta]
         case .yellow:
             return [.clear, Color(red: 1, green: 1, blue: 0, opacity: 0.7)]
         case .purple:
