@@ -8,53 +8,49 @@
 
 import SwiftUI
 
-struct SliderHorizontalView: View {
-  let parameter: Parameter
-  @Binding var value: Double
-  let gradient: LinearGradient
-  var body: some View {
-    GeometryReader { geometry in
-      ZStack {
-        if self.parameter == .alpha {
-        TransparencyCheckerboardView()
-          .frame(height: 50, alignment: .center)
-          .cornerRadius(geometry.size.height / 4)
-        } else {
-          Color.white
-        }
-        self.gradient
-          .frame(height: 50, alignment: .center)
-          .cornerRadius(geometry.size.height / 4)
-        SliderThumbView(length: geometry.size.width, value: self.$value, orientation: .horizontal)
-      }
-    }
-    .frame(height: 70)
-    .padding()
-  }
-}
 
 struct SliderView: View {
+  internal init(parameter: Parameter, orientation: Axis, thickness: CGFloat, length: CGFloat, value: Binding<Double>) {
+    self.parameter = parameter
+    self.orientation = orientation
+    self.gradient = orientation == .horizontal ? parameter.horizontalGradient : parameter.verticalGradient
+    self.thickness = thickness
+    self.length = length
+    self._value = value
+  }
+  
   let parameter: Parameter
+  let orientation: Axis
   @Binding var value: Double
   let gradient: LinearGradient
+  let thickness: CGFloat
+  let length: CGFloat
+  
+  
+  func size(in direction: Axis) -> CGFloat {
+    if orientation == direction {
+      return length
+    }
+    else {
+      return thickness
+    }
+  }
+  
   var body: some View {
-    GeometryReader { geometry in
       ZStack {
         if self.parameter == .alpha {
         TransparencyCheckerboardView()
-          .frame(width: 50, height: 300, alignment: .center)
-          .cornerRadius(geometry.size.height / 4)
+          .frame(width: size(in: .horizontal), height: size(in: .vertical), alignment: .center)
+          .cornerRadius(thickness / 4)
         } else {
           Color.white
+          .frame(width: size(in: .horizontal), height: size(in: .vertical), alignment: .center)
         }
         self.gradient
-          .frame(width: 50, height: 300, alignment: .center)
-          .cornerRadius(geometry.size.height / 4)
-        SliderThumbView(length: geometry.size.height, value: self.$value, orientation: .vertical)
+          .frame(width: size(in: .horizontal), height: size(in: .vertical), alignment: .center)
+          .cornerRadius(thickness / 4)
+        SliderThumbView(length: size(in: orientation), value: self.$value, orientation: self.orientation)
       }
-      
-    }
-      .frame(width: 50, height: 300, alignment: .center)
     .padding()
   }
 }
@@ -68,7 +64,7 @@ struct SliderThumbView: View {
       Capsule()
         .stroke(lineWidth: 5)
         .frame(width: self.orientation == .horizontal ? 10 : 70, height: self.orientation == .horizontal ? 70 : 10)
-        .drag(value: self.$value, length: length, orientation: .vertical)
+        .drag(value: self.$value, length: length, orientation: orientation)
     }
     .frame(maxWidth: orientation == .horizontal ? .infinity : 70, maxHeight: orientation == .horizontal ? 70 : .infinity, alignment: orientation == .horizontal ? .leading : .top)
   }

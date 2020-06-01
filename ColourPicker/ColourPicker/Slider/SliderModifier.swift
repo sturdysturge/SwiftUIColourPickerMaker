@@ -16,11 +16,12 @@ extension View {
 public struct SliderModifier: ViewModifier {
   public init(value: Binding<Double>, length: CGFloat, orientation: Axis) {
     self.length = length
-    _value = value
+    self._value = value
     self.orientation = orientation
+    self.offset = CGPoint(x: orientation == .horizontal ? value.wrappedValue : 0, y: orientation == .horizontal ? 0 : value.wrappedValue)
   }
   
-  @State var offset = CGPoint(x: self.orientation == .horizontal ? self.value : 0, y: self.orientation == .horizontal ? 0 : self.value)
+  @State var offset = CGPoint()
   @Binding var value: Double
   let length: CGFloat
   let orientation: Axis
