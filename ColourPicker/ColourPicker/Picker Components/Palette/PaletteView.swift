@@ -1,5 +1,5 @@
 //
-//  PaletteView2.swift
+//  PaletteView.swift
 //  ColourPicker
 //
 //  Created by Rob Sturgeon on 31/05/2020.

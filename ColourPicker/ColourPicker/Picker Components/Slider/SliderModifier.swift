@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-public struct SliderModifier: ViewModifier {
+public struct DirectionalDragModifier: ViewModifier {
     public init(value: Binding<Double>, length: CGFloat, orientation: Axis) {
         self.length = length
         _value = value
