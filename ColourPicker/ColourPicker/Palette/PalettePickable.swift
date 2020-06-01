@@ -12,7 +12,10 @@ protocol PalettePickable {
   associatedtype ValueType where ValueType: PaletteDataStorable
   var data: ValueType { get }
   var xValue: Double { get }
+  var _$xValue: Binding<Double> { get }
   var yValue: Double { get }
+  var _$yValue: Binding<Double> { get }
+  
   func setValues(xValue: Double, yValue: Double)
 }
 

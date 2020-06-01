@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct CMYKAPaletteData: PaletteDataStorable {
+  
   typealias ValueType = ColourModel.CMYKAValues
-  @Binding var constants: ValueType
+  var _$values: Binding<ValueType> { _values }
+  @Binding var values: ValueType
   let horizontal: Parameter
   let vertical: Parameter
   let horizontalSwatches: Int
@@ -19,7 +21,8 @@ struct CMYKAPaletteData: PaletteDataStorable {
 
 struct RGBAPaletteData: PaletteDataStorable {
   typealias ValueType = ColourModel.RGBAValues
-  @Binding var constants: ValueType
+  var _$values: Binding<ValueType> { _values }
+  @Binding var values: ValueType
   let horizontal: Parameter
   let vertical: Parameter
   let horizontalSwatches: Int
@@ -28,7 +31,8 @@ struct RGBAPaletteData: PaletteDataStorable {
 
 struct HSBPaletteData: PaletteDataStorable {
   typealias ValueType = ColourModel.HSBAValues
-  @Binding var constants: ValueType
+  var _$values: Binding<ValueType> { _values }
+  @Binding var values: ValueType
   let horizontal: Parameter
   let vertical: Parameter
   let horizontalSwatches: Int
@@ -40,7 +44,8 @@ protocol PaletteDataStorable {
   func getSwatchColour(values: ValueType) -> Color
   func getSwatch(xIndex: Int, yIndex: Int) -> ValueType
   func getParameterFromConstants(_ parameter: Parameter) -> Double
-  var constants: ValueType { get }
+  var values: ValueType { get }
+  var _$values: Binding<ValueType> { get }
   var horizontal: Parameter { get }
   var vertical: Parameter { get }
   var horizontalSwatches: Int { get }
@@ -85,10 +90,10 @@ extension PaletteDataStorable where ValueType == ColourModel.RGBAValues {
   
   func getParameterFromConstants(_ parameter: Parameter) -> Double {
     switch parameter {
-    case .red: return constants.red
-    case .green: return constants.green
-    case .blue: return constants.blue
-    case .alpha: return constants.alpha
+    case .red: return values.red
+    case .green: return values.green
+    case .blue: return values.blue
+    case .alpha: return values.alpha
     default: fatalError("Parameter \(parameter) not in colour space")
     }
   }
@@ -116,10 +121,10 @@ extension PaletteDataStorable where ValueType == ColourModel.HSBAValues {
   
   func getParameterFromConstants(_ parameter: Parameter) -> Double {
     switch parameter {
-    case .hue: return constants.hue
-    case .green: return constants.saturation
-    case .brightness: return constants.brightness
-    case .alpha: return constants.alpha
+    case .hue: return values.hue
+    case .green: return values.saturation
+    case .brightness: return values.brightness
+    case .alpha: return values.alpha
     default: fatalError("Parameter \(parameter) not in colour space")
     }
   }
@@ -148,11 +153,11 @@ extension PaletteDataStorable where ValueType == ColourModel.CMYKAValues {
   
   func getParameterFromConstants(_ parameter: Parameter) -> Double {
     switch parameter {
-    case .cyan: return constants.cyan
-    case .magenta: return constants.magenta
-    case .yellow: return constants.yellow
-    case .black: return constants.black
-    case .alpha: return constants.alpha
+    case .cyan: return values.cyan
+    case .magenta: return values.magenta
+    case .yellow: return values.yellow
+    case .black: return values.black
+    case .alpha: return values.alpha
     default: fatalError("Parameter \(parameter) not in colour space")
     }
   }
