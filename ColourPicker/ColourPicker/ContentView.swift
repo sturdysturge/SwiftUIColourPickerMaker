@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct ContentView: View {
-   
     var body: some View {
         CMYKAExample()
     }
@@ -20,4 +19,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-

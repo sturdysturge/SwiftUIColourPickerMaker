@@ -11,7 +11,7 @@ import SwiftUI
 /// A background that can only be seen when Color opacity is less than 1.0
 public struct TransparencyCheckerboardView: View {
     /// The size for each white or grey tile
-  let tileSize: CGFloat
+    let tileSize: CGFloat
     /// The first colour to alternate between
     let colour1: Color
     /// The second colour to alternate between
@@ -39,31 +39,29 @@ public struct TransparencyCheckerboardView: View {
             return horizontalIndex % 2 != 0 ? .gray : .white
         }
     }
-  
-  func horizontalOffset(verticalPosition: CGFloat) -> CGFloat {
-    return Int(verticalPosition) % (Int(self.tileSize) * 2) == 0 ? self.tileSize : 0
-  }
 
-  public var body: some View {
-    ZStack {
-      GeometryReader { geometry in
-        ForEach(0..<Int(geometry.size.height / self.tileSize), id: \.self) {
-          yIndex in
-          ForEach(0..<Int(geometry.size.width / self.tileSize), id: \.self) {
-            xIndex in
-            Rectangle()
-              .aspectRatio(1, contentMode: .fit)
-              .frame(width: self.tileSize, height: self.tileSize)
-              .position(x: self.tileSize * CGFloat(xIndex), y: self.tileSize * CGFloat(yIndex))
-              .foregroundColor(self.squareColour(horizontalIndex: xIndex, verticalIndex: yIndex))
-            
-          }
+    func horizontalOffset(verticalPosition: CGFloat) -> CGFloat {
+        return Int(verticalPosition) % (Int(tileSize) * 2) == 0 ? tileSize : 0
+    }
+
+    public var body: some View {
+        ZStack {
+            GeometryReader { geometry in
+                ForEach(0 ..< Int(geometry.size.height / self.tileSize), id: \.self) {
+                    yIndex in
+                    ForEach(0 ..< Int(geometry.size.width / self.tileSize), id: \.self) {
+                        xIndex in
+                        Rectangle()
+                            .aspectRatio(1, contentMode: .fit)
+                            .frame(width: self.tileSize, height: self.tileSize)
+                            .position(x: self.tileSize * CGFloat(xIndex), y: self.tileSize * CGFloat(yIndex))
+                            .foregroundColor(self.squareColour(horizontalIndex: xIndex, verticalIndex: yIndex))
+                    }
+                }
+            }
         }
-    }
-    }
-    .offset(x: self.tileSize / 2, y: self.tileSize / 2)
-  .mask (Rectangle())
-        
+        .offset(x: self.tileSize / 2, y: self.tileSize / 2)
+        .mask(Rectangle())
     }
 }
 
