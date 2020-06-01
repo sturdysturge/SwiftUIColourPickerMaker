@@ -8,11 +8,7 @@
 
 import SwiftUI
 
-extension View {
-  func drag(value: Binding<Double>, length: CGFloat, orientation: Axis) -> some View {
-    return modifier(SliderModifier(value: value, length: length, orientation: orientation))
-  }
-}
+
 public struct SliderModifier: ViewModifier {
   public init(value: Binding<Double>, length: CGFloat, orientation: Axis) {
     self.length = length

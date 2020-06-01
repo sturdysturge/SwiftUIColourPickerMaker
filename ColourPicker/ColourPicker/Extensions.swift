@@ -214,3 +214,19 @@ extension Color {
   }
 }
 
+extension View {
+  /**
+   A way to use SliderModifier without calling it directly
+   ~~~
+   modifier(SliderModifier(value: value, length: length, orientation: orientation))
+   ~~~
+   - Parameters:
+   - value: A Binding so that the slider's value changes are passed back
+   - length: The length of the slider (horizontally or vertically)
+   - orientation: The orientation of the slider (horizontally or vertically)
+   - Returns: A View that has dragging capabilities
+   */
+  func drag(value: Binding<Double>, length: CGFloat, orientation: Axis) -> some View {
+    return modifier(SliderModifier(value: value, length: length, orientation: orientation))
+  }
+}
