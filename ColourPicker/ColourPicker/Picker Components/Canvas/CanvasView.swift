@@ -22,7 +22,7 @@ struct CanvasView: View, CanvasPickable {
 
 struct CanvasView_Previews: PreviewProvider {
     static var previews: some View {
-      CanvasView(parameters: (.hue, .saturation), xValue: .constant(0.5), yValue: .constant(0.5))
+      CanvasView(parameters: (.red, .blue), xValue: .constant(0.5), yValue: .constant(0.5))
     }
 }
 
