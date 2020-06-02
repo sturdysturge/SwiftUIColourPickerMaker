@@ -65,6 +65,70 @@ enum Parameter: String, CaseIterable {
     func isSameColourSpace(as otherParameter: Parameter) -> Bool {
         return colourSpace == otherParameter.colourSpace || isAlpha || otherParameter.isAlpha
     }
+  
+  var valuesInRGB: ColourModel.RGBAValues {
+    switch self {
+      
+    case .hue:
+      return (red: 1, green: 0, blue: 0, alpha: 1)
+    case .saturation:
+      return (red: 1, green: 1, blue: 1, alpha: 1)
+    case .brightness:
+      return (red: 0, green: 0, blue: 0, alpha: 1)
+    case .red:
+      return (red: 1, green: 0, blue: 0, alpha: 1)
+    case .green:
+      return (red: 0, green: 1, blue: 0, alpha: 1)
+    case .blue:
+      return (red: 0, green: 0, blue: 1, alpha: 1)
+    case .alpha:
+      return (red: 1, green: 1, blue: 1, alpha: 1)
+    case .white:
+      return (red: 1, green: 1, blue: 1, alpha: 1)
+    case .cyan:
+      return (red: 0, green: 1, blue: 1, alpha: 1)
+    case .magenta:
+      return (red: 1, green: 0, blue: 1, alpha: 1)
+    case .yellow:
+      return (red: 1, green: 1, blue: 0, alpha: 1)
+    case .black:
+      return (red: 0, green: 0, blue: 0, alpha: 1)
+    }
+  }
+  
+  var valuesInHSB: ColourModel.HSBAValues {
+    switch self {
+      
+    case .hue:
+      return (hue: 1, saturation: 0, brightness: 0, alpha: 1)
+    case .saturation:
+      return (hue: 1, saturation: 0, brightness: 0, alpha: 1)
+    case .brightness:
+      return (hue: 1, saturation: 0, brightness: 0, alpha: 1)
+    case .red:
+      return (hue: 1, saturation: 0, brightness: 0, alpha: 1)
+    case .green:
+      return (hue: 1, saturation: 0, brightness: 0, alpha: 1)
+    case .blue:
+      return (hue: 1, saturation: 0, brightness: 0, alpha: 1)
+    case .alpha:
+      return (hue: 1, saturation: 0, brightness: 0, alpha: 1)
+    case .white:
+      return (hue: 1, saturation: 0, brightness: 0, alpha: 1)
+    case .cyan:
+      return (hue: 1, saturation: 0, brightness: 0, alpha: 1)
+    case .magenta:
+      return (hue: 1, saturation: 0, brightness: 0, alpha: 1)
+    case .yellow:
+      return (hue: 1, saturation: 0, brightness: 0, alpha: 1)
+    case .black:
+      return (hue: 1, saturation: 0, brightness: 0, alpha: 1)
+    }
+  }
+  
+  var valuesInCMYK: ColourModel.CMYKAValues {
+    return Color.convertToCMYKA(self.valuesInRGB)
+  }
 
     var colours: [Color] {
         switch self {
@@ -87,9 +151,9 @@ enum Parameter: String, CaseIterable {
         case .black:
             return [.clear, .black]
         case .saturation:
-            return [.clear]
+          return [.white, .clear]
         case .brightness:
-            return [.clear]
+          return [.black, .clear]
         case .white:
             return [.clear]
         }

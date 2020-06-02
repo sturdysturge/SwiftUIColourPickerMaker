@@ -25,6 +25,18 @@ extension Color {
   static let background = Color(NSColor.windowBackgroundColor)
   #endif
   
+  static func blend(colour1: ColourModel.RGBAValues, colour2: ColourModel.RGBAValues, alpha: Double) -> ColourModel.RGBAValues {
+    return (red: colour1.red + colour2.red, green: colour1.green + colour2.green, blue: colour1.blue + colour2.blue, alpha: alpha)
+  }
+  
+  static func blend(colour1: ColourModel.HSBAValues, colour2: ColourModel.HSBAValues, alpha: Double) -> ColourModel.HSBAValues {
+    return (hue: colour1.hue + colour2.hue, saturation: colour1.saturation + colour2.saturation, brightness: colour1.brightness + colour2.brightness, alpha: alpha)
+  }
+  
+  static func blend(colour1: ColourModel.CMYKAValues, colour2: ColourModel.CMYKAValues, alpha: Double) -> ColourModel.CMYKAValues {
+    return (cyan: colour1.cyan + colour2.cyan, magenta: colour1.magenta + colour2.magenta, yellow: colour1.yellow + colour2.yellow, black: colour1.black + colour2.black, alpha: alpha)
+  }
+  
   /// A way to create Color instances from HSBA tuples
   /// - Parameters:
   ///   - valuesInHSBA: A tuple containing hue, saturation and brightness as Doubles
