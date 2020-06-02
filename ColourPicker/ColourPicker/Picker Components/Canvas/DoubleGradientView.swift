@@ -14,7 +14,6 @@ protocol DoubleGradientDisplayable {
   var horizontalGradient: Gradient { get }
   var verticalGradient: Gradient { get }
   var backgroundColour: Color { get }
-  var hue: Double? { get }
 }
 
 extension DoubleGradientDisplayable where Self: View {
@@ -42,7 +41,6 @@ extension DoubleGradientDisplayable where Self: View {
 
 
 struct DoubleGradientView: View, DoubleGradientDisplayable {
-  var hue: Double?
   let horizontal: Parameter
   let vertical: Parameter
   let horizontalGradient: Gradient
@@ -63,7 +61,7 @@ struct DoubleGradientView: View, DoubleGradientDisplayable {
     let parameters = [horizontal, vertical]
     if parameters.contains(.brightness) {
       if parameters.contains(.saturation) {
-        self.backgroundColour = Color(hue: self.hue ?? 0, saturation: 1, brightness: 1, opacity: 1)
+        self.backgroundColour = .clear
       }
       else {
         self.backgroundColour = .black

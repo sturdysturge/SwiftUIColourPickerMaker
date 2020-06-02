@@ -19,6 +19,7 @@ protocol CanvasPickable {
 extension CanvasPickable where Self: View {
   var body: some View {
       ZStack {
+        Color(hue: self.getHue() ?? 0, saturation: 1, brightness: 1, opacity: self.getHue() ?? 0)
           GeometryReader { geometry in
             DoubleGradientView(horizontal: self.parameters.0, vertical: self.parameters.1, hue: self.getHue())
             CanvasThumbView(size: geometry.size, xValue: self.bindingValues().0, yValue: self.bindingValues().1)
