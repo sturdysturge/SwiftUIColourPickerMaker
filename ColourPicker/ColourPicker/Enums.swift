@@ -44,6 +44,57 @@ enum Parameter: String, CaseIterable {
         default: fatalError("Unexpected character \(character)")
         }
     }
+  
+  func canvasGradient(axis: Axis, otherParameter: Parameter) -> Gradient {
+    let horizontal = axis == .horizontal ? self : otherParameter
+    let vertical = axis == .vertical ? self : otherParameter
+    switch colourSpace {
+    case .RGBA:
+     let horizontalColour = Color.fromValues(horizontal.valuesInRGB)
+      let verticalColour = Color.fromValues(vertical.valuesInRGB)
+      let blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInRGB, colour2: vertical.valuesInRGB, alpha: 0.5))
+     return axis == .horizontal ?
+      Gradient(colors: [verticalColour, blendedColour]) : Gradient(colors: [horizontalColour, blendedColour])
+      case .HSBA:
+        if axis == .horizontal {
+        if horizontal == .brightness || horizontal == .saturation {
+          return Gradient(colors: [])
+        }
+        else if horizontal == .hue {
+           return .hue
+        }
+        else {
+        
+      let verticalColour = Color.fromValues(vertical.valuesInHSB)
+      let blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInHSB, colour2: vertical.valuesInHSB, alpha: 0.5))
+          return Gradient(colors: [verticalColour, blendedColour])
+    }
+        }
+        else
+        {      if vertical == .brightness || vertical == .saturation {
+            return Gradient(colors: [])
+          }
+          else if vertical == .hue {
+            return .hue
+          }
+          else {
+          let horizontalColour = Color.fromValues(horizontal.valuesInHSB)
+        let blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInHSB, colour2: vertical.valuesInHSB, alpha: 0.5))
+            return Gradient(colors: [horizontalColour, blendedColour])
+          }
+      }
+      case .CMYKA:
+      let horizontalColour = Color.fromValues(horizontal.valuesInCMYK)
+      let verticalColour = Color.fromValues(vertical.valuesInCMYK)
+      let blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInCMYK, colour2: vertical.valuesInCMYK, alpha: 0.5))
+      return axis == .horizontal ?
+      Gradient(colors: [verticalColour, blendedColour]) : Gradient(colors: [horizontalColour, blendedColour])
+    case .greyscale:
+      return axis == .horizontal ?
+      Gradient(colors: [horizontal == .white ? .black : .clear, .white]) : Gradient(colors: [vertical == .white ? .black : .clear, .white])
+    }
+    
+  }
 
     var isAlpha: Bool {
         return self == .alpha

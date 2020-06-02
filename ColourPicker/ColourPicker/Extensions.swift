@@ -8,6 +8,10 @@
 
 import SwiftUI
 
+extension Gradient {
+  static let hue = Gradient(colors: [.red, .yellow, .green, .blue, .indigo, .violet, .red])
+}
+
 extension Color {
   /// The colour indigo is needed for the hue gradient
   static let indigo = Color(red: 0.29, green: 0, blue: 0.5)

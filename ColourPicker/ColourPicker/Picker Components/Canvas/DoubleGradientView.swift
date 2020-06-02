@@ -12,9 +12,8 @@ import SwiftUI
 struct DoubleGradientView: View {
   let horizontal: Parameter
   let vertical: Parameter
-  let horizontalColour: Color
-  let verticalColour: Color
-  let blendedColour: Color
+  let horizontalGradient: Gradient
+  let verticalGradient: Gradient
   init(horizontal: Parameter, vertical: Parameter) {
     self.horizontal = horizontal
     self.vertical = vertical
@@ -24,54 +23,48 @@ struct DoubleGradientView: View {
     let colourSpace = horizontal.colourSpace
     switch colourSpace {
     case .RGBA:
-      self.horizontalColour = Color.fromValues(horizontal.valuesInRGB)
-      self.verticalColour = Color.fromValues(vertical.valuesInRGB)
-      self.blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInRGB, colour2: vertical.valuesInRGB, alpha: 0.5))
+     let horizontalColour = Color.fromValues(horizontal.valuesInRGB)
+      let verticalColour = Color.fromValues(vertical.valuesInRGB)
+      let blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInRGB, colour2: vertical.valuesInRGB, alpha: 0.5))
+      self.horizontalGradient = Gradient(colors: [verticalColour, blendedColour])
+      self.verticalGradient = Gradient(colors: [horizontalColour, blendedColour])
       case .HSBA:
-      self.horizontalColour = Color.fromValues(horizontal.valuesInHSB)
-      self.verticalColour = Color.fromValues(vertical.valuesInHSB)
-      self.blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInHSB, colour2: vertical.valuesInHSB, alpha: 0.5))
+        if horizontal == .brightness || horizontal == .saturation {
+          self.horizontalGradient = Gradient(colors: [])
+        }
+        else if horizontal == .hue {
+          self.horizontalGradient = .hue
+        }
+        else {
+        
+      let verticalColour = Color.fromValues(vertical.valuesInHSB)
+      let blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInHSB, colour2: vertical.valuesInHSB, alpha: 0.5))
+          self.horizontalGradient = Gradient(colors: [verticalColour, blendedColour])
+    }
+      if vertical == .brightness || vertical == .saturation {
+            self.verticalGradient = Gradient(colors: [])
+          }
+          else if vertical == .hue {
+            self.verticalGradient = .hue
+          }
+          else {
+          let horizontalColour = Color.fromValues(horizontal.valuesInHSB)
+        let blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInHSB, colour2: vertical.valuesInHSB, alpha: 0.5))
+            self.verticalGradient = Gradient(colors: [horizontalColour, blendedColour])
+      }
       case .CMYKA:
-      self.horizontalColour = Color.fromValues(horizontal.valuesInCMYK)
-      self.verticalColour = Color.fromValues(vertical.valuesInCMYK)
-      self.blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInCMYK, colour2: vertical.valuesInCMYK, alpha: 0.5))
+      let horizontalColour = Color.fromValues(horizontal.valuesInCMYK)
+      let verticalColour = Color.fromValues(vertical.valuesInCMYK)
+      let blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInCMYK, colour2: vertical.valuesInCMYK, alpha: 0.5))
+      self.horizontalGradient = Gradient(colors: [verticalColour, blendedColour])
+      self.verticalGradient = Gradient(colors: [horizontalColour, blendedColour])
     case .greyscale:
-      self.horizontalColour = Color.white
-      self.verticalColour = Color(white: 1, opacity: 0)
-      self.blendedColour = Color(white: 1, opacity: 0.5)
+      self.horizontalGradient = Gradient(colors: [horizontal == .white ? .black : .clear, .white])
+      self.verticalGradient = Gradient(colors: [vertical == .white ? .black : .clear, .white])
     }
     
   }
   
-  func horizontalGradient() -> Gradient {
-    if horizontal == .brightness {
-      return Gradient(colors: [])
-    }
-    else if horizontal == .saturation {
-      return Gradient(colors: [])
-    }
-    else if horizontal == .hue {
-      return Gradient(colors: horizontal.colours)
-    }
-    else {
-      return Gradient(colors: [verticalColour, blendedColour])
-    }
-  }
-  
-  func verticalGradient() -> Gradient {
-    if vertical == .brightness {
-      return Gradient(colors: [])
-    }
-    else if vertical == .saturation {
-      return Gradient(colors: [])
-    }
-    else if vertical == .hue {
-      return Gradient(colors: vertical.colours)
-    }
-    else {
-      return Gradient(colors: [verticalColour, blendedColour])
-    }
-  }
   
   var body: some View {
     ZStack {
@@ -84,14 +77,14 @@ struct DoubleGradientView: View {
       //Horizontal gradient
       // - Start at vertical colour
       // - End at blend of both
-      LinearGradient(gradient:  horizontalGradient(), startPoint: .leading, endPoint: .trailing)
+      LinearGradient(gradient:  horizontalGradient, startPoint: .leading, endPoint: .trailing)
         .mask (//Mask top to bottom to make vertical gradient visible
           LinearGradient(gradient: Gradient(colors: [.clear, .white]), startPoint: .top, endPoint: .bottom)
       )
       //Horizontal gradient
       // - Start at horizontal colour
       // - End at blend of both
-      LinearGradient(gradient: verticalGradient(), startPoint: .top, endPoint: .bottom)
+      LinearGradient(gradient: verticalGradient, startPoint: .top, endPoint: .bottom)
       .mask (//Mask left tor ight to make horizontal gradient visible
         LinearGradient(gradient: Gradient(colors: [.clear, .white]), startPoint: .trailing, endPoint: .leading)
       )
