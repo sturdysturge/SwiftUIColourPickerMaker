@@ -8,72 +8,18 @@
 
 import SwiftUI
 
+protocol DoubleGradientDisplayable {
+  var horizontal: Parameter { get }
+  var vertical: Parameter { get }
+  var horizontalGradient: Gradient { get }
+  var verticalGradient: Gradient { get }
+  var backgroundColour: Color { get }
+  var hue: Double? { get }
+}
 
-struct DoubleGradientView: View {
-  let horizontal: Parameter
-  let vertical: Parameter
-  let horizontalGradient: Gradient
-  let verticalGradient: Gradient
-  init(horizontal: Parameter, vertical: Parameter) {
-    self.horizontal = horizontal
-    self.vertical = vertical
-    guard horizontal.colourSpace == vertical.colourSpace else {
-      fatalError("Colour spaces must be the same")
-    }
-    let colourSpace = horizontal.colourSpace
-    switch colourSpace {
-    case .RGBA:
-     let horizontalColour = Color.fromValues(horizontal.valuesInRGB)
-      let verticalColour = Color.fromValues(vertical.valuesInRGB)
-      let blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInRGB, colour2: vertical.valuesInRGB, alpha: 0.5))
-      self.horizontalGradient = Gradient(colors: [verticalColour, blendedColour])
-      self.verticalGradient = Gradient(colors: [horizontalColour, blendedColour])
-      case .HSBA:
-        if horizontal == .brightness || horizontal == .saturation {
-          self.horizontalGradient = Gradient(colors: [])
-        }
-        else if horizontal == .hue {
-          self.horizontalGradient = .hue
-        }
-        else {
-        
-      let verticalColour = Color.fromValues(vertical.valuesInHSB)
-      let blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInHSB, colour2: vertical.valuesInHSB, alpha: 0.5))
-          self.horizontalGradient = Gradient(colors: [verticalColour, blendedColour])
-    }
-      if vertical == .brightness || vertical == .saturation {
-            self.verticalGradient = Gradient(colors: [])
-          }
-          else if vertical == .hue {
-            self.verticalGradient = .hue
-          }
-          else {
-          let horizontalColour = Color.fromValues(horizontal.valuesInHSB)
-        let blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInHSB, colour2: vertical.valuesInHSB, alpha: 0.5))
-            self.verticalGradient = Gradient(colors: [horizontalColour, blendedColour])
-      }
-      case .CMYKA:
-      let horizontalColour = Color.fromValues(horizontal.valuesInCMYK)
-      let verticalColour = Color.fromValues(vertical.valuesInCMYK)
-      let blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInCMYK, colour2: vertical.valuesInCMYK, alpha: 0.5))
-      self.horizontalGradient = Gradient(colors: [verticalColour, blendedColour])
-      self.verticalGradient = Gradient(colors: [horizontalColour, blendedColour])
-    case .greyscale:
-      self.horizontalGradient = Gradient(colors: [horizontal == .white ? .black : .clear, .white])
-      self.verticalGradient = Gradient(colors: [vertical == .white ? .black : .clear, .white])
-    }
-    
-  }
-  
-  
+extension DoubleGradientDisplayable where Self: View {
   var body: some View {
     ZStack {
-      if horizontal != .alpha && vertical != .alpha && horizontal != .brightness && vertical != .brightness {
-        Color.white
-      }
-      else if horizontal.colourSpace == .HSBA {
-        Color.black
-      }
       //Horizontal gradient
       // - Start at vertical colour
       // - End at blend of both
@@ -81,20 +27,66 @@ struct DoubleGradientView: View {
         .mask (//Mask top to bottom to make vertical gradient visible
           LinearGradient(gradient: Gradient(colors: [.clear, .white]), startPoint: .top, endPoint: .bottom)
       )
-      //Horizontal gradient
+      //Vertical gradient
       // - Start at horizontal colour
       // - End at blend of both
       LinearGradient(gradient: verticalGradient, startPoint: .top, endPoint: .bottom)
       .mask (//Mask left tor ight to make horizontal gradient visible
-        LinearGradient(gradient: Gradient(colors: [.clear, .white]), startPoint: .trailing, endPoint: .leading)
+        LinearGradient(gradient: Gradient(colors: [.clear, .white]), startPoint: .leading, endPoint: .trailing)
       )
     }
+    .background(self.backgroundColour)
+  }
+}
+
+
+
+struct DoubleGradientView: View, DoubleGradientDisplayable {
+  var hue: Double?
+  let horizontal: Parameter
+  let vertical: Parameter
+  let horizontalGradient: Gradient
+  let verticalGradient: Gradient
+  let backgroundColour: Color
+  init(horizontal: Parameter, vertical: Parameter, hue: Double?) {
+    guard horizontal != vertical else {
+      fatalError("Parameters should be different")
+    }
+    guard horizontal.colourSpace != vertical.colourSpace else {
+      fatalError("Parameters should be from the same colour space")
+    }
+    
+    self.horizontal = horizontal
+    self.vertical = vertical
+    self.horizontalGradient = horizontal.canvasGradient(axis: .horizontal, otherParameter: vertical)
+    self.verticalGradient = vertical.canvasGradient(axis: .vertical, otherParameter: horizontal)
+    let parameters = [horizontal, vertical]
+    if parameters.contains(.brightness) {
+      if parameters.contains(.saturation) {
+        self.backgroundColour = Color(hue: self.hue ?? 0, saturation: 1, brightness: 1, opacity: 1)
+      }
+      else {
+        self.backgroundColour = .black
+      }
+      }
+      else if parameters.contains(.saturation) {
+        self.backgroundColour = .white
+      }
+    else {
+      self.backgroundColour = .clear
+    }
+    
+    
   }
 }
 
 struct DoubleGradientView_Previews: PreviewProvider {
     static var previews: some View {
-      DoubleGradientView(horizontal: .hue, vertical: .brightness)
+      ZStack {
+        TransparencyCheckerboardView()
         .aspectRatio(1, contentMode: .fit)
+        DoubleGradientView(horizontal: .hue, vertical: .alpha, hue: 1)
+        .aspectRatio(1, contentMode: .fit)
+      }
     }
 }

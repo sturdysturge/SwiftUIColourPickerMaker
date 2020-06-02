@@ -8,7 +8,18 @@
 
 import SwiftUI
 
-struct CanvasView: View, CanvasPickable {
+struct CanvasView<T>: View, CanvasPickable {
+  func getHue() -> Double? {
+    if let values = values as? ColourModel.HSBAValues {
+      return values.hue
+    }
+    else {
+      return nil
+    }
+  }
+  
+  let values: T
+  
   let parameters: (Parameter, Parameter)
   
   @Binding var xValue: Double
@@ -22,7 +33,7 @@ struct CanvasView: View, CanvasPickable {
 
 struct CanvasView_Previews: PreviewProvider {
     static var previews: some View {
-      CanvasView(parameters: (.red, .blue), xValue: .constant(0.5), yValue: .constant(0.5))
+      CanvasView(values: (red: 0, blue: 0, green: 0, alpha: 0), parameters: (.red, .blue), xValue: .constant(0.5), yValue: .constant(0.5))
     }
 }
 

@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
       VStack {
         PreviewColourView(colour: data.colour, square: true)
-      CanvasView(parameters: (.hue, .saturation), xValue: $data.valuesInHSBA.hue, yValue: $data.valuesInHSBA.saturation)
+        CanvasView(values: $data.valuesInHSBA, parameters: (.brightness, .saturation), xValue: $data.valuesInHSBA.brightness, yValue: $data.valuesInHSBA.saturation)
   }
     }
 }

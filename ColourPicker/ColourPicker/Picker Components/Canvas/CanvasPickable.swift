@@ -11,13 +11,16 @@ import SwiftUI
 protocol CanvasPickable {
   var parameters: ( Parameter, Parameter) { get }
   func bindingValues() -> (Binding<Double>, Binding<Double>)
+  associatedtype ValueType
+  var values: ValueType { get }
+  func getHue() -> Double?
 }
 
 extension CanvasPickable where Self: View {
   var body: some View {
       ZStack {
           GeometryReader { geometry in
-            DoubleGradientView(horizontal: self.parameters.0, vertical: self.parameters.1)
+            DoubleGradientView(horizontal: self.parameters.0, vertical: self.parameters.1, hue: self.getHue())
             CanvasThumbView(size: geometry.size, xValue: self.bindingValues().0, yValue: self.bindingValues().1)
           }
       }

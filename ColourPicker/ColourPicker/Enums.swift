@@ -45,6 +45,7 @@ enum Parameter: String, CaseIterable {
         }
     }
   
+  
   func canvasGradient(axis: Axis, otherParameter: Parameter) -> Gradient {
     let horizontal = axis == .horizontal ? self : otherParameter
     let vertical = axis == .vertical ? self : otherParameter
