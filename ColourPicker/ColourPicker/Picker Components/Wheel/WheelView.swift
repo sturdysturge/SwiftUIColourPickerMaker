@@ -9,22 +9,16 @@
 import SwiftUI
 
 public struct WheelView: View {
-    public init(rotation: Binding<Double>, distanceFromCentre: Binding<Double>, angularGradient: Gradient = Gradient(colors: []), radialGradient: Gradient = Gradient(colors: [])) {
-        _rotation = rotation
-        _distanceFromCentre = distanceFromCentre
-        self.angularGradient = angularGradient
-        self.radialGradient = radialGradient
-    }
-
     let angularGradient: Gradient
     let radialGradient: Gradient
     @Binding var rotation: Double
     @Binding var distanceFromCentre: Double
     public var body: some View {
-        GeometryReader { geometry in
+        
             ZStack {
-                AngularGradient(gradient: self.angularGradient, center: .center)
-                RadialGradient(gradient: self.radialGradient, center: .center, startRadius: 0, endRadius: geometry.size.width / 2)
+              GeometryReader { geometry in
+              AngularGradient(gradient: self.angularGradient, center: .center)
+              RadialGradient(gradient: self.radialGradient, center: .center, startRadius: 0, endRadius: geometry.size.width)
                 Group {
                     Circle()
                         .stroke(lineWidth: 5)
@@ -33,12 +27,16 @@ public struct WheelView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             }
+              
+            
         }
+      .aspectRatio(1, contentMode: .fit)
+      .clipShape(Circle())
     }
 }
 
 struct WheelView_Previews: PreviewProvider {
     static var previews: some View {
-      WheelView(rotation: .constant(0.5), distanceFromCentre: .constant(0.5))
+      ContentView()
     }
 }

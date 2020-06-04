@@ -9,20 +9,24 @@
 import SwiftUI
 
 public struct RadialDragModifier: ViewModifier {
-    public init(rotation: Binding<Double>, distanceFromCentre: Binding<Double>, size: CGSize) {
+    init(rotation: Binding<Double>, distanceFromCentre: Binding<Double>, size: CGSize) {
+      _rotation = rotation
+      _distanceFromCentre = distanceFromCentre
         self.size = size
-        _rotation = rotation
-        _distanceFromCentre = distanceFromCentre
     }
 
-    @State var offset = CGPoint(x: 0, y: 0)
+  @State var offset = CGPoint()
     @Binding var rotation: Double
     @Binding var distanceFromCentre: Double
     let size: CGSize
 
     public func body(content: Content) -> some View {
         content
+          .onAppear {
+            self.offset = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+          }
             .gesture(DragGesture(minimumDistance: 0)
+              
                 .onChanged { value in
                     self.offset.x += value.location.x - value.startLocation.x
                     self.offset.y += value.location.y - value.startLocation.y
@@ -47,11 +51,27 @@ public struct RadialDragModifier: ViewModifier {
                     }
                     let centre = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
 
-                    print(self.offset)
-                    print(centre.angleToPoint(self.offset))
+                    
                     let angleOfPoint = centre.angleToPoint(self.offset)
                     self.rotation = Double(angleOfPoint / CGFloat.doublePi)
                     self.distanceFromCentre = Double(centre.distanceToPoint(otherPoint: self.offset) / (self.size.width / 2))
+                  print(self.offset)
+                  print("distance from centre \(self.distanceFromCentre)")
+                  print("angle \(angleOfPoint)")
+                  print("rotation \(self.rotation)")
+                  print("radius: \(self.size.width / 2)")
+                  print("difference: \(CGSize(width: self.offset.x - self.size.width / 2, height: self.offset.y - self.size.height / 2))")
+                  
+                  
+                  let radius = (self.size.width / 2)
+                  let distanceToCentre = sqrt(pow(self.offset.x - radius, 2) + pow(self.offset.y - radius, 2))
+                  print(distanceToCentre)
+                  
+                  if distanceToCentre > radius {
+                    //furthestPossible point
+                   self.offset.x = radius + radius * cos(angleOfPoint)
+                   self.offset.y = radius + radius * sin(angleOfPoint)
+                  }
 
       })
             .offset(x: offset.x, y: offset.y)

@@ -9,8 +9,8 @@
 import SwiftUI
 
 extension CGFloat {
-  static let halfPi = Self.pi / 2
-  static let doublePi = Self.pi * 2
+  static let halfPi: CGFloat = 1.5707963267948966
+  static let doublePi: CGFloat = 6.283185307179586
 }
 
 extension CGPoint {
