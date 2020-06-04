@@ -8,6 +8,29 @@
 
 import SwiftUI
 
+extension CGFloat {
+  static let halfPi: CGFloat = 1.5707963267948966
+  static let doublePi: CGFloat = 6.283185307179586
+}
+
+extension CGPoint {
+  func angleToPoint(_ point: CGPoint) -> CGFloat {
+    let xDistance = point.x - x
+    let yDistance = point.y - y
+    var radians = CGFloat.halfPi + (CGFloat.halfPi - atan2(xDistance, yDistance)) 
+    
+    while radians < 0 {
+      radians += CGFloat.doublePi
+    }
+    
+    return radians
+  }
+  
+  func distanceToPoint(otherPoint: CGPoint) -> CGFloat {
+    return sqrt(pow(otherPoint.x - x, 2) + pow(otherPoint.y - y, 2))
+  }
+}
+
 extension Gradient {
   static let hue = Gradient(colors: [.red, .yellow, .green, .blue, .indigo, .violet, .red])
 }
@@ -238,6 +261,17 @@ extension Color {
 }
 
 extension View {
+  /**
+  A way to use RadialDragModifier without calling it directly
+  - Parameters:
+  - rotation: A Binding for the angle of the selected point on the circle
+  - distanceFromCentre: The radius of the line from the centre to the selected point
+  - size: The space the wheel occupies
+  - Returns: A View that has dragging functionality
+  */
+  func radialDrag(rotation: Binding<Double>, distanceFromCentre: Binding<Double>, size: CGSize, offset: Binding<CGPoint>) -> some View {
+    return modifier(RadialDragModifier(offset: offset, rotation: rotation, distanceFromCentre: distanceFromCentre, size: size))
+    }
   /**
    A way to use DirectionalDragModifier without calling it directly
    - Parameters:
