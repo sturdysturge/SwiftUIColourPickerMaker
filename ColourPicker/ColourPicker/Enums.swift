@@ -44,7 +44,12 @@ enum Parameter: String, CaseIterable {
         default: fatalError("Unexpected character \(character)")
         }
     }
-  
+  enum CircleDirection {
+    case angular, radial
+  }
+  var gradient: Gradient {
+    return Gradient(colors: colours)
+  }
   
   func canvasGradient(axis: Axis, otherParameter: Parameter) -> Gradient {
     let horizontal = axis == .horizontal ? self : otherParameter

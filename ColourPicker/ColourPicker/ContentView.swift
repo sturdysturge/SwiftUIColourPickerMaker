@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
       VStack {
         PreviewColourView(colour: data.colour, square: true)
-        WheelView(values: data.valuesInHSBA, angularGradient: .hue, radialGradient: Gradient(colors: [.white, Color(white: 1, opacity: 0.2), .clear]), rotation: $data.valuesInHSBA.hue, distanceFromCentre: $data.valuesInHSBA.saturation)
+        WheelView(data: HSBWheelData(rotation: .hue, distanceFromCentre: .saturation, values: $data.valuesInHSBA))
   }
     }
 }

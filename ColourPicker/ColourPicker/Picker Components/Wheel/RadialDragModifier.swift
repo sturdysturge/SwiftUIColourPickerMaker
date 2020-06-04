@@ -40,7 +40,6 @@ public struct RadialDragModifier: ViewModifier {
         self.offset.y = centre.y + radius * sin(angleOfPoint - CGFloat.halfPi)
         self.distanceFromCentre = 1
       }
-      print(self.offset)
     })
   }
 }
