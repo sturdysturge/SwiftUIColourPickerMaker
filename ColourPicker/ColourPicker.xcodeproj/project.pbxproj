@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		412D472A24893A4B0014C35D /* CircleGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D472924893A4B0014C35D /* CircleGradientView.swift */; };
+		412D472C24893C370014C35D /* CircleThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D472B24893C370014C35D /* CircleThumbView.swift */; };
 		413436302488FF7100CB0095 /* WheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4134362F2488FF7100CB0095 /* WheelView.swift */; };
 		413436322489003600CB0095 /* RadialDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413436312489003600CB0095 /* RadialDragModifier.swift */; };
 		4139115E24844E2C00F2E0D5 /* PalettePickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4139115D24844E2C00F2E0D5 /* PalettePickable.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		412D472924893A4B0014C35D /* CircleGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGradientView.swift; sourceTree = "<group>"; };
+		412D472B24893C370014C35D /* CircleThumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleThumbView.swift; sourceTree = "<group>"; };
 		4134362F2488FF7100CB0095 /* WheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelView.swift; sourceTree = "<group>"; };
 		413436312489003600CB0095 /* RadialDragModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialDragModifier.swift; sourceTree = "<group>"; };
 		4139115D24844E2C00F2E0D5 /* PalettePickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettePickable.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 			children = (
 				4134362F2488FF7100CB0095 /* WheelView.swift */,
 				413436312489003600CB0095 /* RadialDragModifier.swift */,
+				412D472924893A4B0014C35D /* CircleGradientView.swift */,
 			);
 			path = Wheel;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 		4163DC822485B7A0002662DC /* Picker Components */ = {
 			isa = PBXGroup;
 			children = (
+				412D472B24893C370014C35D /* CircleThumbView.swift */,
 				41A5BB462483D3910073B4C6 /* PreviewColourView.swift */,
 				414087222482B0E90039F027 /* TransparencyCheckerboardView.swift */,
 				4163DC802485B75D002662DC /* Canvas */,
@@ -267,9 +273,11 @@
 				4163DC882485C2F1002662DC /* CanvasThumbView.swift in Sources */,
 				413911632484561000F2E0D5 /* DirectionalDragModifier.swift in Sources */,
 				414087232482B0E90039F027 /* TransparencyCheckerboardView.swift in Sources */,
+				412D472C24893C370014C35D /* CircleThumbView.swift in Sources */,
 				4164CE8B2484185C009DA810 /* PaletteView.swift in Sources */,
 				4164CE8F248429FD009DA810 /* PaletteDataStorable.swift in Sources */,
 				413436322489003600CB0095 /* RadialDragModifier.swift in Sources */,
+				412D472A24893A4B0014C35D /* CircleGradientView.swift in Sources */,
 				4163DC862485BEFD002662DC /* BidirectionalDragModifier.swift in Sources */,
 				413C695F2482750B00F4A5A0 /* ColourModel.swift in Sources */,
 				4171325224804E4300F59D4E /* ColourPicker.swift in Sources */,
