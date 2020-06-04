@@ -47,34 +47,12 @@ struct DoubleGradientView: View, DoubleGradientDisplayable {
   let verticalGradient: Gradient
   let backgroundColour: Color
   init(horizontal: Parameter, vertical: Parameter, hue: Double?) {
-    guard horizontal != vertical else {
-      fatalError("Parameters should be different")
-    }
-    guard horizontal.colourSpace != vertical.colourSpace else {
-      fatalError("Parameters should be from the same colour space")
-    }
-    
+    horizontal.checkCompatibility(with: vertical)
     self.horizontal = horizontal
     self.vertical = vertical
     self.horizontalGradient = horizontal.canvasGradient(axis: .horizontal, otherParameter: vertical)
     self.verticalGradient = vertical.canvasGradient(axis: .vertical, otherParameter: horizontal)
-    let parameters = [horizontal, vertical]
-    if parameters.contains(.brightness) {
-      if parameters.contains(.saturation) {
-        self.backgroundColour = .clear
-      }
-      else {
-        self.backgroundColour = .black
-      }
-      }
-      else if parameters.contains(.saturation) {
-        self.backgroundColour = .white
-      }
-    else {
-      self.backgroundColour = .clear
-    }
-    
-    
+    self.backgroundColour = .getBackgroundColour(parameters: (horizontal, vertical))
   }
 }
 

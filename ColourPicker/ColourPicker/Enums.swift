@@ -51,6 +51,15 @@ enum Parameter: String, CaseIterable {
     return Gradient(colors: colours)
   }
   
+  func checkCompatibility(with otherParameter: Parameter) {
+    guard self != otherParameter else {
+      fatalError("Parameters should be different")
+    }
+    guard self.colourSpace != otherParameter.colourSpace else {
+      fatalError("Parameters should be from the same colour space")
+    }
+  }
+  
   func canvasGradient(axis: Axis, otherParameter: Parameter) -> Gradient {
     let horizontal = axis == .horizontal ? self : otherParameter
     let vertical = axis == .vertical ? self : otherParameter

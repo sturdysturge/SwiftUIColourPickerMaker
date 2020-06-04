@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		412D472A24893A4B0014C35D /* CircleGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D472924893A4B0014C35D /* CircleGradientView.swift */; };
 		412D472C24893C370014C35D /* CircleThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D472B24893C370014C35D /* CircleThumbView.swift */; };
+		412D472E24895FCD0014C35D /* WheelDataStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D472D24895FCD0014C35D /* WheelDataStorable.swift */; };
+		412D4730248960130014C35D /* WheelPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D472F248960130014C35D /* WheelPickable.swift */; };
 		413436302488FF7100CB0095 /* WheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4134362F2488FF7100CB0095 /* WheelView.swift */; };
 		413436322489003600CB0095 /* RadialDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413436312489003600CB0095 /* RadialDragModifier.swift */; };
 		4139115E24844E2C00F2E0D5 /* PalettePickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4139115D24844E2C00F2E0D5 /* PalettePickable.swift */; };
@@ -42,6 +44,8 @@
 /* Begin PBXFileReference section */
 		412D472924893A4B0014C35D /* CircleGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGradientView.swift; sourceTree = "<group>"; };
 		412D472B24893C370014C35D /* CircleThumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleThumbView.swift; sourceTree = "<group>"; };
+		412D472D24895FCD0014C35D /* WheelDataStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDataStorable.swift; sourceTree = "<group>"; };
+		412D472F248960130014C35D /* WheelPickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelPickable.swift; sourceTree = "<group>"; };
 		4134362F2488FF7100CB0095 /* WheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelView.swift; sourceTree = "<group>"; };
 		413436312489003600CB0095 /* RadialDragModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialDragModifier.swift; sourceTree = "<group>"; };
 		4139115D24844E2C00F2E0D5 /* PalettePickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettePickable.swift; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 				4134362F2488FF7100CB0095 /* WheelView.swift */,
 				413436312489003600CB0095 /* RadialDragModifier.swift */,
 				412D472924893A4B0014C35D /* CircleGradientView.swift */,
+				412D472D24895FCD0014C35D /* WheelDataStorable.swift */,
+				412D472F248960130014C35D /* WheelPickable.swift */,
 			);
 			path = Wheel;
 			sourceTree = "<group>";
@@ -266,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				412D4730248960130014C35D /* WheelPickable.swift in Sources */,
 				4171323C24804E1800F59D4E /* AppDelegate.swift in Sources */,
 				4163DC8A2485C32C002662DC /* SliderPickable.swift in Sources */,
 				413911612484551F00F2E0D5 /* SliderView.swift in Sources */,
@@ -275,6 +282,7 @@
 				414087232482B0E90039F027 /* TransparencyCheckerboardView.swift in Sources */,
 				412D472C24893C370014C35D /* CircleThumbView.swift in Sources */,
 				4164CE8B2484185C009DA810 /* PaletteView.swift in Sources */,
+				412D472E24895FCD0014C35D /* WheelDataStorable.swift in Sources */,
 				4164CE8F248429FD009DA810 /* PaletteDataStorable.swift in Sources */,
 				413436322489003600CB0095 /* RadialDragModifier.swift in Sources */,
 				412D472A24893A4B0014C35D /* CircleGradientView.swift in Sources */,
