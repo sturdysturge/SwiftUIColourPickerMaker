@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+
+/// A modifier for dragging in two dimensions on CanvasView
  struct BidirectionalDragModifier: ViewModifier {
 
     @State var offset = CGPoint(x: 0, y: 0)

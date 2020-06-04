@@ -55,7 +55,7 @@ enum Parameter: String, CaseIterable {
     guard self != otherParameter else {
       fatalError("Parameters should be different")
     }
-    guard self.colourSpace != otherParameter.colourSpace else {
+    guard self.colourSpace == otherParameter.colourSpace else {
       fatalError("Parameters should be from the same colour space")
     }
   }

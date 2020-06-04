@@ -9,20 +9,17 @@
 import SwiftUI
 
 protocol CanvasPickable {
-  var parameters: ( Parameter, Parameter) { get }
-  func bindingValues() -> (Binding<Double>, Binding<Double>)
   associatedtype ValueType
-  var values: ValueType { get }
-  func getHue() -> Double?
+  var data: CanvasData<ValueType> { get }
 }
 
 extension CanvasPickable where Self: View {
   var body: some View {
       ZStack {
-        Color(hue: self.getHue() ?? 0, saturation: 1, brightness: 1, opacity: self.getHue() ?? 0)
+        Color(hue: self.data.getHue() ?? 0, saturation: 1, brightness: 1, opacity: self.data.getHue() ?? 0)
           GeometryReader { geometry in
-            DoubleGradientView(horizontal: self.parameters.0, vertical: self.parameters.1, hue: self.getHue())
-            CanvasThumbView(size: geometry.size, xValue: self.bindingValues().0, yValue: self.bindingValues().1)
+            DoubleGradientView(horizontal: self.data.parameters.0, vertical: self.data.parameters.1, hue: self.data.getHue())
+            CanvasThumbView(size: geometry.size, xValue: self.data.bindingValues().0, yValue: self.data.bindingValues().1)
           }
       }
       .background(TransparencyCheckerboardView(tileSize: 20))

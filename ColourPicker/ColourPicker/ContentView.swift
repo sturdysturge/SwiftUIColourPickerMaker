@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct ContentView: View {
-  @ObservedObject var data = ColourModel(colourSpace: .HSBA)
+  @ObservedObject var data = ColourModel(colourSpace: .RGBA)
   
     var body: some View {
       VStack {
         PreviewColourView(colour: data.colour, square: true)
-        WheelView(data: HSBWheelData(rotation: .hue, distanceFromCentre: .saturation, values: $data.valuesInHSBA))
+        CanvasView(data: CanvasData(parameters: (.hue, .saturation), values: $data.valuesInHSBA))
   }
     }
 }

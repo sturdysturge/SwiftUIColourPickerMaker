@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		412157F124899B74001369AC /* CanvasDataStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412157F024899B74001369AC /* CanvasDataStorable.swift */; };
+		412157F42489A3E2001369AC /* DataStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412157F32489A3E2001369AC /* DataStorable.swift */; };
 		412D472A24893A4B0014C35D /* CircleGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D472924893A4B0014C35D /* CircleGradientView.swift */; };
 		412D472C24893C370014C35D /* CircleThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D472B24893C370014C35D /* CircleThumbView.swift */; };
 		412D472E24895FCD0014C35D /* WheelDataStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D472D24895FCD0014C35D /* WheelDataStorable.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		412157F024899B74001369AC /* CanvasDataStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasDataStorable.swift; sourceTree = "<group>"; };
+		412157F32489A3E2001369AC /* DataStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorable.swift; sourceTree = "<group>"; };
 		412D472924893A4B0014C35D /* CircleGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGradientView.swift; sourceTree = "<group>"; };
 		412D472B24893C370014C35D /* CircleThumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleThumbView.swift; sourceTree = "<group>"; };
 		412D472D24895FCD0014C35D /* WheelDataStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDataStorable.swift; sourceTree = "<group>"; };
@@ -89,6 +93,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		412157F22489A3B8001369AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				413C695E2482750B00F4A5A0 /* ColourModel.swift */,
+				412157F32489A3E2001369AC /* DataStorable.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4139115F2484550A00F2E0D5 /* Slider */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +130,7 @@
 				4163DC872485C2F1002662DC /* CanvasThumbView.swift */,
 				4163DC8D2485C3C2002662DC /* CanvasPickable.swift */,
 				4163DC8F2485C3DB002662DC /* DoubleGradientView.swift */,
+				412157F024899B74001369AC /* CanvasDataStorable.swift */,
 			);
 			path = Canvas;
 			sourceTree = "<group>";
@@ -176,11 +190,11 @@
 		4171323A24804E1800F59D4E /* ColourPicker */ = {
 			isa = PBXGroup;
 			children = (
+				412157F22489A3B8001369AC /* Model */,
 				4163DC822485B7A0002662DC /* Picker Components */,
 				4139116424845ABF00F2E0D5 /* #Examples */,
 				4171323B24804E1800F59D4E /* AppDelegate.swift */,
 				4171324124804E1900F59D4E /* Assets.xcassets */,
-				413C695E2482750B00F4A5A0 /* ColourModel.swift */,
 				4171325124804E4300F59D4E /* ColourPicker.swift */,
 				4171323F24804E1800F59D4E /* ContentView.swift */,
 				4171324F24804E2600F59D4E /* Enums.swift */,
@@ -273,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				412D4730248960130014C35D /* WheelPickable.swift in Sources */,
+				412157F124899B74001369AC /* CanvasDataStorable.swift in Sources */,
 				4171323C24804E1800F59D4E /* AppDelegate.swift in Sources */,
 				4163DC8A2485C32C002662DC /* SliderPickable.swift in Sources */,
 				413911612484551F00F2E0D5 /* SliderView.swift in Sources */,
@@ -281,6 +296,7 @@
 				413911632484561000F2E0D5 /* DirectionalDragModifier.swift in Sources */,
 				414087232482B0E90039F027 /* TransparencyCheckerboardView.swift in Sources */,
 				412D472C24893C370014C35D /* CircleThumbView.swift in Sources */,
+				412157F42489A3E2001369AC /* DataStorable.swift in Sources */,
 				4164CE8B2484185C009DA810 /* PaletteView.swift in Sources */,
 				412D472E24895FCD0014C35D /* WheelDataStorable.swift in Sources */,
 				4164CE8F248429FD009DA810 /* PaletteDataStorable.swift in Sources */,
