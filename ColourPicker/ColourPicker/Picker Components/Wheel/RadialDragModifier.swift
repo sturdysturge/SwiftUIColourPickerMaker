@@ -33,18 +33,18 @@ public struct RadialDragModifier: ViewModifier {
 
                     let centre = CGPoint(x: (self.size.width / 2) - 12.5, y: (self.size.height / 2) - 12.5)
                   
-                    let angleOfPoint = centre.angleToPoint(self.offset)
+                  let angleOfPoint = centre.angleToPoint(self.offset)
                     self.rotation = Double(angleOfPoint / CGFloat.doublePi)
                   
                   
                   let radius = (self.size.width / 2) - 12.5
                   self.distanceFromCentre = Double(sqrt(pow(self.offset.x - radius, 2) + pow(self.offset.y - radius, 2)) / radius)
-                  print(self.distanceFromCentre)
+                  
                   
                   if self.distanceFromCentre > 1 {
                     //furthestPossible point
-                    self.offset.x = centre.x + radius * cos(angleOfPoint)
-                    self.offset.y = centre.y + radius * sin(angleOfPoint)
+                    self.offset.x = centre.x + radius * cos(angleOfPoint - CGFloat.halfPi)
+                    self.offset.y = centre.y + radius * sin(angleOfPoint - CGFloat.halfPi)
                     self.distanceFromCentre = 1
                   }
 

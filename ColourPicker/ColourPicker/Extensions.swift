@@ -17,7 +17,7 @@ extension CGPoint {
   func angleToPoint(_ point: CGPoint) -> CGFloat {
     let xDistance = point.x - x
     let yDistance = point.y - y
-    var radians = CGFloat.halfPi - atan2(xDistance, yDistance)
+    var radians = CGFloat.halfPi + (CGFloat.halfPi - atan2(xDistance, yDistance)) 
     
     while radians < 0 {
       radians += CGFloat.doublePi

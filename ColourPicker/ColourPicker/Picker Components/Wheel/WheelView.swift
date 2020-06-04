@@ -17,7 +17,7 @@ public struct WheelView: View {
         
             ZStack {
               GeometryReader { geometry in
-              AngularGradient(gradient: self.angularGradient, center: .center)
+                AngularGradient(gradient: self.angularGradient, center: .center, startAngle: .degrees(-90), endAngle: .degrees(270))
                 .clipShape(Circle())
               RadialGradient(gradient: self.radialGradient, center: .center, startRadius: 0, endRadius: geometry.size.width)
                 .clipShape(Circle())
@@ -29,7 +29,6 @@ public struct WheelView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             }
-              .border(Color.red)
               
             
         }
