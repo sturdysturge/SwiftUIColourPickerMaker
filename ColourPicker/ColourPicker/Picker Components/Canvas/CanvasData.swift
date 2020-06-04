@@ -1,5 +1,5 @@
 //
-//  CanvasDataStorable.swift
+//  CanvasData.swift
 //  ColourPicker
 //
 //  Created by Rob Sturgeon on 04/06/2020.

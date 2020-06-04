@@ -8,30 +8,27 @@
 
 import SwiftUI
 
-struct WheelView<T>: View, WheelPickable where T: WheelDataStorable {
-  typealias ValueType = T
-  
-  internal init(data: T) {
-    self.data = data
-    self.backgroundColour = .getBackgroundColour(parameters: (data.rotation, data.distanceFromCentre))
-    self._rotation = data.getBindingValue(for: data.rotation)
-    self._distanceFromCentre = data.getBindingValue(for: data.distanceFromCentre)
-  }
-  
-  
+struct WheelView<T>: View, WheelPickable {
   let backgroundColour: Color
-  let data: ValueType
-  @Binding var rotation: Double
-  @Binding var distanceFromCentre: Double
+  let data: WheelData<T>
+  
   @State var thumbOffset = CGPoint()
-  var _$rotation: Binding<Double> { _rotation }
-  var _$distanceFromCentre: Binding<Double> { _distanceFromCentre }
   var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
+}
+
+struct PreviewWheelView: View {
+  @ObservedObject var data = ColourModel(colourSpace: .RGBA)
+  var body: some View {
+    VStack {
+      PreviewColourView(colour: data.colour, square: true)
+      WheelView(backgroundColour: Color.getBackgroundColour(parameters: (.hue, .saturation)), data: WheelData(rotation: .hue, distanceFromCentre: .saturation, values: $data.valuesInHSBA))
+    }
+  }
 }
 
 struct WheelView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    PreviewWheelView()
   }
 }
 

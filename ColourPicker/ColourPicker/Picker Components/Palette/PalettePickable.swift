@@ -9,36 +9,33 @@
 import SwiftUI
 
 protocol PalettePickable {
-    associatedtype ValueType where ValueType: PaletteDataStorable
-    var data: ValueType { get }
-    var xValue: Double { get }
-    var _$xValue: Binding<Double> { get }
-    var yValue: Double { get }
-    var _$yValue: Binding<Double> { get }
-
-    func setValues(xValue: Double, yValue: Double)
+  associatedtype ValueType where ValueType: PaletteDataStorable
+  var data: ValueType { get }
 }
 
 extension PalettePickable where Self: View {
-    var body: some View {
-        VStack {
-            ForEach(0 ..< data.verticalSwatches, id: \.self) {
-                yIndex in
-                HStack {
-                    ForEach(0 ..< self.data.horizontalSwatches, id: \.self) {
-                        xIndex in
-                        Button(action: {
-                            let swatch = self.data.getSwatch(xIndex: xIndex, yIndex: yIndex)
-                            self.setValues(xValue: self.data.getSwatchParameter(.horizontal, swatch: swatch), yValue: self.data.getSwatchParameter(.vertical, swatch: swatch))
-            }) {
-                            ZStack {
-                                TransparencyCheckerboardView()
-                                self.data.getSwatchColour(values: self.data.getSwatch(xIndex: xIndex, yIndex: yIndex))
-                            }
-                        }
-                    }
-                }
+  var body: some View {
+    VStack {
+      ForEach(0 ..< data.verticalSwatches, id: \.self) {
+        yIndex in
+        HStack {
+          ForEach(0 ..< self.data.horizontalSwatches, id: \.self) {
+            xIndex in
+            Button(action: {
+              let swatch = self.data.getSwatch(xIndex: xIndex, yIndex: yIndex)
+              self.data.bindingValues().0.wrappedValue = self.data.getSwatchParameter(.horizontal, swatch: swatch)
+              self.data.bindingValues().1.wrappedValue =  self.data.getSwatchParameter(.vertical, swatch: swatch)
             }
+              )
+            {
+              ZStack {
+                TransparencyCheckerboardView()
+                self.data.getSwatchColour(values: self.data.getSwatch(xIndex: xIndex, yIndex: yIndex))
+              }
+            }
+          }
         }
+      }
     }
+  }
 }

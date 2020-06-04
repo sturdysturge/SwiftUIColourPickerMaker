@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		412157F124899B74001369AC /* CanvasDataStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412157F024899B74001369AC /* CanvasDataStorable.swift */; };
+		412157F124899B74001369AC /* CanvasData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412157F024899B74001369AC /* CanvasData.swift */; };
 		412157F42489A3E2001369AC /* DataStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412157F32489A3E2001369AC /* DataStorable.swift */; };
+		412157F62489B2C3001369AC /* PaletteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412157F52489B2C3001369AC /* PaletteData.swift */; };
 		412D472A24893A4B0014C35D /* CircleGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D472924893A4B0014C35D /* CircleGradientView.swift */; };
 		412D472C24893C370014C35D /* CircleThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D472B24893C370014C35D /* CircleThumbView.swift */; };
 		412D472E24895FCD0014C35D /* WheelDataStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D472D24895FCD0014C35D /* WheelDataStorable.swift */; };
@@ -44,8 +45,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		412157F024899B74001369AC /* CanvasDataStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasDataStorable.swift; sourceTree = "<group>"; };
+		412157F024899B74001369AC /* CanvasData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasData.swift; sourceTree = "<group>"; };
 		412157F32489A3E2001369AC /* DataStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorable.swift; sourceTree = "<group>"; };
+		412157F52489B2C3001369AC /* PaletteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteData.swift; sourceTree = "<group>"; };
 		412D472924893A4B0014C35D /* CircleGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGradientView.swift; sourceTree = "<group>"; };
 		412D472B24893C370014C35D /* CircleThumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleThumbView.swift; sourceTree = "<group>"; };
 		412D472D24895FCD0014C35D /* WheelDataStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDataStorable.swift; sourceTree = "<group>"; };
@@ -130,7 +132,7 @@
 				4163DC872485C2F1002662DC /* CanvasThumbView.swift */,
 				4163DC8D2485C3C2002662DC /* CanvasPickable.swift */,
 				4163DC8F2485C3DB002662DC /* DoubleGradientView.swift */,
-				412157F024899B74001369AC /* CanvasDataStorable.swift */,
+				412157F024899B74001369AC /* CanvasData.swift */,
 			);
 			path = Canvas;
 			sourceTree = "<group>";
@@ -167,6 +169,7 @@
 				4164CE8A2484185C009DA810 /* PaletteView.swift */,
 				4164CE8E248429FD009DA810 /* PaletteDataStorable.swift */,
 				4139115D24844E2C00F2E0D5 /* PalettePickable.swift */,
+				412157F52489B2C3001369AC /* PaletteData.swift */,
 			);
 			path = Palette;
 			sourceTree = "<group>";
@@ -287,7 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				412D4730248960130014C35D /* WheelPickable.swift in Sources */,
-				412157F124899B74001369AC /* CanvasDataStorable.swift in Sources */,
+				412157F124899B74001369AC /* CanvasData.swift in Sources */,
 				4171323C24804E1800F59D4E /* AppDelegate.swift in Sources */,
 				4163DC8A2485C32C002662DC /* SliderPickable.swift in Sources */,
 				413911612484551F00F2E0D5 /* SliderView.swift in Sources */,
@@ -307,6 +310,7 @@
 				4171325224804E4300F59D4E /* ColourPicker.swift in Sources */,
 				4139116624845AF200F2E0D5 /* CMYKAExample.swift in Sources */,
 				4139115E24844E2C00F2E0D5 /* PalettePickable.swift in Sources */,
+				412157F62489B2C3001369AC /* PaletteData.swift in Sources */,
 				4171323E24804E1800F59D4E /* SceneDelegate.swift in Sources */,
 				4171325024804E2600F59D4E /* Enums.swift in Sources */,
 				4163DC902485C3DB002662DC /* DoubleGradientView.swift in Sources */,
