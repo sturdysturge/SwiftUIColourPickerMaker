@@ -29,6 +29,7 @@ public struct WheelView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             }
+              .border(Color.red)
               
             
         }

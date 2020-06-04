@@ -23,7 +23,7 @@ public struct RadialDragModifier: ViewModifier {
     public func body(content: Content) -> some View {
         content
           .onAppear {
-            self.offset = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+            self.offset = CGPoint(x: (self.size.width / 2) - 12.5, y: (self.size.height / 2) - 12.5)
           }
             .gesture(DragGesture(minimumDistance: 0)
               
@@ -31,46 +31,21 @@ public struct RadialDragModifier: ViewModifier {
                     self.offset.x += value.location.x - value.startLocation.x
                     self.offset.y += value.location.y - value.startLocation.y
 
-                    if self.offset.x < 0 {
-                        self.offset.x = 0
-                        self.rotation = 0
-                    } else if self.offset.x > self.size.width - 25 {
-                        self.offset.x = self.size.width - 25
-                        self.rotation = 1
-                    } else {
-                        self.rotation = Double(self.offset.x / (self.size.width - 25))
-                    }
-                    if self.offset.y < 0 {
-                        self.offset.y = 0
-                        self.distanceFromCentre = 0
-                    } else if self.offset.y > self.size.height - 25 {
-                        self.offset.y = self.size.height - 25
-                        self.distanceFromCentre = 1
-                    } else {
-                        self.distanceFromCentre = Double(self.offset.y / (self.size.height - 25))
-                    }
-                    let centre = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
-
-                    
+                    let centre = CGPoint(x: (self.size.width / 2) - 12.5, y: (self.size.height / 2) - 12.5)
+                  
                     let angleOfPoint = centre.angleToPoint(self.offset)
                     self.rotation = Double(angleOfPoint / CGFloat.doublePi)
-                    self.distanceFromCentre = Double(centre.distanceToPoint(otherPoint: self.offset) / (self.size.width / 2))
-                  print(self.offset)
-                  print("distance from centre \(self.distanceFromCentre)")
-                  print("angle \(angleOfPoint)")
-                  print("rotation \(self.rotation)")
-                  print("radius: \(self.size.width / 2)")
-                  print("difference: \(CGSize(width: self.offset.x - self.size.width / 2, height: self.offset.y - self.size.height / 2))")
                   
                   
-                  let radius = (self.size.width / 2)
-                  let distanceToCentre = sqrt(pow(self.offset.x - radius, 2) + pow(self.offset.y - radius, 2))
-                  print(distanceToCentre)
+                  let radius = (self.size.width / 2) - 12.5
+                  self.distanceFromCentre = Double(sqrt(pow(self.offset.x - radius, 2) + pow(self.offset.y - radius, 2)) / radius)
+                  print(self.distanceFromCentre)
                   
-                  if distanceToCentre > radius {
+                  if self.distanceFromCentre > 1 {
                     //furthestPossible point
-                   self.offset.x = radius + radius * cos(angleOfPoint)
-                   self.offset.y = radius + radius * sin(angleOfPoint)
+                    self.offset.x = centre.x + radius * cos(angleOfPoint)
+                    self.offset.y = centre.y + radius * sin(angleOfPoint)
+                    self.distanceFromCentre = 1
                   }
 
       })
