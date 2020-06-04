@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct CanvasData<T>: DataStorable {
-  var parameters: (Parameter, Parameter)
-  typealias ValueType = T
-  @Binding var values: ValueType
-  var _$values: Binding<ValueType> { _values }
+    var parameters: (Parameter, Parameter)
+    typealias ValueType = T
+    @Binding var values: ValueType
+    var _$values: Binding<ValueType> { _values }
 }

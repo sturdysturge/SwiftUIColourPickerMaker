@@ -9,26 +9,26 @@
 import SwiftUI
 
 protocol CanvasPickable {
-  associatedtype ValueType
-  var data: CanvasData<ValueType> { get }
+    associatedtype ValueType
+    var data: CanvasData<ValueType> { get }
 }
 
 extension CanvasPickable where Self: View {
-  var body: some View {
-      ZStack {
-        Color(hue: self.data.getHue() ?? 0, saturation: 1, brightness: 1, opacity: self.data.getHue() ?? 0)
-          GeometryReader { geometry in
-            DoubleGradientView(horizontal: self.data.parameters.0, vertical: self.data.parameters.1, hue: self.data.getHue())
-            CanvasThumbView(size: geometry.size, xValue: self.data.bindingValues().0, yValue: self.data.bindingValues().1)
-          }
-      }
-      .background(TransparencyCheckerboardView(tileSize: 20))
-      .aspectRatio(1, contentMode: .fit)
-  }
+    var body: some View {
+        ZStack {
+            Color(hue: self.data.getHue() ?? 0, saturation: 1, brightness: 1, opacity: self.data.getHue() ?? 0)
+            GeometryReader { geometry in
+                DoubleGradientView(horizontal: self.data.parameters.0, vertical: self.data.parameters.1, hue: self.data.getHue())
+                CanvasThumbView(size: geometry.size, xValue: self.data.bindingValues().0, yValue: self.data.bindingValues().1)
+            }
+        }
+        .background(TransparencyCheckerboardView(tileSize: 20))
+        .aspectRatio(1, contentMode: .fit)
+    }
 }
 
 struct CanvasPickable_Previews: PreviewProvider {
-  static var previews: some View {
-    /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
-  }
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
 }

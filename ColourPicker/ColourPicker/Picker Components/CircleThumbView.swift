@@ -9,16 +9,16 @@
 import SwiftUI
 
 struct CircleThumbView: View {
-  var body: some View {
-    ZStack {
-      Circle()
-        .stroke(lineWidth: 10)
-        .foregroundColor(.white)
-      Circle()
-        .stroke(lineWidth: 5)
-        .foregroundColor(.black)
+    var body: some View {
+        ZStack {
+            Circle()
+                .stroke(lineWidth: 10)
+                .foregroundColor(.white)
+            Circle()
+                .stroke(lineWidth: 5)
+                .foregroundColor(.black)
+        }
     }
-  }
 }
 
 struct CircleThumbView_Previews: PreviewProvider {

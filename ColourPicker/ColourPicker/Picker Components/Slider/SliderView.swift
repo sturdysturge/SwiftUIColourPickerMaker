@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-
 struct SliderView: View, SliderPickable {
     @Binding var value: Double
     var _$value: Binding<Double> { _value }
