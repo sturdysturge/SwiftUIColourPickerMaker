@@ -13,6 +13,7 @@ public struct WheelView: View {
     let radialGradient: Gradient
     @Binding var rotation: Double
     @Binding var distanceFromCentre: Double
+  @State var thumbOffset = CGPoint()
     public var body: some View {
         
             ZStack {
@@ -21,11 +22,12 @@ public struct WheelView: View {
                 .clipShape(Circle())
                 RadialGradient(gradient: self.radialGradient, center: .center, startRadius: 10, endRadius: geometry.size.width * 0.7)
                 .clipShape(Circle())
+                  .radialDrag(rotation: self.$rotation, distanceFromCentre: self.$distanceFromCentre, size: geometry.size, offset: self.$thumbOffset)
                 Group {
                     Circle()
                         .stroke(lineWidth: 5)
                         .frame(width: 25, height: 25)
-                        .radialDrag(rotation: self.$rotation, distanceFromCentre: self.$distanceFromCentre, size: geometry.size)
+                      .offset(x: self.thumbOffset.x, y: self.thumbOffset.y)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             }

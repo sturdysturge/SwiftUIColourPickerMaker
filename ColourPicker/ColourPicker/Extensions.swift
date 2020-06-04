@@ -269,8 +269,8 @@ extension View {
   - size: The space the wheel occupies
   - Returns: A View that has dragging functionality
   */
-  func radialDrag(rotation: Binding<Double>, distanceFromCentre: Binding<Double>, size: CGSize) -> some View {
-      return modifier(RadialDragModifier(rotation: rotation, distanceFromCentre: distanceFromCentre, size: size))
+  func radialDrag(rotation: Binding<Double>, distanceFromCentre: Binding<Double>, size: CGSize, offset: Binding<CGPoint>) -> some View {
+    return modifier(RadialDragModifier(offset: offset, rotation: rotation, distanceFromCentre: distanceFromCentre, size: size))
     }
   /**
    A way to use DirectionalDragModifier without calling it directly
