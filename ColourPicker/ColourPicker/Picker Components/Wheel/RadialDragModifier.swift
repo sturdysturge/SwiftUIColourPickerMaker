@@ -14,7 +14,6 @@ public struct RadialDragModifier: ViewModifier {
   @Binding var rotation: Double
   @Binding var distanceFromCentre: Double
   let size: CGSize
-  @State var startedDragging = false
   public func body(content: Content) -> some View {
     content
       .onAppear {
@@ -33,18 +32,15 @@ public struct RadialDragModifier: ViewModifier {
       
       
       let radius = (self.size.width / 2) - 12.5
-      self.distanceFromCentre = Double(sqrt(pow(self.offset.x - radius, 2) + pow(self.offset.y - radius, 2)) / radius)
+      self.distanceFromCentre = Double(centre.distanceToPoint(otherPoint: self.offset) / radius)
       
       if self.distanceFromCentre > 1 {
-        //furthestPossible point
+        //furthest possible point
         self.offset.x = centre.x + radius * cos(angleOfPoint - CGFloat.halfPi)
         self.offset.y = centre.y + radius * sin(angleOfPoint - CGFloat.halfPi)
         self.distanceFromCentre = 1
       }
       print(self.offset)
-    }
-    .onEnded {_ in
-      self.startedDragging = false
     })
   }
 }
