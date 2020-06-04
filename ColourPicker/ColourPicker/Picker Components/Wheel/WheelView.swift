@@ -8,7 +8,17 @@
 
 import SwiftUI
 
-struct WheelView: View, WheelPickable {
+struct WheelView<T>: View, WheelPickable {
+  func getHue() -> Double? {
+    if let values = values as? ColourModel.HSBAValues {
+      return values.hue
+    }
+    else {
+      return nil
+    }
+  }
+  
+  let values: T
   let angularGradient: Gradient
   let radialGradient: Gradient
   @Binding var rotation: Double
@@ -20,6 +30,9 @@ struct WheelView: View, WheelPickable {
 }
 
 protocol WheelPickable {
+  func getHue() -> Double?
+  associatedtype ValueType
+  var values: ValueType { get }
   var angularGradient: Gradient { get }
   var radialGradient: Gradient { get }
   var rotation: Double { get }
@@ -34,6 +47,7 @@ protocol WheelPickable {
 extension WheelPickable where Self: View {
   var body: some View {
     ZStack {
+      Color(hue: self.getHue() ?? 0, saturation: 1, brightness: 1, opacity: self.getHue() ?? 0)
       GeometryReader { geometry in
         CircleGradientView(angularGradient: self.angularGradient, radialGradient: self.radialGradient, radius: geometry.size.width * 0.7)
           .radialDrag(rotation: self._$rotation, distanceFromCentre: self._$distanceFromCentre, size: geometry.size, offset: self._$thumbOffset)
