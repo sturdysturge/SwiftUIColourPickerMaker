@@ -9,8 +9,12 @@
 import SwiftUI
 
 struct ContentView: View {
+  @ObservedObject var data = ColourModel(colourSpace: .RGBA)
     var body: some View {
-        CMYKAExample()
+      VStack {
+        PreviewColourView(colour: data.colour, square: true)
+        CanvasView(values: $data.valuesInHSBA, parameters: (.brightness, .saturation), xValue: $data.valuesInHSBA.brightness, yValue: $data.valuesInHSBA.saturation)
+  }
     }
 }
 
