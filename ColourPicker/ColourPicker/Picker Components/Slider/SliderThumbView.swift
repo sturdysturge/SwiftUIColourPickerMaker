@@ -9,19 +9,19 @@
 import SwiftUI
 
 struct SliderThumbView {
-  let orientation: Axis
   let width: CGFloat
   let height: CGFloat
   let containerWidth: CGFloat
   let containerHeight: CGFloat
   let containerAlignment: Alignment
+  
   init(orientation: Axis) {
-    self.orientation = orientation
-    self.width = self.orientation == .horizontal ? 15 : 70
-    self.height = self.orientation == .horizontal ? 70 : 15
-    self.containerWidth = orientation == .horizontal ? .infinity : 70
-    self.containerHeight = orientation == .horizontal ? 70 : .infinity
-    self.containerAlignment = orientation == .horizontal ? .leading : .top
+    let isHorizontal = orientation == .horizontal
+    self.width = isHorizontal ? 15 : 70
+    self.height = isHorizontal ? 70 : 15
+    self.containerWidth = isHorizontal ? .infinity : 70
+    self.containerHeight = isHorizontal ? 70 : .infinity
+    self.containerAlignment = isHorizontal ? .leading : .top
   }
 }
 

@@ -14,9 +14,10 @@ struct CanvasView<T>: View, CanvasPickable {
 }
 
 /// A way to use an ObservedObject in CanvasView_Previews
-struct PreviewCanvasView: View {
-    @ObservedObject var data = ColourModel(colourSpace: .RGBA)
-
+struct PreviewCanvasView {
+    @ObservedObject var data = ColourModel(colourSpace: .HSBA)
+}
+extension PreviewCanvasView: View {
     var body: some View {
         VStack {
             PreviewColourView(colour: data.colour, square: true)
@@ -28,6 +29,6 @@ struct PreviewCanvasView: View {
 /// Previews for CanvasView that use an ObservedObject
 struct CanvasView_Previews: PreviewProvider {
     static var previews: some View {
-        PreviewCanvasView()
+        ContentView()
     }
 }

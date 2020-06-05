@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-protocol WheelPickable {
+protocol WheelPickable: View {
     associatedtype ValueType
     var data: WheelData<ValueType> { get }
     var thumbOffset: CGPoint { get }
     var _$thumbOffset: Binding<CGPoint> { get }
 }
 
-extension WheelPickable where Self: View {
+extension WheelPickable {
     var body: some View {
         ZStack {
             Color(hue: self.data.getHue() ?? 0, saturation: 1, brightness: 1, opacity: self.data.getHue() ?? 0)

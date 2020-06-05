@@ -8,12 +8,12 @@
 
 import SwiftUI
 
-protocol PalettePickable {
+protocol PalettePickable: View {
     associatedtype ValueType where ValueType: PaletteDataStorable
     var data: ValueType { get }
 }
 
-extension PalettePickable where Self: View {
+extension PalettePickable {
     var body: some View {
         VStack {
             ForEach(0 ..< data.size.rows, id: \.self) {

@@ -8,19 +8,19 @@
 
 import SwiftUI
 
-struct CircleGradientView: View, CircleGradientDisplayable {
+struct CircleGradientView: CircleGradientDisplayable {
     let angularGradient: Gradient
     let radialGradient: Gradient
     let radius: CGFloat
 }
 
-protocol CircleGradientDisplayable {
+protocol CircleGradientDisplayable: View {
     var angularGradient: Gradient { get }
     var radialGradient: Gradient { get }
     var radius: CGFloat { get }
 }
 
-extension CircleGradientDisplayable where Self: View {
+extension CircleGradientDisplayable {
     var body: some View {
         ZStack {
             AngularGradient(gradient: self.angularGradient, center: .center, startAngle: .degrees(-89), endAngle: .degrees(270))

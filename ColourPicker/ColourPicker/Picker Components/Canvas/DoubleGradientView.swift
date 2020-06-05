@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-protocol DoubleGradientDisplayable {
+protocol DoubleGradientDisplayable: View {
     var horizontal: Parameter { get }
     var vertical: Parameter { get }
     var horizontalGradient: Gradient { get }
@@ -16,7 +16,7 @@ protocol DoubleGradientDisplayable {
     var backgroundColour: Color { get }
 }
 
-extension DoubleGradientDisplayable where Self: View {
+extension DoubleGradientDisplayable {
     var body: some View {
         ZStack {
             // Horizontal gradient
@@ -38,7 +38,7 @@ extension DoubleGradientDisplayable where Self: View {
     }
 }
 
-struct DoubleGradientView: View, DoubleGradientDisplayable {
+struct DoubleGradientView: DoubleGradientDisplayable {
     let horizontal: Parameter
     let vertical: Parameter
     let horizontalGradient: Gradient
@@ -56,11 +56,6 @@ struct DoubleGradientView: View, DoubleGradientDisplayable {
 
 struct DoubleGradientView_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack {
-            TransparencyCheckerboardView()
-                .aspectRatio(1, contentMode: .fit)
-            DoubleGradientView(horizontal: .hue, vertical: .alpha, hue: 1)
-                .aspectRatio(1, contentMode: .fit)
-        }
+        ContentView()
     }
 }

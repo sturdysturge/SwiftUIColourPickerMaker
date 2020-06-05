@@ -8,16 +8,18 @@
 
 import SwiftUI
 
-struct WheelView<T>: View, WheelPickable {
+struct WheelView<T>: WheelPickable {
     let backgroundColour: Color
     let data: WheelData<T>
-
     @State var thumbOffset = CGPoint()
     var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
 }
 
 struct PreviewWheelView: View {
     @ObservedObject var data = ColourModel(colourSpace: .RGBA)
+}
+
+  extension PreviewWheelView {
     var body: some View {
         VStack {
             PreviewColourView(colour: data.colour, square: true)
@@ -28,6 +30,6 @@ struct PreviewWheelView: View {
 
 struct WheelView_Previews: PreviewProvider {
     static var previews: some View {
-        PreviewWheelView()
+        ContentView()
     }
 }

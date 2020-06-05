@@ -25,6 +25,6 @@ struct CanvasThumbView: View {
 
 struct CanvasThumbView_Previews: PreviewProvider {
     static var previews: some View {
-        CanvasThumbView(size: CGSize(), xValue: .constant(0.5), yValue: .constant(0.5))
+        ContentView()
     }
 }

@@ -8,7 +8,10 @@
 
 import SwiftUI
 
-struct CircleThumbView: View {
+struct CircleThumbView {
+}
+
+extension CircleThumbView: View {
     var body: some View {
         ZStack {
             Circle()
@@ -23,6 +26,6 @@ struct CircleThumbView: View {
 
 struct CircleThumbView_Previews: PreviewProvider {
     static var previews: some View {
-        CircleThumbView()
+        ContentView()
     }
 }

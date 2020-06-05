@@ -8,12 +8,12 @@
 
 import SwiftUI
 
-protocol CanvasPickable {
+protocol CanvasPickable: View {
     associatedtype ValueType
     var data: CanvasData<ValueType> { get }
 }
 
-extension CanvasPickable where Self: View {
+extension CanvasPickable {
     var body: some View {
         ZStack {
             Color(hue: self.data.getHue() ?? 0, saturation: 1, brightness: 1, opacity: self.data.getHue() ?? 0)
@@ -29,6 +29,6 @@ extension CanvasPickable where Self: View {
 
 struct CanvasPickable_Previews: PreviewProvider {
     static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+        ContentView()
     }
 }

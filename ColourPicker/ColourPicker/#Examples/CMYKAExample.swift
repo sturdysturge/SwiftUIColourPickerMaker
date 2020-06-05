@@ -11,6 +11,8 @@ import SwiftUI
 struct CMYKAExample: View {
     @ObservedObject var data = ColourModel(colourSpace: .CMYKA)
     let sliderOrientation = Axis.horizontal
+}
+extension CMYKAExample {
     var body: some View {
         VStack {
             PreviewColourView(colour: data.colour, square: false)
@@ -29,6 +31,6 @@ struct CMYKAExample: View {
 
 struct CMYKAExample_Previews: PreviewProvider {
     static var previews: some View {
-        CMYKAExample()
+        ContentView()
     }
 }
