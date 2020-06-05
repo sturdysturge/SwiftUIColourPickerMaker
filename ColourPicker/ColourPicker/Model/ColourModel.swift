@@ -19,6 +19,9 @@ class ColourModel: ObservableObject {
   /// A tuple of CMYK parameters and their values
   typealias CMYKAValues = (cyan: Double, magenta: Double, yellow: Double, black: Double, alpha: Double)
   
+  /// A tuple of greyscale parameters and their values
+  typealias GreyscaleValues = (white: Double, alpha: Double)
+  
   /// Which colour space is being adjusted
   var colourSpace: ColourSpace
   
@@ -82,39 +85,5 @@ class ColourModel: ObservableObject {
     setColour()
   }
   
-  /// Get a specific parameter from a generic values tuple
-  /// - Parameters:
-  ///   - constants: The tuple of unknown type
-  ///   - parameter: The parameter in the same colour space
-  /// - Returns: A constant Double value for that parameter
-  static func getConstantFrom<T>(_ constants: T, for parameter: Parameter) -> Double {
-    if let valuesInRGBA = constants as? ColourModel.RGBAValues {
-      switch parameter {
-      case .red: return valuesInRGBA.red
-      case .green: return valuesInRGBA.green
-      case .blue: return valuesInRGBA.blue
-      case .alpha: return valuesInRGBA.alpha
-      default: fatalError("Parameter \(parameter) not in colour space")
-      }
-    } else if let valuesInHSBA = constants as? ColourModel.HSBAValues {
-      switch parameter {
-      case .hue: return valuesInHSBA.hue
-      case .green: return valuesInHSBA.saturation
-      case .brightness: return valuesInHSBA.brightness
-      case .alpha: return valuesInHSBA.alpha
-      default: fatalError("Parameter \(parameter) not in colour space")
-      }
-    } else if let valuesInCMYKA = constants as? ColourModel.CMYKAValues {
-      switch parameter {
-      case .cyan: return valuesInCMYKA.cyan
-      case .magenta: return valuesInCMYKA.magenta
-      case .yellow: return valuesInCMYKA.yellow
-      case .black: return valuesInCMYKA.black
-      case .alpha: return valuesInCMYKA.alpha
-      default: fatalError("Parameter \(parameter) not in colour space")
-      }
-    } else {
-      fatalError("Unknown type")
-    }
-  }
+  
 }

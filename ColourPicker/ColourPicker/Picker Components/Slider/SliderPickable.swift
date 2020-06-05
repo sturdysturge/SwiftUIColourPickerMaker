@@ -15,10 +15,9 @@ protocol SliderPickable: View {
   var _$value: Binding<Double> { get }
   var thickness: CGFloat { get }
   var length: CGFloat { get }
-  func size(in direction: Axis) -> CGFloat
-  func getGradient() -> LinearGradient
   var thumbOffset: CGPoint { get }
   var _$thumbOffset: Binding<CGPoint> { get }
+  func size(in direction: Axis) -> CGFloat
 }
 
 extension SliderPickable {
@@ -28,10 +27,6 @@ extension SliderPickable {
     } else {
       return thickness
     }
-  }
-  
-  func getGradient() -> LinearGradient {
-    return orientation == .horizontal ? parameter.horizontalGradient : parameter.verticalGradient
   }
   
   var body: some View {
@@ -44,7 +39,7 @@ extension SliderPickable {
         Color.white
           .frame(width: size(in: .horizontal), height: size(in: .vertical), alignment: .center)
       }
-      self.getGradient()
+      self.parameter.linearGradient(axis: orientation)
         .frame(width: size(in: .horizontal), height: size(in: .vertical), alignment: .center)
         .cornerRadius(thickness / 4)
         .drag(value: self._$value, offset: self._$thumbOffset, length: length, orientation: orientation)

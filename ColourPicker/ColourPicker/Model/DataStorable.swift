@@ -15,6 +15,7 @@ protocol DataStorable {
   var bindingValues: (x: Binding<Double>, y: Binding<Double>) { get }
   var parameters: (Parameter, Parameter) { get }
   func getHue() -> Double?
+  func getConstant(from values: ValueType, for parameter: Parameter) -> Double
 }
 
 extension DataStorable {
@@ -23,6 +24,64 @@ extension DataStorable {
       return values.hue
     } else {
       return nil
+    }
+  }
+  
+  /// Get a specific parameter from a generic values tuple
+  /// - Parameters:
+  ///   - parameter: The parameter in the same colour space
+  /// - Returns: A constant Double value for that parameter
+  func getConstant(from values: ValueType, for parameter: Parameter) -> Double {
+    if let valuesInRGBA = values as? ColourModel.RGBAValues {
+      switch parameter {
+      case .red:
+        return valuesInRGBA.red
+      case .green:
+        return valuesInRGBA.green
+      case .blue:
+        return valuesInRGBA.blue
+      case .alpha:
+        return valuesInRGBA.alpha
+      default: fatalError("Parameter \(parameter) not in colour space")
+      }
+    } else if let valuesInHSBA = values as? ColourModel.HSBAValues {
+      switch parameter {
+      case .hue:
+        return valuesInHSBA.hue
+      case .green:
+        return valuesInHSBA.saturation
+      case .brightness:
+        return valuesInHSBA.brightness
+      case .alpha:
+        return valuesInHSBA.alpha
+      default: fatalError("Parameter \(parameter) not in colour space")
+      }
+    } else if let valuesInCMYKA = values as? ColourModel.CMYKAValues {
+      switch parameter {
+      case .cyan:
+        return valuesInCMYKA.cyan
+      case .magenta:
+        return valuesInCMYKA.magenta
+      case .yellow:
+        return valuesInCMYKA.yellow
+      case .black:
+        return valuesInCMYKA.black
+      case .alpha:
+        return valuesInCMYKA.alpha
+      default: fatalError("Parameter \(parameter) not in colour space")
+      }
+    } else if let valuesInGreyscale = values as? ColourModel.GreyscaleValues {
+      switch parameter {
+      case .white:
+        return valuesInGreyscale.white
+      case .alpha:
+        return valuesInGreyscale.alpha
+      default:
+        fatalError("Parameter \(parameter) not in colour space")
+      }
+    }
+    else {
+      fatalError("Unknown type")
     }
   }
   

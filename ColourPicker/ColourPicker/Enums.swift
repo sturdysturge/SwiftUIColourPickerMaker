@@ -54,10 +54,10 @@ enum Parameter: String, CaseIterable {
     }
 
     func checkCompatibility(with otherParameter: Parameter) {
-        guard self != otherParameter else {
+      guard self != otherParameter else {
             fatalError("Parameters should be different")
         }
-        guard self.colourSpace == otherParameter.colourSpace else {
+        guard self.isSameColourSpace(as: otherParameter) else {
             fatalError("Parameters should be from the same colour space")
         }
     }
@@ -217,11 +217,12 @@ enum Parameter: String, CaseIterable {
         }
     }
 
-    var horizontalGradient: LinearGradient {
-        return LinearGradient(gradient: Gradient(colors: colours), startPoint: .leading, endPoint: .trailing)
+  func linearGradient(axis: Axis) -> LinearGradient {
+    if axis == .horizontal {
+      return LinearGradient(gradient: Gradient(colors: colours), startPoint: .leading, endPoint: .trailing)
     }
-
-    var verticalGradient: LinearGradient {
-        return LinearGradient(gradient: Gradient(colors: colours), startPoint: .top, endPoint: .bottom)
+    else {
+      return LinearGradient(gradient: Gradient(colors: colours), startPoint: .top, endPoint: .bottom)
     }
+  }
 }

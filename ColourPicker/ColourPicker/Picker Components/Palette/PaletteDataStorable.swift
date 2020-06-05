@@ -25,7 +25,7 @@ extension PaletteDataStorable {
             return Double(yIndex) / Double(size.rows - 1)
                 .clampFromZero(to:1)
         } else {
-            return ColourModel.getConstantFrom(values, for: parameter)
+          return getConstant(from: values, for: parameter)
         }
     }
 
@@ -67,33 +67,6 @@ extension PaletteDataStorable {
 
     func getSwatchParameter(_ axis: Axis, swatch: ValueType) -> Double {
         let parameter = axis == .horizontal ? parameters.0 : parameters.1
-        if let valuesInRGBA = swatch as? ColourModel.RGBAValues {
-            switch parameter {
-            case .red: return valuesInRGBA.red
-            case .green: return valuesInRGBA.green
-            case .blue: return valuesInRGBA.blue
-            case .alpha: return valuesInRGBA.alpha
-            default: fatalError("Parameter \(parameter) not in colour space")
-            }
-        } else if let valuesInHSBA = swatch as? ColourModel.HSBAValues {
-            switch parameter {
-            case .hue: return valuesInHSBA.hue
-            case .saturation: return valuesInHSBA.saturation
-            case .brightness: return valuesInHSBA.brightness
-            case .alpha: return valuesInHSBA.alpha
-            default: fatalError("Parameter \(parameter) not in colour space")
-            }
-        } else if let valuesInCMYKA = swatch as? ColourModel.CMYKAValues {
-            switch parameter {
-            case .cyan: return valuesInCMYKA.cyan
-            case .magenta: return valuesInCMYKA.magenta
-            case .yellow: return valuesInCMYKA.yellow
-            case .black: return valuesInCMYKA.black
-            case .alpha: return valuesInCMYKA.alpha
-            default: fatalError("Parameter \(parameter) not in colour space")
-            }
-        } else {
-            fatalError("Unknown type")
-        }
+        return getConstant(from: swatch, for: parameter)
     }
 }
