@@ -17,6 +17,11 @@ protocol PaletteDataStorable: DataStorable {
 }
 
 extension PaletteDataStorable {
+  func getSwatchParameter(_ axis: Axis, swatch: ValueType) -> Double {
+      let parameter = axis == .horizontal ? parameters.0 : parameters.1
+      return getConstant(from: swatch, for: parameter)
+  }
+  
     func getValueFor(_ parameter: Parameter, _ xIndex: Int, _ yIndex: Int) -> Double {
         if parameters.0 == parameter {
             return (Double(xIndex) / Double(size.columns - 1))
@@ -75,8 +80,5 @@ extension PaletteDataStorable {
         }
     }
 
-    func getSwatchParameter(_ axis: Axis, swatch: ValueType) -> Double {
-        let parameter = axis == .horizontal ? parameters.0 : parameters.1
-        return getConstant(from: swatch, for: parameter)
-    }
+    
 }

@@ -29,11 +29,10 @@ protocol TransparencyCheckerboardDisplayable: View {
   var colour2: Color { get }
   /// Calculates what colour each tile should be based on its position
   /// - Parameters:
-  ///   - horizontalIndex: How far along the tile is horizontally
-  ///   - verticalIndex: How far along the tile is vertically
+  ///   - column: How far along the tile is horizontally
+  ///   - row: How far along the tile is vertically
   /// - Returns: The colour the tile should be
-  func squareColour(horizontalIndex: Int, verticalIndex: Int) -> Color
-  func horizontalOffset(verticalPosition: CGFloat) -> CGFloat
+  func squareColour(column: Int, row: Int) -> Color
 }
 
 extension TransparencyCheckerboardDisplayable {
@@ -48,7 +47,7 @@ extension TransparencyCheckerboardDisplayable {
               .aspectRatio(1, contentMode: .fit)
               .frame(width: self.tileSize, height: self.tileSize)
               .position(x: self.tileSize * CGFloat(xIndex), y: self.tileSize * CGFloat(yIndex))
-              .foregroundColor(self.squareColour(horizontalIndex: xIndex, verticalIndex: yIndex))
+              .foregroundColor(self.squareColour(column: xIndex, row: yIndex))
           }
         }
       }
@@ -57,16 +56,12 @@ extension TransparencyCheckerboardDisplayable {
     .mask(Rectangle())
   }
   
-  func squareColour(horizontalIndex: Int, verticalIndex: Int) -> Color {
-    if verticalIndex % 2 == 0 {
-      return horizontalIndex % 2 == 0 ? .gray : .white
+  func squareColour(column: Int, row: Int) -> Color {
+    if row % 2 == 0 {
+      return column % 2 == 0 ? colour2 : colour1
     } else {
-      return horizontalIndex % 2 != 0 ? .gray : .white
+      return column % 2 != 0 ? colour2 : colour1
     }
-  }
-  
-  func horizontalOffset(verticalPosition: CGFloat) -> CGFloat {
-    return Int(verticalPosition) % (Int(tileSize) * 2) == 0 ? tileSize : 0
   }
 }
 
