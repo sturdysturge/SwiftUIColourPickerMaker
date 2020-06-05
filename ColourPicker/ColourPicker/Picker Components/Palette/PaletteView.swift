@@ -8,8 +8,18 @@
 
 import SwiftUI
 
-struct PaletteView<ValueType>: View, PalettePickable {
+struct PaletteView<ValueType>: PalettePickable {
     let data: PaletteData<ValueType>
+}
+
+struct PreviewPaletteView {
+  @ObservedObject var data = ColourModel(colourSpace: .greyscale)
+}
+
+extension PreviewPaletteView: View {
+  var body: some View {
+    PaletteView(data: PaletteData(values: $data.valuesInGreyscale, parameters: (.white, .alpha), size: (rows: 10, columns: 10)))
+  }
 }
 
 struct PaletteView_Previews: PreviewProvider {

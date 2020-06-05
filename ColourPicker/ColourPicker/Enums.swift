@@ -213,7 +213,7 @@ enum Parameter: String, CaseIterable {
         case .brightness:
             return [.black, .clear]
         case .white:
-            return [.clear]
+          return [.black, .white]
         }
     }
 

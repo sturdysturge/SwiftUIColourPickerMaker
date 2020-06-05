@@ -19,10 +19,10 @@ protocol PaletteDataStorable: DataStorable {
 extension PaletteDataStorable {
     func getValueFor(_ parameter: Parameter, _ xIndex: Int, _ yIndex: Int) -> Double {
         if parameters.0 == parameter {
-            return Double(xIndex) / Double(size.columns - 1)
+            return (Double(xIndex) / Double(size.columns - 1))
                 .clampFromZero(to:1)
         } else if parameters.1 == parameter {
-            return Double(yIndex) / Double(size.rows - 1)
+            return (Double(yIndex) / Double(size.rows - 1))
                 .clampFromZero(to:1)
         } else {
           return getConstant(from: values, for: parameter)
@@ -36,7 +36,10 @@ extension PaletteDataStorable {
             return Color.fromValues(valuesInHSBA)
         } else if let valuesInCMYKA = values as? ColourModel.CMYKAValues {
             return Color.fromValues(valuesInCMYKA)
-        } else {
+        } else if let valuesInGreyscale = values as? ColourModel.GreyscaleValues {
+          return Color.fromValues(valuesInGreyscale)
+        }
+        else {
             fatalError("Unknown data type")
         }
     }
@@ -60,7 +63,14 @@ extension PaletteDataStorable {
             } else {
                 fatalError("Could not convert to type \(ValueType.self)")
             }
-        } else {
+        } else if ValueType.self == ColourModel.GreyscaleValues.self {
+          if let returnValue = (white: getValueFor(.white, xIndex, yIndex), alpha: getValueFor(.alpha, xIndex, yIndex)) as? ValueType {
+            return returnValue
+          } else {
+              fatalError("Could not convert to type \(ValueType.self)")
+          }
+        }
+        else {
             fatalError("Unknown type \(ValueType.self)")
         }
     }

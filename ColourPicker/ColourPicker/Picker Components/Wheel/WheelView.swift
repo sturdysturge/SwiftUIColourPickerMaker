@@ -23,7 +23,7 @@ struct PreviewWheelView: View {
     var body: some View {
         VStack {
             PreviewColourView(colour: data.colour, square: true)
-            WheelView(backgroundColour: Color.getBackgroundColour(parameters: (.hue, .saturation)), data: WheelData(rotation: .hue, distanceFromCentre: .saturation, values: $data.valuesInHSBA))
+          WheelView(backgroundColour: .clear, data: WheelData(rotation: .white, distanceFromCentre: .alpha, values: $data.valuesInGreyscale))
         }
     }
 }
