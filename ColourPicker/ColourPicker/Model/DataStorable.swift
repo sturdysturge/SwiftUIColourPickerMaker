@@ -168,7 +168,19 @@ extension DataStorable {
       default:
         fatalError("Parameter \(parameters.1) not in colour space")
       }
-    } else {
+    } else if let valuesInGreyscale = _$values as? Binding<ColourModel.GreyscaleValues> {
+      if parameters.0 == .white && parameters.1 == .alpha {
+        return (valuesInGreyscale.white, valuesInGreyscale.alpha)
+      }
+      else if parameters.0 == .alpha && parameters.1 == .white {
+        return (valuesInGreyscale.alpha, valuesInGreyscale.white)
+      }
+      else {
+        fatalError("Parameter \(parameters.1) not in colour space")
+      }
+    }
+    
+    else {
       fatalError("Could not find a colour space for values")
     }
   }

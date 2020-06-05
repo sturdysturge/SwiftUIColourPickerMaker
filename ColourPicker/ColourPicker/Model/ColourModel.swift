@@ -36,12 +36,6 @@ class ColourModel: ObservableObject {
     }
   }
   
-  @Published var white = 1.0 {
-    didSet {
-      setColour(colourSpace: .greyscale)
-    }
-  }
-  
   @Published var valuesInRGBA: RGBAValues = (1.0, 0.0, 0.0, 1.0) {
     didSet {
       setColour(colourSpace: .RGBA)
@@ -60,6 +54,12 @@ class ColourModel: ObservableObject {
     }
   }
   
+  @Published var valuesInGreyscale: GreyscaleValues = (1.0, 1.0) {
+    didSet {
+      setColour(colourSpace: .greyscale)
+    }
+  }
+  
   init(colourSpace: ColourSpace) {
     self.colourSpace = colourSpace
     setColour()
@@ -75,7 +75,7 @@ class ColourModel: ObservableObject {
     case .CMYKA:
       colour = Color.fromValues(valuesInCMYKA)
     case .greyscale:
-      colour = Color(white: white, opacity: alpha)
+      colour = Color.fromValues(valuesInGreyscale)
     }
   }
   

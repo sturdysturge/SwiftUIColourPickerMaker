@@ -95,6 +95,14 @@ extension Color {
     static func blend(colour1: ColourModel.CMYKAValues, colour2: ColourModel.CMYKAValues, alpha: Double) -> ColourModel.CMYKAValues {
         return (cyan: colour1.cyan + colour2.cyan, magenta: colour1.magenta + colour2.magenta, yellow: colour1.yellow + colour2.yellow, black: colour1.black + colour2.black, alpha: alpha)
     }
+  
+  /// A way to create Color instances from HSBA tuples
+  /// - Parameters:
+  ///   - valuesInGreyscale: A tuple containing white and alpha as Doubles
+  /// - Returns: A colour made from the tuple's parameters
+  static func fromValues(_ valuesInGreyscale: ColourModel.GreyscaleValues) -> Color {
+    return Color(white: valuesInGreyscale.white, opacity: valuesInGreyscale.alpha)
+  }
 
     /// A way to create Color instances from HSBA tuples
     /// - Parameters:
