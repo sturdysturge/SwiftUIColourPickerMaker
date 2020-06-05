@@ -11,23 +11,23 @@ import SwiftUI
 extension CGFloat {
     static let halfPi: CGFloat = 1.5707963267948966
     static let doublePi: CGFloat = 6.283185307179586
-  func clampBetween(min minValue: CGFloat, andMax maxValue: CGFloat) -> CGFloat {
-    return [[minValue, self].max() ?? self, maxValue].min() ?? self
-  }
-  
-  func clampBetweenZero(andMax maxValue: CGFloat) -> CGFloat {
-    return [[0, self].max() ?? self, maxValue].min() ?? self
-  }
+    func clampBetween(min minValue: CGFloat, andMax maxValue: CGFloat) -> CGFloat {
+        return [[minValue, self].max() ?? self, maxValue].min() ?? self
+    }
+
+    func clampBetweenZero(andMax maxValue: CGFloat) -> CGFloat {
+        return [[0, self].max() ?? self, maxValue].min() ?? self
+    }
 }
 
 extension Double {
-  func clampBetween(min minValue: Double, andMax maxValue: Double) -> Double {
-    return [[minValue, self].max() ?? self, maxValue].min() ?? self
-  }
-  
-  func clampBetweenZero(andMax maxValue: Double) -> Double {
-    return [[0, self].max() ?? self, maxValue].min() ?? self
-  }
+    func clampBetween(min minValue: Double, andMax maxValue: Double) -> Double {
+        return [[minValue, self].max() ?? self, maxValue].min() ?? self
+    }
+
+    func clampBetweenZero(andMax maxValue: Double) -> Double {
+        return [[0, self].max() ?? self, maxValue].min() ?? self
+    }
 }
 
 extension CGPoint {

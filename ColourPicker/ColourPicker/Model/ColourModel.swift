@@ -76,6 +76,37 @@ class ColourModel: ObservableObject {
         setColour()
     }
 
+    static func getConstantFrom<T>(_ constants: T, for parameter: Parameter) -> Double {
+        if let valuesInRGBA = constants as? ColourModel.RGBAValues {
+            switch parameter {
+            case .red: return valuesInRGBA.red
+            case .green: return valuesInRGBA.green
+            case .blue: return valuesInRGBA.blue
+            case .alpha: return valuesInRGBA.alpha
+            default: fatalError("Parameter \(parameter) not in colour space")
+            }
+        } else if let valuesInHSBA = constants as? ColourModel.HSBAValues {
+            switch parameter {
+            case .hue: return valuesInHSBA.hue
+            case .green: return valuesInHSBA.saturation
+            case .brightness: return valuesInHSBA.brightness
+            case .alpha: return valuesInHSBA.alpha
+            default: fatalError("Parameter \(parameter) not in colour space")
+            }
+        } else if let valuesInCMYKA = constants as? ColourModel.CMYKAValues {
+            switch parameter {
+            case .cyan: return valuesInCMYKA.cyan
+            case .magenta: return valuesInCMYKA.magenta
+            case .yellow: return valuesInCMYKA.yellow
+            case .black: return valuesInCMYKA.black
+            case .alpha: return valuesInCMYKA.alpha
+            default: fatalError("Parameter \(parameter) not in colour space")
+            }
+        } else {
+            fatalError("Unknown type")
+        }
+    }
+
     /// Sets the colour according to which colour space is adjusted
     func setColour() {
         switch colourSpace {

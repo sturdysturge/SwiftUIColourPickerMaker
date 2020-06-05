@@ -12,20 +12,20 @@ protocol PaletteDataStorable: DataStorable {
     associatedtype ValueType
     func getSwatchColour(values: ValueType) -> Color
     func getSwatch(xIndex: Int, yIndex: Int) -> ValueType
-    func getParameterFromConstants(_ parameter: Parameter) -> Double
-    var horizontalSwatches: Int { get }
-    var verticalSwatches: Int { get }
+    var size: (rows: Int, columns: Int) { get }
     func getSwatchParameter(_ axis: Axis, swatch: ValueType) -> Double
 }
 
 extension PaletteDataStorable {
-    func getValueFor(_ parameter: Parameter, xIndex: Int, yIndex: Int) -> Double {
+    func getValueFor(_ parameter: Parameter, _ xIndex: Int, _ yIndex: Int) -> Double {
         if parameters.0 == parameter {
-            return Double(xIndex) / Double(horizontalSwatches - 1)
+            return Double(xIndex) / Double(size.columns - 1)
+                .clampBetweenZero(andMax: 1)
         } else if parameters.1 == parameter {
-            return Double(yIndex) / Double(verticalSwatches - 1)
+            return Double(yIndex) / Double(size.rows - 1)
+                .clampBetweenZero(andMax: 1)
         } else {
-            return getParameterFromConstants(parameter)
+            return ColourModel.getConstantFrom(values, for: parameter)
         }
     }
 
@@ -43,19 +43,19 @@ extension PaletteDataStorable {
 
     func getSwatch(xIndex: Int, yIndex: Int) -> ValueType {
         if ValueType.self == ColourModel.RGBAValues.self {
-            if let returnValue = (red: getValueFor(.red, xIndex: xIndex, yIndex: yIndex), green: getValueFor(.green, xIndex: xIndex, yIndex: yIndex), blue: getValueFor(.blue, xIndex: xIndex, yIndex: yIndex), alpha: getValueFor(.alpha, xIndex: xIndex, yIndex: yIndex)) as? ValueType {
+            if let returnValue = (red: getValueFor(.red, xIndex, yIndex), green: getValueFor(.green, xIndex, yIndex), blue: getValueFor(.blue, xIndex, yIndex), alpha: getValueFor(.alpha, xIndex, yIndex)) as? ValueType {
                 return returnValue
             } else {
                 fatalError("Could not convert to type \(ValueType.self)")
             }
         } else if ValueType.self == ColourModel.HSBAValues.self {
-            if let returnValue = (hue: getValueFor(.hue, xIndex: xIndex, yIndex: yIndex), saturation: getValueFor(.saturation, xIndex: xIndex, yIndex: yIndex), brightness: getValueFor(.brightness, xIndex: xIndex, yIndex: yIndex), alpha: getValueFor(.alpha, xIndex: xIndex, yIndex: yIndex)) as? ValueType {
+            if let returnValue = (hue: getValueFor(.hue, xIndex, yIndex), saturation: getValueFor(.saturation, xIndex, yIndex), brightness: getValueFor(.brightness, xIndex, yIndex), alpha: getValueFor(.alpha, xIndex, yIndex)) as? ValueType {
                 return returnValue
             } else {
                 fatalError("Could not convert to type \(ValueType.self)")
             }
         } else if ValueType.self == ColourModel.CMYKAValues.self {
-            if let returnValue = (cyan: getValueFor(.cyan, xIndex: xIndex, yIndex: yIndex), magenta: getValueFor(.magenta, xIndex: xIndex, yIndex: yIndex), yellow: getValueFor(.yellow, xIndex: xIndex, yIndex: yIndex), black: getValueFor(.black, xIndex: xIndex, yIndex: yIndex), alpha: getValueFor(.alpha, xIndex: xIndex, yIndex: yIndex)) as? ValueType {
+            if let returnValue = (cyan: getValueFor(.cyan, xIndex, yIndex), magenta: getValueFor(.magenta, xIndex, yIndex), yellow: getValueFor(.yellow, xIndex, yIndex), black: getValueFor(.black, xIndex, yIndex), alpha: getValueFor(.alpha, xIndex, yIndex)) as? ValueType {
                 return returnValue
             } else {
                 fatalError("Could not convert to type \(ValueType.self)")
@@ -84,39 +84,6 @@ extension PaletteDataStorable {
             default: fatalError("Parameter \(parameter) not in colour space")
             }
         } else if let valuesInCMYKA = swatch as? ColourModel.CMYKAValues {
-            switch parameter {
-            case .cyan: return valuesInCMYKA.cyan
-            case .magenta: return valuesInCMYKA.magenta
-            case .yellow: return valuesInCMYKA.yellow
-            case .black: return valuesInCMYKA.black
-            case .alpha: return valuesInCMYKA.alpha
-            default: fatalError("Parameter \(parameter) not in colour space")
-            }
-        } else {
-            fatalError("Unknown type")
-        }
-    }
-
-    func getParameterFromConstants(_ parameter: Parameter) -> Double {
-        if let valuesInRGBA = values as? ColourModel.RGBAValues {
-            switch parameter {
-            case .red: return valuesInRGBA.red
-            case .green: return valuesInRGBA.green
-            case .blue: return valuesInRGBA.blue
-            case .alpha: return valuesInRGBA.alpha
-            default: fatalError("Parameter \(parameter) not in colour space")
-            }
-        }
-        if let valuesInHSBA = values as? ColourModel.HSBAValues {
-            switch parameter {
-            case .hue: return valuesInHSBA.hue
-            case .green: return valuesInHSBA.saturation
-            case .brightness: return valuesInHSBA.brightness
-            case .alpha: return valuesInHSBA.alpha
-            default: fatalError("Parameter \(parameter) not in colour space")
-            }
-        }
-        if let valuesInCMYKA = values as? ColourModel.CMYKAValues {
             switch parameter {
             case .cyan: return valuesInCMYKA.cyan
             case .magenta: return valuesInCMYKA.magenta

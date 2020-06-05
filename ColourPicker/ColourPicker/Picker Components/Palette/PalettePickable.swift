@@ -16,10 +16,10 @@ protocol PalettePickable {
 extension PalettePickable where Self: View {
     var body: some View {
         VStack {
-            ForEach(0 ..< data.verticalSwatches, id: \.self) {
+            ForEach(0 ..< data.size.rows, id: \.self) {
                 yIndex in
                 HStack {
-                    ForEach(0 ..< self.data.horizontalSwatches, id: \.self) {
+                    ForEach(0 ..< self.data.size.columns, id: \.self) {
                         xIndex in
                         Button(action: {
                             let swatch = self.data.getSwatch(xIndex: xIndex, yIndex: yIndex)
