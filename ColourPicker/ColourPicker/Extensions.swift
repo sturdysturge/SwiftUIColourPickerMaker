@@ -20,6 +20,16 @@ extension CGFloat {
   }
 }
 
+extension Double {
+  func clampBetween(min minValue: Double, andMax maxValue: Double) -> Double {
+    return [[minValue, self].max() ?? self, maxValue].min() ?? self
+  }
+  
+  func clampBetweenZero(andMax maxValue: Double) -> Double {
+    return [[0, self].max() ?? self, maxValue].min() ?? self
+  }
+}
+
 extension CGPoint {
     func angleToPoint(_ point: CGPoint) -> CGFloat {
         let xDistance = point.x - x
