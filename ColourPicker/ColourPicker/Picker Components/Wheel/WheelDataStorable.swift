@@ -8,19 +8,25 @@
 
 import SwiftUI
 
-struct WheelData<T>: DataStorable {
-    typealias ValueType = T
-    var parameters: (Parameter, Parameter)
-    @Binding var values: ValueType
-    var _$values: Binding<T> { _values }
+protocol WheelDataStorable: DataStorable {
+  var angularGradient: Gradient { get }
+  var radialGradient: Gradient { get }
+}
 
-    init(rotation: Parameter, distanceFromCentre: Parameter, values: Binding<ValueType>) {
-        angularGradient = rotation.gradient
-        radialGradient = distanceFromCentre.gradient
-        parameters = (rotation, distanceFromCentre)
-        _values = values
-    }
-
-    let angularGradient: Gradient
-    let radialGradient: Gradient
+struct WheelData<T>: WheelDataStorable {
+  typealias ValueType = T
+  var parameters: (Parameter, Parameter)
+  @Binding var values: ValueType
+  var _$values: Binding<T> { _values }
+  let angularGradient: Gradient
+  let radialGradient: Gradient
+  
+  init(rotation: Parameter, distanceFromCentre: Parameter, values: Binding<ValueType>) {
+    angularGradient = rotation.gradient
+    radialGradient = distanceFromCentre.gradient
+    parameters = (rotation, distanceFromCentre)
+    _values = values
+  }
+  
+  
 }

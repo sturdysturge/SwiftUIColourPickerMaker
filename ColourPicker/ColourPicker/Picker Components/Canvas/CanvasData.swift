@@ -8,7 +8,11 @@
 
 import SwiftUI
 
-struct CanvasData<T>: DataStorable {
+protocol CanvasDataStorable: DataStorable {
+  
+}
+
+struct CanvasData<T>: CanvasDataStorable {
     var parameters: (Parameter, Parameter)
     typealias ValueType = T
     @Binding var values: ValueType
