@@ -22,9 +22,9 @@ extension WheelPickable {
                 .clipShape(Circle())
             GeometryReader { geometry in
                 CircleGradientView(angularGradient: self.data.angularGradient, radialGradient: self.data.radialGradient, radius: geometry.size.width * 0.7)
-                    .radialDrag(rotation: self.data.bindingValues().0, distanceFromCentre: self.data.bindingValues().1, size: geometry.size, offset: self._$thumbOffset)
+                    .radialDrag(rotation: self.data.bindingValues.0, distanceFromCentre: self.data.bindingValues.1, size: geometry.size, offset: self._$thumbOffset)
                 Group {
-                    CircleThumbView()
+                  CircleThumbView(size: 25)
                         .frame(width: 25, height: 25)
                         .offset(x: self.thumbOffset.x, y: self.thumbOffset.y)
                 }

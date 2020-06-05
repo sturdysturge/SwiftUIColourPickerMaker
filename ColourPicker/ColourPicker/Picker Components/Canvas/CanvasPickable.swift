@@ -11,6 +11,8 @@ import SwiftUI
 protocol CanvasPickable: View {
     associatedtype ValueType
     var data: CanvasData<ValueType> { get }
+  var thumbOffset: CGPoint { get }
+  var _$thumbOffset: Binding<CGPoint> { get }
 }
 
 extension CanvasPickable {
@@ -19,7 +21,9 @@ extension CanvasPickable {
             Color(hue: self.data.getHue() ?? 0, saturation: 1, brightness: 1, opacity: self.data.getHue() ?? 0)
             GeometryReader { geometry in
                 DoubleGradientView(horizontal: self.data.parameters.0, vertical: self.data.parameters.1, hue: self.data.getHue())
-                CanvasThumbView(size: geometry.size, xValue: self.data.bindingValues().0, yValue: self.data.bindingValues().1)
+                  .bidirectionalDrag(offset: self._$thumbOffset, xValue: self.data.bindingValues.x, yValue: self.data.bindingValues.y, size: geometry.size)
+              CircleThumbView(size: 25)
+                  .offset(x: self.thumbOffset.x, y: self.thumbOffset.y)
             }
         }
         .background(TransparencyCheckerboardView(tileSize: 20))

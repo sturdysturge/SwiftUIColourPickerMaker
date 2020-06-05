@@ -11,21 +11,21 @@ import SwiftUI
 extension CGFloat {
     static let halfPi: CGFloat = 1.5707963267948966
     static let doublePi: CGFloat = 6.283185307179586
-    func clampBetween(min minValue: CGFloat, andMax maxValue: CGFloat) -> CGFloat {
+    func clampFrom(_ minValue: CGFloat, to maxValue: CGFloat) -> CGFloat {
         return [[minValue, self].max() ?? self, maxValue].min() ?? self
     }
 
-    func clampBetweenZero(andMax maxValue: CGFloat) -> CGFloat {
+  func clampFromZero(to maxValue: CGFloat) -> CGFloat {
         return [[0, self].max() ?? self, maxValue].min() ?? self
     }
 }
 
 extension Double {
-    func clampBetween(min minValue: Double, andMax maxValue: Double) -> Double {
+    func clampFrom(min minValue: Double, to maxValue: Double) -> Double {
         return [[minValue, self].max() ?? self, maxValue].min() ?? self
     }
 
-    func clampBetweenZero(andMax maxValue: Double) -> Double {
+  func clampFromZero(to maxValue: Double) -> Double {
         return [[0, self].max() ?? self, maxValue].min() ?? self
     }
 }
@@ -319,12 +319,13 @@ extension View {
 
     /** A way to use BidirectionalDragModifier without calling it directly
      - Parameters:
+   - offset: The amount that the circular thumb is offset
      - xValue: The value based on horizontal position between 0 and 1
      - yValue: The value based on vertical position between 0 and 1
      - size: The size of the canvas
      - Returns: A View that has bidirectional dragging functionality
      */
-    func bidirectionalDrag(xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) -> some View {
-        return modifier(BidirectionalDragModifier(xValue: xValue, yValue: yValue, size: size))
+  func bidirectionalDrag(offset: Binding<CGPoint>, xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) -> some View {
+    return modifier(BidirectionalDragModifier(offset: offset, xValue: xValue, yValue: yValue, size: size))
     }
 }

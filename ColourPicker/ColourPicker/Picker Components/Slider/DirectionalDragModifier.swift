@@ -30,14 +30,14 @@ extension DirectionalDragModifier: ViewModifier {
                 .onChanged { value in
                     if self.orientation == .horizontal {
                       self.offset.x = value.location.x
-                            .clampBetweenZero(andMax: self.max)
+                            .clampFromZero(to:self.max)
                         self.value = Double(self.offset.x / self.max)
-                            .clampBetweenZero(andMax: 1)
+                            .clampFromZero(to:1)
                     } else {
                         self.offset.y = value.location.y
-                            .clampBetweenZero(andMax: self.max)
+                            .clampFromZero(to:self.max)
                         self.value = Double(self.offset.y / self.max)
-                            .clampBetweenZero(andMax: 1)
+                            .clampFromZero(to:1)
                     }
       })
     }

@@ -20,10 +20,10 @@ extension PaletteDataStorable {
     func getValueFor(_ parameter: Parameter, _ xIndex: Int, _ yIndex: Int) -> Double {
         if parameters.0 == parameter {
             return Double(xIndex) / Double(size.columns - 1)
-                .clampBetweenZero(andMax: 1)
+                .clampFromZero(to:1)
         } else if parameters.1 == parameter {
             return Double(yIndex) / Double(size.rows - 1)
-                .clampBetweenZero(andMax: 1)
+                .clampFromZero(to:1)
         } else {
             return ColourModel.getConstantFrom(values, for: parameter)
         }
