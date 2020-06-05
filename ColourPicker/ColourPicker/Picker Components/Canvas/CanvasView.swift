@@ -9,7 +9,7 @@
 import SwiftUI
 
 /// A View that shows data from CanvasData in the body in CanvasPickable
-struct CanvasView<T>: View, CanvasPickable {
+struct CanvasView<T>: CanvasPickable {
   @State var thumbOffset = CGPoint()
   var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
     let data: CanvasData<T>

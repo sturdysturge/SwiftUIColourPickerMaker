@@ -53,7 +53,7 @@ extension TransparencyCheckerboardDisplayable {
         }
       }
     }
-    .offset(x: self.tileSize / 2, y: self.tileSize / 2)
+    .offset(x: self.tileSize, y: self.tileSize)
     .mask(Rectangle())
   }
   

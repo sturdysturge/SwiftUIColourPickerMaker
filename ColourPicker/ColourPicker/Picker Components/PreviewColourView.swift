@@ -18,17 +18,24 @@ extension PreviewColourView: View {
     ZStack {
       if square {
         Group {
-          TransparencyCheckerboardView()
-          Rectangle()
-            .foregroundColor(colour)
+          GeometryReader { geometry in
+          TransparencyCheckerboardView(tileSize: 20)
+              Rectangle()
+                .foregroundColor(self.colour)
+                .frame(width: geometry.size.width - 19, height: geometry.size.height - 19)
+            }
+          
         }
         .aspectRatio(1, contentMode: .fit)
       } else {
         //Not square
         Group {
-          TransparencyCheckerboardView()
+          GeometryReader { geometry in
+          TransparencyCheckerboardView(tileSize: 20)
           Rectangle()
-            .foregroundColor(colour)
+            .foregroundColor(self.colour)
+            .frame(width: geometry.size.width - 19, height: geometry.size.height - 19)
+            }
         }
       }
     }
