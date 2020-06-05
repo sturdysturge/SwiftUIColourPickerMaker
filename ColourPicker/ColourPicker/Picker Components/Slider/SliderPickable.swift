@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-protocol SliderPickable {
+protocol SliderPickable: View {
     var parameter: Parameter { get }
     var orientation: Axis { get }
     var value: Double { get set }
@@ -19,7 +19,7 @@ protocol SliderPickable {
     func getGradient() -> LinearGradient
 }
 
-extension SliderPickable where Self: View {
+extension SliderPickable {
     func size(in direction: Axis) -> CGFloat {
         if orientation == direction {
             return length
