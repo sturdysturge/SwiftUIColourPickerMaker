@@ -27,7 +27,6 @@
 		4163DC862485BEFD002662DC /* BidirectionalDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4163DC852485BEFD002662DC /* BidirectionalDragModifier.swift */; };
 		4163DC882485C2F1002662DC /* CanvasThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4163DC872485C2F1002662DC /* CanvasThumbView.swift */; };
 		4163DC8A2485C32C002662DC /* SliderPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4163DC892485C32C002662DC /* SliderPickable.swift */; };
-		4163DC8C2485C34F002662DC /* ThumbSlidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4163DC8B2485C34F002662DC /* ThumbSlidable.swift */; };
 		4163DC8E2485C3C2002662DC /* CanvasPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4163DC8D2485C3C2002662DC /* CanvasPickable.swift */; };
 		4163DC902485C3DB002662DC /* DoubleGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4163DC8F2485C3DB002662DC /* DoubleGradientView.swift */; };
 		4164CE8B2484185C009DA810 /* PaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4164CE8A2484185C009DA810 /* PaletteView.swift */; };
@@ -65,7 +64,6 @@
 		4163DC852485BEFD002662DC /* BidirectionalDragModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidirectionalDragModifier.swift; sourceTree = "<group>"; };
 		4163DC872485C2F1002662DC /* CanvasThumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasThumbView.swift; sourceTree = "<group>"; };
 		4163DC892485C32C002662DC /* SliderPickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderPickable.swift; sourceTree = "<group>"; };
-		4163DC8B2485C34F002662DC /* ThumbSlidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbSlidable.swift; sourceTree = "<group>"; };
 		4163DC8D2485C3C2002662DC /* CanvasPickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasPickable.swift; sourceTree = "<group>"; };
 		4163DC8F2485C3DB002662DC /* DoubleGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleGradientView.swift; sourceTree = "<group>"; };
 		4164CE8A2484185C009DA810 /* PaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteView.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				413911622484561000F2E0D5 /* DirectionalDragModifier.swift */,
 				416FBDDF248581EA0069BE53 /* SliderThumbView.swift */,
 				4163DC892485C32C002662DC /* SliderPickable.swift */,
-				4163DC8B2485C34F002662DC /* ThumbSlidable.swift */,
 			);
 			path = Slider;
 			sourceTree = "<group>";
@@ -294,7 +291,6 @@
 				4171323C24804E1800F59D4E /* AppDelegate.swift in Sources */,
 				4163DC8A2485C32C002662DC /* SliderPickable.swift in Sources */,
 				413911612484551F00F2E0D5 /* SliderView.swift in Sources */,
-				4163DC8C2485C34F002662DC /* ThumbSlidable.swift in Sources */,
 				4163DC882485C2F1002662DC /* CanvasThumbView.swift in Sources */,
 				413911632484561000F2E0D5 /* DirectionalDragModifier.swift in Sources */,
 				414087232482B0E90039F027 /* TransparencyCheckerboardView.swift in Sources */,

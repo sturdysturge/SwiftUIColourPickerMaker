@@ -313,8 +313,8 @@ extension View {
      - orientation: The orientation of the slider (horizontally or vertically)
      - Returns: A View that has dragging functionality
      */
-    func drag(value: Binding<Double>, length: CGFloat, orientation: Axis) -> some View {
-        return modifier(DirectionalDragModifier(value: value, length: length, orientation: orientation))
+    func drag(value: Binding<Double>, offset: Binding<CGPoint>, length: CGFloat, orientation: Axis) -> some View {
+        return modifier(DirectionalDragModifier(value: value, offset: offset, length: length, orientation: orientation))
     }
 
     /** A way to use BidirectionalDragModifier without calling it directly

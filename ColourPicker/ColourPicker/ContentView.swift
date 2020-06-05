@@ -12,10 +12,11 @@ struct ContentView: View {
     @ObservedObject var data = ColourModel(colourSpace: .RGBA)
 
     var body: some View {
-        VStack {
-            PreviewColourView(colour: data.colour, square: true)
-            CanvasView(data: CanvasData(parameters: (.hue, .saturation), values: $data.valuesInHSBA))
-        }
+      CMYKAExample()
+//        VStack {
+//            PreviewColourView(colour: data.colour, square: true)
+//            CanvasView(data: CanvasData(parameters: (.hue, .saturation), values: $data.valuesInHSBA))
+//        }
     }
 }
 
