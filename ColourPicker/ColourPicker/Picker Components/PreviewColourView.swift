@@ -7,15 +7,15 @@
 //
 
 import SwiftUI
-public struct PreviewColourView: View {
-    public init(colour: Color, square: Bool) {
+struct PreviewColourView: View {
+    init(colour: Color, square: Bool) {
         self.colour = colour
         self.square = square
     }
 
     let colour: Color
     let square: Bool
-    public var body: some View {
+    var body: some View {
         ZStack {
             if square {
                 Group {

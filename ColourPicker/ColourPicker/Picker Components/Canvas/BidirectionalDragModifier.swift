@@ -22,7 +22,7 @@ struct BidirectionalDragModifier: ViewModifier {
   @Binding var yValue: Double
   let maxX: CGFloat
   let maxY: CGFloat
-  public func body(content: Content) -> some View {
+  func body(content: Content) -> some View {
     content
       .gesture(DragGesture(minimumDistance: 0)
         .onChanged { value in

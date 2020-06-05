@@ -9,7 +9,7 @@
 import SwiftUI
 
 /// A background that can only be seen when Color opacity is less than 1.0
-public struct TransparencyCheckerboardView: View {
+struct TransparencyCheckerboardView: View {
     /// The size for each white or grey tile
     let tileSize: CGFloat
     /// The first colour to alternate between
@@ -21,7 +21,7 @@ public struct TransparencyCheckerboardView: View {
     ///   - tileSize: A width/height for each tile
     ///   - colour1: The first colour to alternate between
     ///   - colour2: The second colour to alternate between
-    public init(tileSize: CGFloat = 10, colour1: Color = .white, colour2: Color = .gray) {
+    init(tileSize: CGFloat = 10, colour1: Color = .white, colour2: Color = .gray) {
         self.tileSize = tileSize
         self.colour1 = colour1
         self.colour2 = colour2
@@ -44,7 +44,7 @@ public struct TransparencyCheckerboardView: View {
         return Int(verticalPosition) % (Int(tileSize) * 2) == 0 ? tileSize : 0
     }
 
-    public var body: some View {
+    var body: some View {
         ZStack {
             GeometryReader { geometry in
                 ForEach(0 ..< Int(geometry.size.height / self.tileSize), id: \.self) {
