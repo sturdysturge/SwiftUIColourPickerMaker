@@ -8,9 +8,11 @@
 
 import SwiftUI
 
+/// Colours are created with only one of these sets of parameters at a time
 enum ColourSpace: CaseIterable {
     case HSBA, RGBA, CMYKA, greyscale
 
+  //TODO:- add to tutorial
     var parameters: [Parameter] {
         switch self {
         case .HSBA:
@@ -25,6 +27,7 @@ enum ColourSpace: CaseIterable {
     }
 }
 
+//TODO:- add to tutorial
 enum Parameter: String, CaseIterable {
     case hue, saturation, brightness, red, green, blue, alpha, white, cyan, magenta, yellow, black
 
