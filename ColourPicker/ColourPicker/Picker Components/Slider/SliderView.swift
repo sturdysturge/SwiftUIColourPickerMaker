@@ -21,6 +21,6 @@ struct SliderView: SliderPickable {
 
 struct SliderView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView_Previews.previews
     }
 }

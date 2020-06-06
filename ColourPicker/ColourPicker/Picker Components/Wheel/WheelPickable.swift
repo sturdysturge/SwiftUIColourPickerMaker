@@ -20,7 +20,7 @@ protocol WheelPickable: View {
 extension WheelPickable {
     var body: some View {
         ZStack {
-            Color(hue: self.data.getHue() ?? 0, saturation: 1, brightness: 1, opacity: self.data.getHue() ?? 0)
+          data.getBackground()
                 .clipShape(Circle())
             GeometryReader { geometry in
                 CircleGradientView(angularGradient: self.angularGradient, radialGradient: self.radialGradient, radius: geometry.size.width * 0.7)

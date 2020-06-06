@@ -9,44 +9,52 @@
 import SwiftUI
 
 struct RGBAPaletteView: PalettePickable {
-    typealias DataType = RGBAData
-    var data: RGBAData
-    var size: (rows: Int, columns: Int)
+  typealias DataType = RGBAData
+  let data: RGBAData
+  let size: (rows: Int, columns: Int)
+  
+  init(data: DataType, rows: Int = 10, columns: Int = 10) {
+    self.data = data
+    self.size = (rows: rows, columns: columns)
+  }
+  
 }
 
 struct HSBAPaletteView: PalettePickable {
-    var data: HSBAData
-    typealias DataType = HSBAData
-    var size: (rows: Int, columns: Int)
+  typealias DataType = HSBAData
+  let data: HSBAData
+  let size: (rows: Int, columns: Int)
+  
+  init(data: DataType, rows: Int = 10, columns: Int = 10) {
+    self.data = data
+    self.size = (rows: rows, columns: columns)
+  }
 }
 
 struct CMYKAPaletteView: PalettePickable {
-    var data: CMYKAData
-    typealias DataType = CMYKAData
-    var size: (rows: Int, columns: Int)
+  typealias DataType = CMYKAData
+  let data: DataType
+  let size: (rows: Int, columns: Int)
+  
+  init(data: DataType, rows: Int = 10, columns: Int = 10) {
+    self.data = data
+    self.size = (rows: rows, columns: columns)
+  }
 }
 
 struct GreyscalePaletteView: PalettePickable {
-    var data: GreyscaleData
-    typealias DataType = GreyscaleData
-    var size: (rows: Int, columns: Int)
-}
-
-struct PreviewPaletteView {
-    @ObservedObject var data = ColourModel(colourSpace: .RGBA)
-}
-
-extension PreviewPaletteView: View {
-    var body: some View {
-        VStack {
-            PreviewColourView(colour: data.colour, square: true)
-            RGBAPaletteView(data: RGBAData(values: $data.valuesInRGBA, parameters: (.red, .green)), size: (rows: 10, columns: 10))
-        }
-    }
+  typealias DataType = GreyscaleData
+  let data: DataType
+  let size: (rows: Int, columns: Int)
+  
+  init(data: DataType, rows: Int = 10, columns: Int = 10) {
+    self.data = data
+    self.size = (rows: rows, columns: columns)
+  }
 }
 
 struct PaletteView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView_Previews.previews
+  }
 }

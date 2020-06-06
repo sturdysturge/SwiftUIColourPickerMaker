@@ -40,23 +40,10 @@ struct GreyscaleCanvasView: CanvasPickable {
     var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
 }
 
-/// A way to use an ObservedObject in CanvasView_Previews
-struct PreviewCanvasView {
-    @ObservedObject var data = ColourModel(colourSpace: .greyscale)
-}
-
-extension PreviewCanvasView: View {
-    var body: some View {
-        VStack {
-            PreviewColourView(colour: data.colour, square: true)
-            RGBACanvasView(data: RGBAData(values: $data.valuesInRGBA, parameters: (.red, .green)))
-        }
-    }
-}
 
 /// Previews for CanvasView that use an ObservedObject
 struct CanvasView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+       ContentView_Previews.previews
     }
 }

@@ -22,51 +22,41 @@ class ColourModel: ObservableObject {
     /// A tuple of greyscale parameters and their values
     typealias GreyscaleValues = (white: Double, alpha: Double)
 
-    /// Which colour space is being adjusted
-    var colourSpace: ColourSpace
-
     /// The colour being picked
     @Published var colour = Color.white
 
     // The colour parameters
-    @Published var alpha = Double(1) {
-        didSet {
-            // Colour space independent
-            setColour()
-        }
-    }
 
-    @Published var valuesInRGBA: RGBAValues = (1.0, 0.0, 0.0, 1.0) {
+    @Published var valuesInRGBA: RGBAValues = (0.0, 0.0, 0.0, 1.0) {
         didSet {
             setColour(colourSpace: .RGBA)
         }
     }
 
-    @Published var valuesInHSBA: HSBAValues = (1.0, 0.0, 0.0, 1.0) {
+    @Published var valuesInHSBA: HSBAValues = (0.0, 1.0, 1.0, 1.0) {
         didSet {
             setColour(colourSpace: .HSBA)
         }
     }
 
-    @Published var valuesInCMYKA: CMYKAValues = (0.5, 0.5, 0.5, 0.0, 1.0) {
+    @Published var valuesInCMYKA: CMYKAValues = (0.0, 0.0, 0.0, 0.0, 1.0) {
         didSet {
             setColour(colourSpace: .CMYKA)
         }
     }
 
-    @Published var valuesInGreyscale: GreyscaleValues = (1.0, 1.0) {
+    @Published var valuesInGreyscale: GreyscaleValues = (0.0, 1.0) {
         didSet {
             setColour(colourSpace: .greyscale)
         }
     }
 
     init(colourSpace: ColourSpace) {
-        self.colourSpace = colourSpace
-        setColour()
+      setColour(colourSpace: colourSpace)
     }
 
-    /// Sets the colour according to which colour space is adjusted
-    func setColour() {
+    /// Allows colour space to be set before setting the colour
+    func setColour(colourSpace: ColourSpace) {
         switch colourSpace {
         case .HSBA:
             colour = Color.fromValues(valuesInHSBA)
@@ -77,11 +67,5 @@ class ColourModel: ObservableObject {
         case .greyscale:
             colour = Color.fromValues(valuesInGreyscale)
         }
-    }
-
-    /// Allows colour space to be set before setting the colour
-    func setColour(colourSpace: ColourSpace) {
-        self.colourSpace = colourSpace
-        setColour()
     }
 }

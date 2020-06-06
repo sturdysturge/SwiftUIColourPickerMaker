@@ -72,7 +72,9 @@ enum Parameter: String, CaseIterable {
         case .RGBA:
             let horizontalColour = Color.fromValues(horizontal.valuesInRGB)
             let verticalColour = Color.fromValues(vertical.valuesInRGB)
-            let blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInRGB, colour2: vertical.valuesInRGB, alpha: 0.5))
+            
+            let blendedColour = Color.red
+            //let blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInRGB, colour2: vertical.valuesInRGB, alpha: 0.5))
             return axis == .horizontal ?
                 Gradient(colors: [verticalColour, blendedColour]) : Gradient(colors: [horizontalColour, blendedColour])
         case .HSBA:
@@ -144,7 +146,7 @@ enum Parameter: String, CaseIterable {
         case .blue:
             return (red: 0, green: 0, blue: 1, alpha: 1)
         case .alpha:
-            return (red: 1, green: 1, blue: 1, alpha: 1)
+            return (red: 0, green: 0, blue: 0, alpha: 1)
         case .white:
             return (red: 1, green: 1, blue: 1, alpha: 1)
         case .cyan:

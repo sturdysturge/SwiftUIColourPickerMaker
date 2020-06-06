@@ -13,7 +13,6 @@ protocol DoubleGradientDisplayable: View {
     var vertical: Parameter { get }
     var horizontalGradient: Gradient { get }
     var verticalGradient: Gradient { get }
-    var backgroundColour: Color { get }
 }
 
 extension DoubleGradientDisplayable {
@@ -34,7 +33,6 @@ extension DoubleGradientDisplayable {
                     LinearGradient(gradient: Gradient(colors: [.clear, .white]), startPoint: .leading, endPoint: .trailing)
                 )
         }
-        .background(self.backgroundColour)
     }
 }
 
@@ -43,19 +41,17 @@ struct DoubleGradientView: DoubleGradientDisplayable {
     let vertical: Parameter
     let horizontalGradient: Gradient
     let verticalGradient: Gradient
-    let backgroundColour: Color
-    init(horizontal: Parameter, vertical: Parameter, hue _: Double?) {
+    init(horizontal: Parameter, vertical: Parameter) {
         horizontal.checkCompatibility(with: vertical)
         self.horizontal = horizontal
         self.vertical = vertical
-        horizontalGradient = horizontal.canvasGradient(axis: .horizontal, otherParameter: vertical)
-        verticalGradient = vertical.canvasGradient(axis: .vertical, otherParameter: horizontal)
-        backgroundColour = .getBackgroundColour(parameters: (horizontal, vertical))
+      horizontalGradient = horizontal.isAlpha ? .blank : horizontal.canvasGradient(axis: .horizontal, otherParameter: vertical)
+      verticalGradient = vertical.isAlpha ? .blank : vertical.canvasGradient(axis: .vertical, otherParameter: horizontal)
     }
 }
 
 struct DoubleGradientView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView_Previews.previews
     }
 }

@@ -50,23 +50,10 @@ extension CGPoint {
 
 extension Gradient {
     static let hue = Gradient(colors: [.red, .yellow, .green, .blue, .indigo, .violet, .red])
+  static let blank = Gradient(colors: [])
 }
 
 extension Color {
-    static func getBackgroundColour(parameters: (Parameter, Parameter)) -> Color {
-        let parameters = [parameters.0, parameters.1]
-        if parameters.contains(.brightness) {
-            if parameters.contains(.saturation) {
-                return .clear
-            } else {
-                return .black
-            }
-        } else if parameters.contains(.saturation) {
-            return .white
-        } else {
-            return .clear
-        }
-    }
 
     /// The colour indigo is needed for the hue gradient
     static let indigo = Color(red: 0.29, green: 0, blue: 0.5)

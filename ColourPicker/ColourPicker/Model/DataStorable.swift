@@ -14,12 +14,7 @@ protocol DataStorable {
     var _$values: Binding<ValueType> { get }
     func bindingValues() -> (x: Binding<Double>, y: Binding<Double>)
     var parameters: (Parameter, Parameter) { get }
-    func getHue() -> Double?
-    /// Get a specific parameter from a generic values tuple
-    /// - Parameters:
-    ///   - parameter: The parameter in the same colour space
-    /// - Returns: A constant Double value for that parameter
-    func getConstant(from values: ValueType, for parameter: Parameter) -> Double
+    func getBackground() -> Color
 }
 
 struct RGBAData: DataStorable {
@@ -51,23 +46,26 @@ struct GreyscaleData: DataStorable {
 }
 
 extension DataStorable where ValueType == ColourModel.RGBAValues {
-    func getHue() -> Double? {
-        return nil
+    func getBackground() -> Color {
+      let parameterArray = [parameters.0, parameters.1]
+      if parameterArray.contains(.alpha) {
+        return .clear
+      }
+      else if !parameterArray.contains(.red) {
+        return Color(red: values.red, green: 0, blue: 0, opacity: 1)
+      }
+      else if !parameterArray.contains(.green) {
+        return Color(red: 0, green: values.green, blue: 0, opacity: 1)
+      }
+      else if !parameterArray.contains(.blue) {
+        return Color(red: 0, green: 0, blue: values.blue, opacity: 1)
+      }
+      else {
+        fatalError("Parameters \(parameters) contains parameters outside colour space")
+      }
     }
 
-    func getConstant(from values: ValueType, for parameter: Parameter) -> Double {
-        switch parameter {
-        case .red:
-            return values.red
-        case .green:
-            return values.green
-        case .blue:
-            return values.blue
-        case .alpha:
-            return values.alpha
-        default: fatalError("Parameter \(parameter) not in colour space")
-        }
-    }
+    
 
     func bindingValues() -> (x: Binding<Double>, y: Binding<Double>) {
         var firstParameter: Binding<Double>
@@ -99,22 +97,17 @@ extension DataStorable where ValueType == ColourModel.RGBAValues {
 }
 
 extension DataStorable where ValueType == ColourModel.HSBAValues {
-    func getHue() -> Double? {
-        return values.hue
-    }
-
-    func getConstant(from values: ValueType, for parameter: Parameter) -> Double {
-        switch parameter {
-        case .hue:
-            return values.hue
-        case .green:
-            return values.saturation
-        case .brightness:
-            return values.brightness
-        case .alpha:
-            return values.alpha
-        default: fatalError("Parameter \(parameter) not in colour space")
-        }
+    func getBackground() -> Color {
+      let parameterArray = [parameters.0, parameters.1]
+      if parameterArray.contains(.alpha) {
+        return .clear
+      }
+      else if !parameterArray.contains(.hue) {
+        return Color(hue: values.hue, saturation: 1, brightness: 1, opacity: 1)
+      }
+      else {
+        fatalError("Parameters \(parameters) contains parameters outside colour space")
+      }
     }
 
     func bindingValues() -> (x: Binding<Double>, y: Binding<Double>) {
@@ -147,25 +140,34 @@ extension DataStorable where ValueType == ColourModel.HSBAValues {
 }
 
 extension DataStorable where ValueType == ColourModel.CMYKAValues {
-    func getHue() -> Double? {
-        return nil
+    func getBackground() -> Color {
+      let parameterArray = [parameters.0, parameters.1]
+      var valuesForBackground = values
+      if parameterArray.contains(.alpha) {
+        return .clear
+      }
+      else {
+      ColourSpace.CMYKA.parameters.forEach { parameter in
+        if parameterArray.contains(parameter) {
+          switch parameter {
+          case .cyan:
+            valuesForBackground.cyan = 0
+          case .magenta:
+            valuesForBackground.magenta = 0
+          case .yellow:
+            valuesForBackground.yellow = 0
+          case .black:
+            valuesForBackground.black = 0
+          default:
+            fatalError("Unknown parameter \(parameter)")
+          }
+        }
+      }
+        return Color.fromValues(valuesForBackground)
+      }
     }
 
-    func getConstant(from values: ValueType, for parameter: Parameter) -> Double {
-        switch parameter {
-        case .cyan:
-            return values.cyan
-        case .magenta:
-            return values.magenta
-        case .yellow:
-            return values.yellow
-        case .black:
-            return values.black
-        case .alpha:
-            return values.alpha
-        default: fatalError("Parameter \(parameter) not in colour space")
-        }
-    }
+    
 
     func bindingValues() -> (x: Binding<Double>, y: Binding<Double>) {
         var firstParameter: Binding<Double>
@@ -201,20 +203,9 @@ extension DataStorable where ValueType == ColourModel.CMYKAValues {
 }
 
 extension DataStorable where ValueType == ColourModel.GreyscaleValues {
-    func getHue() -> Double? {
-        return nil
-    }
-
-    func getConstant(from values: ValueType, for parameter: Parameter) -> Double {
-        switch parameter {
-        case .white:
-            return values.white
-        case .alpha:
-            return values.alpha
-        default:
-            fatalError("Parameter \(parameter) not in colour space")
-        }
-    }
+  func getBackground() -> Color {
+    return .clear
+  }
 
     func bindingValues() -> (x: Binding<Double>, y: Binding<Double>) {
         if parameters.0 == .white, parameters.1 == .alpha {

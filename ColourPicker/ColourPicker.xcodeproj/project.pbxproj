@@ -16,7 +16,6 @@
 		4139115E24844E2C00F2E0D5 /* PalettePickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4139115D24844E2C00F2E0D5 /* PalettePickable.swift */; };
 		413911612484551F00F2E0D5 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413911602484551F00F2E0D5 /* SliderView.swift */; };
 		413911632484561000F2E0D5 /* DirectionalDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413911622484561000F2E0D5 /* DirectionalDragModifier.swift */; };
-		4139116624845AF200F2E0D5 /* CMYKAExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4139116524845AF200F2E0D5 /* CMYKAExample.swift */; };
 		413C695F2482750B00F4A5A0 /* ColourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413C695E2482750B00F4A5A0 /* ColourModel.swift */; };
 		413C69612482752B00F4A5A0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413C69602482752B00F4A5A0 /* Extensions.swift */; };
 		414087232482B0E90039F027 /* TransparencyCheckerboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414087222482B0E90039F027 /* TransparencyCheckerboardView.swift */; };
@@ -34,7 +33,6 @@
 		4171324524804E1900F59D4E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4171324424804E1900F59D4E /* Preview Assets.xcassets */; };
 		4171324824804E1900F59D4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4171324624804E1900F59D4E /* LaunchScreen.storyboard */; };
 		4171325024804E2600F59D4E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4171324F24804E2600F59D4E /* Enums.swift */; };
-		4171325224804E4300F59D4E /* ColourPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4171325124804E4300F59D4E /* ColourPicker.swift */; };
 		41A5BB472483D3910073B4C6 /* PreviewColourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5BB462483D3910073B4C6 /* PreviewColourView.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +46,6 @@
 		4139115D24844E2C00F2E0D5 /* PalettePickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettePickable.swift; sourceTree = "<group>"; };
 		413911602484551F00F2E0D5 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		413911622484561000F2E0D5 /* DirectionalDragModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionalDragModifier.swift; sourceTree = "<group>"; };
-		4139116524845AF200F2E0D5 /* CMYKAExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMYKAExample.swift; sourceTree = "<group>"; };
 		413C695E2482750B00F4A5A0 /* ColourModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourModel.swift; sourceTree = "<group>"; };
 		413C69602482752B00F4A5A0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		414087222482B0E90039F027 /* TransparencyCheckerboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparencyCheckerboardView.swift; sourceTree = "<group>"; };
@@ -68,7 +65,6 @@
 		4171324724804E1900F59D4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4171324924804E1900F59D4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4171324F24804E2600F59D4E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		4171325124804E4300F59D4E /* ColourPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourPicker.swift; sourceTree = "<group>"; };
 		41A5BB462483D3910073B4C6 /* PreviewColourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewColourView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,14 +97,6 @@
 				4163DC892485C32C002662DC /* SliderPickable.swift */,
 			);
 			path = Slider;
-			sourceTree = "<group>";
-		};
-		4139116424845ABF00F2E0D5 /* #Examples */ = {
-			isa = PBXGroup;
-			children = (
-				4139116524845AF200F2E0D5 /* CMYKAExample.swift */,
-			);
-			path = "#Examples";
 			sourceTree = "<group>";
 		};
 		4163DC802485B75D002662DC /* Canvas */ = {
@@ -177,10 +165,8 @@
 			children = (
 				412157F22489A3B8001369AC /* Model */,
 				4163DC822485B7A0002662DC /* Picker Components */,
-				4139116424845ABF00F2E0D5 /* #Examples */,
 				4171323B24804E1800F59D4E /* AppDelegate.swift */,
 				4171324124804E1900F59D4E /* Assets.xcassets */,
-				4171325124804E4300F59D4E /* ColourPicker.swift */,
 				4171323F24804E1800F59D4E /* ContentView.swift */,
 				4171324F24804E2600F59D4E /* Enums.swift */,
 				413C69602482752B00F4A5A0 /* Extensions.swift */,
@@ -284,8 +270,6 @@
 				412D472A24893A4B0014C35D /* CircleGradientView.swift in Sources */,
 				4163DC862485BEFD002662DC /* BidirectionalDragModifier.swift in Sources */,
 				413C695F2482750B00F4A5A0 /* ColourModel.swift in Sources */,
-				4171325224804E4300F59D4E /* ColourPicker.swift in Sources */,
-				4139116624845AF200F2E0D5 /* CMYKAExample.swift in Sources */,
 				4139115E24844E2C00F2E0D5 /* PalettePickable.swift in Sources */,
 				4171323E24804E1800F59D4E /* SceneDelegate.swift in Sources */,
 				4171325024804E2600F59D4E /* Enums.swift in Sources */,

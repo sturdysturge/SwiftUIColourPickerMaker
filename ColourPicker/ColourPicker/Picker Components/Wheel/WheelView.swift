@@ -10,7 +10,6 @@ import SwiftUI
 
 struct RGBAWheelView: WheelPickable {
     typealias DataType = RGBAData
-    let backgroundColour: Color
     let data: DataType
     @State var thumbOffset = CGPoint()
     var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
@@ -20,13 +19,11 @@ struct RGBAWheelView: WheelPickable {
         self.data = data
         angularGradient = data.parameters.0.gradient
         radialGradient = data.parameters.1.gradient
-        backgroundColour = .getBackgroundColour(parameters: data.parameters)
     }
 }
 
 struct HSBAWheelView: WheelPickable {
     typealias DataType = HSBAData
-    let backgroundColour: Color
     let data: DataType
     @State var thumbOffset = CGPoint()
     var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
@@ -36,13 +33,11 @@ struct HSBAWheelView: WheelPickable {
         self.data = data
         angularGradient = data.parameters.0.gradient
         radialGradient = data.parameters.1.gradient
-        backgroundColour = .getBackgroundColour(parameters: data.parameters)
     }
 }
 
 struct CMYKAWheelView: WheelPickable {
     typealias DataType = CMYKAData
-    let backgroundColour: Color
     let data: DataType
     @State var thumbOffset = CGPoint()
     var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
@@ -52,13 +47,11 @@ struct CMYKAWheelView: WheelPickable {
         self.data = data
         angularGradient = data.parameters.0.gradient
         radialGradient = data.parameters.1.gradient
-        backgroundColour = .getBackgroundColour(parameters: data.parameters)
     }
 }
 
 struct GreyscaleWheelView: WheelPickable {
     typealias DataType = GreyscaleData
-    let backgroundColour: Color
     let data: DataType
     @State var thumbOffset = CGPoint()
     var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
@@ -68,7 +61,6 @@ struct GreyscaleWheelView: WheelPickable {
         self.data = data
         angularGradient = data.parameters.0.gradient
         radialGradient = data.parameters.1.gradient
-        backgroundColour = .getBackgroundColour(parameters: data.parameters)
     }
 }
 
@@ -86,6 +78,6 @@ extension PreviewWheelView {
 
 struct WheelView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView_Previews.previews
     }
 }

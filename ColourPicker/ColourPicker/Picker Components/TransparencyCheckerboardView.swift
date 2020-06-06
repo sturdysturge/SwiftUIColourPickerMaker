@@ -13,7 +13,7 @@ struct TransparencyCheckerboardView: TransparencyCheckerboardDisplayable {
     let tileSize: CGFloat
     let colour1: Color
     let colour2: Color
-    init(tileSize: CGFloat = 10, colour1: Color = .white, colour2: Color = .gray) {
+    init(tileSize: CGFloat = 20, colour1: Color = .white, colour2: Color = .gray) {
         self.tileSize = tileSize
         self.colour1 = colour1
         self.colour2 = colour2
@@ -39,9 +39,9 @@ extension TransparencyCheckerboardDisplayable {
     var body: some View {
         ZStack {
             GeometryReader { geometry in
-                ForEach(0 ..< Int(geometry.size.height / self.tileSize), id: \.self) {
+              ForEach(0 ..< Int((geometry.size.height / self.tileSize) + 0.5), id: \.self) {
                     yIndex in
-                    ForEach(0 ..< Int(geometry.size.width / self.tileSize), id: \.self) {
+                    ForEach(0 ..< Int((geometry.size.width / self.tileSize) + 0.5), id: \.self) {
                         xIndex in
                         Rectangle()
                             .aspectRatio(1, contentMode: .fit)

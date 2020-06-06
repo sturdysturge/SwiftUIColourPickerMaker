@@ -30,6 +30,6 @@ extension CircleThumbView: View {
 
 struct CircleThumbView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView_Previews.previews
     }
 }
