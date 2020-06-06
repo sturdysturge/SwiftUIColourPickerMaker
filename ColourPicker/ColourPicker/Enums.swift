@@ -12,7 +12,7 @@ import SwiftUI
 enum ColourSpace: CaseIterable {
     case HSBA, RGBA, CMYKA, greyscale
 
-  //TODO:- add to tutorial
+    // TODO: - add to tutorial
     var parameters: [Parameter] {
         switch self {
         case .HSBA:
@@ -27,7 +27,7 @@ enum ColourSpace: CaseIterable {
     }
 }
 
-//TODO:- add to tutorial
+// TODO: - add to tutorial
 enum Parameter: String, CaseIterable {
     case hue, saturation, brightness, red, green, blue, alpha, white, cyan, magenta, yellow, black
 
@@ -57,10 +57,10 @@ enum Parameter: String, CaseIterable {
     }
 
     func checkCompatibility(with otherParameter: Parameter) {
-      guard self != otherParameter else {
+        guard self != otherParameter else {
             fatalError("Parameters should be different")
         }
-        guard self.isSameColourSpace(as: otherParameter) else {
+        guard isSameColourSpace(as: otherParameter) else {
             fatalError("Parameters should be from the same colour space")
         }
     }
@@ -216,16 +216,15 @@ enum Parameter: String, CaseIterable {
         case .brightness:
             return [.black, .clear]
         case .white:
-          return [.black, .white]
+            return [.black, .white]
         }
     }
 
-  func linearGradient(axis: Axis) -> LinearGradient {
-    if axis == .horizontal {
-      return LinearGradient(gradient: Gradient(colors: colours), startPoint: .leading, endPoint: .trailing)
+    func linearGradient(axis: Axis) -> LinearGradient {
+        if axis == .horizontal {
+            return LinearGradient(gradient: Gradient(colors: colours), startPoint: .leading, endPoint: .trailing)
+        } else {
+            return LinearGradient(gradient: Gradient(colors: colours), startPoint: .top, endPoint: .bottom)
+        }
     }
-    else {
-      return LinearGradient(gradient: Gradient(colors: colours), startPoint: .top, endPoint: .bottom)
-    }
-  }
 }

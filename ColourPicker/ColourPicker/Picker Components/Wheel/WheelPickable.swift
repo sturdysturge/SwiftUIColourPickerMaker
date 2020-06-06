@@ -9,10 +9,12 @@
 import SwiftUI
 
 protocol WheelPickable: View {
-    associatedtype ValueType
-    var data: WheelData<ValueType> { get }
+    associatedtype DataType where DataType: DataStorable
+    var data: DataType { get }
     var thumbOffset: CGPoint { get }
     var _$thumbOffset: Binding<CGPoint> { get }
+    var angularGradient: Gradient { get }
+    var radialGradient: Gradient { get }
 }
 
 extension WheelPickable {
@@ -21,10 +23,10 @@ extension WheelPickable {
             Color(hue: self.data.getHue() ?? 0, saturation: 1, brightness: 1, opacity: self.data.getHue() ?? 0)
                 .clipShape(Circle())
             GeometryReader { geometry in
-                CircleGradientView(angularGradient: self.data.angularGradient, radialGradient: self.data.radialGradient, radius: geometry.size.width * 0.7)
-                    .radialDrag(rotation: self.data.bindingValues.0, distanceFromCentre: self.data.bindingValues.1, size: geometry.size, offset: self._$thumbOffset)
+                CircleGradientView(angularGradient: self.angularGradient, radialGradient: self.radialGradient, radius: geometry.size.width * 0.7)
+                    .radialDrag(rotation: self.data.bindingValues().0, distanceFromCentre: self.data.bindingValues().1, size: geometry.size, offset: self._$thumbOffset)
                 Group {
-                  CircleThumbView(size: 25)
+                    CircleThumbView(size: 25)
                         .frame(width: 25, height: 25)
                         .offset(x: self.thumbOffset.x, y: self.thumbOffset.y)
                 }

@@ -8,29 +8,28 @@
 
 import SwiftUI
 struct PreviewColourView {
-  let colour: Color
-  let square: Bool
+    let colour: Color
+    let square: Bool
 }
 
 extension PreviewColourView: View {
-  
-  var body: some View {
-    ZStack {
-      if square {
-        Group {
-          TransparencyCheckerboardView()
-          Rectangle()
-            .foregroundColor(colour)
+    var body: some View {
+        ZStack {
+            if square {
+                Group {
+                    TransparencyCheckerboardView()
+                    Rectangle()
+                        .foregroundColor(colour)
+                }
+                .aspectRatio(1, contentMode: .fit)
+            } else {
+                // Not square
+                Group {
+                    TransparencyCheckerboardView()
+                    Rectangle()
+                        .foregroundColor(colour)
+                }
+            }
         }
-        .aspectRatio(1, contentMode: .fit)
-      } else {
-        //Not square
-        Group {
-          TransparencyCheckerboardView()
-          Rectangle()
-            .foregroundColor(colour)
-        }
-      }
     }
-  }
 }

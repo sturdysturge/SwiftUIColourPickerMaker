@@ -29,15 +29,15 @@ extension DirectionalDragModifier: ViewModifier {
             .gesture(DragGesture(minimumDistance: 0)
                 .onChanged { value in
                     if self.orientation == .horizontal {
-                      self.offset.x = value.location.x
-                            .clampFromZero(to:self.max)
+                        self.offset.x = value.location.x
+                            .clampFromZero(to: self.max)
                         self.value = Double(self.offset.x / self.max)
-                            .clampFromZero(to:1)
+                            .clampFromZero(to: 1)
                     } else {
                         self.offset.y = value.location.y
-                            .clampFromZero(to:self.max)
+                            .clampFromZero(to: self.max)
                         self.value = Double(self.offset.y / self.max)
-                            .clampFromZero(to:1)
+                            .clampFromZero(to: 1)
                     }
       })
     }

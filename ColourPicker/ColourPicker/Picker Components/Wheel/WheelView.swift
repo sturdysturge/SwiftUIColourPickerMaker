@@ -8,22 +8,78 @@
 
 import SwiftUI
 
-struct WheelView<T>: WheelPickable {
+struct RGBAWheelView: WheelPickable {
+    typealias DataType = RGBAData
     let backgroundColour: Color
-    let data: WheelData<T>
+    let data: DataType
     @State var thumbOffset = CGPoint()
     var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
+    let angularGradient: Gradient
+    let radialGradient: Gradient
+    init(data: DataType) {
+        self.data = data
+        angularGradient = data.parameters.0.gradient
+        radialGradient = data.parameters.1.gradient
+        backgroundColour = .getBackgroundColour(parameters: data.parameters)
+    }
+}
+
+struct HSBAWheelView: WheelPickable {
+    typealias DataType = HSBAData
+    let backgroundColour: Color
+    let data: DataType
+    @State var thumbOffset = CGPoint()
+    var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
+    let angularGradient: Gradient
+    let radialGradient: Gradient
+    init(data: DataType) {
+        self.data = data
+        angularGradient = data.parameters.0.gradient
+        radialGradient = data.parameters.1.gradient
+        backgroundColour = .getBackgroundColour(parameters: data.parameters)
+    }
+}
+
+struct CMYKAWheelView: WheelPickable {
+    typealias DataType = CMYKAData
+    let backgroundColour: Color
+    let data: DataType
+    @State var thumbOffset = CGPoint()
+    var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
+    let angularGradient: Gradient
+    let radialGradient: Gradient
+    init(data: DataType) {
+        self.data = data
+        angularGradient = data.parameters.0.gradient
+        radialGradient = data.parameters.1.gradient
+        backgroundColour = .getBackgroundColour(parameters: data.parameters)
+    }
+}
+
+struct GreyscaleWheelView: WheelPickable {
+    typealias DataType = GreyscaleData
+    let backgroundColour: Color
+    let data: DataType
+    @State var thumbOffset = CGPoint()
+    var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
+    let angularGradient: Gradient
+    let radialGradient: Gradient
+    init(data: DataType) {
+        self.data = data
+        angularGradient = data.parameters.0.gradient
+        radialGradient = data.parameters.1.gradient
+        backgroundColour = .getBackgroundColour(parameters: data.parameters)
+    }
 }
 
 struct PreviewWheelView: View {
     @ObservedObject var data = ColourModel(colourSpace: .RGBA)
 }
 
-  extension PreviewWheelView {
+extension PreviewWheelView {
     var body: some View {
         VStack {
             PreviewColourView(colour: data.colour, square: true)
-          WheelView(backgroundColour: .clear, data: WheelData(rotation: .white, distanceFromCentre: .alpha, values: $data.valuesInGreyscale))
         }
     }
 }

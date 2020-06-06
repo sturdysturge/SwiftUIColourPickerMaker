@@ -8,13 +8,11 @@
 
 import SwiftUI
 
-struct SliderView: View, SliderPickable {
-  
-  
+struct SliderView: SliderPickable {
     @Binding var value: Double
     @State var thumbOffset = CGPoint()
     var _$value: Binding<Double> { _value }
-  var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
+    var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
     let parameter: Parameter
     let orientation: Axis
     let thickness: CGFloat

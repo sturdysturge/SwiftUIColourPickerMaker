@@ -8,18 +8,41 @@
 
 import SwiftUI
 
-struct PaletteView<ValueType>: PalettePickable {
-    let data: PaletteData<ValueType>
+struct RGBAPaletteView: PalettePickable {
+    typealias DataType = RGBAData
+    var data: RGBAData
+    var size: (rows: Int, columns: Int)
+}
+
+struct HSBAPaletteView: PalettePickable {
+    var data: HSBAData
+    typealias DataType = HSBAData
+    var size: (rows: Int, columns: Int)
+}
+
+struct CMYKAPaletteView: PalettePickable {
+    var data: CMYKAData
+    typealias DataType = CMYKAData
+    var size: (rows: Int, columns: Int)
+}
+
+struct GreyscalePaletteView: PalettePickable {
+    var data: GreyscaleData
+    typealias DataType = GreyscaleData
+    var size: (rows: Int, columns: Int)
 }
 
 struct PreviewPaletteView {
-  @ObservedObject var data = ColourModel(colourSpace: .greyscale)
+    @ObservedObject var data = ColourModel(colourSpace: .RGBA)
 }
 
 extension PreviewPaletteView: View {
-  var body: some View {
-    PaletteView(data: PaletteData(values: $data.valuesInGreyscale, parameters: (.white, .alpha), size: (rows: 10, columns: 10)))
-  }
+    var body: some View {
+        VStack {
+            PreviewColourView(colour: data.colour, square: true)
+            RGBAPaletteView(data: RGBAData(values: $data.valuesInRGBA, parameters: (.red, .green)), size: (rows: 10, columns: 10))
+        }
+    }
 }
 
 struct PaletteView_Previews: PreviewProvider {

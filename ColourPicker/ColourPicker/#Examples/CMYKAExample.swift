@@ -12,6 +12,7 @@ struct CMYKAExample: View {
     @ObservedObject var data = ColourModel(colourSpace: .CMYKA)
     let sliderOrientation = Axis.horizontal
 }
+
 extension CMYKAExample {
     var body: some View {
         VStack {

@@ -15,7 +15,7 @@ extension CGFloat {
         return [[minValue, self].max() ?? self, maxValue].min() ?? self
     }
 
-  func clampFromZero(to maxValue: CGFloat) -> CGFloat {
+    func clampFromZero(to maxValue: CGFloat) -> CGFloat {
         return [[0, self].max() ?? self, maxValue].min() ?? self
     }
 }
@@ -25,7 +25,7 @@ extension Double {
         return [[minValue, self].max() ?? self, maxValue].min() ?? self
     }
 
-  func clampFromZero(to maxValue: Double) -> Double {
+    func clampFromZero(to maxValue: Double) -> Double {
         return [[0, self].max() ?? self, maxValue].min() ?? self
     }
 }
@@ -95,14 +95,14 @@ extension Color {
     static func blend(colour1: ColourModel.CMYKAValues, colour2: ColourModel.CMYKAValues, alpha: Double) -> ColourModel.CMYKAValues {
         return (cyan: colour1.cyan + colour2.cyan, magenta: colour1.magenta + colour2.magenta, yellow: colour1.yellow + colour2.yellow, black: colour1.black + colour2.black, alpha: alpha)
     }
-  
-  /// A way to create Color instances from HSBA tuples
-  /// - Parameters:
-  ///   - valuesInGreyscale: A tuple containing white and alpha as Doubles
-  /// - Returns: A colour made from the tuple's parameters
-  static func fromValues(_ valuesInGreyscale: ColourModel.GreyscaleValues) -> Color {
-    return Color(white: valuesInGreyscale.white, opacity: valuesInGreyscale.alpha)
-  }
+
+    /// A way to create Color instances from HSBA tuples
+    /// - Parameters:
+    ///   - valuesInGreyscale: A tuple containing white and alpha as Doubles
+    /// - Returns: A colour made from the tuple's parameters
+    static func fromValues(_ valuesInGreyscale: ColourModel.GreyscaleValues) -> Color {
+        return Color(white: valuesInGreyscale.white, opacity: valuesInGreyscale.alpha)
+    }
 
     /// A way to create Color instances from HSBA tuples
     /// - Parameters:
@@ -326,14 +326,14 @@ extension View {
     }
 
     /** A way to use BidirectionalDragModifier without calling it directly
-     - Parameters:
-   - offset: The amount that the circular thumb is offset
-     - xValue: The value based on horizontal position between 0 and 1
-     - yValue: The value based on vertical position between 0 and 1
-     - size: The size of the canvas
-     - Returns: A View that has bidirectional dragging functionality
+       - Parameters:
+     - offset: The amount that the circular thumb is offset
+       - xValue: The value based on horizontal position between 0 and 1
+       - yValue: The value based on vertical position between 0 and 1
+       - size: The size of the canvas
+       - Returns: A View that has bidirectional dragging functionality
      */
-  func bidirectionalDrag(offset: Binding<CGPoint>, xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) -> some View {
-    return modifier(BidirectionalDragModifier(offset: offset, xValue: xValue, yValue: yValue, size: size))
+    func bidirectionalDrag(offset: Binding<CGPoint>, xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) -> some View {
+        return modifier(BidirectionalDragModifier(offset: offset, xValue: xValue, yValue: yValue, size: size))
     }
 }

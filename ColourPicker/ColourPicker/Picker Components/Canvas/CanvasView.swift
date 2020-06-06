@@ -8,22 +8,48 @@
 
 import SwiftUI
 
-/// A View that shows data from CanvasData in the body in CanvasPickable
-struct CanvasView<T>: View, CanvasPickable {
-  @State var thumbOffset = CGPoint()
-  var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
-    let data: CanvasData<T>
+/// A View that shows RGBA data from CanvasData in the body in CanvasPickable
+struct RGBACanvasView: CanvasPickable {
+    typealias DataType = RGBAData
+    let data: DataType
+    @State var thumbOffset = CGPoint()
+    var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
+}
+
+/// A View that shows HSBA data from CanvasData in the body in CanvasPickable
+struct HSBACanvasView: CanvasPickable {
+    typealias DataType = HSBAData
+    let data: DataType
+    @State var thumbOffset = CGPoint()
+    var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
+}
+
+/// A View that shows CMYKA data from CanvasData in the body in CanvasPickable
+struct CMYKACanvasView: CanvasPickable {
+    typealias DataType = CMYKAData
+    let data: DataType
+    @State var thumbOffset = CGPoint()
+    var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
+}
+
+/// A View that shows greyscale data from CanvasData in the body in CanvasPickable
+struct GreyscaleCanvasView: CanvasPickable {
+    typealias DataType = GreyscaleData
+    let data: DataType
+    @State var thumbOffset = CGPoint()
+    var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
 }
 
 /// A way to use an ObservedObject in CanvasView_Previews
 struct PreviewCanvasView {
     @ObservedObject var data = ColourModel(colourSpace: .greyscale)
 }
+
 extension PreviewCanvasView: View {
     var body: some View {
         VStack {
             PreviewColourView(colour: data.colour, square: true)
-            CanvasView(data: CanvasData(parameters: (.white, .alpha), values: $data.valuesInGreyscale))
+            RGBACanvasView(data: RGBAData(values: $data.valuesInRGBA, parameters: (.red, .green)))
         }
     }
 }

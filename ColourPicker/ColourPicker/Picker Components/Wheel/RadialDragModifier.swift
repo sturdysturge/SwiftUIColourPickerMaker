@@ -37,11 +37,11 @@ struct RadialDragModifier: ViewModifier {
 
                     let angleOfPoint = self.centre.angleToPoint(self.offset)
                     self.rotation = Double(angleOfPoint / CGFloat.doublePi)
-                        .clampFromZero(to:1)
+                        .clampFromZero(to: 1)
 
                     let distance = self.centre.distanceToPoint(otherPoint: self.offset)
                     self.distanceFromCentre = Double(distance / self.radius)
-                        .clampFromZero(to:1)
+                        .clampFromZero(to: 1)
 
                     if self.distanceFromCentre == 1 {
                         // furthest possible point on the circle
