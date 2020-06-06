@@ -1,5 +1,5 @@
 //
-//  DataStorable.swift
+//  ColourDataStorable.swift
 //  ColourPicker
 //
 //  Created by Rob Sturgeon on 04/06/2020.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-protocol DataStorable {
+protocol ColourDataStorable {
     associatedtype ValueType
     var values: ValueType { get }
     var _$values: Binding<ValueType> { get }
@@ -17,35 +17,35 @@ protocol DataStorable {
     func getBackground() -> Color
 }
 
-struct RGBAData: DataStorable {
+struct RGBAData: ColourDataStorable {
     typealias ValueType = ColourModel.RGBAValues
     @Binding var values: ValueType
     var _$values: Binding<ValueType> { _values }
     var parameters: (Parameter, Parameter)
 }
 
-struct HSBAData: DataStorable {
+struct HSBAData: ColourDataStorable {
     typealias ValueType = ColourModel.HSBAValues
     @Binding var values: ValueType
     var _$values: Binding<ValueType> { _values }
     var parameters: (Parameter, Parameter)
 }
 
-struct CMYKAData: DataStorable {
+struct CMYKAData: ColourDataStorable {
     typealias ValueType = ColourModel.CMYKAValues
     @Binding var values: ValueType
     var _$values: Binding<ValueType> { _values }
     var parameters: (Parameter, Parameter)
 }
 
-struct GreyscaleData: DataStorable {
+struct GreyscaleData: ColourDataStorable {
     typealias ValueType = ColourModel.GreyscaleValues
     @Binding var values: ValueType
     var _$values: Binding<ValueType> { _values }
     var parameters: (Parameter, Parameter)
 }
 
-extension DataStorable where ValueType == ColourModel.RGBAValues {
+extension ColourDataStorable where ValueType == ColourModel.RGBAValues {
     func getBackground() -> Color {
       let parameterArray = [parameters.0, parameters.1]
       if parameterArray.contains(.alpha) {
@@ -96,7 +96,7 @@ extension DataStorable where ValueType == ColourModel.RGBAValues {
     }
 }
 
-extension DataStorable where ValueType == ColourModel.HSBAValues {
+extension ColourDataStorable where ValueType == ColourModel.HSBAValues {
     func getBackground() -> Color {
       let parameterArray = [parameters.0, parameters.1]
       if parameterArray.contains(.alpha) {
@@ -139,7 +139,7 @@ extension DataStorable where ValueType == ColourModel.HSBAValues {
     }
 }
 
-extension DataStorable where ValueType == ColourModel.CMYKAValues {
+extension ColourDataStorable where ValueType == ColourModel.CMYKAValues {
     func getBackground() -> Color {
       let parameterArray = [parameters.0, parameters.1]
       var valuesForBackground = values
@@ -202,7 +202,7 @@ extension DataStorable where ValueType == ColourModel.CMYKAValues {
     }
 }
 
-extension DataStorable where ValueType == ColourModel.GreyscaleValues {
+extension ColourDataStorable where ValueType == ColourModel.GreyscaleValues {
   func getBackground() -> Color {
     return .clear
   }

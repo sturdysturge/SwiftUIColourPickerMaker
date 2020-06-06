@@ -31,23 +31,6 @@ enum ColourSpace: CaseIterable {
 enum Parameter: String, CaseIterable {
     case hue, saturation, brightness, red, green, blue, alpha, white, cyan, magenta, yellow, black
 
-    init(colourSpace: ColourSpace, character: String) {
-        switch character {
-        case "H": self = .hue
-        case "S": self = .saturation
-        case "R": self = .red
-        case "G": self = .green
-        case "A": self = .alpha
-        case "W": self = .white
-        case "C": self = .cyan
-        case "M": self = .magenta
-        case "Y": self = .yellow
-        case "K": self = .black
-        case "B": self = colourSpace == .RGBA ? .blue : .brightness
-        default: fatalError("Unexpected character \(character)")
-        }
-    }
-
     enum CircleDirection {
         case angular, radial
     }
@@ -72,9 +55,7 @@ enum Parameter: String, CaseIterable {
         case .RGBA:
             let horizontalColour = Color.fromValues(horizontal.valuesInRGB)
             let verticalColour = Color.fromValues(vertical.valuesInRGB)
-            
-            let blendedColour = Color.red
-            //let blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInRGB, colour2: vertical.valuesInRGB, alpha: 0.5))
+            let blendedColour = Color.fromValues(Color.blend(colour1: horizontal.valuesInRGB, colour2: vertical.valuesInRGB, alpha: 0.5))
             return axis == .horizontal ?
                 Gradient(colors: [verticalColour, blendedColour]) : Gradient(colors: [horizontalColour, blendedColour])
         case .HSBA:

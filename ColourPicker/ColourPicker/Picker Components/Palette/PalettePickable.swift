@@ -9,7 +9,7 @@
 import SwiftUI
 
 protocol PalettePickable: View {
-  associatedtype DataType where DataType: DataStorable
+  associatedtype DataType where DataType: ColourDataStorable
   var data: DataType { get }
   var size: (rows: Int, columns: Int) { get }
   func getSwatchColour(values: DataType.ValueType) -> Color
