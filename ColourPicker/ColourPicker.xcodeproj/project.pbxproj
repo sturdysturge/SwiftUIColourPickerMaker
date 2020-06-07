@@ -34,6 +34,7 @@
 		4171324824804E1900F59D4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4171324624804E1900F59D4E /* LaunchScreen.storyboard */; };
 		4171325024804E2600F59D4E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4171324F24804E2600F59D4E /* Enums.swift */; };
 		41A5BB472483D3910073B4C6 /* PreviewColourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5BB462483D3910073B4C6 /* PreviewColourView.swift */; };
+		41CCAB18248C343700DA9F6B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CCAB17248C343700DA9F6B /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		4171324924804E1900F59D4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4171324F24804E2600F59D4E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		41A5BB462483D3910073B4C6 /* PreviewColourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewColourView.swift; sourceTree = "<group>"; };
+		41CCAB17248C343700DA9F6B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 		4171323A24804E1800F59D4E /* ColourPicker */ = {
 			isa = PBXGroup;
 			children = (
+				41CCAB16248C342000DA9F6B /* Extensions */,
 				412157F22489A3B8001369AC /* Model */,
 				4163DC822485B7A0002662DC /* Picker Components */,
 				4171323B24804E1800F59D4E /* AppDelegate.swift */,
@@ -184,6 +187,14 @@
 				4171324424804E1900F59D4E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		41CCAB16248C342000DA9F6B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				41CCAB17248C343700DA9F6B /* Color.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +286,7 @@
 				4171325024804E2600F59D4E /* Enums.swift in Sources */,
 				4163DC902485C3DB002662DC /* DoubleGradientView.swift in Sources */,
 				4171324024804E1800F59D4E /* ContentView.swift in Sources */,
+				41CCAB18248C343700DA9F6B /* Color.swift in Sources */,
 				413436302488FF7100CB0095 /* WheelView.swift in Sources */,
 				413C69612482752B00F4A5A0 /* Extensions.swift in Sources */,
 				416FBDE0248581EA0069BE53 /* SliderThumbView.swift in Sources */,

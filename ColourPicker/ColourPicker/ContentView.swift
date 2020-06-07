@@ -19,7 +19,7 @@ struct ContentView: View {
     self.colourSpace = colourSpace
     self.control = control
   }
-  static let example = ContentView(parameters: (.hue, .saturation), control: .canvas)
+  static let example = ContentView(parameters: (.hue, .saturation), control: .wheel)
   @ObservedObject var data: ColourModel
   let parameters: (Parameter, Parameter)
   let control: Control
@@ -49,6 +49,7 @@ struct ContentView: View {
           } else if colourSpace == .greyscale {
             GreyscalePaletteView(data: GreyscaleData(values: $data.valuesInGreyscale, parameters: (.white, .alpha)))
           }
+        }
           else if control == .wheel {
             if colourSpace == .RGBA {
               RGBAWheelView(data: RGBAData(values: $data.valuesInRGBA, parameters: parameters))
@@ -64,7 +65,6 @@ struct ContentView: View {
             SliderView(value: $data.valuesInRGBA.red, parameter: .red, orientation: .horizontal, thickness: 70, length: 300)
           }
         }
-      }
     }
   }
   
@@ -72,6 +72,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView(parameters: (.hue, .saturation), control: .canvas)
+    ContentView(parameters: (.hue, .saturation), control: .wheel)
   }
 }

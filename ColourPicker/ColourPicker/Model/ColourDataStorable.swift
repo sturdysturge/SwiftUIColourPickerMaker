@@ -99,10 +99,16 @@ extension ColourDataStorable where ValueType == ColourModel.RGBAValues {
 extension ColourDataStorable where ValueType == ColourModel.HSBAValues {
     func getBackground() -> Color {
       let parameterArray = [parameters.0, parameters.1]
-      if parameterArray.contains(.alpha) {
+      if parameterArray.contains(.saturation) {
+        return .white
+      }
+      else if parameterArray.contains(.brightness) {
+        return .black
+      }
+      else if parameterArray.contains(.alpha) || parameterArray.contains(.hue) {
         return .clear
       }
-      else if !parameterArray.contains(.hue) {
+      else if parameterArray.contains(.saturation) && parameterArray.contains(.brightness) {
         return Color(hue: values.hue, saturation: 1, brightness: 1, opacity: 1)
       }
       else {

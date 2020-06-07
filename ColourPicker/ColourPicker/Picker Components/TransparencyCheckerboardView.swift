@@ -21,7 +21,7 @@ struct TransparencyCheckerboardView: TransparencyCheckerboardDisplayable {
 }
 
 protocol TransparencyCheckerboardDisplayable: View {
-    /// The size for each white or grey tile
+    /// The width and height of each tile
     var tileSize: CGFloat { get }
     /// The first colour to alternate between
     var colour1: Color { get }

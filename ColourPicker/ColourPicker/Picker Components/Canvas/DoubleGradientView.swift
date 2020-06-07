@@ -45,8 +45,8 @@ struct DoubleGradientView: DoubleGradientDisplayable {
         horizontal.checkCompatibility(with: vertical)
         self.horizontal = horizontal
         self.vertical = vertical
-      horizontalGradient = horizontal.isAlpha ? .blank : horizontal.canvasGradient(axis: .horizontal, otherParameter: vertical)
-      verticalGradient = vertical.isAlpha ? .blank : vertical.canvasGradient(axis: .vertical, otherParameter: horizontal)
+      horizontalGradient = horizontal.isAlpha ? .blank : .canvasGradient(axis: .horizontal,  horizontal: horizontal, vertical: vertical)
+      verticalGradient = vertical.isAlpha ? .blank : .canvasGradient(axis: .vertical,  horizontal: horizontal, vertical: vertical)
     }
 }
 
