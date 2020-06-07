@@ -11,15 +11,15 @@ enum Control {
   case canvas, wheel, palette, slider
 }
 struct ContentView: View {
-  internal init(parameters: (Parameter, Parameter), control: Control) {
+  internal init(parameters: (Parameter, Parameter), control: Control, colourSpace: ColourSpace) {
     self.parameters = parameters
     parameters.0.checkCompatibility(with: parameters.1)
     let colourSpace = parameters.0.colourSpace
     data = ColourModel(colourSpace: colourSpace)
-    self.colourSpace = .RGBA
+    self.colourSpace = colourSpace
     self.control = control
   }
-  static let example = ContentView(parameters: (.alpha, .red), control: .slider)
+  static let example = ContentView(parameters: (.alpha, .red), control: .slider, colourSpace: .RGBA)
   @ObservedObject var data: ColourModel
   let parameters: (Parameter, Parameter)
   let control: Control
@@ -82,6 +82,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView(parameters: (.alpha, .red), control: .slider)
+    ContentView(parameters: (.alpha, .red), control: .slider, colourSpace: .RGBA)
   }
 }
