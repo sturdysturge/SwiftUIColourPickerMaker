@@ -53,8 +53,18 @@ struct GreyscalePaletteView: PalettePickable {
   }
 }
 
+struct PreviewPaletteView: View {
+  @ObservedObject var data = ColourModel(colourSpace: .HSBA)
+  var body: some View {
+    VStack {
+      PreviewColourView(colour: data.colour, square: true)
+    HSBAPaletteView(data: HSBAData(values: $data.valuesInHSBA, parameters: (.hue, .saturation)), rows: 12, columns: 12)
+    }
+  }
+}
+
 struct PaletteView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView_Previews.previews
+    PreviewPaletteView()
   }
 }

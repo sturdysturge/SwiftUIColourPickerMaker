@@ -19,7 +19,7 @@ struct ContentView: View {
     self.colourSpace = colourSpace
     self.control = control
   }
-  static let example = ContentView(parameters: (.alpha, .red), control: .slider, colourSpace: .RGBA)
+  static let example = ContentView(parameters: (.hue, .saturation), control: .palette, colourSpace: .HSBA)
   @ObservedObject var data: ColourModel
   let parameters: (Parameter, Parameter)
   let control: Control
@@ -82,6 +82,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView(parameters: (.alpha, .red), control: .slider, colourSpace: .RGBA)
+    ContentView(parameters: (.hue, .saturation), control: .palette, colourSpace: .HSBA)
   }
 }

@@ -43,7 +43,7 @@ extension SliderPickable {
                     .frame(width: size(in: .horizontal), height: size(in: .vertical), alignment: .center)
                     .cornerRadius(thickness / 4)
           }
-          self.data.getLinearGradient()
+          self.data.linearGradient
                 .frame(width: size(in: .horizontal), height: size(in: .vertical), alignment: .center)
                 .cornerRadius(thickness / 4)
             .drag(value: self.data.getBindingValue(), offset: self._$thumbOffset, length: length, orientation: data.orientation)

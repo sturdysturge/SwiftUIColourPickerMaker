@@ -17,8 +17,8 @@ struct RGBAWheelView: WheelPickable {
     let radialGradient: Gradient
     init(data: DataType) {
         self.data = data
-        angularGradient = data.parameters.0.gradient
-        radialGradient = data.parameters.1.gradient
+      angularGradient = Gradient.fromValues(data.values, parameter: data.parameters.0)
+        radialGradient = Gradient.fromValues(data.values, parameter: data.parameters.1)
     }
 }
 
@@ -31,8 +31,8 @@ struct HSBAWheelView: WheelPickable {
     let radialGradient: Gradient
     init(data: DataType) {
         self.data = data
-        angularGradient = data.parameters.0.gradient
-        radialGradient = data.parameters.1.gradient
+      angularGradient = Gradient.fromValues(data.values, parameter: data.parameters.0)
+        radialGradient = Gradient.fromValues(data.values, parameter: data.parameters.1)
     }
 }
 
@@ -45,8 +45,8 @@ struct CMYKAWheelView: WheelPickable {
     let radialGradient: Gradient
     init(data: DataType) {
         self.data = data
-        angularGradient = data.parameters.0.gradient
-        radialGradient = data.parameters.1.gradient
+      angularGradient = Gradient.fromValues(data.values, parameter: data.parameters.0)
+        radialGradient = Gradient.fromValues(data.values, parameter: data.parameters.1)
     }
 }
 
@@ -59,25 +59,24 @@ struct GreyscaleWheelView: WheelPickable {
     let radialGradient: Gradient
     init(data: DataType) {
         self.data = data
-        angularGradient = data.parameters.0.gradient
-        radialGradient = data.parameters.1.gradient
+      angularGradient = Gradient.fromValues(data.values, parameter: data.parameters.0)
+        radialGradient = Gradient.fromValues(data.values, parameter: data.parameters.1)
     }
 }
 
 struct PreviewWheelView: View {
-    @ObservedObject var data = ColourModel(colourSpace: .RGBA)
-}
-
-extension PreviewWheelView {
+    @ObservedObject var data = ColourModel(colourSpace: .HSBA)
+  
     var body: some View {
         VStack {
             PreviewColourView(colour: data.colour, square: true)
+          HSBAWheelView(data: HSBAData(values: $data.valuesInHSBA, parameters: (.hue, .saturation)))
         }
     }
 }
 
 struct WheelView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView_Previews.previews
+        PreviewWheelView()
     }
 }

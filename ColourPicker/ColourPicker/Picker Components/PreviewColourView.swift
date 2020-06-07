@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+
 struct PreviewColourView {
     let colour: Color
     let square: Bool
@@ -22,8 +23,7 @@ extension PreviewColourView: View {
                         .foregroundColor(colour)
                 }
                 .aspectRatio(1, contentMode: .fit)
-            } else {
-                // Not square
+            } else {// Not square
                 Group {
                     TransparencyCheckerboardView()
                     Rectangle()

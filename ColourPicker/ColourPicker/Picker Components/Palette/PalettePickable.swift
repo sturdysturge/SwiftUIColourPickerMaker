@@ -9,18 +9,82 @@
 import SwiftUI
 
 protocol PalettePickable: View {
+  /// The generic object that stores the colour values
   associatedtype DataType where DataType: ColourDataBindable
+  /// The generic colour values
   var data: DataType { get }
+  /// How many swatches there are horizontally and vertically
   var size: (rows: Int, columns: Int) { get }
   func getSwatchColour(values: DataType.ValueType) -> Color
+  
+  /// Get the colour values at a specific position
+  /// - Parameters:
+  ///   - xIndex: How far along it is horizontally
+  ///   - yIndex: How far along it is vertically
   func getSwatch(xIndex: Int, yIndex: Int) -> DataType.ValueType
+  /// Get the value to pass to the binding when a swatch is tapped
+  /// - Parameters:
+  ///   - axis: The horizontal or vertical direction
+  ///   - swatch: The colour values of the tapped swatch
   func getSwatchParameter(_ axis: Axis, swatch: DataType.ValueType) -> Double
   /// Get a specific parameter from a generic values tuple
   /// - Parameters:
   ///   - parameter: The parameter in the same colour space
   /// - Returns: A constant Double value for that parameter
   func getConstant(from values: DataType.ValueType, for parameter: Parameter) -> Double
+  
+  /// How much a parameter should have changed between zero and 1 at a given point
+  /// - Parameters:
+  ///   - parameter: The parameter that is changing
+  ///   - xIndex: How far along it is horizontally
+  ///   - yIndex: How far along it is vertically
+  func getValueFor(_ parameter: Parameter, _ xIndex: Int, _ yIndex: Int) -> Double
 }
+
+extension PalettePickable {
+  var body: some View {
+    VStack {
+      ForEach(0 ..< self.size.rows, id: \.self) {
+        yIndex in
+        HStack {
+          ForEach(0 ..< self.size.columns, id: \.self) {
+            xIndex in
+            Button(action: {
+              let swatch = self.getSwatch(xIndex: xIndex, yIndex: yIndex)
+              self.data.bindingValues().x.wrappedValue = self.getSwatchParameter(.horizontal, swatch: swatch)
+              self.data.bindingValues().y.wrappedValue = self.getSwatchParameter(.vertical, swatch: swatch)
+            }
+              )
+            {
+              ZStack {
+                TransparencyCheckerboardView(tileSize: 10)
+                self.getSwatchColour(values: self.getSwatch(xIndex: xIndex, yIndex: yIndex))
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  func getSwatchParameter(_ axis: Axis, swatch: DataType.ValueType) -> Double {
+    let parameter = axis == .horizontal ? data.parameters.0 : data.parameters.1
+  return getConstant(from: swatch, for: parameter)
+  }
+  
+  func getValueFor(_ parameter: Parameter, _ xIndex: Int, _ yIndex: Int) -> Double {
+    if data.parameters.0 == parameter {
+      return (Double(xIndex) / Double(size.columns - 1))
+        .clampFromZero(to: 1)
+    } else if data.parameters.1 == parameter {
+      return (Double(yIndex) / Double(size.rows - 1))
+        .clampFromZero(to: 1)
+    } else {
+      return getConstant(from: data.values, for: parameter)
+    }
+  }
+}
+
 
 extension PalettePickable where DataType == RGBAData {
   func getSwatch(xIndex: Int, yIndex: Int) -> DataType.ValueType {
@@ -114,46 +178,3 @@ extension PalettePickable where DataType == GreyscaleData {
   }
 }
 
-extension PalettePickable {
-  var body: some View {
-    VStack {
-      ForEach(0 ..< self.size.rows, id: \.self) {
-        yIndex in
-        HStack {
-          ForEach(0 ..< self.size.columns, id: \.self) {
-            xIndex in
-            Button(action: {
-              let swatch = self.getSwatch(xIndex: xIndex, yIndex: yIndex)
-              self.data.bindingValues().x.wrappedValue = self.getSwatchParameter(.horizontal, swatch: swatch)
-              self.data.bindingValues().y.wrappedValue = self.getSwatchParameter(.vertical, swatch: swatch)
-            }
-              )
-            {
-              ZStack {
-                TransparencyCheckerboardView(tileSize: 10)
-                self.getSwatchColour(values: self.getSwatch(xIndex: xIndex, yIndex: yIndex))
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  func getSwatchParameter(_ axis: Axis, swatch: DataType.ValueType) -> Double {
-    let parameter = axis == .horizontal ? data.parameters.0 : data.parameters.1
-  return getConstant(from: swatch, for: parameter)
-  }
-  
-  func getValueFor(_ parameter: Parameter, _ xIndex: Int, _ yIndex: Int) -> Double {
-    if data.parameters.0 == parameter {
-      return (Double(xIndex) / Double(size.columns - 1))
-        .clampFromZero(to: 1)
-    } else if data.parameters.1 == parameter {
-      return (Double(yIndex) / Double(size.rows - 1))
-        .clampFromZero(to: 1)
-    } else {
-      return getConstant(from: data.values, for: parameter)
-    }
-  }
-}

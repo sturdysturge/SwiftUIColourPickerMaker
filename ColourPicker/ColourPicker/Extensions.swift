@@ -62,6 +62,91 @@ extension Gradient {
     }
   }
   
+  static func fromValues(_ values: ColourModel.RGBAValues, parameter: Parameter) -> Gradient {
+    var startColour = values
+    var endColour = values
+    switch parameter {
+    case .red:
+      startColour.red = 0
+      endColour.red = 1
+    case .green:
+      startColour.green = 0
+      endColour.green = 1
+    case .blue:
+      startColour.blue = 0
+      endColour.blue = 1
+    case .alpha:
+      startColour.alpha = 0
+      endColour.alpha = 1
+    default:
+      fatalError("Parameter \(parameter) not in colour space")
+    }
+    return Gradient(colors: [Color.fromValues(startColour), Color.fromValues(endColour)])
+  }
+  
+  static func fromValues(_ values: ColourModel.HSBAValues, parameter: Parameter) -> Gradient {
+    var startColour = values
+    var endColour = values
+    switch parameter {
+    case .hue:
+      return Gradient.hue
+    case .saturation:
+      startColour.saturation = 0
+      endColour.saturation = 1
+    case .brightness:
+      startColour.brightness = 0
+      endColour.brightness = 1
+    case .alpha:
+      startColour.alpha = 0
+      endColour.alpha = 1
+    default:
+      fatalError("Parameter \(parameter) not in colour space")
+    }
+    return Gradient(colors: [Color.fromValues(startColour), Color.fromValues(endColour)])
+  }
+  
+  static func fromValues(_ values: ColourModel.CMYKAValues, parameter: Parameter) -> Gradient {
+    var startColour = values
+    var endColour = values
+    switch parameter {
+    case .cyan:
+      startColour.cyan = 0
+      endColour.cyan = 1
+    case .magenta:
+      startColour.magenta = 0
+      endColour.magenta = 1
+    case .yellow:
+      startColour.yellow = 0
+      endColour.yellow = 1
+    case .black:
+      startColour.black = 0
+      endColour.black = 1
+    case .alpha:
+      startColour.alpha = 0
+      endColour.alpha = 1
+    default:
+      fatalError("Parameter \(parameter) not in colour space")
+    }
+    return Gradient(colors: [Color.fromValues(startColour), Color.fromValues(endColour)])
+  }
+  
+  static func fromValues(_ values: ColourModel.GreyscaleValues, parameter: Parameter) -> Gradient {
+    var startColour = values
+    var endColour = values
+    switch parameter {
+    case .white:
+      startColour.white = 0
+      endColour.white = 1
+    case .alpha:
+      startColour.alpha = 0
+      endColour.alpha = 1
+    default:
+      fatalError("Parameter \(parameter) not in colour space")
+    }
+    return Gradient(colors: [Color.fromValues(startColour), Color.fromValues(endColour)])
+    
+  }
+  
   static  func canvasGradient(axis: Axis, horizontal: Parameter, vertical: Parameter) -> Gradient {
     switch horizontal.colourSpace {
     case .RGBA:

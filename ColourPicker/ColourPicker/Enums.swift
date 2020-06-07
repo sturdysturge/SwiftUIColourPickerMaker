@@ -31,13 +31,6 @@ enum ColourSpace: CaseIterable {
 enum Parameter: String, CaseIterable {
     case hue, saturation, brightness, red, green, blue, alpha, white, cyan, magenta, yellow, black
 
-    enum CircleDirection {
-        case angular, radial
-    }
-
-    var gradient: Gradient {
-        return Gradient(colors: colours)
-    }
 
     func checkCompatibility(with otherParameter: Parameter) {
         guard self != otherParameter else {
@@ -101,35 +94,4 @@ enum Parameter: String, CaseIterable {
     var valuesInCMYK: ColourModel.CMYKAValues {
         return Color.convertToCMYKA(self.valuesInRGB)
     }
-
-    var colours: [Color] {
-        switch self {
-        case .red:
-            return [.clear, .red]
-        case .green:
-            return [.clear, .green]
-        case .blue:
-            return [.clear, .blue]
-        case .cyan:
-            return [.clear, .cyan]
-        case .magenta:
-            return [.clear, .magenta]
-        case .yellow:
-            return [.clear, Color(red: 1, green: 1, blue: 0, opacity: 0.7)]
-        case .hue:
-            return [.red, .yellow, .green, .blue, .indigo, .violet, .red]
-        case .alpha:
-            return [Color(.sRGBLinear, white: 1, opacity: 0.5), Color(.sRGBLinear, white: 1, opacity: 0.9), .white]
-        case .black:
-            return [.clear, .black]
-        case .saturation:
-            return [.white, .clear]
-        case .brightness:
-            return [.black, .clear]
-        case .white:
-            return [.black, .white]
-        }
-    }
-
-    
 }

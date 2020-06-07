@@ -8,170 +8,16 @@
 
 import SwiftUI
 
-protocol SliderDataBindable {
-  associatedtype ValueType
-  var values: ValueType { get }
-  var _$values: Binding<ValueType> { get }
-  var parameter: Parameter { get }
-  var orientation: Axis { get }
-  func getBindingValue() -> Binding<Double>
-  func getLinearGradient() -> LinearGradient
-}
-
-
-extension SliderDataBindable where ValueType == ColourModel.RGBAValues {
-  func getBindingValue() -> Binding<Double> {
-    switch parameter {
-    case .red:
-      return _$values.red
-    case .green:
-      return _$values.green
-    case .blue:
-      return _$values.blue
-    case .alpha:
-      return _$values.alpha
-    default:
-      fatalError("Parameter \(parameter) not in colour space")
-    }
-  }
-  
-  func getLinearGradient() -> LinearGradient {
-    var startColour = values
-    var endColour = values
-    switch parameter {
-    case .red:
-      startColour.red = 0
-      endColour.red = 1
-    case .green:
-      startColour.green = 0
-      endColour.green = 1
-    case .blue:
-      startColour.blue = 0
-      endColour.blue = 1
-    case .alpha:
-      startColour.alpha = 0
-      endColour.alpha = 1
-    default:
-      fatalError("Parameter \(parameter) not in colour space")
-    }
-    return Gradient(colors: [Color.fromValues(startColour), Color.fromValues(endColour)]).linearGradient(orientation)
-  }
-}
-
-extension SliderDataBindable where ValueType == ColourModel.HSBAValues {
-  func getBindingValue() -> Binding<Double> {
-    switch parameter {
-    case .hue:
-      return _$values.hue
-    case .saturation:
-      return _$values.saturation
-    case .brightness:
-      return _$values.brightness
-    case .alpha:
-      return _$values.alpha
-    default:
-      fatalError("Parameter \(parameter) not in colour space")
-    }
-  }
-  
-  func getLinearGradient() -> LinearGradient {
-    var startColour = values
-    var endColour = values
-    switch parameter {
-    case .hue:
-      return Gradient.hue.linearGradient(orientation)
-    case .saturation:
-      startColour.saturation = 0
-      endColour.saturation = 1
-    case .brightness:
-      startColour.brightness = 0
-      endColour.brightness = 1
-    case .alpha:
-      startColour.alpha = 0
-      endColour.alpha = 1
-    default:
-      fatalError("Parameter \(parameter) not in colour space")
-    }
-    return Gradient(colors: [Color.fromValues(startColour), Color.fromValues(endColour)]).linearGradient(orientation)
-  }
-}
-
-extension SliderDataBindable where ValueType == ColourModel.CMYKAValues {
-  
-  func getBindingValue() -> Binding<Double> {
-    switch parameter {
-    case .cyan:
-      return _$values.cyan
-    case .magenta:
-      return _$values.magenta
-    case .yellow:
-      return _$values.yellow
-    case .black:
-      return _$values.black
-    case .alpha:
-      return _$values.alpha
-    default:
-      fatalError("Parameter \(parameter) not in colour space")
-    }
-  }
-  
-  func getLinearGradient() -> LinearGradient {
-    var startColour = values
-    var endColour = values
-    switch parameter {
-    case .cyan:
-      startColour.cyan = 0
-      endColour.cyan = 1
-    case .magenta:
-      startColour.magenta = 0
-      endColour.magenta = 1
-    case .yellow:
-      startColour.yellow = 0
-      endColour.yellow = 1
-    case .black:
-      startColour.black = 0
-      endColour.black = 1
-    case .alpha:
-      startColour.alpha = 0
-      endColour.alpha = 1
-    default:
-      fatalError("Parameter \(parameter) not in colour space")
-    }
-    return Gradient(colors: [Color.fromValues(startColour), Color.fromValues(endColour)]).linearGradient(orientation)
-  }
-}
-
-extension SliderDataBindable where ValueType == ColourModel.GreyscaleValues {
-  func getBindingValue() -> Binding<Double> {
-    switch parameter {
-    case .white:
-      return _$values.white
-    case .alpha:
-      return _$values.alpha
-    default:
-      fatalError("Parameter \(parameter) not in colour space")
-    }
-  }
-  func getLinearGradient() -> LinearGradient {
-    var startColour = values
-    var endColour = values
-    switch parameter {
-    case .white:
-      startColour.white = 0
-      endColour.white = 1
-    case .alpha:
-      startColour.alpha = 0
-      endColour.alpha = 1
-    default:
-      fatalError("Parameter \(parameter) not in colour space")
-    }
-    return Gradient(colors: [Color.fromValues(startColour), Color.fromValues(endColour)]).linearGradient(orientation)
-    
-  }
-}
 
 struct RGBASliderData: SliderDataBindable {
+  init(values: Binding<ValueType>, parameter: Parameter, orientation: Axis) {
+    self.parameter = parameter
+    self.orientation = orientation
+    self._values = values
+    self.linearGradient = Gradient.fromValues(values.wrappedValue, parameter: parameter).linearGradient(orientation)
+  }
   typealias ValueType = ColourModel.RGBAValues
+  let linearGradient: LinearGradient
   @Binding var values: ValueType
   var _$values: Binding<ValueType> { _values }
   let parameter: Parameter
@@ -179,7 +25,14 @@ struct RGBASliderData: SliderDataBindable {
 }
 
 struct HSBASliderData: SliderDataBindable {
+init(values: Binding<ValueType>, parameter: Parameter, orientation: Axis) {
+  self.parameter = parameter
+  self.orientation = orientation
+  self._values = values
+  self.linearGradient = Gradient.fromValues(values.wrappedValue, parameter: parameter).linearGradient(orientation)
+}
   typealias ValueType = ColourModel.HSBAValues
+  let linearGradient: LinearGradient
   @Binding var values: ValueType
   var _$values: Binding<ValueType> { _values }
   let parameter: Parameter
@@ -187,7 +40,14 @@ struct HSBASliderData: SliderDataBindable {
 }
 
 struct CMYKASliderData: SliderDataBindable {
+init(values: Binding<ValueType>, parameter: Parameter, orientation: Axis) {
+  self.parameter = parameter
+  self.orientation = orientation
+  self._values = values
+  self.linearGradient = Gradient.fromValues(values.wrappedValue, parameter: parameter).linearGradient(orientation)
+}
   typealias ValueType = ColourModel.CMYKAValues
+  let linearGradient: LinearGradient
   @Binding var values: ValueType
   var _$values: Binding<ValueType> { _values }
   let parameter: Parameter
@@ -195,7 +55,14 @@ struct CMYKASliderData: SliderDataBindable {
 }
 
 struct GreyscaleSliderData: SliderDataBindable {
+init(values: Binding<ValueType>, parameter: Parameter, orientation: Axis) {
+  self.parameter = parameter
+  self.orientation = orientation
+  self._values = values
+  self.linearGradient = Gradient.fromValues(values.wrappedValue, parameter: parameter).linearGradient(orientation)
+}
   typealias ValueType = ColourModel.GreyscaleValues
+  let linearGradient: LinearGradient
   @Binding var values: ValueType
   var _$values: Binding<ValueType> { _values }
   let parameter: Parameter
