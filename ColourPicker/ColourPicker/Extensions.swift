@@ -48,9 +48,19 @@ extension CGPoint {
   }
 }
 
+
 extension Gradient {
   static let hue = Gradient(colors: [.red, .yellow, .green, .blue, .indigo, .violet, .red])
   static let blank = Gradient(colors: [])
+  
+  func linearGradient(_ axis: Axis) -> LinearGradient {
+    if axis == .horizontal {
+      return LinearGradient(gradient: self, startPoint: .leading, endPoint: .trailing)
+    }
+    else {//axis == .vertical
+      return LinearGradient(gradient: self, startPoint: .top, endPoint: .bottom)
+    }
+  }
   
   static  func canvasGradient(axis: Axis, horizontal: Parameter, vertical: Parameter) -> Gradient {
     switch horizontal.colourSpace {

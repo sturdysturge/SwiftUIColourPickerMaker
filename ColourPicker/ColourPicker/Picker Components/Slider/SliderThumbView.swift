@@ -15,7 +15,7 @@ struct SliderThumbView {
     let containerHeight: CGFloat
     let containerAlignment: Alignment
 
-  init(orientation: Axis, length: CGFloat = 70, thickness: CGFloat = 15) {
+  init(orientation: Axis, length: CGFloat, thickness: CGFloat) {
         let isHorizontal = orientation == .horizontal
         width = isHorizontal ? thickness : length
         height = isHorizontal ? length : thickness

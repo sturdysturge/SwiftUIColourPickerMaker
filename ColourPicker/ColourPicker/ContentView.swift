@@ -16,10 +16,10 @@ struct ContentView: View {
     parameters.0.checkCompatibility(with: parameters.1)
     let colourSpace = parameters.0.colourSpace
     data = ColourModel(colourSpace: colourSpace)
-    self.colourSpace = colourSpace
+    self.colourSpace = .RGBA
     self.control = control
   }
-  static let example = ContentView(parameters: (.hue, .saturation), control: .wheel)
+  static let example = ContentView(parameters: (.alpha, .red), control: .slider)
   @ObservedObject var data: ColourModel
   let parameters: (Parameter, Parameter)
   let control: Control
@@ -62,7 +62,17 @@ struct ContentView: View {
             }
           }
           if control == .slider {
-            SliderView(value: $data.valuesInRGBA.red, parameter: .red, orientation: .horizontal, thickness: 70, length: 300)
+            if colourSpace == .RGBA {
+              RGBASliderView(data: RGBASliderData(values: $data.valuesInRGBA, parameter: .alpha, orientation: .horizontal), thickness: 20, length: 300)
+            } else if colourSpace == .HSBA {
+              HSBASliderView(data: HSBASliderData(values: $data.valuesInHSBA, parameter: .hue, orientation: .horizontal), thickness: 20, length: 300)
+             
+            } else if colourSpace == .CMYKA {
+              CMYKASliderView(data: CMYKASliderData(values: $data.valuesInCMYKA, parameter: .hue, orientation: .horizontal), thickness: 20, length: 300)
+              
+            } else if colourSpace == .greyscale {
+              //GreyscaleSliderView(data: GreyscaleSliderData(values: $data.valuesInCMYKA, parameter: .white, orientation: .horizontal), thickness: 20, length: 300)
+            }
           }
         }
     }
@@ -72,6 +82,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView(parameters: (.hue, .saturation), control: .wheel)
+    ContentView(parameters: (.alpha, .red), control: .slider)
   }
 }

@@ -8,21 +8,28 @@
 
 import SwiftUI
 
+/// Requirements for all sliders
 protocol SliderPickable: View {
-    var parameter: Parameter { get }
-    var orientation: Axis { get }
-    var value: Double { get set }
-    var _$value: Binding<Double> { get }
+  /// The type of data that stores the binding
+  associatedtype DataType where DataType: SliderDataBindable
+  /// The data that stores the binding
+  var data: DataType { get }
+  /// The shorter dimension of the slider
     var thickness: CGFloat { get }
+  /// The longer dimension of the slider
     var length: CGFloat { get }
+  /// A State for the slider position indicator
     var thumbOffset: CGPoint { get }
+  /// A Binding of the above State to be passed to the .drag modifier
     var _$thumbOffset: Binding<CGPoint> { get }
+  /// The appropriate value for a dimension based on orientation
+  /// - Parameter direction: Which dimension is required
     func size(in direction: Axis) -> CGFloat
 }
 
 extension SliderPickable {
     func size(in direction: Axis) -> CGFloat {
-        if orientation == direction {
+      if data.orientation == direction {
             return length
         } else {
             return thickness
@@ -31,21 +38,18 @@ extension SliderPickable {
 
     var body: some View {
         ZStack {
-            if self.parameter == .alpha {
+          if self.data.parameter == .alpha {
                 TransparencyCheckerboardView()
                     .frame(width: size(in: .horizontal), height: size(in: .vertical), alignment: .center)
                     .cornerRadius(thickness / 4)
-            } else {
-                Color.white
-                    .frame(width: size(in: .horizontal), height: size(in: .vertical), alignment: .center)
-            }
-            self.parameter.linearGradient(axis: orientation)
+          }
+          self.data.getLinearGradient()
                 .frame(width: size(in: .horizontal), height: size(in: .vertical), alignment: .center)
                 .cornerRadius(thickness / 4)
-                .drag(value: self._$value, offset: self._$thumbOffset, length: length, orientation: orientation)
-            SliderThumbView(orientation: orientation)
+            .drag(value: self.data.getBindingValue(), offset: self._$thumbOffset, length: length, orientation: data.orientation)
+          SliderThumbView(orientation: data.orientation, length: thickness + 5, thickness: 15)
+            .frame(width: size(in: .horizontal), height: size(in: .vertical), alignment: .center)
                 .offset(x: self.thumbOffset.x, y: self.thumbOffset.y)
         }
-        .padding()
     }
 }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		412157F42489A3E2001369AC /* ColourDataStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412157F32489A3E2001369AC /* ColourDataStorable.swift */; };
+		412157F42489A3E2001369AC /* ColourDataBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412157F32489A3E2001369AC /* ColourDataBindable.swift */; };
 		412D472A24893A4B0014C35D /* CircleGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D472924893A4B0014C35D /* CircleGradientView.swift */; };
 		412D472C24893C370014C35D /* CircleThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D472B24893C370014C35D /* CircleThumbView.swift */; };
 		412D4730248960130014C35D /* WheelPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D472F248960130014C35D /* WheelPickable.swift */; };
@@ -38,7 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		412157F32489A3E2001369AC /* ColourDataStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourDataStorable.swift; sourceTree = "<group>"; };
+		412157F32489A3E2001369AC /* ColourDataBindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourDataBindable.swift; sourceTree = "<group>"; };
 		412D472924893A4B0014C35D /* CircleGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGradientView.swift; sourceTree = "<group>"; };
 		412D472B24893C370014C35D /* CircleThumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleThumbView.swift; sourceTree = "<group>"; };
 		412D472F248960130014C35D /* WheelPickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelPickable.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				413C695E2482750B00F4A5A0 /* ColourModel.swift */,
-				412157F32489A3E2001369AC /* ColourDataStorable.swift */,
+				412157F32489A3E2001369AC /* ColourDataBindable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -275,7 +275,7 @@
 				413911632484561000F2E0D5 /* DirectionalDragModifier.swift in Sources */,
 				414087232482B0E90039F027 /* TransparencyCheckerboardView.swift in Sources */,
 				412D472C24893C370014C35D /* CircleThumbView.swift in Sources */,
-				412157F42489A3E2001369AC /* ColourDataStorable.swift in Sources */,
+				412157F42489A3E2001369AC /* ColourDataBindable.swift in Sources */,
 				4164CE8B2484185C009DA810 /* PaletteView.swift in Sources */,
 				413436322489003600CB0095 /* RadialDragModifier.swift in Sources */,
 				412D472A24893A4B0014C35D /* CircleGradientView.swift in Sources */,

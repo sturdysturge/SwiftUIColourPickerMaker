@@ -131,11 +131,5 @@ enum Parameter: String, CaseIterable {
         }
     }
 
-    func linearGradient(axis: Axis) -> LinearGradient {
-        if axis == .horizontal {
-            return LinearGradient(gradient: Gradient(colors: colours), startPoint: .leading, endPoint: .trailing)
-        } else {
-            return LinearGradient(gradient: Gradient(colors: colours), startPoint: .top, endPoint: .bottom)
-        }
-    }
+    
 }

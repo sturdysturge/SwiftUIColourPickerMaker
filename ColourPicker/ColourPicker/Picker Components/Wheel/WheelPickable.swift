@@ -9,7 +9,7 @@
 import SwiftUI
 
 protocol WheelPickable: View {
-    associatedtype DataType where DataType: ColourDataStorable
+    associatedtype DataType where DataType: ColourDataBindable
     var data: DataType { get }
     var thumbOffset: CGPoint { get }
     var _$thumbOffset: Binding<CGPoint> { get }
