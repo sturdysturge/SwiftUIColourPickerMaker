@@ -59,22 +59,16 @@ protocol ColorExtendable {
 }
 
 extension Color: ColorExtendable {
+    #if canImport(UIKit)
+    static let cyan = Color(UIColor.cyan)
+    static let magenta = Color(UIColor.magenta)
+    #else
+    static let cyan = Color(NSColor.cyan)
+    static let magenta = Color(NSColor.magenta)
+    #endif
     static let indigo = Color(red: 0.29, green: 0, blue: 0.5)
     static let violet = Color(red: 0.93, green: 0.5, blue: 0.93)
   
-    #if canImport(UIKit)
-    /// The cyan colour is not available in SwiftUI
-    static let cyan = Color(UIColor.cyan)
-    /// The magenta colour is not available in SwiftUI
-    static let magenta = Color(UIColor.magenta)
-    #else
-    /// The cyan colour is not available in SwiftUI
-    static let cyan = Color(NSColor.cyan)
-    /// The magenta colour is not available in SwiftUI
-    static let magenta = Color(NSColor.magenta)
-    #endif
-    
-
     static func blend(colour1: ColourModel.RGBAValues, colour2: ColourModel.RGBAValues, alpha: Double) -> ColourModel.RGBAValues {
         let red = (colour1.red + colour2.red).clampFromZero(to: 1)
         let green = (colour1.green + colour2.green).clampFromZero(to: 1)
