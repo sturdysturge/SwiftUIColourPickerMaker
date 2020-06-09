@@ -2,6 +2,8 @@
 > Create colour pickers using controls such as canvases, wheels, palettes and sliders.
 
 [![MIT License][license-image]][license-image]
+[![Size][size-image]][size-image]
+[![Last commit][commit-image]][commit-image]
 
 This package contains sliders and controls for colour pickers that can be added to your project in any configuration. There are also example colour pickers that use these controls, so you have the choice between using existing pickers or building your own.
 
@@ -151,3 +153,5 @@ Distributed under the MIT license. See ``LICENSE`` for more information.
 
 <!-- Markdown link & img dfn's -->
 [license-image]: https://img.shields.io/github/license/sturdysturge/SwiftUIColourPickerMaker
+[size-image]: https://img.shields.io/github/repo-size/sturdysturge/SwiftUIColourPickerMaker
+[commit-image]: https://img.shields.io/github/last-commit/sturdysturge/SwiftUIColourPickerMaker
