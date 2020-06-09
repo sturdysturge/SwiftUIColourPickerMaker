@@ -1,0 +1,674 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		41226A51248FE63700F38E46 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A50248FE63700F38E46 /* ContentView.swift */; };
+		41226A55248FE65D00F38E46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A52248FE65C00F38E46 /* AppDelegate.swift */; };
+		41226A57248FE65D00F38E46 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A54248FE65D00F38E46 /* SceneDelegate.swift */; };
+		41226A5E248FE69E00F38E46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41226A58248FE69E00F38E46 /* Assets.xcassets */; };
+		41226A5F248FE69E00F38E46 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41226A5A248FE69E00F38E46 /* Preview Assets.xcassets */; };
+		41226A60248FE69E00F38E46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41226A5C248FE69E00F38E46 /* LaunchScreen.storyboard */; };
+		41226A9B248FE85F00F38E46 /* PaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A69248FE85D00F38E46 /* PaletteView.swift */; };
+		41226A9C248FE85F00F38E46 /* WheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A6B248FE85D00F38E46 /* WheelView.swift */; };
+		41226A9D248FE85F00F38E46 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 41226A6C248FE85D00F38E46 /* LICENSE.md */; };
+		41226A9E248FE85F00F38E46 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A6E248FE85D00F38E46 /* SliderView.swift */; };
+		41226AA5248FE85F00F38E46 /* CircleGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A7C248FE85E00F38E46 /* CircleGradientView.swift */; };
+		41226AA6248FE85F00F38E46 /* CanvasPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A7E248FE85E00F38E46 /* CanvasPickable.swift */; };
+		41226AA7248FE85F00F38E46 /* PalettePickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A80248FE85E00F38E46 /* PalettePickable.swift */; };
+		41226AA8248FE85F00F38E46 /* WheelPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A82248FE85E00F38E46 /* WheelPickable.swift */; };
+		41226AA9248FE85F00F38E46 /* extension ColourDataBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A84248FE85E00F38E46 /* extension ColourDataBindable.swift */; };
+		41226AAA248FE85F00F38E46 /* DoubleGradientDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A86248FE85E00F38E46 /* DoubleGradientDisplayable.swift */; };
+		41226AAB248FE85F00F38E46 /* BidirectionalDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A88248FE85E00F38E46 /* BidirectionalDragModifier.swift */; };
+		41226AAC248FE85F00F38E46 /* CircleThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A8A248FE85E00F38E46 /* CircleThumbView.swift */; };
+		41226AAD248FE86000F38E46 /* ColourDataBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A8C248FE85F00F38E46 /* ColourDataBindable.swift */; };
+		41226AAE248FE86000F38E46 /* SliderPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A8E248FE85F00F38E46 /* SliderPickable.swift */; };
+		41226AB0248FE86000F38E46 /* RadialDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A92248FE85F00F38E46 /* RadialDragModifier.swift */; };
+		41226AB1248FE86000F38E46 /* extension SliderDataBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A94248FE85F00F38E46 /* extension SliderDataBindable.swift */; };
+		41226AB3248FE86000F38E46 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A98248FE85F00F38E46 /* CanvasView.swift */; };
+		41226AB5248FE92900F38E46 /* extension CGFloat Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226AB4248FE92900F38E46 /* extension CGFloat Double.swift */; };
+		41226AB7248FE9B000F38E46 /* ColourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226AB6248FE9B000F38E46 /* ColourModel.swift */; };
+		41226AB9248FE9C000F38E46 /* ColorExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226AB8248FE9C000F38E46 /* ColorExtendable.swift */; };
+		41226ABB248FE9CE00F38E46 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226ABA248FE9CE00F38E46 /* Parameter.swift */; };
+		41226ABD248FE9D500F38E46 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226ABC248FE9D500F38E46 /* Gradient.swift */; };
+		41226ABF248FE9E100F38E46 /* PreviewColourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226ABE248FE9E100F38E46 /* PreviewColourView.swift */; };
+		41226AC1248FE9E900F38E46 /* TransparencyCheckerboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226AC0248FE9E900F38E46 /* TransparencyCheckerboardView.swift */; };
+		41226AC3248FE9F100F38E46 /* SliderThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226AC2248FE9F100F38E46 /* SliderThumbView.swift */; };
+		41226AC5248FE9FB00F38E46 /* DirectionalDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226AC4248FE9FB00F38E46 /* DirectionalDragModifier.swift */; };
+		41226AC7248FEA0500F38E46 /* SliderDataBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226AC6248FEA0500F38E46 /* SliderDataBindable.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		41226A12248FE59E00F38E46 /* ColorExtendable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtendable.swift; path = "../../Picker Gists/3. ColorExtendable/ColorExtendable.swift"; sourceTree = "<group>"; };
+		41226A50248FE63700F38E46 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		41226A52248FE65C00F38E46 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		41226A54248FE65D00F38E46 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		41226A58248FE69E00F38E46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		41226A5A248FE69E00F38E46 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		41226A5D248FE69E00F38E46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		41226A61248FE6D500F38E46 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41226A69248FE85D00F38E46 /* PaletteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteView.swift; sourceTree = "<group>"; };
+		41226A6B248FE85D00F38E46 /* WheelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheelView.swift; sourceTree = "<group>"; };
+		41226A6C248FE85D00F38E46 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		41226A6E248FE85D00F38E46 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		41226A7C248FE85E00F38E46 /* CircleGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleGradientView.swift; sourceTree = "<group>"; };
+		41226A7E248FE85E00F38E46 /* CanvasPickable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasPickable.swift; sourceTree = "<group>"; };
+		41226A80248FE85E00F38E46 /* PalettePickable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PalettePickable.swift; sourceTree = "<group>"; };
+		41226A82248FE85E00F38E46 /* WheelPickable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheelPickable.swift; sourceTree = "<group>"; };
+		41226A84248FE85E00F38E46 /* extension ColourDataBindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension ColourDataBindable.swift"; sourceTree = "<group>"; };
+		41226A86248FE85E00F38E46 /* DoubleGradientDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleGradientDisplayable.swift; sourceTree = "<group>"; };
+		41226A88248FE85E00F38E46 /* BidirectionalDragModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BidirectionalDragModifier.swift; sourceTree = "<group>"; };
+		41226A8A248FE85E00F38E46 /* CircleThumbView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleThumbView.swift; sourceTree = "<group>"; };
+		41226A8C248FE85F00F38E46 /* ColourDataBindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourDataBindable.swift; sourceTree = "<group>"; };
+		41226A8E248FE85F00F38E46 /* SliderPickable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderPickable.swift; sourceTree = "<group>"; };
+		41226A92248FE85F00F38E46 /* RadialDragModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialDragModifier.swift; sourceTree = "<group>"; };
+		41226A94248FE85F00F38E46 /* extension SliderDataBindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension SliderDataBindable.swift"; sourceTree = "<group>"; };
+		41226A98248FE85F00F38E46 /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		41226AB4248FE92900F38E46 /* extension CGFloat Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension CGFloat Double.swift"; sourceTree = "<group>"; };
+		41226AB6248FE9B000F38E46 /* ColourModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourModel.swift; sourceTree = "<group>"; };
+		41226AB8248FE9C000F38E46 /* ColorExtendable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtendable.swift; sourceTree = "<group>"; };
+		41226ABA248FE9CE00F38E46 /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
+		41226ABC248FE9D500F38E46 /* Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
+		41226ABE248FE9E100F38E46 /* PreviewColourView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewColourView.swift; sourceTree = "<group>"; };
+		41226AC0248FE9E900F38E46 /* TransparencyCheckerboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparencyCheckerboardView.swift; sourceTree = "<group>"; };
+		41226AC2248FE9F100F38E46 /* SliderThumbView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderThumbView.swift; sourceTree = "<group>"; };
+		41226AC4248FE9FB00F38E46 /* DirectionalDragModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionalDragModifier.swift; sourceTree = "<group>"; };
+		41226AC6248FEA0500F38E46 /* SliderDataBindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderDataBindable.swift; sourceTree = "<group>"; };
+		4188A1D7248E40F600287BF9 /* ColourPickerMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColourPickerMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4188A1D4248E40F600287BF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		41226A59248FE69E00F38E46 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				41226A5A248FE69E00F38E46 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		41226A5B248FE69E00F38E46 /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				41226A5C248FE69E00F38E46 /* LaunchScreen.storyboard */,
+			);
+			name = Base.lproj;
+			path = "../../../../../.Trash/ColourPickerMaker 12.47.32/ColourPickerMaker/Base.lproj";
+			sourceTree = "<group>";
+		};
+		41226A64248FE85D00F38E46 /* 9. DirectionalDragModifier */ = {
+			isa = PBXGroup;
+			children = (
+				41226AC4248FE9FB00F38E46 /* DirectionalDragModifier.swift */,
+			);
+			path = "9. DirectionalDragModifier";
+			sourceTree = "<group>";
+		};
+		41226A66248FE85D00F38E46 /* 4. Parameter */ = {
+			isa = PBXGroup;
+			children = (
+				41226ABA248FE9CE00F38E46 /* Parameter.swift */,
+			);
+			path = "4. Parameter";
+			sourceTree = "<group>";
+		};
+		41226A68248FE85D00F38E46 /* 17. PaletteView */ = {
+			isa = PBXGroup;
+			children = (
+				41226A69248FE85D00F38E46 /* PaletteView.swift */,
+			);
+			path = "17. PaletteView";
+			sourceTree = "<group>";
+		};
+		41226A6A248FE85D00F38E46 /* 26. WheelView */ = {
+			isa = PBXGroup;
+			children = (
+				41226A6B248FE85D00F38E46 /* WheelView.swift */,
+			);
+			path = "26. WheelView";
+			sourceTree = "<group>";
+		};
+		41226A6D248FE85D00F38E46 /* 13. SliderView */ = {
+			isa = PBXGroup;
+			children = (
+				41226A6E248FE85D00F38E46 /* SliderView.swift */,
+			);
+			path = "13. SliderView";
+			sourceTree = "<group>";
+		};
+		41226A6F248FE85D00F38E46 /* 1. Numerical extensions */ = {
+			isa = PBXGroup;
+			children = (
+				41226AB4248FE92900F38E46 /* extension CGFloat Double.swift */,
+			);
+			path = "1. Numerical extensions";
+			sourceTree = "<group>";
+		};
+		41226A71248FE85D00F38E46 /* 10. SliderDataBindable */ = {
+			isa = PBXGroup;
+			children = (
+				41226AC6248FEA0500F38E46 /* SliderDataBindable.swift */,
+			);
+			path = "10. SliderDataBindable";
+			sourceTree = "<group>";
+		};
+		41226A73248FE85D00F38E46 /* 2. ColourModel */ = {
+			isa = PBXGroup;
+			children = (
+				41226AB6248FE9B000F38E46 /* ColourModel.swift */,
+			);
+			path = "2. ColourModel";
+			sourceTree = "<group>";
+		};
+		41226A75248FE85E00F38E46 /* 3. ColorExtendable */ = {
+			isa = PBXGroup;
+			children = (
+				41226AB8248FE9C000F38E46 /* ColorExtendable.swift */,
+			);
+			path = "3. ColorExtendable";
+			sourceTree = "<group>";
+		};
+		41226A77248FE85E00F38E46 /* 6. PreviewColourView */ = {
+			isa = PBXGroup;
+			children = (
+				41226ABE248FE9E100F38E46 /* PreviewColourView.swift */,
+			);
+			path = "6. PreviewColourView";
+			sourceTree = "<group>";
+		};
+		41226A79248FE85E00F38E46 /* 7. TransparencyCheckerboardView */ = {
+			isa = PBXGroup;
+			children = (
+				41226AC0248FE9E900F38E46 /* TransparencyCheckerboardView.swift */,
+			);
+			path = "7. TransparencyCheckerboardView";
+			sourceTree = "<group>";
+		};
+		41226A7B248FE85E00F38E46 /* 24. CircleGradientView */ = {
+			isa = PBXGroup;
+			children = (
+				41226A7C248FE85E00F38E46 /* CircleGradientView.swift */,
+			);
+			path = "24. CircleGradientView";
+			sourceTree = "<group>";
+		};
+		41226A7D248FE85E00F38E46 /* 21. CanvasPickable */ = {
+			isa = PBXGroup;
+			children = (
+				41226A7E248FE85E00F38E46 /* CanvasPickable.swift */,
+			);
+			path = "21. CanvasPickable";
+			sourceTree = "<group>";
+		};
+		41226A7F248FE85E00F38E46 /* 16. PalettePickable */ = {
+			isa = PBXGroup;
+			children = (
+				41226A80248FE85E00F38E46 /* PalettePickable.swift */,
+			);
+			path = "16. PalettePickable";
+			sourceTree = "<group>";
+		};
+		41226A81248FE85E00F38E46 /* 25. WheelPickable */ = {
+			isa = PBXGroup;
+			children = (
+				41226A82248FE85E00F38E46 /* WheelPickable.swift */,
+			);
+			path = "25. WheelPickable";
+			sourceTree = "<group>";
+		};
+		41226A83248FE85E00F38E46 /* 15. ColourDataBindable+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				41226A84248FE85E00F38E46 /* extension ColourDataBindable.swift */,
+			);
+			path = "15. ColourDataBindable+Extension";
+			sourceTree = "<group>";
+		};
+		41226A85248FE85E00F38E46 /* 20. DoubleGradientDisplayable */ = {
+			isa = PBXGroup;
+			children = (
+				41226A86248FE85E00F38E46 /* DoubleGradientDisplayable.swift */,
+			);
+			path = "20. DoubleGradientDisplayable";
+			sourceTree = "<group>";
+		};
+		41226A87248FE85E00F38E46 /* 19. BidirectionalDragModifier */ = {
+			isa = PBXGroup;
+			children = (
+				41226A88248FE85E00F38E46 /* BidirectionalDragModifier.swift */,
+			);
+			path = "19. BidirectionalDragModifier";
+			sourceTree = "<group>";
+		};
+		41226A89248FE85E00F38E46 /* 18. CircleThumbView */ = {
+			isa = PBXGroup;
+			children = (
+				41226A8A248FE85E00F38E46 /* CircleThumbView.swift */,
+			);
+			path = "18. CircleThumbView";
+			sourceTree = "<group>";
+		};
+		41226A8B248FE85F00F38E46 /* 14. ColourDataBindable */ = {
+			isa = PBXGroup;
+			children = (
+				41226A8C248FE85F00F38E46 /* ColourDataBindable.swift */,
+			);
+			path = "14. ColourDataBindable";
+			sourceTree = "<group>";
+		};
+		41226A8D248FE85F00F38E46 /* 12. SliderPickable */ = {
+			isa = PBXGroup;
+			children = (
+				41226A8E248FE85F00F38E46 /* SliderPickable.swift */,
+			);
+			path = "12. SliderPickable";
+			sourceTree = "<group>";
+		};
+		41226A8F248FE85F00F38E46 /* 8. SliderThumbView */ = {
+			isa = PBXGroup;
+			children = (
+				41226AC2248FE9F100F38E46 /* SliderThumbView.swift */,
+			);
+			path = "8. SliderThumbView";
+			sourceTree = "<group>";
+		};
+		41226A91248FE85F00F38E46 /* 23. RadialDragModifier */ = {
+			isa = PBXGroup;
+			children = (
+				41226A92248FE85F00F38E46 /* RadialDragModifier.swift */,
+			);
+			path = "23. RadialDragModifier";
+			sourceTree = "<group>";
+		};
+		41226A93248FE85F00F38E46 /* 11. SliderDataBindable+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				41226A94248FE85F00F38E46 /* extension SliderDataBindable.swift */,
+			);
+			path = "11. SliderDataBindable+Extension";
+			sourceTree = "<group>";
+		};
+		41226A95248FE85F00F38E46 /* 5. Gradient */ = {
+			isa = PBXGroup;
+			children = (
+				41226ABC248FE9D500F38E46 /* Gradient.swift */,
+			);
+			path = "5. Gradient";
+			sourceTree = "<group>";
+		};
+		41226A97248FE85F00F38E46 /* 22. CanvasView */ = {
+			isa = PBXGroup;
+			children = (
+				41226A98248FE85F00F38E46 /* CanvasView.swift */,
+			);
+			path = "22. CanvasView";
+			sourceTree = "<group>";
+		};
+		4188A1CE248E40F600287BF9 = {
+			isa = PBXGroup;
+			children = (
+				4188A1D9248E40F600287BF9 /* ColourPickerMaker */,
+				4188A1D8248E40F600287BF9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4188A1D8248E40F600287BF9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4188A1D7248E40F600287BF9 /* ColourPickerMaker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4188A1D9248E40F600287BF9 /* ColourPickerMaker */ = {
+			isa = PBXGroup;
+			children = (
+				41226A6F248FE85D00F38E46 /* 1. Numerical extensions */,
+				41226A73248FE85D00F38E46 /* 2. ColourModel */,
+				41226A75248FE85E00F38E46 /* 3. ColorExtendable */,
+				41226A66248FE85D00F38E46 /* 4. Parameter */,
+				41226A95248FE85F00F38E46 /* 5. Gradient */,
+				41226A77248FE85E00F38E46 /* 6. PreviewColourView */,
+				41226A79248FE85E00F38E46 /* 7. TransparencyCheckerboardView */,
+				41226A8F248FE85F00F38E46 /* 8. SliderThumbView */,
+				41226A64248FE85D00F38E46 /* 9. DirectionalDragModifier */,
+				41226A71248FE85D00F38E46 /* 10. SliderDataBindable */,
+				41226A93248FE85F00F38E46 /* 11. SliderDataBindable+Extension */,
+				41226A8D248FE85F00F38E46 /* 12. SliderPickable */,
+				41226A6D248FE85D00F38E46 /* 13. SliderView */,
+				41226A8B248FE85F00F38E46 /* 14. ColourDataBindable */,
+				41226A83248FE85E00F38E46 /* 15. ColourDataBindable+Extension */,
+				41226A7F248FE85E00F38E46 /* 16. PalettePickable */,
+				41226A68248FE85D00F38E46 /* 17. PaletteView */,
+				41226A89248FE85E00F38E46 /* 18. CircleThumbView */,
+				41226A87248FE85E00F38E46 /* 19. BidirectionalDragModifier */,
+				41226A85248FE85E00F38E46 /* 20. DoubleGradientDisplayable */,
+				41226A7D248FE85E00F38E46 /* 21. CanvasPickable */,
+				41226A97248FE85F00F38E46 /* 22. CanvasView */,
+				41226A91248FE85F00F38E46 /* 23. RadialDragModifier */,
+				41226A7B248FE85E00F38E46 /* 24. CircleGradientView */,
+				41226A81248FE85E00F38E46 /* 25. WheelPickable */,
+				41226A6A248FE85D00F38E46 /* 26. WheelView */,
+				41226A6C248FE85D00F38E46 /* LICENSE.md */,
+				41226A52248FE65C00F38E46 /* AppDelegate.swift */,
+				41226A58248FE69E00F38E46 /* Assets.xcassets */,
+				41226A5B248FE69E00F38E46 /* Base.lproj */,
+				41226A12248FE59E00F38E46 /* ColorExtendable.swift */,
+				41226A50248FE63700F38E46 /* ContentView.swift */,
+				41226A59248FE69E00F38E46 /* Preview Content */,
+				41226A54248FE65D00F38E46 /* SceneDelegate.swift */,
+				41226A61248FE6D500F38E46 /* Info.plist */,
+			);
+			path = ColourPickerMaker;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4188A1D6248E40F600287BF9 /* ColourPickerMaker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4188A1EB248E40F700287BF9 /* Build configuration list for PBXNativeTarget "ColourPickerMaker" */;
+			buildPhases = (
+				4188A1D3248E40F600287BF9 /* Sources */,
+				4188A1D4248E40F600287BF9 /* Frameworks */,
+				4188A1D5248E40F600287BF9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ColourPickerMaker;
+			productName = ColourPickerMaker;
+			productReference = 4188A1D7248E40F600287BF9 /* ColourPickerMaker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4188A1CF248E40F600287BF9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "Rob Sturgeon";
+				TargetAttributes = {
+					4188A1D6248E40F600287BF9 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = 4188A1D2248E40F600287BF9 /* Build configuration list for PBXProject "ColourPickerMaker" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4188A1CE248E40F600287BF9;
+			productRefGroup = 4188A1D8248E40F600287BF9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4188A1D6248E40F600287BF9 /* ColourPickerMaker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4188A1D5248E40F600287BF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41226A9D248FE85F00F38E46 /* LICENSE.md in Resources */,
+				41226A5E248FE69E00F38E46 /* Assets.xcassets in Resources */,
+				41226A60248FE69E00F38E46 /* LaunchScreen.storyboard in Resources */,
+				41226A5F248FE69E00F38E46 /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4188A1D3248E40F600287BF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41226AAB248FE85F00F38E46 /* BidirectionalDragModifier.swift in Sources */,
+				41226AC1248FE9E900F38E46 /* TransparencyCheckerboardView.swift in Sources */,
+				41226AAA248FE85F00F38E46 /* DoubleGradientDisplayable.swift in Sources */,
+				41226AC7248FEA0500F38E46 /* SliderDataBindable.swift in Sources */,
+				41226AB3248FE86000F38E46 /* CanvasView.swift in Sources */,
+				41226ABB248FE9CE00F38E46 /* Parameter.swift in Sources */,
+				41226A51248FE63700F38E46 /* ContentView.swift in Sources */,
+				41226AA9248FE85F00F38E46 /* extension ColourDataBindable.swift in Sources */,
+				41226AAE248FE86000F38E46 /* SliderPickable.swift in Sources */,
+				41226A9C248FE85F00F38E46 /* WheelView.swift in Sources */,
+				41226A9E248FE85F00F38E46 /* SliderView.swift in Sources */,
+				41226ABF248FE9E100F38E46 /* PreviewColourView.swift in Sources */,
+				41226AA7248FE85F00F38E46 /* PalettePickable.swift in Sources */,
+				41226AAD248FE86000F38E46 /* ColourDataBindable.swift in Sources */,
+				41226A55248FE65D00F38E46 /* AppDelegate.swift in Sources */,
+				41226AB5248FE92900F38E46 /* extension CGFloat Double.swift in Sources */,
+				41226A57248FE65D00F38E46 /* SceneDelegate.swift in Sources */,
+				41226AB1248FE86000F38E46 /* extension SliderDataBindable.swift in Sources */,
+				41226ABD248FE9D500F38E46 /* Gradient.swift in Sources */,
+				41226AC3248FE9F100F38E46 /* SliderThumbView.swift in Sources */,
+				41226AB0248FE86000F38E46 /* RadialDragModifier.swift in Sources */,
+				41226A9B248FE85F00F38E46 /* PaletteView.swift in Sources */,
+				41226AB7248FE9B000F38E46 /* ColourModel.swift in Sources */,
+				41226AA8248FE85F00F38E46 /* WheelPickable.swift in Sources */,
+				41226AC5248FE9FB00F38E46 /* DirectionalDragModifier.swift in Sources */,
+				41226AA5248FE85F00F38E46 /* CircleGradientView.swift in Sources */,
+				41226AB9248FE9C000F38E46 /* ColorExtendable.swift in Sources */,
+				41226AA6248FE85F00F38E46 /* CanvasPickable.swift in Sources */,
+				41226AAC248FE85F00F38E46 /* CircleThumbView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		41226A5C248FE69E00F38E46 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				41226A5D248FE69E00F38E46 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4188A1E9248E40F700287BF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4188A1EA248E40F700287BF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4188A1EC248E40F700287BF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"ColourPickerMaker/Preview Content\"";
+				DEVELOPMENT_TEAM = G3J2MVF9M9;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ColourPickerMaker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.ColourPickerMaker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4188A1ED248E40F700287BF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"ColourPickerMaker/Preview Content\"";
+				DEVELOPMENT_TEAM = G3J2MVF9M9;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ColourPickerMaker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.ColourPickerMaker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4188A1D2248E40F600287BF9 /* Build configuration list for PBXProject "ColourPickerMaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4188A1E9248E40F700287BF9 /* Debug */,
+				4188A1EA248E40F700287BF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4188A1EB248E40F700287BF9 /* Build configuration list for PBXNativeTarget "ColourPickerMaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4188A1EC248E40F700287BF9 /* Debug */,
+				4188A1ED248E40F700287BF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4188A1CF248E40F600287BF9 /* Project object */;
+}

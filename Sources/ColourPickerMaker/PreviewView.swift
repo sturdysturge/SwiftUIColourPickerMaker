@@ -7,7 +7,7 @@ public struct PreviewView: View {
     public var body: some View {
         VStack {
             PreviewColorView(colour: colourModel.colour, square: true)
-          HSBColourCanvasView(hue: $colourModel.hue, saturation: $colourModel.saturation, brightness: $colourModel.brightness, alpha: $colourModel.alpha, canvasType: .saturationBrightness)
+            HSBColourCanvasView(hue: $colourModel.hue, saturation: $colourModel.saturation, brightness: $colourModel.brightness, alpha: $colourModel.alpha, canvasType: .saturationBrightness)
         }
     }
 }

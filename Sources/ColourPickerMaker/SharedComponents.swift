@@ -220,7 +220,7 @@ public struct ColourSlider: View {
     @Binding var saturation: Double
     @Binding var brightness: Double
     @Binding var alpha: Double
-  
+
     let sliderType: HSBSliderType
     var bindingValue: Binding<Double> {
         switch sliderType {
