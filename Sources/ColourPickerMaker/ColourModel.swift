@@ -68,62 +68,61 @@ class ColourModel: ObservableObject {
             setColour(colourSpace: .RGB)
         }
     }
-  
-  /// The value of cyan between 0 and 1 in the CMYK colour space
-  @Published var cyan = Double() {
-    didSet {
-      setColour(colourSpace: .CMYK)
+
+    /// The value of cyan between 0 and 1 in the CMYK colour space
+    @Published var cyan = Double() {
+        didSet {
+            setColour(colourSpace: .CMYK)
+        }
     }
-  }
-  
-  /// The value of magenta between 0 and 1 in the CMYK colour space
-  @Published var magenta = Double() {
-    didSet {
-      setColour(colourSpace: .CMYK)
+
+    /// The value of magenta between 0 and 1 in the CMYK colour space
+    @Published var magenta = Double() {
+        didSet {
+            setColour(colourSpace: .CMYK)
+        }
     }
-  }
-  
-  /// The value of yellow between 0 and 1 in the CMYK colour space
-  @Published var yellow = Double() {
-    didSet {
-      setColour(colourSpace: .CMYK)
+
+    /// The value of yellow between 0 and 1 in the CMYK colour space
+    @Published var yellow = Double() {
+        didSet {
+            setColour(colourSpace: .CMYK)
+        }
     }
-  }
-  
-  /// The value of black between 0 and 1 in the CMYK colour space
-  @Published var black = Double() {
-    didSet {
-      setColour(colourSpace: .CMYK)
+
+    /// The value of black between 0 and 1 in the CMYK colour space
+    @Published var black = Double() {
+        didSet {
+            setColour(colourSpace: .CMYK)
+        }
     }
-  }
-  
 
     /// Sets the colour according to which colour space is adjusted
     /// - Parameter colourSpace: Whether to use HSB or RGB to update the colour
     func setColour(colourSpace: ColourSpace) {
         switch colourSpace {
         case .HSB:
-          let convertedValues = Color.convertHSBToRGBValues(hue: hue, saturation: saturation, brightness: brightness)
-          red = convertedValues.red
-          green = convertedValues.green
-          blue = convertedValues.blue
+            let convertedValues = Color.convertHSBToRGBValues(hue: hue, saturation: saturation, brightness: brightness)
+            red = convertedValues.red
+            green = convertedValues.green
+            blue = convertedValues.blue
             colour = Color(hue: hue, saturation: saturation, brightness: brightness, opacity: alpha)
         case .RGB:
-          let convertedToHSB = Color.convertRGBToHSBValues(red: red, green: green, blue: blue)
-          hue = convertedToHSB.hue
-          saturation = convertedToHSB.saturation
-          brightness = convertedToHSB.brightness
+            let convertedToHSB = Color.convertRGBToHSBValues(red: red, green: green, blue: blue)
+            hue = convertedToHSB.hue
+            saturation = convertedToHSB.saturation
+            brightness = convertedToHSB.brightness
             colour = Color(red: red, green: green, blue: blue, opacity: alpha)
         case .CMYK:
-          let convertedToRGB = Color.convertCMYKToRGBValues(cyan: cyan, magenta: magenta, yellow: yellow, black: black)
-          red = convertedToRGB.red
-          green = convertedToRGB.green
-          blue = convertedToRGB.blue
-          let convertedToHSB = Color.convertRGBToHSBValues(red: red, green: green, blue: blue)
-          hue = convertedToHSB.hue
-          saturation = convertedToHSB.saturation
-          brightness = convertedToHSB.brightness
-          colour = Color.convertCMYKToRGB(cyan: cyan, magenta: magenta, yellow: yellow, black: black, alpha: alpha)
+            let convertedToRGB = Color.convertCMYKToRGBValues(cyan: cyan, magenta: magenta, yellow: yellow, black: black)
+            red = convertedToRGB.red
+            green = convertedToRGB.green
+            blue = convertedToRGB.blue
+            let convertedToHSB = Color.convertRGBToHSBValues(red: red, green: green, blue: blue)
+            hue = convertedToHSB.hue
+            saturation = convertedToHSB.saturation
+            brightness = convertedToHSB.brightness
+            colour = Color.convertCMYKToRGB(cyan: cyan, magenta: magenta, yellow: yellow, black: black, alpha: alpha)
         }
     }
 }
