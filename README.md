@@ -1,9 +1,8 @@
 # Colour Picker Maker
 > Create colour pickers using controls such as canvases, wheels, palettes and sliders.
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+[![NPM Version][license-image]][license-image]
+
 This package contains sliders and controls for colour pickers that can be added to your project in any configuration. There are also example colour pickers that use these controls, so you have the choice between using existing pickers or building your own.
 
 This package was created as part of the Medium tutorial Make 1500+ SwiftUI Colour Picker Varieties and Reuse Them In Any Project With Swift Package Manager, available here: https://medium.com/@rob_sturgeon
