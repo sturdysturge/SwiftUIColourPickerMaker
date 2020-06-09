@@ -63,12 +63,14 @@ extension Color: ColorExtendable {
     static let violet = Color(red: 0.93, green: 0.5, blue: 0.93)
   
     #if canImport(UIKit)
-    /// A colour scheme independent background colour (Light or Dark mode)
+    /// The cyan colour is not available in SwiftUI
     static let cyan = Color(UIColor.cyan)
+    /// The magenta colour is not available in SwiftUI
     static let magenta = Color(UIColor.magenta)
     #else
-    /// A colour scheme independent background colour (Light or Dark mode)
+    /// The cyan colour is not available in SwiftUI
     static let cyan = Color(NSColor.cyan)
+    /// The magenta colour is not available in SwiftUI
     static let magenta = Color(NSColor.magenta)
     #endif
     
