@@ -1,3 +1,12 @@
+//  PalettePickable.swift
+//  ColourPickerMaker
+//
+//  Created by Rob Sturgeon on 09/06/2020.
+//  Copyright © 2020 Rob Sturgeon. All rights reserved.
+//
+//  Released under the MIT license
+//  https://sturdysturge.com/mit/
+
 import SwiftUI
 
 protocol PalettePickable: View {
@@ -12,25 +21,25 @@ protocol PalettePickable: View {
   func getSwatchColour(values: DataType.ValueType) -> Color
   /// Get the colour values at a specific position
   /// - Parameters:
-  ///   - xIndex: How far along it is horizontally
-  ///   - yIndex: How far along it is vertically
+  //   - xIndex: How far along it is horizontally
+  //   - yIndex: How far along it is vertically
   func getSwatch(xIndex: Int, yIndex: Int) -> DataType.ValueType
   /// Get the value to pass to the binding when a swatch is tapped
   /// - Parameters:
-  ///   - axis: The horizontal or vertical direction
-  ///   - swatch: The colour values of the tapped swatch
+  //   - axis: The horizontal or vertical direction
+  //   - swatch: The colour values of the tapped swatch
   func getSwatchParameter(_ axis: Axis, swatch: DataType.ValueType) -> Double
   /// Get a specific parameter from a generic values tuple
   /// - Parameters:
-  ///   - parameter: The parameter in the same colour space
+  //   - parameter: The parameter in the same colour space
   /// - Returns: A constant Double value for that parameter
   func getConstant(from values: DataType.ValueType, for parameter: Parameter) -> Double
   
   /// How much a parameter should have changed between zero and 1 at a given point
   /// - Parameters:
-  ///   - parameter: The parameter that is changing
-  ///   - xIndex: How far along it is horizontally
-  ///   - yIndex: How far along it is vertically
+  //   - parameter: The parameter that is changing
+  //   - xIndex: How far along it is horizontally
+  //   - yIndex: How far along it is vertically
   func getValueFor(_ parameter: Parameter, _ xIndex: Int, _ yIndex: Int) -> Double
 }
 

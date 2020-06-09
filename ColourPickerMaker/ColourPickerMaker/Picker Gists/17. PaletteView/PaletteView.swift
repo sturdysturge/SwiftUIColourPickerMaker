@@ -1,3 +1,12 @@
+//  PaletteView.swift
+//  ColourPickerMaker
+//
+//  Created by Rob Sturgeon on 09/06/2020.
+//  Copyright © 2020 Rob Sturgeon. All rights reserved.
+//
+//  Released under the MIT license
+//  https://sturdysturge.com/mit/
+
 import SwiftUI
 
 struct RGBAPaletteView: PalettePickable {

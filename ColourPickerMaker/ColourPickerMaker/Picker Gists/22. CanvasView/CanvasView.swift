@@ -1,3 +1,12 @@
+//  CanvasView.swift
+//  ColourPickerMaker
+//
+//  Created by Rob Sturgeon on 09/06/2020.
+//  Copyright © 2020 Rob Sturgeon. All rights reserved.
+//
+//  Released under the MIT license
+//  https://sturdysturge.com/mit/
+
 import SwiftUI
 
 /// A View that shows RGBA data from CanvasData in the body in CanvasPickable

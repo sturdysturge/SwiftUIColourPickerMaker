@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		413405F9248FD0C40073822E /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 413405F8248FD0C40073822E /* LICENSE.md */; };
 		41872406248FC1130015F9AB /* SliderThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418723D3248FC1130015F9AB /* SliderThumbView.swift */; };
 		41872407248FC1130015F9AB /* CanvasPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418723D5248FC1130015F9AB /* CanvasPickable.swift */; };
 		41872408248FC1130015F9AB /* RadialDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418723D7248FC1130015F9AB /* RadialDragModifier.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		413405F8248FD0C40073822E /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = "Picker Gists/LICENSE.md"; sourceTree = "<group>"; };
 		418723D3248FC1130015F9AB /* SliderThumbView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderThumbView.swift; sourceTree = "<group>"; };
 		418723D5248FC1130015F9AB /* CanvasPickable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasPickable.swift; sourceTree = "<group>"; };
 		418723D7248FC1130015F9AB /* RadialDragModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialDragModifier.swift; sourceTree = "<group>"; };
@@ -102,22 +104,22 @@
 				418723D2248FC1130015F9AB /* 8. SliderThumbView */,
 				418723E2248FC1130015F9AB /* 9. DirectionalDragModifier */,
 				418723DC248FC1130015F9AB /* 10. SliderDataBindable */,
-				418723EA248FC1130015F9AB /* 10b. SliderDataBindable+Extension */,
-				418723E4248FC1130015F9AB /* 11. SliderPickable */,
-				418723FE248FC1130015F9AB /* 12. SliderView */,
-				41872400248FC1130015F9AB /* 13. ColourDataBindable */,
-				418723DA248FC1130015F9AB /* 14. ColourDataBindable+Extension */,
-				418723EC248FC1130015F9AB /* 15. PalettePickable */,
-				418723F4248FC1130015F9AB /* 16. PaletteView */,
-				41872402248FC1130015F9AB /* 17. CircleThumbView */,
-				418723EE248FC1130015F9AB /* 18. BidirectionalDragModifier */,
-				418723FA248FC1130015F9AB /* 19. DoubleGradientDisplayable */,
-				418723D4248FC1130015F9AB /* 20. CanvasPickable */,
-				418723F0248FC1130015F9AB /* 21. CanvasView */,
-				418723D6248FC1130015F9AB /* 22. RadialDragModifier */,
-				418723E6248FC1130015F9AB /* 23. CircleGradientView */,
-				41872404248FC1130015F9AB /* 24. WheelPickable */,
-				418723E0248FC1130015F9AB /* 25. WheelView */,
+				418723EA248FC1130015F9AB /* 11. SliderDataBindable+Extension */,
+				418723E4248FC1130015F9AB /* 12. SliderPickable */,
+				418723FE248FC1130015F9AB /* 13. SliderView */,
+				41872400248FC1130015F9AB /* 14. ColourDataBindable */,
+				418723DA248FC1130015F9AB /* 15. ColourDataBindable+Extension */,
+				418723EC248FC1130015F9AB /* 16. PalettePickable */,
+				418723F4248FC1130015F9AB /* 17. PaletteView */,
+				41872402248FC1130015F9AB /* 18. CircleThumbView */,
+				418723EE248FC1130015F9AB /* 19. BidirectionalDragModifier */,
+				418723FA248FC1130015F9AB /* 20. DoubleGradientDisplayable */,
+				418723D4248FC1130015F9AB /* 21. CanvasPickable */,
+				418723F0248FC1130015F9AB /* 22. CanvasView */,
+				418723D6248FC1130015F9AB /* 23. RadialDragModifier */,
+				418723E6248FC1130015F9AB /* 24. CircleGradientView */,
+				41872404248FC1130015F9AB /* 25. WheelPickable */,
+				418723E0248FC1130015F9AB /* 26. WheelView */,
 			);
 			path = "Picker Gists";
 			sourceTree = "<group>";
@@ -130,20 +132,20 @@
 			path = "8. SliderThumbView";
 			sourceTree = "<group>";
 		};
-		418723D4248FC1130015F9AB /* 20. CanvasPickable */ = {
+		418723D4248FC1130015F9AB /* 21. CanvasPickable */ = {
 			isa = PBXGroup;
 			children = (
 				418723D5248FC1130015F9AB /* CanvasPickable.swift */,
 			);
-			path = "20. CanvasPickable";
+			path = "21. CanvasPickable";
 			sourceTree = "<group>";
 		};
-		418723D6248FC1130015F9AB /* 22. RadialDragModifier */ = {
+		418723D6248FC1130015F9AB /* 23. RadialDragModifier */ = {
 			isa = PBXGroup;
 			children = (
 				418723D7248FC1130015F9AB /* RadialDragModifier.swift */,
 			);
-			path = "22. RadialDragModifier";
+			path = "23. RadialDragModifier";
 			sourceTree = "<group>";
 		};
 		418723D8248FC1130015F9AB /* 7. TransparencyCheckerboardView */ = {
@@ -154,12 +156,12 @@
 			path = "7. TransparencyCheckerboardView";
 			sourceTree = "<group>";
 		};
-		418723DA248FC1130015F9AB /* 14. ColourDataBindable+Extension */ = {
+		418723DA248FC1130015F9AB /* 15. ColourDataBindable+Extension */ = {
 			isa = PBXGroup;
 			children = (
 				418723DB248FC1130015F9AB /* extension ColourDataBindable.swift */,
 			);
-			path = "14. ColourDataBindable+Extension";
+			path = "15. ColourDataBindable+Extension";
 			sourceTree = "<group>";
 		};
 		418723DC248FC1130015F9AB /* 10. SliderDataBindable */ = {
@@ -178,12 +180,12 @@
 			path = "5. Gradient";
 			sourceTree = "<group>";
 		};
-		418723E0248FC1130015F9AB /* 25. WheelView */ = {
+		418723E0248FC1130015F9AB /* 26. WheelView */ = {
 			isa = PBXGroup;
 			children = (
 				418723E1248FC1130015F9AB /* WheelView.swift */,
 			);
-			path = "25. WheelView";
+			path = "26. WheelView";
 			sourceTree = "<group>";
 		};
 		418723E2248FC1130015F9AB /* 9. DirectionalDragModifier */ = {
@@ -194,20 +196,20 @@
 			path = "9. DirectionalDragModifier";
 			sourceTree = "<group>";
 		};
-		418723E4248FC1130015F9AB /* 11. SliderPickable */ = {
+		418723E4248FC1130015F9AB /* 12. SliderPickable */ = {
 			isa = PBXGroup;
 			children = (
 				418723E5248FC1130015F9AB /* SliderPickable.swift */,
 			);
-			path = "11. SliderPickable";
+			path = "12. SliderPickable";
 			sourceTree = "<group>";
 		};
-		418723E6248FC1130015F9AB /* 23. CircleGradientView */ = {
+		418723E6248FC1130015F9AB /* 24. CircleGradientView */ = {
 			isa = PBXGroup;
 			children = (
 				418723E7248FC1130015F9AB /* CircleGradientView.swift */,
 			);
-			path = "23. CircleGradientView";
+			path = "24. CircleGradientView";
 			sourceTree = "<group>";
 		};
 		418723E8248FC1130015F9AB /* 4. Parameter */ = {
@@ -218,36 +220,36 @@
 			path = "4. Parameter";
 			sourceTree = "<group>";
 		};
-		418723EA248FC1130015F9AB /* 10b. SliderDataBindable+Extension */ = {
+		418723EA248FC1130015F9AB /* 11. SliderDataBindable+Extension */ = {
 			isa = PBXGroup;
 			children = (
 				418723EB248FC1130015F9AB /* extension SliderDataBindable.swift */,
 			);
-			path = "10b. SliderDataBindable+Extension";
+			path = "11. SliderDataBindable+Extension";
 			sourceTree = "<group>";
 		};
-		418723EC248FC1130015F9AB /* 15. PalettePickable */ = {
+		418723EC248FC1130015F9AB /* 16. PalettePickable */ = {
 			isa = PBXGroup;
 			children = (
 				418723ED248FC1130015F9AB /* PalettePickable.swift */,
 			);
-			path = "15. PalettePickable";
+			path = "16. PalettePickable";
 			sourceTree = "<group>";
 		};
-		418723EE248FC1130015F9AB /* 18. BidirectionalDragModifier */ = {
+		418723EE248FC1130015F9AB /* 19. BidirectionalDragModifier */ = {
 			isa = PBXGroup;
 			children = (
 				418723EF248FC1130015F9AB /* BidirectionalDragModifier.swift */,
 			);
-			path = "18. BidirectionalDragModifier";
+			path = "19. BidirectionalDragModifier";
 			sourceTree = "<group>";
 		};
-		418723F0248FC1130015F9AB /* 21. CanvasView */ = {
+		418723F0248FC1130015F9AB /* 22. CanvasView */ = {
 			isa = PBXGroup;
 			children = (
 				418723F1248FC1130015F9AB /* CanvasView.swift */,
 			);
-			path = "21. CanvasView";
+			path = "22. CanvasView";
 			sourceTree = "<group>";
 		};
 		418723F2248FC1130015F9AB /* 2. ColourModel */ = {
@@ -258,12 +260,12 @@
 			path = "2. ColourModel";
 			sourceTree = "<group>";
 		};
-		418723F4248FC1130015F9AB /* 16. PaletteView */ = {
+		418723F4248FC1130015F9AB /* 17. PaletteView */ = {
 			isa = PBXGroup;
 			children = (
 				418723F5248FC1130015F9AB /* PaletteView.swift */,
 			);
-			path = "16. PaletteView";
+			path = "17. PaletteView";
 			sourceTree = "<group>";
 		};
 		418723F6248FC1130015F9AB /* 1. Numerical extensions */ = {
@@ -282,12 +284,12 @@
 			path = "3. ColorExtendable";
 			sourceTree = "<group>";
 		};
-		418723FA248FC1130015F9AB /* 19. DoubleGradientDisplayable */ = {
+		418723FA248FC1130015F9AB /* 20. DoubleGradientDisplayable */ = {
 			isa = PBXGroup;
 			children = (
 				418723FB248FC1130015F9AB /* DoubleGradientDisplayable.swift */,
 			);
-			path = "19. DoubleGradientDisplayable";
+			path = "20. DoubleGradientDisplayable";
 			sourceTree = "<group>";
 		};
 		418723FC248FC1130015F9AB /* 6. PreviewColourView */ = {
@@ -298,36 +300,36 @@
 			path = "6. PreviewColourView";
 			sourceTree = "<group>";
 		};
-		418723FE248FC1130015F9AB /* 12. SliderView */ = {
+		418723FE248FC1130015F9AB /* 13. SliderView */ = {
 			isa = PBXGroup;
 			children = (
 				418723FF248FC1130015F9AB /* SliderView.swift */,
 			);
-			path = "12. SliderView";
+			path = "13. SliderView";
 			sourceTree = "<group>";
 		};
-		41872400248FC1130015F9AB /* 13. ColourDataBindable */ = {
+		41872400248FC1130015F9AB /* 14. ColourDataBindable */ = {
 			isa = PBXGroup;
 			children = (
 				41872401248FC1130015F9AB /* ColourDataBindable.swift */,
 			);
-			path = "13. ColourDataBindable";
+			path = "14. ColourDataBindable";
 			sourceTree = "<group>";
 		};
-		41872402248FC1130015F9AB /* 17. CircleThumbView */ = {
+		41872402248FC1130015F9AB /* 18. CircleThumbView */ = {
 			isa = PBXGroup;
 			children = (
 				41872403248FC1130015F9AB /* CircleThumbView.swift */,
 			);
-			path = "17. CircleThumbView";
+			path = "18. CircleThumbView";
 			sourceTree = "<group>";
 		};
-		41872404248FC1130015F9AB /* 24. WheelPickable */ = {
+		41872404248FC1130015F9AB /* 25. WheelPickable */ = {
 			isa = PBXGroup;
 			children = (
 				41872405248FC1130015F9AB /* WheelPickable.swift */,
 			);
-			path = "24. WheelPickable";
+			path = "25. WheelPickable";
 			sourceTree = "<group>";
 		};
 		4188A1CE248E40F600287BF9 = {
@@ -349,6 +351,7 @@
 		4188A1D9248E40F600287BF9 /* ColourPickerMaker */ = {
 			isa = PBXGroup;
 			children = (
+				413405F8248FD0C40073822E /* LICENSE.md */,
 				418723D1248FC1130015F9AB /* Picker Gists */,
 				4188A1DA248E40F600287BF9 /* AppDelegate.swift */,
 				4188A1DC248E40F600287BF9 /* SceneDelegate.swift */,
@@ -427,6 +430,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				413405F9248FD0C40073822E /* LICENSE.md in Resources */,
 				4188A1E7248E40F700287BF9 /* LaunchScreen.storyboard in Resources */,
 				4188A1E4248E40F700287BF9 /* Preview Assets.xcassets in Resources */,
 				4188A1E1248E40F700287BF9 /* Assets.xcassets in Resources */,
