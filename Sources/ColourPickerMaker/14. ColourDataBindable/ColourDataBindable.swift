@@ -9,7 +9,7 @@
 
 import SwiftUI
 
-protocol ColourDataBindable {
+public protocol ColourDataBindable {
   associatedtype ValueType
   var values: ValueType { get }
   var _$values: Binding<ValueType> { get }
@@ -20,9 +20,9 @@ protocol ColourDataBindable {
 
 public struct RGBAData: ColourDataBindable {
   public typealias ValueType = ColourModel.RGBAValues
-  @Binding var values: ValueType
-  var _$values: Binding<ValueType> { _values }
-  let parameters: Parameter.Pair
+  @Binding public var values: ValueType
+  public var _$values: Binding<ValueType> { _values }
+  public let parameters: Parameter.Pair
   
   public init(values: Binding<ValueType>, parameters: Parameter.Pair) {
     self._values = values
@@ -32,9 +32,9 @@ public struct RGBAData: ColourDataBindable {
 
 public struct HSBAData: ColourDataBindable {
   public typealias ValueType = ColourModel.HSBAValues
-  @Binding var values: ValueType
-  var _$values: Binding<ValueType> { _values }
-  let parameters: Parameter.Pair
+  @Binding public var values: ValueType
+  public var _$values: Binding<ValueType> { _values }
+  public let parameters: Parameter.Pair
   
   public init(values: Binding<ValueType>, parameters: Parameter.Pair) {
     self._values = values
@@ -44,9 +44,9 @@ public struct HSBAData: ColourDataBindable {
 
 public struct CMYKAData: ColourDataBindable {
   public typealias ValueType = ColourModel.CMYKAValues
-  @Binding var values: ValueType
-  var _$values: Binding<ValueType> { _values }
-  let parameters: Parameter.Pair
+  @Binding public var values: ValueType
+  public var _$values: Binding<ValueType> { _values }
+  public let parameters: Parameter.Pair
   
   public init(values: Binding<ValueType>, parameters: Parameter.Pair) {
     self._values = values
@@ -55,10 +55,11 @@ public struct CMYKAData: ColourDataBindable {
 }
 
 public struct GreyscaleData: ColourDataBindable {
+  
   public typealias ValueType = ColourModel.GreyscaleValues
-  @Binding var values: ValueType
-  var _$values: Binding<ValueType> { _values }
-  let parameters: Parameter.Pair
+  @Binding public var values: ValueType
+  public var _$values: Binding<ValueType> { _values }
+  public let parameters: Parameter.Pair
   
   public init(values: Binding<ValueType>, parameters: Parameter.Pair) {
     self._values = values

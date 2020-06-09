@@ -16,12 +16,12 @@ public struct RGBASliderView: SliderPickable {
     self.length = length
   }
   
-    public typealias DataType = RGBASliderData
-    let data: DataType
-    @State var thumbOffset = CGPoint()
-    var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
-    let thickness: CGFloat
-    let length: CGFloat
+  public typealias DataType = RGBASliderData
+  let data: DataType
+  @State var thumbOffset = CGPoint()
+  var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
+  let thickness: CGFloat
+  let length: CGFloat
 }
 
 public struct HSBASliderView: SliderPickable {
@@ -31,12 +31,12 @@ public struct HSBASliderView: SliderPickable {
     self.length = length
   }
   
-    public typealias DataType = HSBASliderData
-    let data: DataType
-    @State var thumbOffset = CGPoint()
-    var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
-    let thickness: CGFloat
-    let length: CGFloat
+  public typealias DataType = HSBASliderData
+  let data: DataType
+  @State var thumbOffset = CGPoint()
+  var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
+  let thickness: CGFloat
+  let length: CGFloat
 }
 
 public struct CMYKASliderView: SliderPickable {
@@ -46,12 +46,12 @@ public struct CMYKASliderView: SliderPickable {
     self.length = length
   }
   
-    public typealias DataType = CMYKASliderData
-    let data: DataType
-    @State var thumbOffset = CGPoint()
-    var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
-    let thickness: CGFloat
-    let length: CGFloat
+  public typealias DataType = CMYKASliderData
+  let data: DataType
+  @State var thumbOffset = CGPoint()
+  var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
+  let thickness: CGFloat
+  let length: CGFloat
 }
 
 public struct GreyscaleSliderView: SliderPickable {
@@ -61,23 +61,23 @@ public struct GreyscaleSliderView: SliderPickable {
     self.length = length
   }
   
-    public typealias DataType = GreyscaleSliderData
-    let data: DataType
-    @State var thumbOffset = CGPoint()
-    var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
-    let thickness: CGFloat
-    let length: CGFloat
+  public typealias DataType = GreyscaleSliderData
+  let data: DataType
+  @State var thumbOffset = CGPoint()
+  var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
+  let thickness: CGFloat
+  let length: CGFloat
 }
 
-public struct PreviewSliderView: View {
-    @ObservedObject var data = ColourModel(colourSpace: .RGBA)
-  public var body: some View {
-        RGBASliderView(data: RGBASliderData(values: $data.valuesInRGBA, parameter: .red, orientation: .horizontal), thickness: 50, length: 300)
-    }
+struct PreviewSliderView: View {
+  @ObservedObject var data = ColourModel(colourSpace: .RGBA)
+  var body: some View {
+    RGBASliderView(data: RGBASliderData(values: $data.valuesInRGBA, parameter: .red, orientation: .horizontal), thickness: 50, length: 300)
+  }
 }
 
 struct SliderView_Previews: PreviewProvider {
   static var previews: some View {
-        PreviewSliderView()
-    }
+    PreviewSliderView()
+  }
 }

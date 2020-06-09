@@ -9,17 +9,17 @@
 
 import SwiftUI
 
-protocol WheelPickable: View {
-    associatedtype DataType where DataType: ColourDataBindable
-    var data: DataType { get }
-    var thumbOffset: CGPoint { get }
-    var _$thumbOffset: Binding<CGPoint> { get }
-    var angularGradient: Gradient { get }
-    var radialGradient: Gradient { get }
+public protocol WheelPickable: View {
+  associatedtype DataType where DataType: ColourDataBindable
+  var data: DataType { get }
+  var thumbOffset: CGPoint { get }
+  var _$thumbOffset: Binding<CGPoint> { get }
+  var angularGradient: Gradient { get }
+  var radialGradient: Gradient { get }
 }
 
 extension WheelPickable {
-    var body: some View {
+    public var body: some View {
         ZStack {
             data.getBackground()
                 .clipShape(Circle())

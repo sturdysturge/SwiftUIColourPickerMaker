@@ -58,9 +58,9 @@ public struct GreyscaleCanvasView: CanvasPickable {
 }
 
 /// A way to preview CanvasView varieties even though they require an ObservableObject
-public struct PreviewCanvasView: View {
+struct PreviewCanvasView: View {
     @ObservedObject var data = ColourModel(colourSpace: .RGBA)
-  public var body: some View {
+  var body: some View {
         VStack {
             PreviewColourView(colour: data.colour, square: true)
             RGBACanvasView(data: RGBAData(values: $data.valuesInRGBA, parameters: (.red, .green)))
