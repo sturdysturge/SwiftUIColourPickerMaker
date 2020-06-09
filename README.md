@@ -1,7 +1,7 @@
 # Colour Picker Maker
 > Create colour pickers using controls such as canvases, wheels, palettes and sliders.
 
-[![NPM Version][license-image]][license-image]
+[![MIT License][license-image]][license-image]
 
 This package contains sliders and controls for colour pickers that can be added to your project in any configuration. There are also example colour pickers that use these controls, so you have the choice between using existing pickers or building your own.
 
@@ -84,7 +84,7 @@ struct CanvasView: View {
   }
 }
 ```
-## Sliders
+## Slider
 ```swift
 import ColourPickerMaker
 import SwiftUI
