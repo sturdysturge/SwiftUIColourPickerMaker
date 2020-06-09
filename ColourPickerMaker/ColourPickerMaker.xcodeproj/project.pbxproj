@@ -20,7 +20,6 @@
 		41226A9C248FE85F00F38E46 /* WheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A6B248FE85D00F38E46 /* WheelView.swift */; };
 		41226A9D248FE85F00F38E46 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 41226A6C248FE85D00F38E46 /* LICENSE.md */; };
 		41226A9E248FE85F00F38E46 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A6E248FE85D00F38E46 /* SliderView.swift */; };
-		41226A9F248FE85F00F38E46 /* extension CGFloat Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A70248FE85D00F38E46 /* extension CGFloat Double.swift */; };
 		41226AA0248FE85F00F38E46 /* SliderDataBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A72248FE85D00F38E46 /* SliderDataBindable.swift */; };
 		41226AA1248FE85F00F38E46 /* ColourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A74248FE85D00F38E46 /* ColourModel.swift */; };
 		41226AA2248FE85F00F38E46 /* ColorExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A76248FE85E00F38E46 /* ColorExtendable.swift */; };
@@ -41,6 +40,7 @@
 		41226AB1248FE86000F38E46 /* extension SliderDataBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A94248FE85F00F38E46 /* extension SliderDataBindable.swift */; };
 		41226AB2248FE86000F38E46 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A96248FE85F00F38E46 /* Gradient.swift */; };
 		41226AB3248FE86000F38E46 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A98248FE85F00F38E46 /* CanvasView.swift */; };
+		41226AB5248FE92900F38E46 /* extension CGFloat Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226AB4248FE92900F38E46 /* extension CGFloat Double.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,7 +58,6 @@
 		41226A6B248FE85D00F38E46 /* WheelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheelView.swift; sourceTree = "<group>"; };
 		41226A6C248FE85D00F38E46 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		41226A6E248FE85D00F38E46 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
-		41226A70248FE85D00F38E46 /* extension CGFloat Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension CGFloat Double.swift"; sourceTree = "<group>"; };
 		41226A72248FE85D00F38E46 /* SliderDataBindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderDataBindable.swift; sourceTree = "<group>"; };
 		41226A74248FE85D00F38E46 /* ColourModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourModel.swift; sourceTree = "<group>"; };
 		41226A76248FE85E00F38E46 /* ColorExtendable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtendable.swift; sourceTree = "<group>"; };
@@ -79,6 +78,7 @@
 		41226A94248FE85F00F38E46 /* extension SliderDataBindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension SliderDataBindable.swift"; sourceTree = "<group>"; };
 		41226A96248FE85F00F38E46 /* Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		41226A98248FE85F00F38E46 /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		41226AB4248FE92900F38E46 /* extension CGFloat Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension CGFloat Double.swift"; sourceTree = "<group>"; };
 		4188A1D7248E40F600287BF9 /* ColourPickerMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColourPickerMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -153,7 +153,7 @@
 		41226A6F248FE85D00F38E46 /* 1. Numerical extensions */ = {
 			isa = PBXGroup;
 			children = (
-				41226A70248FE85D00F38E46 /* extension CGFloat Double.swift */,
+				41226AB4248FE92900F38E46 /* extension CGFloat Double.swift */,
 			);
 			path = "1. Numerical extensions";
 			sourceTree = "<group>";
@@ -465,12 +465,12 @@
 				41226AB2248FE86000F38E46 /* Gradient.swift in Sources */,
 				41226AA2248FE85F00F38E46 /* ColorExtendable.swift in Sources */,
 				41226A9A248FE85F00F38E46 /* Parameter.swift in Sources */,
+				41226AB5248FE92900F38E46 /* extension CGFloat Double.swift in Sources */,
 				41226A57248FE65D00F38E46 /* SceneDelegate.swift in Sources */,
 				41226AB1248FE86000F38E46 /* extension SliderDataBindable.swift in Sources */,
 				41226AAF248FE86000F38E46 /* SliderThumbView.swift in Sources */,
 				41226AB0248FE86000F38E46 /* RadialDragModifier.swift in Sources */,
 				41226AA3248FE85F00F38E46 /* PreviewColourView.swift in Sources */,
-				41226A9F248FE85F00F38E46 /* extension CGFloat Double.swift in Sources */,
 				41226A9B248FE85F00F38E46 /* PaletteView.swift in Sources */,
 				41226A3E248FE5A000F38E46 /* ColorExtendable.swift in Sources */,
 				41226AA8248FE85F00F38E46 /* WheelPickable.swift in Sources */,
