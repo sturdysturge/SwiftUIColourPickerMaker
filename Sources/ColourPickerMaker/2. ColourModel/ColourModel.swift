@@ -27,35 +27,35 @@ public class ColourModel: ObservableObject {
     var colourSpace: ColourSpace
 
     /// The colour being picked
-    @Published var colour = Color.white
+    @Published public var colour = Color.white
 
     // The colour parameters
-    @Published var alpha = Double(1) {
+    @Published public var alpha = Double(1) {
         didSet {
             // Colour space independent
             setColour()
         }
     }
 
-    @Published var valuesInRGBA: RGBAValues = (1.0, 0.0, 0.0, 1.0) {
+    @Published public var valuesInRGBA: RGBAValues = (1.0, 0.0, 0.0, 1.0) {
         didSet {
             setColour(colourSpace: .RGBA)
         }
     }
 
-    @Published var valuesInHSBA: HSBAValues = (1.0, 1.0, 1.0, 1.0) {
+    @Published public var valuesInHSBA: HSBAValues = (1.0, 1.0, 1.0, 1.0) {
         didSet {
             setColour(colourSpace: .HSBA)
         }
     }
 
-    @Published var valuesInCMYKA: CMYKAValues = (0.5, 0.5, 0.5, 0.0, 1.0) {
+    @Published public var valuesInCMYKA: CMYKAValues = (0.5, 0.5, 0.5, 0.0, 1.0) {
         didSet {
             setColour(colourSpace: .CMYKA)
         }
     }
 
-    @Published var valuesInGreyscale: GreyscaleValues = (1.0, 1.0) {
+    @Published public var valuesInGreyscale: GreyscaleValues = (1.0, 1.0) {
         didSet {
             setColour(colourSpace: .greyscale)
         }
