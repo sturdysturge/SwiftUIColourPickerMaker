@@ -10,6 +10,10 @@
 import SwiftUI
 
 public struct CircleThumbView {
+  public init(size: CGFloat) {
+    self.size = size
+  }
+  
     let size: CGFloat
 }
 

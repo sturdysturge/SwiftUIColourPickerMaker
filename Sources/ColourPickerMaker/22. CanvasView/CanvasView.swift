@@ -11,6 +11,10 @@ import SwiftUI
 
 /// A View that shows RGBA data from CanvasData in the body in CanvasPickable
 public struct RGBACanvasView: CanvasPickable {
+  public init(data: RGBACanvasView.DataType) {
+    self.data = data
+  }
+  
     public typealias DataType = RGBAData
     let data: DataType
     @State var thumbOffset = CGPoint()
@@ -19,6 +23,10 @@ public struct RGBACanvasView: CanvasPickable {
 
 /// A View that shows HSBA data from CanvasData in the body in CanvasPickable
 public struct HSBACanvasView: CanvasPickable {
+  public init(data: HSBACanvasView.DataType) {
+    self.data = data
+  }
+  
     public typealias DataType = HSBAData
     let data: DataType
     @State var thumbOffset = CGPoint()
@@ -27,6 +35,10 @@ public struct HSBACanvasView: CanvasPickable {
 
 /// A View that shows CMYKA data from CanvasData in the body in CanvasPickable
 public struct CMYKACanvasView: CanvasPickable {
+  public init(data: CMYKACanvasView.DataType) {
+    self.data = data
+  }
+  
     public typealias DataType = CMYKAData
     let data: DataType
     @State var thumbOffset = CGPoint()
@@ -35,6 +47,10 @@ public struct CMYKACanvasView: CanvasPickable {
 
 /// A View that shows greyscale data from CanvasData in the body in CanvasPickable
 public struct GreyscaleCanvasView: CanvasPickable {
+  public init(data: GreyscaleCanvasView.DataType) {
+    self.data = data
+  }
+  
     public typealias DataType = GreyscaleData
     let data: DataType
     @State var thumbOffset = CGPoint()

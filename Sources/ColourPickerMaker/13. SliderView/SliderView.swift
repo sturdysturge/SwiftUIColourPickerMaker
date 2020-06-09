@@ -10,6 +10,12 @@
 import SwiftUI
 
 public struct RGBASliderView: SliderPickable {
+  public init(data: RGBASliderView.DataType, thickness: CGFloat, length: CGFloat) {
+    self.data = data
+    self.thickness = thickness
+    self.length = length
+  }
+  
     public typealias DataType = RGBASliderData
     let data: DataType
     @State var thumbOffset = CGPoint()
@@ -19,6 +25,12 @@ public struct RGBASliderView: SliderPickable {
 }
 
 public struct HSBASliderView: SliderPickable {
+  public init(data: HSBASliderView.DataType, thickness: CGFloat, length: CGFloat) {
+    self.data = data
+    self.thickness = thickness
+    self.length = length
+  }
+  
     public typealias DataType = HSBASliderData
     let data: DataType
     @State var thumbOffset = CGPoint()
@@ -28,6 +40,12 @@ public struct HSBASliderView: SliderPickable {
 }
 
 public struct CMYKASliderView: SliderPickable {
+  public init(data: CMYKASliderView.DataType, thickness: CGFloat, length: CGFloat) {
+    self.data = data
+    self.thickness = thickness
+    self.length = length
+  }
+  
     public typealias DataType = CMYKASliderData
     let data: DataType
     @State var thumbOffset = CGPoint()
@@ -37,6 +55,12 @@ public struct CMYKASliderView: SliderPickable {
 }
 
 public struct GreyscaleSliderView: SliderPickable {
+  public init(data: GreyscaleSliderView.DataType, thickness: CGFloat, length: CGFloat) {
+    self.data = data
+    self.thickness = thickness
+    self.length = length
+  }
+  
     public typealias DataType = GreyscaleSliderData
     let data: DataType
     @State var thumbOffset = CGPoint()

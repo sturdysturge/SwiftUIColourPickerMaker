@@ -10,6 +10,11 @@
 import SwiftUI
 
 public struct PreviewColourView {
+  public init(colour: Color, square: Bool) {
+    self.colour = colour
+    self.square = square
+  }
+  
     let colour: Color
     let square: Bool
 }
