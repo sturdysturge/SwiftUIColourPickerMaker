@@ -7,69 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		41226A35248FE5A000F38E46 /* extension CGFloat Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A01248FE59E00F38E46 /* extension CGFloat Double.swift */; };
-		41226A36248FE5A000F38E46 /* DoubleGradientDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A03248FE59E00F38E46 /* DoubleGradientDisplayable.swift */; };
-		41226A37248FE5A000F38E46 /* WheelPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A05248FE59E00F38E46 /* WheelPickable.swift */; };
-		41226A38248FE5A000F38E46 /* CircleGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A07248FE59E00F38E46 /* CircleGradientView.swift */; };
-		41226A39248FE5A000F38E46 /* BidirectionalDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A09248FE59E00F38E46 /* BidirectionalDragModifier.swift */; };
-		41226A3A248FE5A000F38E46 /* extension ColourDataBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A0B248FE59E00F38E46 /* extension ColourDataBindable.swift */; };
-		41226A3B248FE5A000F38E46 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A0D248FE59E00F38E46 /* Gradient.swift */; };
-		41226A3C248FE5A000F38E46 /* DirectionalDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A0F248FE59E00F38E46 /* DirectionalDragModifier.swift */; };
-		41226A3D248FE5A000F38E46 /* ColourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A11248FE59E00F38E46 /* ColourModel.swift */; };
 		41226A3E248FE5A000F38E46 /* ColorExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A12248FE59E00F38E46 /* ColorExtendable.swift */; };
-		41226A3F248FE5A000F38E46 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A14248FE59E00F38E46 /* Parameter.swift */; };
-		41226A40248FE5A000F38E46 /* SliderDataBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A16248FE59E00F38E46 /* SliderDataBindable.swift */; };
-		41226A41248FE5A000F38E46 /* ColorExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A18248FE59F00F38E46 /* ColorExtendable.swift */; };
-		41226A42248FE5A000F38E46 /* CanvasPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A1A248FE59F00F38E46 /* CanvasPickable.swift */; };
-		41226A43248FE5A000F38E46 /* PaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A1C248FE59F00F38E46 /* PaletteView.swift */; };
-		41226A44248FE5A000F38E46 /* CircleThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A1E248FE59F00F38E46 /* CircleThumbView.swift */; };
-		41226A45248FE5A000F38E46 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A20248FE59F00F38E46 /* CanvasView.swift */; };
-		41226A46248FE5A000F38E46 /* WheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A22248FE59F00F38E46 /* WheelView.swift */; };
-		41226A47248FE5A000F38E46 /* PalettePickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A24248FE59F00F38E46 /* PalettePickable.swift */; };
-		41226A48248FE5A000F38E46 /* SliderThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A26248FE59F00F38E46 /* SliderThumbView.swift */; };
-		41226A49248FE5A000F38E46 /* extension SliderDataBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A28248FE59F00F38E46 /* extension SliderDataBindable.swift */; };
-		41226A4A248FE5A000F38E46 /* RadialDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A2A248FE59F00F38E46 /* RadialDragModifier.swift */; };
-		41226A4B248FE5A000F38E46 /* PreviewColourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A2C248FE59F00F38E46 /* PreviewColourView.swift */; };
-		41226A4C248FE5A000F38E46 /* TransparencyCheckerboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A2E248FE59F00F38E46 /* TransparencyCheckerboardView.swift */; };
-		41226A4D248FE5A000F38E46 /* ColourDataBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A30248FE59F00F38E46 /* ColourDataBindable.swift */; };
-		41226A4E248FE5A000F38E46 /* SliderPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A32248FE59F00F38E46 /* SliderPickable.swift */; };
-		41226A4F248FE5A000F38E46 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A34248FE5A000F38E46 /* SliderView.swift */; };
 		41226A51248FE63700F38E46 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A50248FE63700F38E46 /* ContentView.swift */; };
 		41226A55248FE65D00F38E46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A52248FE65C00F38E46 /* AppDelegate.swift */; };
 		41226A57248FE65D00F38E46 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A54248FE65D00F38E46 /* SceneDelegate.swift */; };
 		41226A5E248FE69E00F38E46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41226A58248FE69E00F38E46 /* Assets.xcassets */; };
 		41226A5F248FE69E00F38E46 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41226A5A248FE69E00F38E46 /* Preview Assets.xcassets */; };
 		41226A60248FE69E00F38E46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41226A5C248FE69E00F38E46 /* LaunchScreen.storyboard */; };
+		41226A99248FE85F00F38E46 /* DirectionalDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A65248FE85D00F38E46 /* DirectionalDragModifier.swift */; };
+		41226A9A248FE85F00F38E46 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A67248FE85D00F38E46 /* Parameter.swift */; };
+		41226A9B248FE85F00F38E46 /* PaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A69248FE85D00F38E46 /* PaletteView.swift */; };
+		41226A9C248FE85F00F38E46 /* WheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A6B248FE85D00F38E46 /* WheelView.swift */; };
+		41226A9D248FE85F00F38E46 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 41226A6C248FE85D00F38E46 /* LICENSE.md */; };
+		41226A9E248FE85F00F38E46 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A6E248FE85D00F38E46 /* SliderView.swift */; };
+		41226A9F248FE85F00F38E46 /* extension CGFloat Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A70248FE85D00F38E46 /* extension CGFloat Double.swift */; };
+		41226AA0248FE85F00F38E46 /* SliderDataBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A72248FE85D00F38E46 /* SliderDataBindable.swift */; };
+		41226AA1248FE85F00F38E46 /* ColourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A74248FE85D00F38E46 /* ColourModel.swift */; };
+		41226AA2248FE85F00F38E46 /* ColorExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A76248FE85E00F38E46 /* ColorExtendable.swift */; };
+		41226AA3248FE85F00F38E46 /* PreviewColourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A78248FE85E00F38E46 /* PreviewColourView.swift */; };
+		41226AA4248FE85F00F38E46 /* TransparencyCheckerboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A7A248FE85E00F38E46 /* TransparencyCheckerboardView.swift */; };
+		41226AA5248FE85F00F38E46 /* CircleGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A7C248FE85E00F38E46 /* CircleGradientView.swift */; };
+		41226AA6248FE85F00F38E46 /* CanvasPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A7E248FE85E00F38E46 /* CanvasPickable.swift */; };
+		41226AA7248FE85F00F38E46 /* PalettePickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A80248FE85E00F38E46 /* PalettePickable.swift */; };
+		41226AA8248FE85F00F38E46 /* WheelPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A82248FE85E00F38E46 /* WheelPickable.swift */; };
+		41226AA9248FE85F00F38E46 /* extension ColourDataBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A84248FE85E00F38E46 /* extension ColourDataBindable.swift */; };
+		41226AAA248FE85F00F38E46 /* DoubleGradientDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A86248FE85E00F38E46 /* DoubleGradientDisplayable.swift */; };
+		41226AAB248FE85F00F38E46 /* BidirectionalDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A88248FE85E00F38E46 /* BidirectionalDragModifier.swift */; };
+		41226AAC248FE85F00F38E46 /* CircleThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A8A248FE85E00F38E46 /* CircleThumbView.swift */; };
+		41226AAD248FE86000F38E46 /* ColourDataBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A8C248FE85F00F38E46 /* ColourDataBindable.swift */; };
+		41226AAE248FE86000F38E46 /* SliderPickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A8E248FE85F00F38E46 /* SliderPickable.swift */; };
+		41226AAF248FE86000F38E46 /* SliderThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A90248FE85F00F38E46 /* SliderThumbView.swift */; };
+		41226AB0248FE86000F38E46 /* RadialDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A92248FE85F00F38E46 /* RadialDragModifier.swift */; };
+		41226AB1248FE86000F38E46 /* extension SliderDataBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A94248FE85F00F38E46 /* extension SliderDataBindable.swift */; };
+		41226AB2248FE86000F38E46 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A96248FE85F00F38E46 /* Gradient.swift */; };
+		41226AB3248FE86000F38E46 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41226A98248FE85F00F38E46 /* CanvasView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		41226A01248FE59E00F38E46 /* extension CGFloat Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension CGFloat Double.swift"; sourceTree = "<group>"; };
-		41226A03248FE59E00F38E46 /* DoubleGradientDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleGradientDisplayable.swift; sourceTree = "<group>"; };
-		41226A05248FE59E00F38E46 /* WheelPickable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheelPickable.swift; sourceTree = "<group>"; };
-		41226A07248FE59E00F38E46 /* CircleGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleGradientView.swift; sourceTree = "<group>"; };
-		41226A09248FE59E00F38E46 /* BidirectionalDragModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BidirectionalDragModifier.swift; sourceTree = "<group>"; };
-		41226A0B248FE59E00F38E46 /* extension ColourDataBindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension ColourDataBindable.swift"; sourceTree = "<group>"; };
-		41226A0D248FE59E00F38E46 /* Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
-		41226A0F248FE59E00F38E46 /* DirectionalDragModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionalDragModifier.swift; sourceTree = "<group>"; };
-		41226A11248FE59E00F38E46 /* ColourModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourModel.swift; sourceTree = "<group>"; };
 		41226A12248FE59E00F38E46 /* ColorExtendable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtendable.swift; path = "../../Picker Gists/3. ColorExtendable/ColorExtendable.swift"; sourceTree = "<group>"; };
-		41226A14248FE59E00F38E46 /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
-		41226A16248FE59E00F38E46 /* SliderDataBindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderDataBindable.swift; sourceTree = "<group>"; };
-		41226A18248FE59F00F38E46 /* ColorExtendable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtendable.swift; sourceTree = "<group>"; };
-		41226A1A248FE59F00F38E46 /* CanvasPickable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasPickable.swift; sourceTree = "<group>"; };
-		41226A1C248FE59F00F38E46 /* PaletteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteView.swift; sourceTree = "<group>"; };
-		41226A1E248FE59F00F38E46 /* CircleThumbView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleThumbView.swift; sourceTree = "<group>"; };
-		41226A20248FE59F00F38E46 /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
-		41226A22248FE59F00F38E46 /* WheelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheelView.swift; sourceTree = "<group>"; };
-		41226A24248FE59F00F38E46 /* PalettePickable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PalettePickable.swift; sourceTree = "<group>"; };
-		41226A26248FE59F00F38E46 /* SliderThumbView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderThumbView.swift; sourceTree = "<group>"; };
-		41226A28248FE59F00F38E46 /* extension SliderDataBindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension SliderDataBindable.swift"; sourceTree = "<group>"; };
-		41226A2A248FE59F00F38E46 /* RadialDragModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialDragModifier.swift; sourceTree = "<group>"; };
-		41226A2C248FE59F00F38E46 /* PreviewColourView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewColourView.swift; sourceTree = "<group>"; };
-		41226A2E248FE59F00F38E46 /* TransparencyCheckerboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparencyCheckerboardView.swift; sourceTree = "<group>"; };
-		41226A30248FE59F00F38E46 /* ColourDataBindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourDataBindable.swift; sourceTree = "<group>"; };
-		41226A32248FE59F00F38E46 /* SliderPickable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderPickable.swift; sourceTree = "<group>"; };
-		41226A34248FE5A000F38E46 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		41226A50248FE63700F38E46 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		41226A52248FE65C00F38E46 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41226A54248FE65D00F38E46 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +52,33 @@
 		41226A5A248FE69E00F38E46 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		41226A5D248FE69E00F38E46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41226A61248FE6D500F38E46 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41226A65248FE85D00F38E46 /* DirectionalDragModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionalDragModifier.swift; sourceTree = "<group>"; };
+		41226A67248FE85D00F38E46 /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
+		41226A69248FE85D00F38E46 /* PaletteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteView.swift; sourceTree = "<group>"; };
+		41226A6B248FE85D00F38E46 /* WheelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheelView.swift; sourceTree = "<group>"; };
+		41226A6C248FE85D00F38E46 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		41226A6E248FE85D00F38E46 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		41226A70248FE85D00F38E46 /* extension CGFloat Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension CGFloat Double.swift"; sourceTree = "<group>"; };
+		41226A72248FE85D00F38E46 /* SliderDataBindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderDataBindable.swift; sourceTree = "<group>"; };
+		41226A74248FE85D00F38E46 /* ColourModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourModel.swift; sourceTree = "<group>"; };
+		41226A76248FE85E00F38E46 /* ColorExtendable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtendable.swift; sourceTree = "<group>"; };
+		41226A78248FE85E00F38E46 /* PreviewColourView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewColourView.swift; sourceTree = "<group>"; };
+		41226A7A248FE85E00F38E46 /* TransparencyCheckerboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparencyCheckerboardView.swift; sourceTree = "<group>"; };
+		41226A7C248FE85E00F38E46 /* CircleGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleGradientView.swift; sourceTree = "<group>"; };
+		41226A7E248FE85E00F38E46 /* CanvasPickable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasPickable.swift; sourceTree = "<group>"; };
+		41226A80248FE85E00F38E46 /* PalettePickable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PalettePickable.swift; sourceTree = "<group>"; };
+		41226A82248FE85E00F38E46 /* WheelPickable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheelPickable.swift; sourceTree = "<group>"; };
+		41226A84248FE85E00F38E46 /* extension ColourDataBindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension ColourDataBindable.swift"; sourceTree = "<group>"; };
+		41226A86248FE85E00F38E46 /* DoubleGradientDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleGradientDisplayable.swift; sourceTree = "<group>"; };
+		41226A88248FE85E00F38E46 /* BidirectionalDragModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BidirectionalDragModifier.swift; sourceTree = "<group>"; };
+		41226A8A248FE85E00F38E46 /* CircleThumbView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleThumbView.swift; sourceTree = "<group>"; };
+		41226A8C248FE85F00F38E46 /* ColourDataBindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourDataBindable.swift; sourceTree = "<group>"; };
+		41226A8E248FE85F00F38E46 /* SliderPickable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderPickable.swift; sourceTree = "<group>"; };
+		41226A90248FE85F00F38E46 /* SliderThumbView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderThumbView.swift; sourceTree = "<group>"; };
+		41226A92248FE85F00F38E46 /* RadialDragModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialDragModifier.swift; sourceTree = "<group>"; };
+		41226A94248FE85F00F38E46 /* extension SliderDataBindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension SliderDataBindable.swift"; sourceTree = "<group>"; };
+		41226A96248FE85F00F38E46 /* Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
+		41226A98248FE85F00F38E46 /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		4188A1D7248E40F600287BF9 /* ColourPickerMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColourPickerMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -91,240 +93,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		41226A00248FE59E00F38E46 /* 1. Numerical extensions */ = {
-			isa = PBXGroup;
-			children = (
-				41226A01248FE59E00F38E46 /* extension CGFloat Double.swift */,
-			);
-			name = "1. Numerical extensions";
-			path = "../../Picker Gists/1. Numerical extensions";
-			sourceTree = "<group>";
-		};
-		41226A02248FE59E00F38E46 /* 20. DoubleGradientDisplayable */ = {
-			isa = PBXGroup;
-			children = (
-				41226A03248FE59E00F38E46 /* DoubleGradientDisplayable.swift */,
-			);
-			name = "20. DoubleGradientDisplayable";
-			path = "../../Picker Gists/20. DoubleGradientDisplayable";
-			sourceTree = "<group>";
-		};
-		41226A04248FE59E00F38E46 /* 25. WheelPickable */ = {
-			isa = PBXGroup;
-			children = (
-				41226A05248FE59E00F38E46 /* WheelPickable.swift */,
-			);
-			name = "25. WheelPickable";
-			path = "../../Picker Gists/25. WheelPickable";
-			sourceTree = "<group>";
-		};
-		41226A06248FE59E00F38E46 /* 24. CircleGradientView */ = {
-			isa = PBXGroup;
-			children = (
-				41226A07248FE59E00F38E46 /* CircleGradientView.swift */,
-			);
-			name = "24. CircleGradientView";
-			path = "../../Picker Gists/24. CircleGradientView";
-			sourceTree = "<group>";
-		};
-		41226A08248FE59E00F38E46 /* 19. BidirectionalDragModifier */ = {
-			isa = PBXGroup;
-			children = (
-				41226A09248FE59E00F38E46 /* BidirectionalDragModifier.swift */,
-			);
-			name = "19. BidirectionalDragModifier";
-			path = "../../Picker Gists/19. BidirectionalDragModifier";
-			sourceTree = "<group>";
-		};
-		41226A0A248FE59E00F38E46 /* 15. ColourDataBindable+Extension */ = {
-			isa = PBXGroup;
-			children = (
-				41226A0B248FE59E00F38E46 /* extension ColourDataBindable.swift */,
-			);
-			name = "15. ColourDataBindable+Extension";
-			path = "../../Picker Gists/15. ColourDataBindable+Extension";
-			sourceTree = "<group>";
-		};
-		41226A0C248FE59E00F38E46 /* 5. Gradient */ = {
-			isa = PBXGroup;
-			children = (
-				41226A0D248FE59E00F38E46 /* Gradient.swift */,
-			);
-			name = "5. Gradient";
-			path = "../../Picker Gists/5. Gradient";
-			sourceTree = "<group>";
-		};
-		41226A0E248FE59E00F38E46 /* 9. DirectionalDragModifier */ = {
-			isa = PBXGroup;
-			children = (
-				41226A0F248FE59E00F38E46 /* DirectionalDragModifier.swift */,
-			);
-			name = "9. DirectionalDragModifier";
-			path = "../../Picker Gists/9. DirectionalDragModifier";
-			sourceTree = "<group>";
-		};
-		41226A10248FE59E00F38E46 /* 2. ColourModel */ = {
-			isa = PBXGroup;
-			children = (
-				41226A11248FE59E00F38E46 /* ColourModel.swift */,
-			);
-			name = "2. ColourModel";
-			path = "../../Picker Gists/2. ColourModel";
-			sourceTree = "<group>";
-		};
-		41226A13248FE59E00F38E46 /* 4. Parameter */ = {
-			isa = PBXGroup;
-			children = (
-				41226A14248FE59E00F38E46 /* Parameter.swift */,
-			);
-			name = "4. Parameter";
-			path = "../../Picker Gists/4. Parameter";
-			sourceTree = "<group>";
-		};
-		41226A15248FE59E00F38E46 /* 10. SliderDataBindable */ = {
-			isa = PBXGroup;
-			children = (
-				41226A16248FE59E00F38E46 /* SliderDataBindable.swift */,
-			);
-			name = "10. SliderDataBindable";
-			path = "../../Picker Gists/10. SliderDataBindable";
-			sourceTree = "<group>";
-		};
-		41226A17248FE59E00F38E46 /* 3. ColorExtendable */ = {
-			isa = PBXGroup;
-			children = (
-				41226A18248FE59F00F38E46 /* ColorExtendable.swift */,
-			);
-			name = "3. ColorExtendable";
-			path = "../../Picker Gists/3. ColorExtendable";
-			sourceTree = "<group>";
-		};
-		41226A19248FE59F00F38E46 /* 21. CanvasPickable */ = {
-			isa = PBXGroup;
-			children = (
-				41226A1A248FE59F00F38E46 /* CanvasPickable.swift */,
-			);
-			name = "21. CanvasPickable";
-			path = "../../Picker Gists/21. CanvasPickable";
-			sourceTree = "<group>";
-		};
-		41226A1B248FE59F00F38E46 /* 17. PaletteView */ = {
-			isa = PBXGroup;
-			children = (
-				41226A1C248FE59F00F38E46 /* PaletteView.swift */,
-			);
-			name = "17. PaletteView";
-			path = "../../Picker Gists/17. PaletteView";
-			sourceTree = "<group>";
-		};
-		41226A1D248FE59F00F38E46 /* 18. CircleThumbView */ = {
-			isa = PBXGroup;
-			children = (
-				41226A1E248FE59F00F38E46 /* CircleThumbView.swift */,
-			);
-			name = "18. CircleThumbView";
-			path = "../../Picker Gists/18. CircleThumbView";
-			sourceTree = "<group>";
-		};
-		41226A1F248FE59F00F38E46 /* 22. CanvasView */ = {
-			isa = PBXGroup;
-			children = (
-				41226A20248FE59F00F38E46 /* CanvasView.swift */,
-			);
-			name = "22. CanvasView";
-			path = "../../Picker Gists/22. CanvasView";
-			sourceTree = "<group>";
-		};
-		41226A21248FE59F00F38E46 /* 26. WheelView */ = {
-			isa = PBXGroup;
-			children = (
-				41226A22248FE59F00F38E46 /* WheelView.swift */,
-			);
-			name = "26. WheelView";
-			path = "../../Picker Gists/26. WheelView";
-			sourceTree = "<group>";
-		};
-		41226A23248FE59F00F38E46 /* 16. PalettePickable */ = {
-			isa = PBXGroup;
-			children = (
-				41226A24248FE59F00F38E46 /* PalettePickable.swift */,
-			);
-			name = "16. PalettePickable";
-			path = "../../Picker Gists/16. PalettePickable";
-			sourceTree = "<group>";
-		};
-		41226A25248FE59F00F38E46 /* 8. SliderThumbView */ = {
-			isa = PBXGroup;
-			children = (
-				41226A26248FE59F00F38E46 /* SliderThumbView.swift */,
-			);
-			name = "8. SliderThumbView";
-			path = "../../Picker Gists/8. SliderThumbView";
-			sourceTree = "<group>";
-		};
-		41226A27248FE59F00F38E46 /* 11. SliderDataBindable+Extension */ = {
-			isa = PBXGroup;
-			children = (
-				41226A28248FE59F00F38E46 /* extension SliderDataBindable.swift */,
-			);
-			name = "11. SliderDataBindable+Extension";
-			path = "../../Picker Gists/11. SliderDataBindable+Extension";
-			sourceTree = "<group>";
-		};
-		41226A29248FE59F00F38E46 /* 23. RadialDragModifier */ = {
-			isa = PBXGroup;
-			children = (
-				41226A2A248FE59F00F38E46 /* RadialDragModifier.swift */,
-			);
-			name = "23. RadialDragModifier";
-			path = "../../Picker Gists/23. RadialDragModifier";
-			sourceTree = "<group>";
-		};
-		41226A2B248FE59F00F38E46 /* 6. PreviewColourView */ = {
-			isa = PBXGroup;
-			children = (
-				41226A2C248FE59F00F38E46 /* PreviewColourView.swift */,
-			);
-			name = "6. PreviewColourView";
-			path = "../../Picker Gists/6. PreviewColourView";
-			sourceTree = "<group>";
-		};
-		41226A2D248FE59F00F38E46 /* 7. TransparencyCheckerboardView */ = {
-			isa = PBXGroup;
-			children = (
-				41226A2E248FE59F00F38E46 /* TransparencyCheckerboardView.swift */,
-			);
-			name = "7. TransparencyCheckerboardView";
-			path = "../../Picker Gists/7. TransparencyCheckerboardView";
-			sourceTree = "<group>";
-		};
-		41226A2F248FE59F00F38E46 /* 14. ColourDataBindable */ = {
-			isa = PBXGroup;
-			children = (
-				41226A30248FE59F00F38E46 /* ColourDataBindable.swift */,
-			);
-			name = "14. ColourDataBindable";
-			path = "../../Picker Gists/14. ColourDataBindable";
-			sourceTree = "<group>";
-		};
-		41226A31248FE59F00F38E46 /* 12. SliderPickable */ = {
-			isa = PBXGroup;
-			children = (
-				41226A32248FE59F00F38E46 /* SliderPickable.swift */,
-			);
-			name = "12. SliderPickable";
-			path = "../../Picker Gists/12. SliderPickable";
-			sourceTree = "<group>";
-		};
-		41226A33248FE5A000F38E46 /* 13. SliderView */ = {
-			isa = PBXGroup;
-			children = (
-				41226A34248FE5A000F38E46 /* SliderView.swift */,
-			);
-			name = "13. SliderView";
-			path = "../../Picker Gists/13. SliderView";
-			sourceTree = "<group>";
-		};
 		41226A59248FE69E00F38E46 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,6 +108,214 @@
 			);
 			name = Base.lproj;
 			path = "../../../../../.Trash/ColourPickerMaker 12.47.32/ColourPickerMaker/Base.lproj";
+			sourceTree = "<group>";
+		};
+		41226A64248FE85D00F38E46 /* 9. DirectionalDragModifier */ = {
+			isa = PBXGroup;
+			children = (
+				41226A65248FE85D00F38E46 /* DirectionalDragModifier.swift */,
+			);
+			path = "9. DirectionalDragModifier";
+			sourceTree = "<group>";
+		};
+		41226A66248FE85D00F38E46 /* 4. Parameter */ = {
+			isa = PBXGroup;
+			children = (
+				41226A67248FE85D00F38E46 /* Parameter.swift */,
+			);
+			path = "4. Parameter";
+			sourceTree = "<group>";
+		};
+		41226A68248FE85D00F38E46 /* 17. PaletteView */ = {
+			isa = PBXGroup;
+			children = (
+				41226A69248FE85D00F38E46 /* PaletteView.swift */,
+			);
+			path = "17. PaletteView";
+			sourceTree = "<group>";
+		};
+		41226A6A248FE85D00F38E46 /* 26. WheelView */ = {
+			isa = PBXGroup;
+			children = (
+				41226A6B248FE85D00F38E46 /* WheelView.swift */,
+			);
+			path = "26. WheelView";
+			sourceTree = "<group>";
+		};
+		41226A6D248FE85D00F38E46 /* 13. SliderView */ = {
+			isa = PBXGroup;
+			children = (
+				41226A6E248FE85D00F38E46 /* SliderView.swift */,
+			);
+			path = "13. SliderView";
+			sourceTree = "<group>";
+		};
+		41226A6F248FE85D00F38E46 /* 1. Numerical extensions */ = {
+			isa = PBXGroup;
+			children = (
+				41226A70248FE85D00F38E46 /* extension CGFloat Double.swift */,
+			);
+			path = "1. Numerical extensions";
+			sourceTree = "<group>";
+		};
+		41226A71248FE85D00F38E46 /* 10. SliderDataBindable */ = {
+			isa = PBXGroup;
+			children = (
+				41226A72248FE85D00F38E46 /* SliderDataBindable.swift */,
+			);
+			path = "10. SliderDataBindable";
+			sourceTree = "<group>";
+		};
+		41226A73248FE85D00F38E46 /* 2. ColourModel */ = {
+			isa = PBXGroup;
+			children = (
+				41226A74248FE85D00F38E46 /* ColourModel.swift */,
+			);
+			path = "2. ColourModel";
+			sourceTree = "<group>";
+		};
+		41226A75248FE85E00F38E46 /* 3. ColorExtendable */ = {
+			isa = PBXGroup;
+			children = (
+				41226A76248FE85E00F38E46 /* ColorExtendable.swift */,
+			);
+			path = "3. ColorExtendable";
+			sourceTree = "<group>";
+		};
+		41226A77248FE85E00F38E46 /* 6. PreviewColourView */ = {
+			isa = PBXGroup;
+			children = (
+				41226A78248FE85E00F38E46 /* PreviewColourView.swift */,
+			);
+			path = "6. PreviewColourView";
+			sourceTree = "<group>";
+		};
+		41226A79248FE85E00F38E46 /* 7. TransparencyCheckerboardView */ = {
+			isa = PBXGroup;
+			children = (
+				41226A7A248FE85E00F38E46 /* TransparencyCheckerboardView.swift */,
+			);
+			path = "7. TransparencyCheckerboardView";
+			sourceTree = "<group>";
+		};
+		41226A7B248FE85E00F38E46 /* 24. CircleGradientView */ = {
+			isa = PBXGroup;
+			children = (
+				41226A7C248FE85E00F38E46 /* CircleGradientView.swift */,
+			);
+			path = "24. CircleGradientView";
+			sourceTree = "<group>";
+		};
+		41226A7D248FE85E00F38E46 /* 21. CanvasPickable */ = {
+			isa = PBXGroup;
+			children = (
+				41226A7E248FE85E00F38E46 /* CanvasPickable.swift */,
+			);
+			path = "21. CanvasPickable";
+			sourceTree = "<group>";
+		};
+		41226A7F248FE85E00F38E46 /* 16. PalettePickable */ = {
+			isa = PBXGroup;
+			children = (
+				41226A80248FE85E00F38E46 /* PalettePickable.swift */,
+			);
+			path = "16. PalettePickable";
+			sourceTree = "<group>";
+		};
+		41226A81248FE85E00F38E46 /* 25. WheelPickable */ = {
+			isa = PBXGroup;
+			children = (
+				41226A82248FE85E00F38E46 /* WheelPickable.swift */,
+			);
+			path = "25. WheelPickable";
+			sourceTree = "<group>";
+		};
+		41226A83248FE85E00F38E46 /* 15. ColourDataBindable+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				41226A84248FE85E00F38E46 /* extension ColourDataBindable.swift */,
+			);
+			path = "15. ColourDataBindable+Extension";
+			sourceTree = "<group>";
+		};
+		41226A85248FE85E00F38E46 /* 20. DoubleGradientDisplayable */ = {
+			isa = PBXGroup;
+			children = (
+				41226A86248FE85E00F38E46 /* DoubleGradientDisplayable.swift */,
+			);
+			path = "20. DoubleGradientDisplayable";
+			sourceTree = "<group>";
+		};
+		41226A87248FE85E00F38E46 /* 19. BidirectionalDragModifier */ = {
+			isa = PBXGroup;
+			children = (
+				41226A88248FE85E00F38E46 /* BidirectionalDragModifier.swift */,
+			);
+			path = "19. BidirectionalDragModifier";
+			sourceTree = "<group>";
+		};
+		41226A89248FE85E00F38E46 /* 18. CircleThumbView */ = {
+			isa = PBXGroup;
+			children = (
+				41226A8A248FE85E00F38E46 /* CircleThumbView.swift */,
+			);
+			path = "18. CircleThumbView";
+			sourceTree = "<group>";
+		};
+		41226A8B248FE85F00F38E46 /* 14. ColourDataBindable */ = {
+			isa = PBXGroup;
+			children = (
+				41226A8C248FE85F00F38E46 /* ColourDataBindable.swift */,
+			);
+			path = "14. ColourDataBindable";
+			sourceTree = "<group>";
+		};
+		41226A8D248FE85F00F38E46 /* 12. SliderPickable */ = {
+			isa = PBXGroup;
+			children = (
+				41226A8E248FE85F00F38E46 /* SliderPickable.swift */,
+			);
+			path = "12. SliderPickable";
+			sourceTree = "<group>";
+		};
+		41226A8F248FE85F00F38E46 /* 8. SliderThumbView */ = {
+			isa = PBXGroup;
+			children = (
+				41226A90248FE85F00F38E46 /* SliderThumbView.swift */,
+			);
+			path = "8. SliderThumbView";
+			sourceTree = "<group>";
+		};
+		41226A91248FE85F00F38E46 /* 23. RadialDragModifier */ = {
+			isa = PBXGroup;
+			children = (
+				41226A92248FE85F00F38E46 /* RadialDragModifier.swift */,
+			);
+			path = "23. RadialDragModifier";
+			sourceTree = "<group>";
+		};
+		41226A93248FE85F00F38E46 /* 11. SliderDataBindable+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				41226A94248FE85F00F38E46 /* extension SliderDataBindable.swift */,
+			);
+			path = "11. SliderDataBindable+Extension";
+			sourceTree = "<group>";
+		};
+		41226A95248FE85F00F38E46 /* 5. Gradient */ = {
+			isa = PBXGroup;
+			children = (
+				41226A96248FE85F00F38E46 /* Gradient.swift */,
+			);
+			path = "5. Gradient";
+			sourceTree = "<group>";
+		};
+		41226A97248FE85F00F38E46 /* 22. CanvasView */ = {
+			isa = PBXGroup;
+			children = (
+				41226A98248FE85F00F38E46 /* CanvasView.swift */,
+			);
+			path = "22. CanvasView";
 			sourceTree = "<group>";
 		};
 		4188A1CE248E40F600287BF9 = {
@@ -361,32 +337,33 @@
 		4188A1D9248E40F600287BF9 /* ColourPickerMaker */ = {
 			isa = PBXGroup;
 			children = (
-				41226A00248FE59E00F38E46 /* 1. Numerical extensions */,
-				41226A10248FE59E00F38E46 /* 2. ColourModel */,
-				41226A17248FE59E00F38E46 /* 3. ColorExtendable */,
-				41226A13248FE59E00F38E46 /* 4. Parameter */,
-				41226A0C248FE59E00F38E46 /* 5. Gradient */,
-				41226A2B248FE59F00F38E46 /* 6. PreviewColourView */,
-				41226A2D248FE59F00F38E46 /* 7. TransparencyCheckerboardView */,
-				41226A25248FE59F00F38E46 /* 8. SliderThumbView */,
-				41226A0E248FE59E00F38E46 /* 9. DirectionalDragModifier */,
-				41226A15248FE59E00F38E46 /* 10. SliderDataBindable */,
-				41226A27248FE59F00F38E46 /* 11. SliderDataBindable+Extension */,
-				41226A31248FE59F00F38E46 /* 12. SliderPickable */,
-				41226A33248FE5A000F38E46 /* 13. SliderView */,
-				41226A2F248FE59F00F38E46 /* 14. ColourDataBindable */,
-				41226A0A248FE59E00F38E46 /* 15. ColourDataBindable+Extension */,
-				41226A23248FE59F00F38E46 /* 16. PalettePickable */,
-				41226A1B248FE59F00F38E46 /* 17. PaletteView */,
-				41226A1D248FE59F00F38E46 /* 18. CircleThumbView */,
-				41226A08248FE59E00F38E46 /* 19. BidirectionalDragModifier */,
-				41226A02248FE59E00F38E46 /* 20. DoubleGradientDisplayable */,
-				41226A19248FE59F00F38E46 /* 21. CanvasPickable */,
-				41226A1F248FE59F00F38E46 /* 22. CanvasView */,
-				41226A29248FE59F00F38E46 /* 23. RadialDragModifier */,
-				41226A06248FE59E00F38E46 /* 24. CircleGradientView */,
-				41226A04248FE59E00F38E46 /* 25. WheelPickable */,
-				41226A21248FE59F00F38E46 /* 26. WheelView */,
+				41226A6F248FE85D00F38E46 /* 1. Numerical extensions */,
+				41226A73248FE85D00F38E46 /* 2. ColourModel */,
+				41226A75248FE85E00F38E46 /* 3. ColorExtendable */,
+				41226A66248FE85D00F38E46 /* 4. Parameter */,
+				41226A95248FE85F00F38E46 /* 5. Gradient */,
+				41226A77248FE85E00F38E46 /* 6. PreviewColourView */,
+				41226A79248FE85E00F38E46 /* 7. TransparencyCheckerboardView */,
+				41226A8F248FE85F00F38E46 /* 8. SliderThumbView */,
+				41226A64248FE85D00F38E46 /* 9. DirectionalDragModifier */,
+				41226A71248FE85D00F38E46 /* 10. SliderDataBindable */,
+				41226A93248FE85F00F38E46 /* 11. SliderDataBindable+Extension */,
+				41226A8D248FE85F00F38E46 /* 12. SliderPickable */,
+				41226A6D248FE85D00F38E46 /* 13. SliderView */,
+				41226A8B248FE85F00F38E46 /* 14. ColourDataBindable */,
+				41226A83248FE85E00F38E46 /* 15. ColourDataBindable+Extension */,
+				41226A7F248FE85E00F38E46 /* 16. PalettePickable */,
+				41226A68248FE85D00F38E46 /* 17. PaletteView */,
+				41226A89248FE85E00F38E46 /* 18. CircleThumbView */,
+				41226A87248FE85E00F38E46 /* 19. BidirectionalDragModifier */,
+				41226A85248FE85E00F38E46 /* 20. DoubleGradientDisplayable */,
+				41226A7D248FE85E00F38E46 /* 21. CanvasPickable */,
+				41226A97248FE85F00F38E46 /* 22. CanvasView */,
+				41226A91248FE85F00F38E46 /* 23. RadialDragModifier */,
+				41226A7B248FE85E00F38E46 /* 24. CircleGradientView */,
+				41226A81248FE85E00F38E46 /* 25. WheelPickable */,
+				41226A6A248FE85D00F38E46 /* 26. WheelView */,
+				41226A6C248FE85D00F38E46 /* LICENSE.md */,
 				41226A52248FE65C00F38E46 /* AppDelegate.swift */,
 				41226A58248FE69E00F38E46 /* Assets.xcassets */,
 				41226A5B248FE69E00F38E46 /* Base.lproj */,
@@ -457,6 +434,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41226A9D248FE85F00F38E46 /* LICENSE.md in Resources */,
 				41226A5E248FE69E00F38E46 /* Assets.xcassets in Resources */,
 				41226A60248FE69E00F38E46 /* LaunchScreen.storyboard in Resources */,
 				41226A5F248FE69E00F38E46 /* Preview Assets.xcassets in Resources */,
@@ -470,36 +448,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41226A39248FE5A000F38E46 /* BidirectionalDragModifier.swift in Sources */,
-				41226A35248FE5A000F38E46 /* extension CGFloat Double.swift in Sources */,
-				41226A44248FE5A000F38E46 /* CircleThumbView.swift in Sources */,
-				41226A38248FE5A000F38E46 /* CircleGradientView.swift in Sources */,
-				41226A47248FE5A000F38E46 /* PalettePickable.swift in Sources */,
-				41226A3D248FE5A000F38E46 /* ColourModel.swift in Sources */,
-				41226A37248FE5A000F38E46 /* WheelPickable.swift in Sources */,
-				41226A3F248FE5A000F38E46 /* Parameter.swift in Sources */,
-				41226A40248FE5A000F38E46 /* SliderDataBindable.swift in Sources */,
-				41226A42248FE5A000F38E46 /* CanvasPickable.swift in Sources */,
+				41226AAB248FE85F00F38E46 /* BidirectionalDragModifier.swift in Sources */,
+				41226AAA248FE85F00F38E46 /* DoubleGradientDisplayable.swift in Sources */,
+				41226AB3248FE86000F38E46 /* CanvasView.swift in Sources */,
 				41226A51248FE63700F38E46 /* ContentView.swift in Sources */,
-				41226A4E248FE5A000F38E46 /* SliderPickable.swift in Sources */,
-				41226A4A248FE5A000F38E46 /* RadialDragModifier.swift in Sources */,
-				41226A4F248FE5A000F38E46 /* SliderView.swift in Sources */,
-				41226A3C248FE5A000F38E46 /* DirectionalDragModifier.swift in Sources */,
-				41226A41248FE5A000F38E46 /* ColorExtendable.swift in Sources */,
-				41226A48248FE5A000F38E46 /* SliderThumbView.swift in Sources */,
-				41226A36248FE5A000F38E46 /* DoubleGradientDisplayable.swift in Sources */,
-				41226A4C248FE5A000F38E46 /* TransparencyCheckerboardView.swift in Sources */,
-				41226A49248FE5A000F38E46 /* extension SliderDataBindable.swift in Sources */,
+				41226AA9248FE85F00F38E46 /* extension ColourDataBindable.swift in Sources */,
+				41226AA1248FE85F00F38E46 /* ColourModel.swift in Sources */,
+				41226A99248FE85F00F38E46 /* DirectionalDragModifier.swift in Sources */,
+				41226AAE248FE86000F38E46 /* SliderPickable.swift in Sources */,
+				41226A9C248FE85F00F38E46 /* WheelView.swift in Sources */,
+				41226AA4248FE85F00F38E46 /* TransparencyCheckerboardView.swift in Sources */,
+				41226A9E248FE85F00F38E46 /* SliderView.swift in Sources */,
+				41226AA7248FE85F00F38E46 /* PalettePickable.swift in Sources */,
+				41226AAD248FE86000F38E46 /* ColourDataBindable.swift in Sources */,
 				41226A55248FE65D00F38E46 /* AppDelegate.swift in Sources */,
+				41226AB2248FE86000F38E46 /* Gradient.swift in Sources */,
+				41226AA2248FE85F00F38E46 /* ColorExtendable.swift in Sources */,
+				41226A9A248FE85F00F38E46 /* Parameter.swift in Sources */,
 				41226A57248FE65D00F38E46 /* SceneDelegate.swift in Sources */,
-				41226A45248FE5A000F38E46 /* CanvasView.swift in Sources */,
+				41226AB1248FE86000F38E46 /* extension SliderDataBindable.swift in Sources */,
+				41226AAF248FE86000F38E46 /* SliderThumbView.swift in Sources */,
+				41226AB0248FE86000F38E46 /* RadialDragModifier.swift in Sources */,
+				41226AA3248FE85F00F38E46 /* PreviewColourView.swift in Sources */,
+				41226A9F248FE85F00F38E46 /* extension CGFloat Double.swift in Sources */,
+				41226A9B248FE85F00F38E46 /* PaletteView.swift in Sources */,
 				41226A3E248FE5A000F38E46 /* ColorExtendable.swift in Sources */,
-				41226A46248FE5A000F38E46 /* WheelView.swift in Sources */,
-				41226A3A248FE5A000F38E46 /* extension ColourDataBindable.swift in Sources */,
-				41226A3B248FE5A000F38E46 /* Gradient.swift in Sources */,
-				41226A43248FE5A000F38E46 /* PaletteView.swift in Sources */,
-				41226A4D248FE5A000F38E46 /* ColourDataBindable.swift in Sources */,
-				41226A4B248FE5A000F38E46 /* PreviewColourView.swift in Sources */,
+				41226AA8248FE85F00F38E46 /* WheelPickable.swift in Sources */,
+				41226AA5248FE85F00F38E46 /* CircleGradientView.swift in Sources */,
+				41226AA6248FE85F00F38E46 /* CanvasPickable.swift in Sources */,
+				41226AA0248FE85F00F38E46 /* SliderDataBindable.swift in Sources */,
+				41226AAC248FE85F00F38E46 /* CircleThumbView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
