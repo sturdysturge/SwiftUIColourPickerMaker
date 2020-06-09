@@ -9,14 +9,14 @@
 
 import SwiftUI
 
-struct SliderThumbView {
+public struct SliderThumbView {
     let width: CGFloat
     let height: CGFloat
     let containerWidth: CGFloat
     let containerHeight: CGFloat
     let containerAlignment: Alignment
 
-    init(orientation: Axis, length: CGFloat, thickness: CGFloat) {
+    public init(orientation: Axis, length: CGFloat, thickness: CGFloat) {
         let isHorizontal = orientation == .horizontal
         width = isHorizontal ? thickness : length
         height = isHorizontal ? length : thickness
@@ -27,7 +27,7 @@ struct SliderThumbView {
 }
 
 extension SliderThumbView: View {
-    var body: some View {
+    public var body: some View {
         ZStack {
             Capsule()
                 .stroke(lineWidth: 10)

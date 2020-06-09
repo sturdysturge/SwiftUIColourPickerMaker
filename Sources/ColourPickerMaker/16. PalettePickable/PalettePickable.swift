@@ -44,7 +44,7 @@ protocol PalettePickable: View {
 }
 
 extension PalettePickable {
-    var body: some View {
+  public var body: some View {
         VStack {
             ForEach(0 ..< self.size.rows, id: \.self) {
                 yIndex in

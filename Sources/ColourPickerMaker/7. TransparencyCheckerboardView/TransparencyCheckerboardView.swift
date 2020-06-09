@@ -10,18 +10,18 @@
 import SwiftUI
 
 /// A background that can only be seen when Color opacity is less than 1.0
-struct TransparencyCheckerboardView: TransparencyCheckerboardDisplayable {
-    let tileSize: CGFloat
-    let colour1: Color
-    let colour2: Color
-    init(tileSize: CGFloat = 20, colour1: Color = .white, colour2: Color = .gray) {
+public struct TransparencyCheckerboardView: TransparencyCheckerboardDisplayable {
+  public let tileSize: CGFloat
+  public let colour1: Color
+  public let colour2: Color
+    public init(tileSize: CGFloat = 20, colour1: Color = .white, colour2: Color = .gray) {
         self.tileSize = tileSize
         self.colour1 = colour1
         self.colour2 = colour2
     }
 }
 
-protocol TransparencyCheckerboardDisplayable: View {
+public protocol TransparencyCheckerboardDisplayable: View {
     /// The width and height of each tile
     var tileSize: CGFloat { get }
     /// The first colour to alternate between
@@ -37,7 +37,7 @@ protocol TransparencyCheckerboardDisplayable: View {
 }
 
 extension TransparencyCheckerboardDisplayable {
-    var body: some View {
+    public var body: some View {
         ZStack {
             GeometryReader { geometry in
                 ForEach(0 ..< Int((geometry.size.height / self.tileSize) + 0.5), id: \.self) {
@@ -57,7 +57,7 @@ extension TransparencyCheckerboardDisplayable {
         .mask(Rectangle())
     }
 
-    func squareColour(column: Int, row: Int) -> Color {
+  public func squareColour(column: Int, row: Int) -> Color {
         if row % 2 == 0 {
             return column % 2 == 0 ? colour2 : colour1
         } else {

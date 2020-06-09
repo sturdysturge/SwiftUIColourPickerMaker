@@ -17,7 +17,7 @@ protocol CanvasPickable: View {
 }
 
 extension CanvasPickable {
-    var body: some View {
+  public var body: some View {
         ZStack {
             data.getBackground()
             GeometryReader { geometry in

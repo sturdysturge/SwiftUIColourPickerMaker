@@ -9,8 +9,8 @@
 
 import SwiftUI
 
-struct RGBASliderView: SliderPickable {
-    typealias DataType = RGBASliderData
+public struct RGBASliderView: SliderPickable {
+    public typealias DataType = RGBASliderData
     let data: DataType
     @State var thumbOffset = CGPoint()
     var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
@@ -18,8 +18,8 @@ struct RGBASliderView: SliderPickable {
     let length: CGFloat
 }
 
-struct HSBASliderView: SliderPickable {
-    typealias DataType = HSBASliderData
+public struct HSBASliderView: SliderPickable {
+    public typealias DataType = HSBASliderData
     let data: DataType
     @State var thumbOffset = CGPoint()
     var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
@@ -27,8 +27,8 @@ struct HSBASliderView: SliderPickable {
     let length: CGFloat
 }
 
-struct CMYKASliderView: SliderPickable {
-    typealias DataType = CMYKASliderData
+public struct CMYKASliderView: SliderPickable {
+    public typealias DataType = CMYKASliderData
     let data: DataType
     @State var thumbOffset = CGPoint()
     var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
@@ -36,8 +36,8 @@ struct CMYKASliderView: SliderPickable {
     let length: CGFloat
 }
 
-struct GreyscaleSliderView: SliderPickable {
-    typealias DataType = GreyscaleSliderData
+public struct GreyscaleSliderView: SliderPickable {
+    public typealias DataType = GreyscaleSliderData
     let data: DataType
     @State var thumbOffset = CGPoint()
     var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
@@ -45,15 +45,15 @@ struct GreyscaleSliderView: SliderPickable {
     let length: CGFloat
 }
 
-struct PreviewSliderView: View {
+public struct PreviewSliderView: View {
     @ObservedObject var data = ColourModel(colourSpace: .RGBA)
-    var body: some View {
+  public var body: some View {
         RGBASliderView(data: RGBASliderData(values: $data.valuesInRGBA, parameter: .red, orientation: .horizontal), thickness: 50, length: 300)
     }
 }
 
 struct SliderView_Previews: PreviewProvider {
-    static var previews: some View {
+  static var previews: some View {
         PreviewSliderView()
     }
 }

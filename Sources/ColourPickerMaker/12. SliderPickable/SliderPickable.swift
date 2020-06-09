@@ -37,7 +37,7 @@ extension SliderPickable {
         }
     }
 
-    var body: some View {
+  public var body: some View {
         ZStack {
             if self.data.parameter == .alpha {
                 TransparencyCheckerboardView()

@@ -9,12 +9,12 @@
 
 import SwiftUI
 
-struct CircleThumbView {
+public struct CircleThumbView {
     let size: CGFloat
 }
 
 extension CircleThumbView: View {
-    var body: some View {
+  public var body: some View {
         ZStack {
             Group {
                 Circle()

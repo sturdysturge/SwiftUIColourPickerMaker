@@ -10,13 +10,13 @@
 import SwiftUI
 
 struct RGBAWheelView: WheelPickable {
-    typealias DataType = RGBAData
+    public typealias DataType = RGBAData
     let data: DataType
     @State var thumbOffset = CGPoint()
     var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
     let angularGradient: Gradient
     let radialGradient: Gradient
-    init(data: DataType) {
+    public init(data: DataType) {
         self.data = data
         angularGradient = Gradient.fromValues(data.values, parameter: data.parameters.0)
         radialGradient = Gradient.fromValues(data.values, parameter: data.parameters.1)
@@ -24,13 +24,13 @@ struct RGBAWheelView: WheelPickable {
 }
 
 struct HSBAWheelView: WheelPickable {
-    typealias DataType = HSBAData
+    public typealias DataType = HSBAData
     let data: DataType
     @State var thumbOffset = CGPoint()
     var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
     let angularGradient: Gradient
     let radialGradient: Gradient
-    init(data: DataType) {
+    public init(data: DataType) {
         self.data = data
         angularGradient = Gradient.fromValues(data.values, parameter: data.parameters.0)
         radialGradient = Gradient.fromValues(data.values, parameter: data.parameters.1)
@@ -38,13 +38,13 @@ struct HSBAWheelView: WheelPickable {
 }
 
 struct CMYKAWheelView: WheelPickable {
-    typealias DataType = CMYKAData
+    public typealias DataType = CMYKAData
     let data: DataType
     @State var thumbOffset = CGPoint()
     var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
     let angularGradient: Gradient
     let radialGradient: Gradient
-    init(data: DataType) {
+    public init(data: DataType) {
         self.data = data
         angularGradient = Gradient.fromValues(data.values, parameter: data.parameters.0)
         radialGradient = Gradient.fromValues(data.values, parameter: data.parameters.1)
@@ -52,13 +52,13 @@ struct CMYKAWheelView: WheelPickable {
 }
 
 struct GreyscaleWheelView: WheelPickable {
-    typealias DataType = GreyscaleData
+    public typealias DataType = GreyscaleData
     let data: DataType
     @State var thumbOffset = CGPoint()
     var _$thumbOffset: Binding<CGPoint> { $thumbOffset }
     let angularGradient: Gradient
     let radialGradient: Gradient
-    init(data: DataType) {
+    public init(data: DataType) {
         self.data = data
         angularGradient = Gradient.fromValues(data.values, parameter: data.parameters.0)
         radialGradient = Gradient.fromValues(data.values, parameter: data.parameters.1)

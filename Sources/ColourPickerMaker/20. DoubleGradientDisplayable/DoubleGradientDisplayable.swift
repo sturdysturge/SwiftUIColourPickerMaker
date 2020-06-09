@@ -17,7 +17,7 @@ protocol DoubleGradientDisplayable: View {
 }
 
 extension DoubleGradientDisplayable {
-    var body: some View {
+  public var body: some View {
         ZStack {
             // Horizontal gradient
             // - Start at vertical colour
@@ -37,12 +37,12 @@ extension DoubleGradientDisplayable {
     }
 }
 
-struct DoubleGradientView: DoubleGradientDisplayable {
+public struct DoubleGradientView: DoubleGradientDisplayable {
     let horizontal: Parameter
     let vertical: Parameter
     let horizontalGradient: Gradient
     let verticalGradient: Gradient
-    init(horizontal: Parameter, vertical: Parameter) {
+    public init(horizontal: Parameter, vertical: Parameter) {
         horizontal.checkCompatibility(with: vertical)
         self.horizontal = horizontal
         self.vertical = vertical
@@ -52,7 +52,7 @@ struct DoubleGradientView: DoubleGradientDisplayable {
 }
 
 struct DoubleGradientView_Previews: PreviewProvider {
-    static var previews: some View {
+  static var previews: some View {
         DoubleGradientView(horizontal: .hue, vertical: .saturation)
     }
 }

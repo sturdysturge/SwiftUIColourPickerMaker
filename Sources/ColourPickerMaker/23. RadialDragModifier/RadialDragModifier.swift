@@ -24,7 +24,7 @@ extension View {
 }
 
 struct RadialDragModifier: ViewModifier {
-    init(offset: Binding<CGPoint>, rotation: Binding<Double>, distanceFromCentre: Binding<Double>, size: CGSize) {
+    public init(offset: Binding<CGPoint>, rotation: Binding<Double>, distanceFromCentre: Binding<Double>, size: CGSize) {
         centre = CGPoint(x: (size.width / 2) - 12.5, y: (size.height / 2) - 12.5)
         _offset = offset
         _rotation = rotation

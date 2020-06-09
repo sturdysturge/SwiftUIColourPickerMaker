@@ -61,8 +61,17 @@ protocol ColorExtendable {
 extension Color: ColorExtendable {
     static let indigo = Color(red: 0.29, green: 0, blue: 0.5)
     static let violet = Color(red: 0.93, green: 0.5, blue: 0.93)
+  
+    #if canImport(UIKit)
+    /// A colour scheme independent background colour (Light or Dark mode)
     static let cyan = Color(UIColor.cyan)
     static let magenta = Color(UIColor.magenta)
+    #else
+    /// A colour scheme independent background colour (Light or Dark mode)
+    static let cyan = Color(NSColor.cyan)
+    static let magenta = Color(NSColor.magenta)
+    #endif
+    
 
     static func blend(colour1: ColourModel.RGBAValues, colour2: ColourModel.RGBAValues, alpha: Double) -> ColourModel.RGBAValues {
         let red = (colour1.red + colour2.red).clampFromZero(to: 1)

@@ -23,8 +23,8 @@ extension View {
     }
 }
 
-struct DirectionalDragModifier {
-    init(value: Binding<Double>, offset: Binding<CGPoint>, length: CGFloat, orientation: Axis) {
+public struct DirectionalDragModifier {
+    public init(value: Binding<Double>, offset: Binding<CGPoint>, length: CGFloat, orientation: Axis) {
         max = length - 10
         _value = value
         self.orientation = orientation
@@ -39,7 +39,7 @@ struct DirectionalDragModifier {
 }
 
 extension DirectionalDragModifier: ViewModifier {
-    func body(content: Content) -> some View {
+  public func body(content: Content) -> some View {
         content
             .gesture(DragGesture(minimumDistance: 0)
                 .onChanged { value in

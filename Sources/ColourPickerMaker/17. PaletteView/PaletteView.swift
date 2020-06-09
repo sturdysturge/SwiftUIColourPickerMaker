@@ -9,60 +9,60 @@
 
 import SwiftUI
 
-struct RGBAPaletteView: PalettePickable {
-    typealias DataType = RGBAData
-    let data: RGBAData
-    let size: (rows: Int, columns: Int)
+public struct RGBAPaletteView: PalettePickable {
+    public typealias DataType = RGBAData
+    public let data: RGBAData
+    public let size: (rows: Int, columns: Int)
 
-    init(data: DataType, rows: Int = 10, columns: Int = 10) {
+    public init(data: DataType, rows: Int = 10, columns: Int = 10) {
         self.data = data
         size = (rows: rows, columns: columns)
     }
 }
 
-struct HSBAPaletteView: PalettePickable {
-    typealias DataType = HSBAData
+public struct HSBAPaletteView: PalettePickable {
+    public typealias DataType = HSBAData
     let data: HSBAData
     let size: (rows: Int, columns: Int)
 
-    init(data: DataType, rows: Int = 10, columns: Int = 10) {
+    public init(data: DataType, rows: Int = 10, columns: Int = 10) {
         self.data = data
         size = (rows: rows, columns: columns)
     }
 }
 
-struct CMYKAPaletteView: PalettePickable {
-    typealias DataType = CMYKAData
+public struct CMYKAPaletteView: PalettePickable {
+    public typealias DataType = CMYKAData
     let data: DataType
     let size: (rows: Int, columns: Int)
 
-    init(data: DataType, rows: Int = 10, columns: Int = 10) {
+    public init(data: DataType, rows: Int = 10, columns: Int = 10) {
         self.data = data
         size = (rows: rows, columns: columns)
     }
 }
 
-struct GreyscalePaletteView: PalettePickable {
-    typealias DataType = GreyscaleData
+public struct GreyscalePaletteView: PalettePickable {
+    public typealias DataType = GreyscaleData
     let data: DataType
     let size: (rows: Int, columns: Int)
 
-    init(data: DataType, rows: Int = 10, columns: Int = 10) {
+    public init(data: DataType, rows: Int = 10, columns: Int = 10) {
         self.data = data
         size = (rows: rows, columns: columns)
     }
 }
 
-struct PreviewPaletteView: View {
+public struct PreviewPaletteView: View {
     @ObservedObject var data = ColourModel(colourSpace: .HSBA)
 
-    var body: some View {
+  public var body: some View {
         HSBAPaletteView(data: HSBAData(values: $data.valuesInHSBA, parameters: (.hue, .saturation)))
     }
 }
 
 struct PaletteView_Previews: PreviewProvider {
-    static var previews: some View {
+  static var previews: some View {
         PreviewPaletteView()
     }
 }

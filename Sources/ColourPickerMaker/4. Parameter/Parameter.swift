@@ -9,10 +9,10 @@
 
 import SwiftUI
 
-enum Parameter: String, CaseIterable {
+public enum Parameter: String, CaseIterable {
     case hue, saturation, brightness, red, green, blue, alpha, white, cyan, magenta, yellow, black
 
-    typealias Pair = (x: Parameter, y: Parameter)
+    public typealias Pair = (x: Parameter, y: Parameter)
 
     func checkCompatibility(with otherParameter: Parameter) {
         guard self != otherParameter else {

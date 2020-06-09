@@ -9,13 +9,13 @@
 
 import SwiftUI
 
-struct PreviewColourView {
+public struct PreviewColourView {
     let colour: Color
     let square: Bool
 }
 
 extension PreviewColourView: View {
-    var body: some View {
+  public var body: some View {
         ZStack {
             if square {
                 Group {

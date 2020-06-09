@@ -24,8 +24,8 @@ extension View {
 }
 
 /// A modifier for dragging in two dimensions on CanvasView
-struct BidirectionalDragModifier: ViewModifier {
-    init(offset: Binding<CGPoint>, xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) {
+public struct BidirectionalDragModifier: ViewModifier {
+    public init(offset: Binding<CGPoint>, xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) {
         maxX = size.width - 25
         maxY = size.height - 25
         _xValue = xValue
@@ -38,7 +38,7 @@ struct BidirectionalDragModifier: ViewModifier {
     @Binding var yValue: Double
     let maxX: CGFloat
     let maxY: CGFloat
-    func body(content: Content) -> some View {
+  public func body(content: Content) -> some View {
         content
             .gesture(DragGesture(minimumDistance: 0)
                 .onChanged { value in

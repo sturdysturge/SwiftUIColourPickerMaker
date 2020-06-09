@@ -10,18 +10,18 @@
 import SwiftUI
 
 /// Stores one colour and its accompanying parameters
-class ColourModel: ObservableObject {
+public class ColourModel: ObservableObject {
     /// A tuple of RGB parameters and their values
-    typealias RGBAValues = (red: Double, green: Double, blue: Double, alpha: Double)
+    public typealias RGBAValues = (red: Double, green: Double, blue: Double, alpha: Double)
 
     /// A tuple of HSB parameters and their values
-    typealias HSBAValues = (hue: Double, saturation: Double, brightness: Double, alpha: Double)
+    public typealias HSBAValues = (hue: Double, saturation: Double, brightness: Double, alpha: Double)
 
     /// A tuple of CMYK parameters and their values
-    typealias CMYKAValues = (cyan: Double, magenta: Double, yellow: Double, black: Double, alpha: Double)
+    public typealias CMYKAValues = (cyan: Double, magenta: Double, yellow: Double, black: Double, alpha: Double)
 
     /// A tuple of greyscale parameters and their values
-    typealias GreyscaleValues = (white: Double, alpha: Double)
+    public typealias GreyscaleValues = (white: Double, alpha: Double)
 
     /// Which colour space is being adjusted
     var colourSpace: ColourSpace
@@ -61,7 +61,7 @@ class ColourModel: ObservableObject {
         }
     }
 
-    init(colourSpace: ColourSpace) {
+    public init(colourSpace: ColourSpace) {
         self.colourSpace = colourSpace
         setColour()
     }
@@ -88,6 +88,6 @@ class ColourModel: ObservableObject {
 }
 
 /// Colours are created with only one of these sets of parameters at a time
-enum ColourSpace: CaseIterable {
+public enum ColourSpace: CaseIterable {
     case HSBA, RGBA, CMYKA, greyscale
 }

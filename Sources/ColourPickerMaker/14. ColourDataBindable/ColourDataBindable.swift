@@ -18,29 +18,29 @@ protocol ColourDataBindable {
     func getBackground() -> Color
 }
 
-struct RGBAData: ColourDataBindable {
-    typealias ValueType = ColourModel.RGBAValues
+public struct RGBAData: ColourDataBindable {
+    public typealias ValueType = ColourModel.RGBAValues
     @Binding var values: ValueType
     var _$values: Binding<ValueType> { _values }
     let parameters: Parameter.Pair
 }
 
-struct HSBAData: ColourDataBindable {
-    typealias ValueType = ColourModel.HSBAValues
+public struct HSBAData: ColourDataBindable {
+    public typealias ValueType = ColourModel.HSBAValues
     @Binding var values: ValueType
     var _$values: Binding<ValueType> { _values }
     let parameters: Parameter.Pair
 }
 
-struct CMYKAData: ColourDataBindable {
-    typealias ValueType = ColourModel.CMYKAValues
+public struct CMYKAData: ColourDataBindable {
+    public typealias ValueType = ColourModel.CMYKAValues
     @Binding var values: ValueType
     var _$values: Binding<ValueType> { _values }
     let parameters: Parameter.Pair
 }
 
-struct GreyscaleData: ColourDataBindable {
-    typealias ValueType = ColourModel.GreyscaleValues
+public struct GreyscaleData: ColourDataBindable {
+    public typealias ValueType = ColourModel.GreyscaleValues
     @Binding var values: ValueType
     var _$values: Binding<ValueType> { _values }
     let parameters: Parameter.Pair
