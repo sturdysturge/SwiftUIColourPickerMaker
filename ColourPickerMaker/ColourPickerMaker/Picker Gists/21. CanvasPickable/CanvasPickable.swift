@@ -14,13 +14,12 @@ protocol CanvasPickable: View {
     var data: DataType { get }
     var thumbOffset: CGPoint { get }
     var _$thumbOffset: Binding<CGPoint> { get }
-  
 }
 
 extension CanvasPickable {
     var body: some View {
         ZStack {
-          data.getBackground()
+            data.getBackground()
             GeometryReader { geometry in
                 DoubleGradientView(horizontal: self.data.parameters.x, vertical: self.data.parameters.y)
                     .bidirectionalDrag(offset: self._$thumbOffset, xValue: self.data.bindingValues().x, yValue: self.data.bindingValues().y, size: geometry.size)

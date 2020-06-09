@@ -18,7 +18,7 @@ struct RGBAWheelView: WheelPickable {
     let radialGradient: Gradient
     init(data: DataType) {
         self.data = data
-      angularGradient = Gradient.fromValues(data.values, parameter: data.parameters.0)
+        angularGradient = Gradient.fromValues(data.values, parameter: data.parameters.0)
         radialGradient = Gradient.fromValues(data.values, parameter: data.parameters.1)
     }
 }
@@ -32,7 +32,7 @@ struct HSBAWheelView: WheelPickable {
     let radialGradient: Gradient
     init(data: DataType) {
         self.data = data
-      angularGradient = Gradient.fromValues(data.values, parameter: data.parameters.0)
+        angularGradient = Gradient.fromValues(data.values, parameter: data.parameters.0)
         radialGradient = Gradient.fromValues(data.values, parameter: data.parameters.1)
     }
 }
@@ -46,7 +46,7 @@ struct CMYKAWheelView: WheelPickable {
     let radialGradient: Gradient
     init(data: DataType) {
         self.data = data
-      angularGradient = Gradient.fromValues(data.values, parameter: data.parameters.0)
+        angularGradient = Gradient.fromValues(data.values, parameter: data.parameters.0)
         radialGradient = Gradient.fromValues(data.values, parameter: data.parameters.1)
     }
 }
@@ -60,18 +60,18 @@ struct GreyscaleWheelView: WheelPickable {
     let radialGradient: Gradient
     init(data: DataType) {
         self.data = data
-      angularGradient = Gradient.fromValues(data.values, parameter: data.parameters.0)
+        angularGradient = Gradient.fromValues(data.values, parameter: data.parameters.0)
         radialGradient = Gradient.fromValues(data.values, parameter: data.parameters.1)
     }
 }
 
 struct PreviewWheelView: View {
     @ObservedObject var data = ColourModel(colourSpace: .HSBA)
-  
+
     var body: some View {
         VStack {
             PreviewColourView(colour: data.colour, square: true)
-          HSBAWheelView(data: HSBAData(values: $data.valuesInHSBA, parameters: (.hue, .saturation)))
+            HSBAWheelView(data: HSBAData(values: $data.valuesInHSBA, parameters: (.hue, .saturation)))
         }
     }
 }

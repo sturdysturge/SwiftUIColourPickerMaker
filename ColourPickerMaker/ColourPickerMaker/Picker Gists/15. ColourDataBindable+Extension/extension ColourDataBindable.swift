@@ -11,22 +11,18 @@ import SwiftUI
 
 extension ColourDataBindable where ValueType == ColourModel.RGBAValues {
     func getBackground() -> Color {
-      let parameterArray = [parameters.0, parameters.1]
-      if parameterArray.contains(.alpha) {
-        return .clear
-      }
-      else if !parameterArray.contains(.red) {
-        return Color(red: values.red, green: 0, blue: 0, opacity: 1)
-      }
-      else if !parameterArray.contains(.green) {
-        return Color(red: 0, green: values.green, blue: 0, opacity: 1)
-      }
-      else if !parameterArray.contains(.blue) {
-        return Color(red: 0, green: 0, blue: values.blue, opacity: 1)
-      }
-      else {
-        fatalError("Parameters \(parameters) contains parameters outside colour space")
-      }
+        let parameterArray = [parameters.0, parameters.1]
+        if parameterArray.contains(.alpha) {
+            return .clear
+        } else if !parameterArray.contains(.red) {
+            return Color(red: values.red, green: 0, blue: 0, opacity: 1)
+        } else if !parameterArray.contains(.green) {
+            return Color(red: 0, green: values.green, blue: 0, opacity: 1)
+        } else if !parameterArray.contains(.blue) {
+            return Color(red: 0, green: 0, blue: values.blue, opacity: 1)
+        } else {
+            fatalError("Parameters \(parameters) contains parameters outside colour space")
+        }
     }
 
     func bindingValues() -> (x: Binding<Double>, y: Binding<Double>) {
@@ -60,22 +56,18 @@ extension ColourDataBindable where ValueType == ColourModel.RGBAValues {
 
 extension ColourDataBindable where ValueType == ColourModel.HSBAValues {
     func getBackground() -> Color {
-      let parameterArray = [parameters.0, parameters.1]
-      if parameterArray.contains(.saturation) {
-        return .white
-      }
-      else if parameterArray.contains(.brightness) {
-        return .black
-      }
-      else if parameterArray.contains(.alpha) || parameterArray.contains(.hue) {
-        return .clear
-      }
-      else if parameterArray.contains(.saturation) && parameterArray.contains(.brightness) {
-        return Color(hue: values.hue, saturation: 1, brightness: 1, opacity: 1)
-      }
-      else {
-        fatalError("Parameters \(parameters) contains parameters outside colour space")
-      }
+        let parameterArray = [parameters.0, parameters.1]
+        if parameterArray.contains(.saturation) {
+            return .white
+        } else if parameterArray.contains(.brightness) {
+            return .black
+        } else if parameterArray.contains(.alpha) || parameterArray.contains(.hue) {
+            return .clear
+        } else if parameterArray.contains(.saturation), parameterArray.contains(.brightness) {
+            return Color(hue: values.hue, saturation: 1, brightness: 1, opacity: 1)
+        } else {
+            fatalError("Parameters \(parameters) contains parameters outside colour space")
+        }
     }
 
     func bindingValues() -> (x: Binding<Double>, y: Binding<Double>) {
@@ -109,34 +101,31 @@ extension ColourDataBindable where ValueType == ColourModel.HSBAValues {
 
 extension ColourDataBindable where ValueType == ColourModel.CMYKAValues {
     func getBackground() -> Color {
-      let parameterArray = [parameters.0, parameters.1]
-      var valuesForBackground = values
-      if parameterArray.contains(.alpha) {
-        return .clear
-      }
-      else {
-      let parameters: [Parameter] = [.cyan, .magenta, .yellow, .black]
-        parameters.forEach { parameter in
-        if parameterArray.contains(parameter) {
-          switch parameter {
-          case .cyan:
-            valuesForBackground.cyan = 0
-          case .magenta:
-            valuesForBackground.magenta = 0
-          case .yellow:
-            valuesForBackground.yellow = 0
-          case .black:
-            valuesForBackground.black = 0
-          default:
-            fatalError("Unknown parameter \(parameter)")
-          }
+        let parameterArray = [parameters.0, parameters.1]
+        var valuesForBackground = values
+        if parameterArray.contains(.alpha) {
+            return .clear
+        } else {
+            let parameters: [Parameter] = [.cyan, .magenta, .yellow, .black]
+            parameters.forEach { parameter in
+                if parameterArray.contains(parameter) {
+                    switch parameter {
+                    case .cyan:
+                        valuesForBackground.cyan = 0
+                    case .magenta:
+                        valuesForBackground.magenta = 0
+                    case .yellow:
+                        valuesForBackground.yellow = 0
+                    case .black:
+                        valuesForBackground.black = 0
+                    default:
+                        fatalError("Unknown parameter \(parameter)")
+                    }
+                }
+            }
+            return Color.fromValues(valuesForBackground)
         }
-      }
-        return Color.fromValues(valuesForBackground)
-      }
     }
-
-    
 
     func bindingValues() -> (x: Binding<Double>, y: Binding<Double>) {
         var firstParameter: Binding<Double>
@@ -172,9 +161,9 @@ extension ColourDataBindable where ValueType == ColourModel.CMYKAValues {
 }
 
 extension ColourDataBindable where ValueType == ColourModel.GreyscaleValues {
-  func getBackground() -> Color {
-    return .clear
-  }
+    func getBackground() -> Color {
+        return .clear
+    }
 
     func bindingValues() -> (x: Binding<Double>, y: Binding<Double>) {
         if parameters.0 == .white, parameters.1 == .alpha {

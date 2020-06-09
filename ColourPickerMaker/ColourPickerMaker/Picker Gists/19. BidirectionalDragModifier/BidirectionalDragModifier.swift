@@ -10,18 +10,19 @@
 import SwiftUI
 
 extension View {
-  /** A way to use BidirectionalDragModifier without using .modifier(BidirectionalDragModifier()) syntax
-   - Parameters:
-   - offset: The amount that the circular thumb is offset
-   - xValue: The value based on horizontal position between 0 and 1
-   - yValue: The value based on vertical position between 0 and 1
-   - size: The size of the canvas
-   - Returns: A View that has bidirectional dragging functionality
-   */
-  func bidirectionalDrag(offset: Binding<CGPoint>, xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) -> some View {
-    return modifier(BidirectionalDragModifier(offset: offset, xValue: xValue, yValue: yValue, size: size))
-  }
+    /** A way to use BidirectionalDragModifier without using .modifier(BidirectionalDragModifier()) syntax
+     - Parameters:
+     - offset: The amount that the circular thumb is offset
+     - xValue: The value based on horizontal position between 0 and 1
+     - yValue: The value based on vertical position between 0 and 1
+     - size: The size of the canvas
+     - Returns: A View that has bidirectional dragging functionality
+     */
+    func bidirectionalDrag(offset: Binding<CGPoint>, xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) -> some View {
+        return modifier(BidirectionalDragModifier(offset: offset, xValue: xValue, yValue: yValue, size: size))
+    }
 }
+
 /// A modifier for dragging in two dimensions on CanvasView
 struct BidirectionalDragModifier: ViewModifier {
     init(offset: Binding<CGPoint>, xValue: Binding<Double>, yValue: Binding<Double>, size: CGSize) {
