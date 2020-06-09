@@ -35,13 +35,41 @@ Wheels use degrees of rotation instead of the X position, and distance from the 
 
 ## Installation
 
-Follow the instructions for installing a Swift Package here, using the URL
-https://medium.com/better-programming/add-swift-package-dependency-to-an-ios-project-with-xcode-11-remote-local-public-private-3a7577fac6b2
+Follow the [instructions for installing a Swift Package](https://medium.com/better-programming/add-swift-package-dependency-to-an-ios-project-with-xcode-11-remote-local-public-private-3a7577fac6b2) using the URL below:
+```
+https://github.com/sturdysturge/SwiftUIColourPickerMaker.git
+```
 
 ## Usage examples
 
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
+The main use for the library is to create picker controls that cover all of the parameters in a given colour space. Since RGBA and HSBA both have four parameters, they can only be created in the following ways:
 
+1. 4 sliders
+2. 2 canvases
+3. 2 wheels
+4. 2 palettes
+5. 1 canvas and 2 sliders
+6. 1 wheel and 2 sliders
+7. 1 palette and 2 sliders
+8. 1 canvas and 1 wheel
+9. 1 canvas and 1 palette
+10. 1 wheel and 1 palette
+
+Pickers in the CMYK colour space can only be one of the following ways:
+1. 5 sliders
+2. 2 canvases and 1 slider
+3. 2 wheels and 1 slider
+4. 2 palettes and 1 slider
+5. 1 canvas, 1 wheel and 1 slider
+6. 1 canvas, 1 palette and 1 slider
+7. 1 wheel, 1 palette and 1 slider
+8. 1 canvas and 3 sliders
+9. 1 wheel and 3 sliders
+10. 1 palette and 3 sliders
+
+As it only has the parameters of whiteness and opacity, grayscale can only be made with two sliders, one canvas, one palette, or one colour wheel.
+
+## Canvas
 ```swift
 import ColourPickerMaker
 import SwiftUI
@@ -55,6 +83,12 @@ struct CanvasView: View {
     }
   }
 }
+```
+## Sliders
+```swift
+import ColourPickerMaker
+import SwiftUI
+
 
 struct SliderView: View {
   @ObservedObject var data = ColourModel(colourSpace: .RGBA)
@@ -64,6 +98,12 @@ struct SliderView: View {
       RGBASliderView(data: RGBASliderData(values: $data.valuesInRGBA, parameter: .red, orientation: .horizontal), thickness: 50, length: 300)
   }
 }
+```
+## Wheel
+```swift
+import ColourPickerMaker
+import SwiftUI
+
 
 struct WheelView: View {
     @ObservedObject var data = ColourModel(colourSpace: .HSBA)
@@ -75,6 +115,11 @@ struct WheelView: View {
         }
     }
 }
+```
+## Palette
+```swift
+import ColourPickerMaker
+import SwiftUI
 
 struct PaletteView: View {
   @ObservedObject var data = ColourModel(colourSpace: .HSBA)
