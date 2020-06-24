@@ -7,7 +7,7 @@
 
 This package contains sliders and controls for colour pickers that can be added to your project in any configuration. There are also example colour pickers that use these controls, so you have the choice between using existing pickers or building your own.
 
-This package was created as part of the Medium tutorial Make 1500+ SwiftUI Colour Picker Varieties and Reuse Them In Any Project With Swift Package Manager, available here: https://medium.com/@rob_sturgeon
+This package was created as part of the Medium tutorial Make 1500+ SwiftUI Colour Picker Varieties and Reuse Them In Any Project With Swift Package Manager, available here: https://medium.com/better-programming/want-more-from-colorpicker-in-ios-14-create-1500-swiftui-pickers-of-your-own-7533514bf824
 
 # Colour palettes
 
